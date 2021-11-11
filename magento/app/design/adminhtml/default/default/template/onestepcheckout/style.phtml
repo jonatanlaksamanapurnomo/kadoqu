@@ -1,0 +1,92 @@
+
+<?php $styleValue = Mage::getStoreConfig('onestepcheckout/style_management/style'); ?>
+<?php $buttonValue = Mage::getStoreConfig('onestepcheckout/style_management/button'); ?>
+<div class="section-config">
+</div>
+<input id="onestepcheckout_style_management_style-state" name="config_state[onestepcheckout_style_management_style]" type="hidden" value="0">
+<fieldset class="config collapseable" id="onestepcheckout_style_management_style">
+    <legend></legend>
+</fieldset>
+</div>
+<table cellspacing="0" class="form-list">
+    <colgroup class="label"></colgroup>
+    <colgroup class="value"></colgroup>
+    <colgroup class="scope-label"></colgroup>
+    <colgroup class=""></colgroup>
+    <tbody></tbody>
+</table>
+<div style="margin-top: 10px; font-weight: bold; border-bottom: 1px solid rgb(223, 223, 223);"> Style Color</div>
+<table cellspacing="0" class="form-list">
+    <colgroup class="label"></colgroup>
+    <colgroup class="value"></colgroup>
+    <colgroup class="scope-label"></colgroup>
+    <colgroup class=""></colgroup>
+    <tbody></tbody>
+</table>
+<table class="form-list" cell-spacing="0">
+    <tbody>
+    <tr>
+        <td class="value">
+            <select style="width: 280px;margin-left:30px;" onchange="showreview(this);" id="onestepcheckout_style_management_style" name="groups[style_management][fields][style][value]" class="select">
+                <option value="orange" title="Orange" <?php if($styleValue=='orange') echo 'selected="selected"'?> ><?php echo Mage::helper('onestepcheckout')->__('Orange') ?></option>
+                <option value="green" title="Green" <?php if($styleValue=='green') echo 'selected="selected"'?> ><?php echo Mage::helper('onestepcheckout')->__('Green') ?></option>
+                <option value="black" title="Black" <?php if($styleValue=='black') echo 'selected="selected"'?> ><?php echo Mage::helper('onestepcheckout')->__('Black') ?></option>
+                <option value="blue" title="Blue" <?php if($styleValue=='blue') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Blue') ?></option>
+                <option value="darkblue" title="Dark Blue" <?php if($styleValue=='darkblue') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Dark Blue') ?></option>
+                <option value="pink" title="Pink" <?php if($styleValue=='pink') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Pink') ?></option>
+                <option value="red" title="Red" <?php if($styleValue=='red') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Red') ?></option>
+                <option value="violet" title="Violet" <?php if($styleValue=='violet') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Violet') ?></option>
+                <option value="custom" title="Custom" <?php if($styleValue=='custom') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Custom') ?></option>
+            </select>
+        </td>
+        <td class="scope-label">[STORE VIEW]</td></tr></tbody></table><div id="showreview">
+    <img width="957px" src="<?php echo Mage::getDesign()->getSkinBaseUrl(array('_area'=>'adminhtml')) ?>images/onestepcheckout/style/<?php echo $styleValue ; ?>.png">
+</div>
+<style type="text/css">
+    #onestepcheckout_style_management .collapseable{
+        display:none;
+    }
+</style>
+<script type="text/javascript">
+    loadColor_onestepcheckout('click');
+    function showreview(style)
+    {
+        if(style.value=="custom"){
+            var show = "<input value=\"\" style=\"background-color: #;margin-left: 36px;\" name=\"groups[style_management][fields][style][custom]\" id=\"onestepcheckout_style_management_custom\" onclick=\"loadColor_onestepcheckout('click')\"/>";
+            $("showreview").innerHTML  = show;
+        }else{
+            var show = "<img width=\"957px\" src=\"<?php echo Mage::getDesign()->getSkinBaseUrl(array('_area'=>'adminhtml')) ?>images/onestepcheckout/style/";
+            show +=style.value+".png\" />";
+            $("showreview").innerHTML=show;
+        }
+    }
+</script>
+<div style="margin-top: 10px; font-weight: bold; border-bottom: 1px solid rgb(223, 223, 223);"> "Place Order Now" button Color</div>
+<table class="form-list" cell-spacing="0"><tbody><tr><td class="value">
+            <select style="width: 280px;margin-left:30px;" onchange="showreviewbutton(this);" id="onestepcheckout_style_management_button" name="groups[style_management][fields][button][value]" class="select">
+                <option value="orange" title="Orange" <?php if($buttonValue=='orange') echo 'selected="selected"'?> ><?php echo Mage::helper('onestepcheckout')->__('Orange') ?></option>
+                <option value="green" title="Green" <?php if($buttonValue=='green') echo 'selected="selected"'?> ><?php echo Mage::helper('onestepcheckout')->__('Green') ?></option>
+                <option value="black" title="Black" <?php if($buttonValue=='black') echo 'selected="selected"'?> ><?php echo Mage::helper('onestepcheckout')->__('Black') ?></option>
+                <option value="blue" title="Blue" <?php if($buttonValue=='blue') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Blue') ?></option>
+                <option value="darkblue" title="Dark Blue" <?php if($buttonValue=='darkblue') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Dark Blue') ?></option>
+                <option value="pink" title="Pink" <?php if($buttonValue=='pink') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Pink') ?></option>
+                <option value="red" title="Red" <?php if($buttonValue=='red') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Red') ?></option>
+                <option value="violet" title="Violet" <?php if($buttonValue=='violet') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Violet') ?></option>
+                <option value="custom" title="Custom" <?php if($buttonValue=='custom') echo 'selected="selected"'?>><?php echo Mage::helper('onestepcheckout')->__('Custom') ?></option>
+            </select>
+        </td>
+        <td class="scope-label">[STORE VIEW]</td></tr></tbody></table><div id="showreviewbutton">
+</div>
+<script type="text/javascript">
+    loadColor_onestepcheckoutbutton('click');
+    function showreviewbutton(style)
+    {
+        if(style.value=="custom"){
+            var show = "<input value=\"\" style=\"background-color: #;margin-left: 36px;\" name=\"groups[style_management][fields][button][custombutton]\" id=\"onestepcheckout_style_management_custombutton\" onclick=\"loadColor_onestepcheckoutbutton('click')\"/>";
+            $("showreviewbutton").innerHTML  = show;
+        }else{
+            $("showreviewbutton").innerHTML="";
+        }
+    }
+
+</script>

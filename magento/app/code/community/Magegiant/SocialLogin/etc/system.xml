@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magegiant
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the magegiant.com license that is
+ * available through the world-wide-web at this URL:
+ * http://magegiant.com/license-agreement/
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magegiant
+ * @package     Magegiant_SocialLogin
+ * @copyright   Copyright (c) 2014 Magegiant (http://magegiant.com/)
+ * @license     http://magegiant.com/license-agreement/
+ */
+-->
+<config>
+    <tabs>
+        <magegiant translate="label">
+            <label>Magegiant Extensions</label>
+            <sort_order>100</sort_order>
+        </magegiant>
+    </tabs>
+    <sections>
+        <sociallogin translate="label" module="sociallogin">
+            <class>separator-top</class>
+            <label>Social Login</label>
+            <tab>magegiant</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>299</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label" module="community">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Active</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+
+                        <field_notification translate="label comment">
+                            <label>
+                                <![CDATA[
+                                Note:<br />
+                                - Update latest version <a href="http://go.magegiant.com/social-login-update" target="_blank">here</a><br /> 
+                                - Reduce shopping cart abandonment rate <a href="http://go.magegiant.com/one-step-checkout-social-login" target="_blank">learn more</a><br /> 
+                                - How to increase loyalty customers <a href="http://go.magegiant.com/reward-points-social" target="_blank">learn more</a><br /> 
+
+                                <br />
+                                        ]]>
+                            </label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>sociallogin/adminhtml_system_config_notification</frontend_model>
+                            <margin_top>0px</margin_top>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </field_notification>
+
+                        <top translate="label">
+                            <label>Popup top</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </top>
+                        <left translate="label">
+                            <label>Popup left</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </left>
+                        <style_color translate="label">
+                            <label>Style Management</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>sociallogin/system_config_source_color</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </style_color>
+                        <style_custom translate="label">
+                            <label>Custom style color</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>color</validate>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <style_color>custom</style_color>
+                            </depends>
+                        </style_custom>
+                    </fields>
+                </general>
+                <fb translate="label">
+                    <label>Facebook Login</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Active</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <app_id translate="label">
+                            <label>Application ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[<a href="http://developers.facebook.com/setup/" target="_bank">Register</a>]]></comment>
+                        </app_id>
+                        <app_secret translate="label">
+                            <label>Application Secret</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </app_secret>
+                        <redirect_url translate="label comment">
+                            <label>Valid OAuth redirect URIs</label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>sociallogin/adminhtml_system_config_form_field_redirectUrl</frontend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </redirect_url>
+                        <is_send_password_to_customer translate="label">
+                            <label>Send password</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Send new password to customer</comment>
+                        </is_send_password_to_customer>
+                        <fb_image translate="label">
+                            <label>Button image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">sociallogin/img</upload_dir>
+                            <base_url type="media" scope_info="1">sociallogin/img</base_url>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                            <a href="http://goo.gl/hZ9Bvr" target="_blank">
+                            Download button Library
+                            </a>
+                            ]]></comment>
+                        </fb_image>
+                        <fb_image_label translate="label">
+                            <label>Button image label</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fb_image_label>
+                        <sort_order translate="label">
+                            <label>Position number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                    </fields>
+                </fb>
+            </groups>
+        </sociallogin>
+    </sections>
+</config>

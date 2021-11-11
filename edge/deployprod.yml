@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: edge
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: 4000
+  selector:
+    name: edge
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edge
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: edge
+  template:
+    metadata:
+      labels:
+        name: edge
+    spec:
+      imagePullSecrets:
+        - name: registry-secret
+      containers:
+        - name: edge-app
+          image: rg.fr-par.scw.cloud/kadoqucontainerregistry/edge:3fe3b49ef6a2df2eeab60529271957a52c0e1a78
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 4000
+          env:
+            - name: RECAPTCHA_SECRET_KEY
+              value: "6LfxAKEUAAAAANAiMH36HIHV3LnofHAaqF9r86Lg"
+            - name: RAJAONGKIR_SITE_KEY
+              value: "5941907af055299a794c7e1414786045"
+            - name: RAJAONGKIR_ORIGIN
+              value: "364"
+            - name: RAJAONGKIR_ORIGINTYPE
+              value: "subdistrict"
+            - name: RAJAONGKIR_DESTINATIONTYPE
+              value: "subdistrict"
+            - name: JSONWEBTOKEN_SECREET
+              value: "ini rahasia kita yaa!!"
+            - name: SENDGRID_API_KEY
+              value: "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"
+            - name: NEXMO_API_KEY
+              value: "dOk5N4Ql7SHS8e4E"
+            - name: IMAGEKIT_API_KEY
+              value: "Fo2hI3ralt1f7SgAVOyChvPpTH8="
+            - name: IMAGEKIT_PRIVATE_KEY
+              value: "BIuFYAtNPqxbt0o//RDQAmkIQXI="
+            - name: IMAGEKIT_ID
+              value: "nwiq66cx3pvsy"
+            - name: PSQL_TRACK_SSL
+              value: "true"
+            - name: PSQL_TRACK_PORT
+              value: "25060"
+            - name: PSQL_TRACK_USER
+              value: "doadmin"
+            - name: PSQL_TRACK_HOST
+              value: "private-db-usertracker-prod-do-user-1399981-0.db.ondigitalocean.com"
+            - name: PSQL_TRACK_PASS
+              value: "lrkzh3wsk0rcg4hi"
+            - name: PSQL_TRACK_DB
+              value: "defaultdb"
+            - name: PSQL_SSL
+              value: "true"
+            - name: PSQL_USER
+              value: "doadmin"
+            - name: PSQL_HOST
+              value: "private-db-kdq-prod-do-user-1399981-0.db.ondigitalocean.com"
+            - name: PSQL_PASS
+              value: "vjlo4krg6sq31exn"
+            - name: PSQL_DB
+              value: "defaultdb"
+            - name: PSQL_PORT
+              value: "25061"
+            - name: ELASTIC_SEARCH_HOSTING
+              value: "https://6uqvhqni68:v6lf55f80a@kadoqu-es-4549470335.ap-southeast-2.bonsaisearch.net/"
+            - name: RAJASMS_APIKEY
+              value: "d3341867bb51c0d26c3fee5aff4d0e72"
+            - name: RAJASMS_USERNAME
+              value: "kadoqu.store"
+            - name: KADOQUSITE
+              value: "https://kadoqu.com/"
+            - name: DEPLOY_STATUS
+              value: "PRODUCTION"
+            - name: RAJAONGKIR_SECOND_SECREET_KEY
+              value: "461af78c2a15c3c16ab62aa2adcc8011"
+            - name: KADOQU_ADMIN_EMAIL
+              value: "hello@kadoqu.com"

@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magegiant
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the magegiant.com license that is
+ * available through the world-wide-web at this URL:
+ * http://magegiant.com/license-agreement/
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magegiant
+ * @package     Magegiant_GgLogin
+ * @copyright   Copyright (c) 2014 Magegiant (http://magegiant.com/)
+ * @license     http://magegiant.com/license-agreement/
+ */
+-->
+<config>
+    <modules>
+        <Magegiant_GgLogin>
+            <version>0.1.0</version>
+        </Magegiant_GgLogin>
+    </modules>
+    <frontend>
+        <routers>
+            <gglogin>
+                <use>standard</use>
+                <args>
+                    <module>Magegiant_GgLogin</module>
+                    <frontName>gglogin</frontName>
+                </args>
+            </gglogin>
+        </routers>
+        <layout>
+            <updates>
+                <gglogin>
+                    <file>magegiant/gglogin.xml</file>
+                </gglogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magegiant_GgLogin>
+                    <files>
+                        <default>Magegiant_GgLogin.csv</default>
+                    </files>
+                </Magegiant_GgLogin>
+            </modules>
+        </translate>
+        <events>
+            <social_button_create_before>
+                <observers>
+                    <gglogin_observers>
+                        <class>gglogin/frontend_observer</class>
+                        <method>addGgButton</method>
+                    </gglogin_observers>
+                </observers>
+            </social_button_create_before>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <ggloginadmin>
+                <use>admin</use>
+                <args>
+                    <module>Magegiant_GgLogin</module>
+                    <frontName>ggloginadmin</frontName>
+                </args>
+            </ggloginadmin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <gglogin>
+                    <file>magegiant/gglogin.xml</file>
+                </gglogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magegiant_GgLogin>
+                    <files>
+                        <default>Magegiant_GgLogin.csv</default>
+                    </files>
+                </Magegiant_GgLogin>
+            </modules>
+        </translate>
+    </adminhtml>
+    <global>
+        <models>
+            <gglogin>
+                <class>Magegiant_GgLogin_Model</class>
+                <resourceModel>gglogin_mysql4</resourceModel>
+            </gglogin>
+            <gglogin_mysql4>
+                <class>Magegiant_GgLogin_Model_Mysql4</class>
+                <entities>
+                    <gglogin>
+                        <table>gglogin</table>
+                    </gglogin>
+                </entities>
+            </gglogin_mysql4>
+        </models>
+        <resources>
+            <gglogin_setup>
+                <setup>
+                    <module>Magegiant_GgLogin</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </gglogin_setup>
+            <gglogin_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </gglogin_write>
+            <gglogin_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </gglogin_read>
+        </resources>
+        <blocks>
+            <gglogin>
+                <class>Magegiant_GgLogin_Block</class>
+            </gglogin>
+        </blocks>
+        <helpers>
+            <gglogin>
+                <class>Magegiant_GgLogin_Helper</class>
+            </gglogin>
+        </helpers>
+    </global>
+
+    <default>
+        <sociallogin>
+            <gg>
+                <enable>0</enable>
+                <sort_order>2</sort_order>
+                <gg_image>default/gg.png</gg_image>
+                <gg_image_label>Google</gg_image_label>
+            </gg>
+        </sociallogin>
+    </default>
+
+</config>

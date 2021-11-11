@@ -1,0 +1,257 @@
+<?php
+/**
+ * MageGiant
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MageGiant.com license that is
+ * available through the world-wide-web at this URL:
+ * http://magegiant.com/license-agreement/
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    MageGiant
+ * @package     MageGiant_SocialLogin
+ * @copyright   Copyright (c) 2014 MageGiant (http://magegiant.com/)
+ * @license     http://magegiant.com/license-agreement/
+ */
+
+/**
+ * Sociallogin
+ *
+ * @category    MageGiant
+ * @package     MageGiant_SocialLogin
+ * @author      MageGiant Developer
+ */
+?>
+<div id="magegiant-sociallogin-container">
+<?php $socialButtons = $this->getSocialButton(); ?>
+<div id="magegiant-sociallogin-popup" class="magegiant-sociallogin-popup">
+<div id="magegiant-sociallogin-authentication">
+    <div class="sociallogin-title login-title">
+        <h2><?php echo $this->__("Signin") ?></h2>
+    </div>
+    <form id="magegiant-sociallogin-form" class="magegiant-login-form-popup">
+        <div class="form-list">
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <label class="required" for="email">
+                    <?php echo $this->__('Email Address '); ?><em>*</em>
+                </label>
+
+                <div class="input-box">
+                    <input id="magegiant-sociallogin-popup-email"
+                           class="input-text required-entry validate-email"
+                           type="text" title="<?php echo $this->__('Email Address '); ?>" value=""
+                           name="socialogin_email">
+                </div>
+            </div>
+            <div id="magegiant-sociallogin-password" class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <label class="required login-label" for="pass">
+                    <?php echo $this->__('Password '); ?><em>*</em>
+                </label>
+
+                <div class="form-list">
+                    <input type="password" id="magegiant-sociallogin-popup-pass"
+                           class="input-text required-entry validate-password" type="text"
+                           title="<?php echo $this->__('Password '); ?>"
+                           value=""
+                           name="socialogin_password">
+                </div>
+            </div>
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <!-- image ajax -->
+                <div id="progress_image_login" class="ajax-login-image" style="display: none">
+                </div>
+                <!-- error invalid email -->
+                <div id="magegiant-invalid-email" class="magegiant-invalid-email"></div>
+            </div>
+            <!-- sumbit -->
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <a id="magegiant-forgot-password"
+                   href="javascript:void(0);"><?php echo $this->__('Forgot Your Password?') ?>
+                </a>
+                <button id="magegiant-button-sociallogin" class="button popup_click_btn popup-btn"
+                        name="send"
+                        title="<?php echo $this->__('Login') ?>"
+                        type="button">
+                    <span><?php echo $this->__('Login') ?></span>
+                </button>
+            </div>
+            <div class="giant-sociallogin-auth-form-block last col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <a id="magegiant-sociallogin-create-new-customer"
+                   href="javascript:void(0);"><?php echo('Create New Account') ?>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- create new user -->
+<div id="magegiant-socialogin-create-user" style="display: none">
+    <div class="sociallogin-title create-account-title">
+        <h2><?php echo $this->__("Create New Account") ?></h2>
+    </div>
+    <form id="magegiant-sociallogin-form-create" class="magegiant-login-form-popup">
+        <div class="form-list">
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-6 mg-md-6 mg-sm-6 mg-xs-12 ">
+                <label class="required" for="firstname"><?php echo $this->__('First Name '); ?>
+                    <em>*</em></label>
+
+                <div class="input-box">
+                    <input id="socialogin.firstname" class="input-text required-entry" type="text"
+                           title="First Name" value="" name="firstname">
+                </div>
+            </div>
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-6 mg-md-6 mg-sm-6 mg-xs-12">
+                <label class="required" for="lastname"><?php echo $this->__('Last Name '); ?>
+                    <em>*</em></label>
+
+                <div class="input-box">
+                    <input id="socialogin.lastname" class="input-text required-entry" type="text"
+                           title="<?php echo $this->__('Last Name '); ?>" value="" name="lastname">
+                </div>
+            </div>
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <label class="required" for="socialogin.email"><?php echo $this->__('Email '); ?>
+                    <em>*</em></label>
+
+                <div class="input-box">
+                    <input id="socialogin.email" class="input-text required-entry validate-email"
+                           type="text" title="<?php echo $this->__('Email '); ?>" value="" name="email">
+                </div>
+                <div id="magegiant-invalid-create" class="magegiant-invalid-email"></div>
+            </div>
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <label class="required" for="pass"><?php echo $this->__('New Password '); ?>
+                    <em>*</em></label>
+
+                <div class="input-box">
+                    <input id="socialogin.pass" class="input-text required-entry validate-password"
+                           type="password" title="Pass" value="" name="pass">
+                </div>
+            </div>
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <label class="required" for="pass-confirm"><?php echo $this->__('Confirm Password'); ?>
+                    <em>*</em></label>
+
+                <div class="input-box">
+                    <input id="socialogin.pass.confirm" class="input-text required-entry validate-cpassword"
+                           type="password" title="Pass Confirm" value="" name="passConfirm">
+                </div>
+            </div>
+            <div class="giant-sociallogin-auth-form-block last col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <a id="magegiant-create-back"
+                   href="javascript:void(0);"><?php echo $this->__('Back to Form Login') ?></a>
+                <button id="magegiant-button-sociallogin-create" class="button popup-btn"
+                        title="<?php echo $this->__('Submit'); ?>" type="button">
+                    <span><?php echo $this->__('Submit') ?></span>
+                </button>
+            </div>
+            <!-- image ajax -->
+            <div id="progress_image_login_create" class="ajax-login-image" style="display: none">
+            </div>
+        </div>
+    </form>
+</div>
+<!-- end code create account -->
+<!--Forgot Pass-->
+<div id="sociallogin-forgot" style="display: none">
+    <!-- form forgot -->
+    <form id="magegiant-sociallogin-form-forgot" class="magegiant-sociallogin-form" style="display: none">
+        <div class="form-list">
+            <div class="sociallogin-title forgot-pass-title">
+                <h2><?php echo $this->__("Forgot password") ?></h2>
+            </div>
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                        <span
+                            class="sociallogin-forgot-content"><?php echo $this->__('Please enter your email below and we will send you a new password.'); ?></span>
+            </div>
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <label class="required" for="email">
+                    <?php echo $this->__('Email Address '); ?><em>*</em>
+                </label>
+
+                <div class="input-box">
+                    <input id="magegiant-sociallogin-popup-email-forgot"
+                           class="input-text required-entry validate-email" type="text" title="Email Address"
+                           value="" name="socialogin_email_forgot">
+                </div>
+            </div>
+            <div class="giant-sociallogin-auth-form-block col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <!-- image ajax -->
+                <div id="progress_image_login_forgot" class="ajax-login-image" style="display: none">
+                </div>
+                <!-- error invalid email -->
+                <div id="magegiant-email-forgot-message"></div>
+                <!-- sumbit -->
+            </div>
+            <div class="giant-sociallogin-auth-form-block last col-mg
+                            mg-lg-12 mg-md-12 mg-sm-12 mg-xs-12">
+                <button id="magegiant-button-sociallogin-forgot" class="button popup_click_btn popup-btn"
+                        title="<?php echo $this->__('Send Password'); ?>" type="button">
+                        <span>
+                            <?php echo $this->__('Send Password') ?>
+                        </span>
+                </button>
+                <a id="magegiant-forgot-back"
+                   href="javascript:void(0);"><?php echo $this->__('Back to Form Login') ?>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- social login -->
+<?php if ($btnCount = count($socialButtons)): ?>
+    <div id="social-button-container">
+        <div class="social-button-wapper">
+            <ul class="buttons row-mg">
+                <?php
+                $mg_style = '';
+                if ($btnCount == 2) {
+                    $mg_style = 'mg-lg-6 mg-md-6 mg-sm-6 mg-xs-6';
+                } else if ($btnCount >= 3) {
+                    $mg_style = 'mg-lg-4 mg-md-4 mg-sm-6 mg-xs-6';
+                }
+                ?>
+                <?php foreach ($socialButtons as $button): ?>
+                    <?php if ($button->getEnabled()): ?>
+                        <li class="social-button col-mg <?php echo $mg_style ?>"
+                            id="<?php echo $button->getId() ?>"> <?php echo $button->getButton() ?>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>
+<!--end social login-->
+</div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    var options = {
+        email: $('magegiant-sociallogin-popup-email').value,
+        pass: $('magegiant-sociallogin-popup-pass').value,
+        login_url: "<?php echo $this->getUrl('sociallogin/popup/login',array('_secure'=>true));?>",
+        send_pass_url: "<?php echo $this->getUrl('sociallogin/popup/sendPass',array('_secure'=>true));?>",
+        create_url: "<?php echo $this->getUrl('sociallogin/popup/createAcc',array('_secure'=>true));?>",
+    };
+    new LoginPopup(options);
+    //]]>
+</script>

@@ -1,0 +1,17 @@
+<?php
+/**
+ * @var $this IWD_Opc_Block_Onepage_Review_Renderer_Iwdgiftcard
+ */
+?>
+<?php if ($this->getTotal()->getValue()) { ?>
+    <div class="iwd_opc_top_review_total">
+        <div class="iwd_opc_top_review_total_cell">
+            <?php echo $this->escapeHtml($this->__('Gift Card')) . ':'; ?>
+        </div>
+        <div class="iwd_opc_top_review_total_cell">
+            <?php echo $this->escapeHtml($this->getAmount()); ?>
+        </div>
+    </div>
+<?php } ?>
+
+

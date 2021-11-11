@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Dewata_Poskilat>
+      <active>false</active>
+      <codePool>local</codePool>            
+				<depends>
+					<Mage_Shipping />
+				</depends>
+      <version>0.1.0</version>
+    </Dewata_Poskilat>
+  </modules>
+</config>

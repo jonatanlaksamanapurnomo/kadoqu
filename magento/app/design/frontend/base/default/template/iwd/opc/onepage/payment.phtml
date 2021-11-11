@@ -1,0 +1,31 @@
+<?php
+/**
+ * @var $this IWD_Opc_Block_Onepage_Payment
+ * @var $opcHelper IWD_Opc_Helper_Data
+ */
+?>
+<?php
+$opcHelper = $this->getOpcHelper();
+?>
+<div id="iwd_opc_payment_method_additional">
+    <div id="iwd_opc_payment_method">
+        <?php echo $this->getChildHtml('payment_method'); ?>
+        <div class="iwd_opc_section_delimiter"></div>
+    </div>
+    <?php if ($this->isShowStoreCredit()) { ?>
+        <?php echo $this->getChildHtml('storecredit'); ?>
+    <?php } ?>
+    <?php if ($this->isShowIwdGiftCard()) { ?>
+        <?php echo $this->getChildHtml('iwd_giftcard'); ?>
+    <?php } ?>
+    <?php if ($opcHelper->isShowDiscountForm()) { ?>
+        <div id="iwd_opc_payment_additional">
+            <?php if ($opcHelper->isShowDiscountForm()) { ?>
+                <div id="iwd_opc_discount">
+                    <?php echo $this->getChildHtml('discount'); ?>
+                </div>
+            <?php } ?>
+        </div>
+    <?php } ?>
+    <div class="iwd_opc_section_delimiter"></div>
+</div>

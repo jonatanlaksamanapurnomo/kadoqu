@@ -1,0 +1,12 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Promo
+ */
+?>
+<?php 
+if ($this->getImage() && $this->getEnabled()) {
+?><img class="ampromo-label" alt="<?php echo $this->getAlt();?>" src="<?php echo $this->getImage();?>">
+<?php }?>
+<div style="clear: both;"></div>

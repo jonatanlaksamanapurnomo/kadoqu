@@ -1,0 +1,62 @@
+.gida-not-found-container {
+  padding-top: 20vh;
+}
+
+.gida-not-found-container img {
+  width: 50%;
+  margin-bottom: 1rem;
+}
+
+.gida-not-found-instructions {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.gida-not-found-instructions h1 {
+  font-size: 3.3em;
+  font-weight: 700;
+}
+
+.gida-not-found-instructions h3 {
+  font-size: 1.6em;
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+
+@media (min-width: 576px) {
+  .gida-not-found-instructions {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .gida-not-found-instructions {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .gida-not-found-container {
+    padding-top: 28vh;
+  }
+  .gida-not-found-instructions {
+    align-items: baseline;
+    text-align: left;
+    font-size: 0.75rem;
+  }
+  .gida-not-found-container img {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gida-not-found-instructions {
+    font-size: 0.9rem;
+  }
+}

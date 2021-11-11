@@ -1,0 +1,43 @@
+<config>
+    <modules>
+        <DRex_KeranjangKosong>
+            <version>0.0.1</version>
+        </DRex_KeranjangKosong>
+    </modules>
+    <global>
+        <models>
+            <keranjangkosong>
+                <class>DRex_KeranjangKosong_Model</class>
+            </keranjangkosong>
+        </models>
+        <blocks>
+            <keranjangkosong>
+                <class>DRex_KeranjangKosong_Block</class>
+            </keranjangkosong>
+        </blocks>
+    </global>
+
+    <frontend>
+        <routers>
+            <keranjangkosong>
+                <use>standard</use>
+                <args>
+                    <module>DRex_KeranjangKosong</module>
+                    <frontName>keranjangKosong</frontName>
+                </args>
+            </keranjangkosong>
+        </routers>
+        <events>
+            <core_block_abstract_to_html_after>
+                <observers>
+                    <drex_keranjangkosong_init>
+                        <type>singleton</type>
+                        <class>DRex_KeranjangKosong_Model_Observer</class>
+                        <method>kosongkanKeranjang</method>
+                    </drex_keranjangkosong_init>
+                </observers>
+            </core_block_abstract_to_html_after>
+        </events>
+    </frontend>
+
+</config>

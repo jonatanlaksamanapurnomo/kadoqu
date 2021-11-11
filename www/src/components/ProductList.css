@@ -1,0 +1,116 @@
+#product-list-page.filter-active {
+  height: 100vh;
+  background-color: white;
+}
+
+.product-list-container {
+  margin-top: 0.5rem;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dd-button {
+  display: inline-block;
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 10px 30px 10px 20px;
+  background-color: #ffffff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dd-button:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+}
+
+.dd-button:hover {
+  background-color: #eeeeee;
+}
+
+.dd-input {
+  display: none;
+}
+
+.dd-menu {
+  position: absolute;
+  top: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0;
+  margin: 2px 0 0 0;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  list-style-type: none;
+}
+
+.dd-input + .dd-menu {
+  display: none;
+}
+
+.dd-input:checked + .dd-menu {
+  display: block;
+}
+
+.dd-menu li button {
+  padding: 10px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dd-menu li button:hover {
+  background-color: #f6f6f6;
+}
+
+.dd-menu li a button {
+  display: block;
+  margin: -10px -20px;
+  padding: 10px 20px;
+}
+
+.product-list-box-under-filter {
+  background: red;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 0 0 1rem 0;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.product-list-container .pagination-buttons {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 992px) {
+  .product-list-container {
+    margin-left: 6rem;
+    margin-right: 3rem;
+    margin-top: 4.5rem;
+  }
+
+  .product-list-container .pagination-buttons {
+    margin-bottom: 6rem;
+    justify-content: flex-end;
+  }
+}
+.placeholder-product-list{
+  padding-left: 1% !important;
+}
+.filter-placeholder{
+  margin-left: 0px !important;
+}

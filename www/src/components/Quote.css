@@ -1,0 +1,31 @@
+.quote-container {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.quote-mark {
+  font-size: 5em;
+  font-weight: 900;
+  line-height: 0.5;
+}
+.quote-text {
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+
+@media only screen and (max-width: 768px) {
+  .quote-mark {
+    font-size: 4em;
+  }
+  .quote-text {
+    font-size: 1.4em;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .quote-mark {
+    font-size: 3em;
+  }
+  .quote-text {
+    font-size: 1.2em;
+  }
+}

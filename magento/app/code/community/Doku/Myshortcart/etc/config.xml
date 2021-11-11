@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<config>
+ <modules>
+   <Doku_Myshortcart>
+      <version>1.0.2</version>
+  </Doku_Myshortcart>
+</modules>
+<global>
+ <models>
+  <myshortcart>
+      <class>Doku_Myshortcart_Model</class>
+      <resourceModel>myshortcart_mysql4</resourceModel>
+  </myshortcart>
+  <myshortcart_mysql4>
+    <class>Doku_Myshortcart_Model_Mysql4</class>
+    <entities>
+        <api_debug>
+            <table>myshortcart</table>
+        </api_debug>
+        <records>
+            <table>myshortcart</table>
+        </records>
+    </entities>
+  </myshortcart_mysql4>
+</models>
+
+<resources>            
+  <myshortcart_setup>
+      <setup>
+          <module>Doku_Myshortcart</module>
+          <class>Doku_Myshortcart_Model_Mysql4_Setup</class>
+      </setup>
+      <connection>
+          <use>core_setup</use>
+      </connection>
+  </myshortcart_setup>
+  <myshortcart_write>
+      <connection>
+        <use>core_write</use>
+    </connection>
+</myshortcart_write>
+<myshortcart_read>
+   <connection>
+      <use>core_read</use>
+  </connection>
+</myshortcart_read>
+</resources>
+
+<helpers>
+ <myshortcart>
+    <class>Doku_Myshortcart_Helper</class>
+</myshortcart>
+</helpers>
+<blocks>
+    <myshortcart>
+      <class>Doku_Myshortcart_Block</class>
+  </myshortcart>
+</blocks>
+<template>
+    <email>
+        <myshortcart_billing_form translate="label" module="myshortcart">
+            <label>myShortCart Billing Form</label>
+            <file>myshortcart_billing_form.html</file>
+            <type>text</type>
+        </myshortcart_billing_form>
+    </email>
+</template>
+</global>
+<default>
+   <payment>
+    <myshortcart>
+        <model>myshortcart/standard</model>
+        <active>1</active>
+        <order_status>pending</order_status>
+        <title>MyShortCart</title>
+        <payment_action>sale</payment_action>
+        <allowspecific>0</allowspecific>
+        <sort_order>1</sort_order>
+    </myshortcart>
+</payment>
+</default>
+<frontend>
+    <layout>
+        <updates>
+            <myshortcart module="Doku_Myshortcart">
+                <file>myshortcart.xml</file>
+            </myshortcart>
+        </updates>
+    </layout>
+    <routers>
+        <myshortcart>
+          <use>standard</use>
+          <args>
+           <module>Doku_Myshortcart</module>
+           <frontName>myshortcart</frontName>
+       </args>
+   </myshortcart>
+</routers>
+</frontend>
+
+</config>

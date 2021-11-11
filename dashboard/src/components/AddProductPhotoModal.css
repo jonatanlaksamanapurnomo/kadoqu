@@ -1,0 +1,8 @@
+.add-product-photo-modal-body {
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+.add-product-photo-modal-body::-webkit-scrollbar {
+  display: none;
+}

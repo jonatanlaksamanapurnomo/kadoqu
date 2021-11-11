@@ -1,0 +1,419 @@
+.product-description {
+  padding: 10px 20px 1.25rem;
+  color: black;
+  position: relative;
+}
+
+.product-box {
+  background: #f4f4f4;
+  border-radius: 2px;
+  display: inline-block;
+  margin: 0 0 1rem;
+  position: relative;
+  width: 275px;
+  text-align: left !important;
+  min-width: 0;
+  word-wrap: break-word;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+div[class|="col"] .product-box {
+  width: 100%;
+}
+
+.product-offer-label {
+  position: absolute;
+  padding: 0.1rem 0 0;
+  width: 3.3rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  font-size: 1.5vh;
+}
+
+.product-offer-label-sale {
+ z-index: 100;
+ align-content: right !important;
+ margin-left: 68%;
+ margin-top: -1%;
+}
+
+.product-offer-label-new {
+  background: #ddc031;
+}
+.power-merchant{
+  background-color: #00998d;
+  z-index: 1000;
+  margin-top: -10%;
+  text-align: left;
+  padding-left: 18px;
+  width: 96.5%;
+  padding-top: 2%;
+  color: #fff;
+  font-size: 2vh;
+  position: absolute;
+}
+
+.product-offer-label-po {
+  background: #24a027;
+  align-items: left !important;
+  align-content: left !important;
+  margin-left: -15% ;
+}
+/* I don't know why, but first and second child selector pointed to nothing;
+so the real selection starts on third one */
+.product-offer-label:nth-child(1) {
+  top: 0;
+}
+
+.product-offer-label:nth-child(2) {
+  top: 0;
+}
+
+.product-offer-label:nth-child(3) {
+  top: 1rem;
+}
+
+.product-offer-label:nth-child(4) {
+  top: 3rem;
+}
+
+.product-offer-label:nth-child(5) {
+  top: 5rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .product-description {
+    padding: 10px 10px 1.25rem;
+    color: black;
+  }
+  .product-offer-label-po {
+    background: #24a027;
+    margin-left: -15% !important;
+  }
+  .product-offer-label {
+
+    font-size: 1.3vh;
+  }
+  .product-description {
+    padding: 3px 3px 1rem;
+    color: black;
+    position: relative;
+  }
+  .power-merchant{
+    background-color: teal;
+    z-index: 1000;
+    margin-top: -10%;
+    text-align: left;
+    padding-left: 18px;
+    color: #fff;
+    font-size: 1.2vh !important;
+    width: 91.5% !important;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .product-description {
+    padding: 10px 10px 1.25rem;
+    color: black;
+  }
+  .product-offer-label-po {
+    background: #24a027;
+    margin-left: -15% !important;
+  }
+  .product-offer-label {
+
+    font-size: 1.3vh;
+  }
+  .product-description {
+    padding: 3px 3px 1rem;
+    color: black;
+    position: relative;
+  }
+  .power-merchant{
+    background-color: teal;
+    z-index: 1000;
+    margin-top: -10%;
+    text-align: left;
+    padding-left: 18px;
+    color: #fff;
+    font-size: 1.2vh !important;
+    width: 91.5% !important;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .product-description {
+    padding: 10px 10px 1.25rem;
+    color: black;
+  }
+  .product-offer-label-po {
+    background: #24a027;
+    margin-left: -15% !important;
+  }
+  .product-offer-label {
+
+    font-size: 1.3vh;
+  }
+  .product-description {
+    padding: 3px 3px 1rem;
+    color: black;
+    position: relative;
+  }
+  .power-merchant{
+    background-color: teal;
+    z-index: 1000;
+    margin-top: -10%;
+    text-align: left;
+    padding-left: 18px;
+    color: #fff;
+    font-size: 1.2vh !important;
+    width: 93% !important;
+  }
+}
+
+/* @media screen and (max-width: 991px) {
+  .product-description {
+    height: 85px;
+  }
+} */
+
+.product-box .nav-link {
+  padding: 0;
+}
+@media screen and (max-width: 1440px) {
+
+.product-offer-label-sale {
+  margin-left: 60%;
+  margin-top : -1%;
+ }
+}
+@media screen and (max-width: 1416px) {
+  .product-box {
+    width: 240px;
+  }
+ 
+  .product-offer-label-po {
+    background: #24a027;
+    margin-left: -15% !important;
+  }
+  .product-offer-label {
+    width: 2.5rem;
+
+    font-size: 1.5vh;
+  }
+  .product-description {
+    padding: 3px 15px 1rem;
+    color: black;
+    position: relative;
+  }
+  .product-merchant,
+  .product-price {
+    font-size: 0.5rem;
+    font-weight: 300;
+  }
+  .product-title {
+
+    overflow: auto;
+  }
+  .product-offer-label-sale {
+    margin-left: 65%;
+    margin-top : -1%;
+   }
+   .power-merchant{
+    margin-top: -8%;
+    font-size: 1.5vh;
+    width: 96%;
+  }
+}
+@media screen and (max-width: 376px) {
+ 
+   .power-merchant{
+    margin-top: -8%;
+    font-size: 1.5vh;
+    width: 91.5% !important;
+  }
+  .ismob{
+    padding-top: 13% !important;
+  }
+}
+
+
+.product-box:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  text-decoration: none;
+}
+
+.product-image-container {
+  padding: 100% 7px 7px;
+  width: 100%;
+  position: relative;
+}
+
+.product-image {
+  max-width: calc(100% - 14px);
+  max-height: calc(100% - 14px);
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: calc(50% + 7px);
+  bottom: 0;
+  right: 0;
+  left: calc(50% + 7px);
+  transform: translate(calc(-50% - 7px), calc(-50% - 7px));
+}
+
+.product-merchant,
+.product-price {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.product-price-container {
+  position: relative;
+  width: max-content;
+}
+
+.product-price-strikethrough::after {
+  border-bottom: 0.1em solid var(--red-3);
+  content: "";
+  left: 0;
+  margin-top: calc(0.1em / 2 * -1);
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.product-price-discount {
+  font-size: 1rem;
+  color: var(--red-3);
+}
+
+.product-item-price {
+  margin-top: 0.5rem;
+  line-height: 1;
+  height: 2rem;
+}
+
+@media screen and (min-width: 576px) and (max-width: 1279px) {
+  .product-price,
+  .product-price-discount {
+    font-size: 0.9rem;
+  }
+  .product-offer-label-po {
+    background: #24a027;
+    margin-left: -35% !important;
+  }
+  .product-offer-label {
+    width: 3rem;
+    padding: 0 0 0 0;
+
+    font-size: 1.3vh;
+  }
+  .product-description {
+    padding: 5px 6px 1rem;
+    color: black;
+    position: relative;
+  }
+
+}
+
+@media screen and (min-width: 576px) and (max-width: 1150px) {
+  .product-price,
+  .product-price-discount {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1080px) {
+  .product-price,
+  .product-price-discount {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .product-price,
+  .product-price-discount {
+    font-size: 0.8rem;
+  }
+
+  .product-item-price {
+    line-height: 1;
+    height: 1.6rem;
+  }
+}
+@media screen and (max-width: 415px) {
+
+  .product-offer-label {
+    position: absolute;
+    padding: 0.1rem 0 0;
+    width: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    font-size: 1.5vh;
+  }
+  
+  .product-description {
+    padding: 5px 3px 1.25rem;
+    color: black;
+    position: relative;
+  }
+  .product-offer-label-po {
+    background: #24a027;
+    align-items: left !important;
+    align-content: left !important;
+    margin-left: 0% !important ;
+  }
+  .product-merchant,
+  .product-price {
+    font-size: 1.6vh;
+  }
+  .product-title {
+    font-size: 1.8vh;
+
+ 
+  }
+}
+
+.product-title {
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  margin: 0px;
+  font-size: 1rem;
+  line-height: 1.2;
+  height: 2.4rem;
+  overflow: hidden;
+}
+
+.product-star {
+  font-size: 1.4rem;
+  position: absolute;
+  bottom: 0.2em;
+  right: 0.2em;
+}
+
+@media screen and (min-width: 576px) {
+  .product-star {
+    font-size: 2rem;
+    bottom: 0.5em;
+    right: 0.5em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .product-star {
+    font-size: 1.5rem;
+    bottom: 0.5em;
+    right: 0.5em;
+  }
+}
+.polabel{
+  margin-left: 15%;
+}
+

@@ -1,0 +1,65 @@
+.profile-sider-header {
+  background: #d1eff7;
+  height: 100%;
+}
+
+.profile-sider-header-photo-profile {
+  width: 200px;
+  height: 200px;
+  margin-top: 1.5rem;
+}
+
+.profile-sider-header-link {
+  font-weight: 200;
+  color: black;
+}
+@media only screen and (max-width: 322px) {
+  .profile-sider-header-photo-profile {
+    width: 90px;
+    height: 90px;
+    margin-top: 0.8rem;
+  }
+  .profile-sider-sidenav-photo {
+    width: 60px;
+    height: auto;
+    margin-top: 0.6rem;
+  }
+  .profile-sider-header-name {
+    margin-top: 1rem;
+  }
+}
+
+@media only screen and (min-width: 351px) and (max-width: 599px) {
+  .profile-sider-header-photo-profile {
+    width: 100px;
+    height: 100px;
+    margin-top: 0.8rem;
+  }
+  .profile-sider-sidenav-photo {
+    width: 80px;
+    height: auto;
+    margin-top: 0.6rem;
+  }
+  .profile-sider-header-name {
+    margin-top: 0.8rem;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 991px) {
+  .profile-sider-header-photo-profile {
+    width: 150px;
+    height: 150px;
+    margin-top: 0.8rem;
+  }
+  .profile-sider-sidenav-photo {
+    width: 150px;
+    height: auto;
+    margin-top: 0.6rem;
+  }
+  .profile-sider-header-name {
+    margin-top: 0.8rem;
+  }
+  .profile-sider-header span {
+    font-size: x-large;
+  }
+}

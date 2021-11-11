@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+   <modules>
+      <DigitalPianism_ProductExport>
+         <active>true</active>
+         <codePool>community</codePool>
+         <depends>
+            <Mage_Adminhtml/>
+         </depends>
+      </DigitalPianism_ProductExport>
+   </modules>  
+</config>

@@ -1,0 +1,64 @@
+
+version: "1.0"
+stages:
+  - "clone"
+  - "build"
+#  - "integration"
+#  - "push"
+steps:
+  main_clone:
+    type: "git-clone"
+    description: "Cloning main repository..."
+    repo: "andresusanto/kadoqu-www"
+    revision: "${{CF_BRANCH}}"
+    stage: "clone"
+  build:
+    title: "React Docker Image"
+    type: "build"
+    image_name: "www"
+    tag: "${{CF_BRANCH_TAG_NORMALIZED}}"
+    working_directory: "./www"
+    dockerfile: "Dockerfile"
+    stage: "build"
+  PackageDashboardApp:
+    title: "Packaging dashboard application"
+    type: "build"
+    image_name: "dashboard"
+    working_directory: "./dashboard"
+    dockerfile: "Dockerfile"
+    stage: "build"
+  PackageMyGraphqlApp:
+    title: "Packaging graphql application"
+    type: "build"
+    image_name: "edge"
+    working_directory: "./edge"
+    dockerfile: "Dockerfile"
+    stage: "build"
+#  push:
+#    title: "Pushing image to cfcr"
+#    type: "push"
+#    image_name: "andresusanto/kadoqu-www"
+#    registry: "cfcr"
+#    candidate: "${{build}}"
+#    tags:
+#      - "${{CF_BRANCH_TAG_NORMALIZED}}"
+#      - "${{CF_REVISION}}"
+#    stage: "push"
+
+
+
+#  PackageMyNodeApp:
+#    title: Packaging React application
+#    type: build
+#    image_name: www
+#    working_directory: ./www
+#    dockerfile: ./www/Dockerfile
+#
+#  PackageMyGraphqlApp:
+#    title: Packaging Node application
+#    type: build
+#    image_name: edge
+#    working_directory: ./edge
+#    dockerfile: ./edge/Dockerfile
+#
+

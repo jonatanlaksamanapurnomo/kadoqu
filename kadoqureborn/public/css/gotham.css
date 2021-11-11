@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'Gotham-Light';
+    src: url('../fonts/GOTHAM-LIGHT.woff') format('woff'),
+         url('../fonts/GOTHAM-LIGHT.ttf') format('ttf');
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Gotham-Light';
+    src: url('../fonts/GOTHAM-LIGHTITALIC.woff') format('woff'),
+         url('../fonts/GOTHAM-LIGHTITALIC.ttf') format('ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Gotham-Medium';
+    src: url('../fonts/GOTHAM-MEDIUM.woff') format('woff'),
+         url('../fonts/GOTHAM-MEDIUM.ttf') format('ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham-Medium';
+    src: url('../fonts/GOTHAM-MEDIUMITALIC.woff') format('woff'),
+         url('../fonts/GOTHAM-MEDIUMITALIC.ttf') format('ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('../fonts/GOTHAM-BOLD.woff') format('woff'),
+         url('../fonts/GOTHAM-BOLD.ttf') format('ttf');
+    font-weight: 700;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('../fonts/GOTHAM-BOLDITALIC.woff') format('woff'),
+         url('../fonts/GOTHAM-BOLDITALIC.ttf') format('ttf');
+    font-weight: 700;
+    font-style: italic;
+}

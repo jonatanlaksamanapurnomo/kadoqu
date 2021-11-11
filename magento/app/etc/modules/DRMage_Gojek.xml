@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <DRMage_Gojek>
+      <active>true</active>
+      <codePool>local</codePool>            
+			<depends>
+				<Mage_Shipping />
+			</depends>
+      <version>0.0.1</version>
+		</DRMage_Gojek>
+	</modules>
+</config>

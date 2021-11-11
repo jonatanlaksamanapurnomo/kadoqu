@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Dewata_Poskilat>
+      <version>0.1.0</version>
+    </Dewata_Poskilat>
+  </modules>
+  <global>
+    <helpers>
+      <poskilat>
+        <class>Dewata_Poskilat_Helper</class>
+      </poskilat>
+    </helpers>
+	<models>
+	  <poskilat>
+			<class>Dewata_Poskilat_Model</class>
+			<resourceModel>poskilat_mysql4</resourceModel>
+	  </poskilat>
+	</models>
+  </global>    
+	<default>
+		<carriers>
+			<poskilat>
+				<active>1</active>
+				<model>poskilat/carrier_poskilat</model>
+				<name>POS Indonesia</name>
+				<title>POS Kilat</title>
+				<description>POS Kilat Indonesia</description>
+				<sort_order>0</sort_order>
+			</poskilat>
+		</carriers>
+	</default>
+</config> 

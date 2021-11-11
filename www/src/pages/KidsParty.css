@@ -1,0 +1,91 @@
+.kids-party-banner {
+  overflow: hidden;
+  width: 100%;
+}
+.Kids-menu-card {
+  margin-top: -10vh;
+  padding-left: 6rem;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  padding-right: 5rem;
+}
+.Kids-card {
+  margin-right: 10vh;
+  margin-bottom: 10vh;
+}
+.Kids-ContactUs-Menu {
+  background-color: white;
+  width: 50%;
+  padding-bottom: 1.5%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.kids-party-contact {
+  margin-left: 10%;
+}
+.KidsParty-subtitle {
+  margin-top: 10%;
+  font-size: 2rem;
+  padding-top: 1%;
+  text-decoration: none !important;
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  color: var(--darkGreen);
+  width: 100%;
+  margin-top: 5%;
+}
+.KidsParty-subtitlesecond {
+  font-size: 1.3rem;
+  text-decoration: none !important;
+  font-weight: 100;
+  padding-left: 10%;
+  padding-right: 10%;
+  width: 100%;
+  text-align: left;
+}
+.slider-kids-party {
+  margin-top: -7vh;
+  display: flex;
+  white-space: nowrap;
+  overflow-x: scroll;
+  align-items: center;
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: 0; /* Firefox */
+}
+@media (max-width: 991px) {
+  .Kids-card {
+    max-width: 48%;
+    margin-right: 1rem;
+    margin-bottom: 5vh;
+  }
+  .KidsParty-subtitle {
+    margin-top: 10%;
+    font-size: 1rem;
+    padding-top: 1%;
+    text-decoration: none !important;
+    text-align: left;
+    padding-left: 10%;
+    padding-right: 10%;
+    color: var(--darkGreen);
+    width: 100%;
+    margin-top: 5%;
+  }
+  .KidsParty-subtitlesecond {
+    font-size: 0.7rem;
+    margin-bottom: 3%;
+    text-decoration: none !important;
+    font-weight: 100;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
+    text-align: left;
+  }
+
+  .Kids-ContactUs-Menu {
+    background-color: white;
+    width: 70%;
+    padding-bottom: 1.5%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+}

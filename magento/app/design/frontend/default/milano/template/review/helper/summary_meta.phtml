@@ -1,0 +1,7 @@
+<?php if ($this->getReviewsCount()): ?>
+	<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        <meta itemprop="ratingValue" content="<?php echo round(($this->getRatingSummary() / 20), 1); ?>" />
+        <meta itemprop="bestRating" content="5" />
+        <meta itemprop="reviewCount" content="<?php echo $this->getReviewsCount(); ?>" />
+    </span>
+<?php endif; ?>

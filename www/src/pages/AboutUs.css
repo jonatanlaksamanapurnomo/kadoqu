@@ -1,0 +1,177 @@
+
+  .AboutUs-title {
+    font-size: 3.5vw !important;
+    text-decoration: none !important;
+    margin-top: 10%;
+    margin-left: 0%;
+    margin-bottom: 0;
+  }
+  .AboutUs-title-mob {
+    font-size: 6.5vw !important;
+    text-decoration: none !important;
+    margin-top: 10%;
+    margin-left: 0%;
+    margin-bottom: 0;
+  }
+  .AboutUs-subtitle {
+    font-size: 2.5vw !important;
+    text-decoration: none !important;
+    margin-top: 10%;
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-bottom: 2rem;
+  }
+  .AboutUs-detail-mobile{
+    font-size: 3.2vw;
+       font-weight: lighter;
+      color: black;
+      margin-left: 0%;
+  }
+  .AboutUs-detail{
+      font-size: 1.2vw;
+       font-weight: lighter;
+      color: black;
+      margin-left: 0%;
+  }
+  .AboutUs-part{
+      font-size: 1.2vw;
+      margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  .AboutUs-part-text{
+    font-size: 1vw;
+    margin-top: 3%;
+  margin-left: -20%;
+  margin-right: 0;
+  padding-right: 0;
+}
+.AboutUs-part-text-left{
+  font-size: 1vw;
+  margin-top: 3%;
+  width: 9vw;
+  margin-left: 30%;
+}
+.AboutUs-part-text-right{
+  font-size: 1vw;
+  margin-top: 3%;
+  width: 9vw;
+  margin-left: -70%;
+}
+.Kadoqu-Number{
+  font-size: 3vw;
+  font-weight: lighter;
+
+}
+.AboutUs-image{
+width:5000px;
+}
+.AboutUs-Section{
+  margin-left: 0%;
+  margin-bottom: 10%;
+}
+.AboutUs-Quote-mob{
+  font-size: 2.5vw;
+  font-weight: lighter;
+  width: 30vw;
+  margin-top: 15%;
+}
+.AboutUs-Quote{
+  font-size: 1.5vw;
+  font-weight: lighter;
+  width: 30vw;
+  margin-top: 15%;
+}
+.quote-mark-left {
+  font-size: 5em;
+  font-weight: 900;
+  line-height: 0.5;
+  opacity: 0.3;
+  color: var(--darkGreen);
+  
+}
+.quote-mark-right {
+  font-size: 5em;
+  font-weight: 900;
+  line-height: 0.5;
+  opacity: 0.3;
+  margin-left: 90%;
+  color: var(--darkGreen);
+}
+.AboutUs-image-quote-mob{
+  width:100%;
+  margin-left: 0%;
+  }
+.AboutUs-image-quote{
+  width:100%;
+  margin-left: 0%;
+  }
+  .AboutUs-image-visi{
+    width:100%;
+    margin-left: 0%;
+    }
+    .AboutUs-VisiMisi-mob{
+      font-size: 2.5vw;
+      font-weight: lighter;
+      width: 30vw;
+      margin-top: 5%;
+      margin-left: 10%;
+    }
+    .AboutUs-VisiMisi{
+      font-size: 1.5vw;
+      font-weight: lighter;
+      width: 30vw;
+      margin-top: 5%;
+      margin-left: 0%;
+    }
+    .AboutUs-Section-title-mob {
+      font-size: 3.0vw !important;
+      text-decoration: none !important;
+       font-weight: 400;
+       margin-top: 5%;
+    }
+    .AboutUs-Section-title {
+      font-size: 2.0vw !important;
+      text-decoration: none !important;
+       font-weight: 400;
+       margin-top: 5%;
+    }
+    .AboutUs-line{
+      width: 100%;
+      margin-left: 10%;
+    }
+    .AboutUs-GidaMenu{
+      background-color: yellow;
+     width: 24rem;
+      font-size: 1.3vw !important;
+      text-decoration: none !important;
+       font-weight:lighter;
+       margin-top: 10%;
+
+    }
+    .AboutUs-Menutitle{
+      font-size: 2.5vw !important;
+      text-decoration: none !important;
+      margin-top: 10%;
+       font-weight: 400 !important;
+      margin-bottom: 0;
+      margin-left: 2rem;
+    }
+    .GidaMenu-Line{
+      width: 20%;
+      font-size: 10px;
+      border: 2px solid black;
+      margin-left: 9%;
+    }
+    .Gida-avatar-aboutUS{
+      margin-right:1rem;
+    }
+    .AboutUs-detail-Gida{  font-size: 1.2vw;
+      font-weight: lighter;
+     color: black;
+ margin-left: 50%;
+    }
+
+    .GidaMenu-Desc{
+      margin-left: 2rem;
+      padding-right: 2rem;
+    }

@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magegiant
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the magegiant.com license that is
+ * available through the world-wide-web at this URL:
+ * http://magegiant.com/license-agreement/
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magegiant
+ * @package     Magegiant_SocialLogin
+ * @copyright   Copyright (c) 2014 Magegiant (http://magegiant.com/)
+ * @license     http://magegiant.com/license-agreement/
+ */
+-->
+<config>
+    <modules>
+        <Magegiant_SocialLogin>
+            <version>0.1.0</version>
+        </Magegiant_SocialLogin>
+    </modules>
+    <frontend>
+        <routers>
+            <sociallogin>
+                <use>standard</use>
+                <args>
+                    <module>Magegiant_SocialLogin</module>
+                    <frontName>sociallogin</frontName>
+                </args>
+            </sociallogin>
+        </routers>
+        <layout>
+            <updates>
+                <sociallogin>
+                    <file>magegiant/sociallogin.xml</file>
+                </sociallogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magegiant_SocialLogin>
+                    <files>
+                        <default>Magegiant_SocialLogin.csv</default>
+                    </files>
+                </Magegiant_SocialLogin>
+            </modules>
+        </translate>
+        <events>
+            <!--<page_block_html_topmenu_gethtml_before>-->
+                <!--<observers>-->
+                    <!--<sociallogin_block_to_html>-->
+                        <!--<type>singleton</type>-->
+                        <!--<class>sociallogin/frontend_observer</class>-->
+                        <!--<method>addButtonTopTopMenu</method>-->
+                    <!--</sociallogin_block_to_html>-->
+                <!--</observers>-->
+            <!--</page_block_html_topmenu_gethtml_before>-->
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <socialloginadmin>
+                <use>admin</use>
+                <args>
+                    <module>Magegiant_SocialLogin</module>
+                    <frontName>socialloginadmin</frontName>
+                </args>
+            </socialloginadmin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <sociallogin>
+                    <file>magegiant/sociallogin.xml</file>
+                </sociallogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magegiant_SocialLogin>
+                    <files>
+                        <default>Magegiant_SocialLogin.csv</default>
+                    </files>
+                </Magegiant_SocialLogin>
+            </modules>
+        </translate>
+    </adminhtml>
+    <global>
+        <models>
+            <sociallogin>
+                <class>Magegiant_SocialLogin_Model</class>
+                <resourceModel>sociallogin_mysql4</resourceModel>
+            </sociallogin>
+            <sociallogin_mysql4>
+                <class>Magegiant_SocialLogin_Model_Mysql4</class>
+            </sociallogin_mysql4>
+        </models>
+        <resources>
+            <sociallogin_setup>
+                <setup>
+                    <module>Magegiant_SocialLogin</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </sociallogin_setup>
+            <sociallogin_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </sociallogin_write>
+            <sociallogin_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </sociallogin_read>
+        </resources>
+        <blocks>
+            <sociallogin>
+                <class>Magegiant_SocialLogin_Block</class>
+            </sociallogin>
+           <!-- <page>
+                <rewrite>
+                    <html_topmenu>Magegiant_SocialLogin_Block_Page_Html_Rewrite_Topmenu</html_topmenu>
+                </rewrite>
+            </page>-->
+        </blocks>
+        <helpers>
+            <sociallogin>
+                <class>Magegiant_SocialLogin_Helper</class>
+            </sociallogin>
+        </helpers>
+    </global>
+    <default>
+        <sociallogin>
+            <general>
+                <enable>1</enable>
+                <direction>ltr</direction>
+                <style_color>#3399cc</style_color>
+            </general>
+            <fb>
+                <enable>0</enable>
+                <fb_image>default/fb.png</fb_image>
+                <fb_image_label>Facebook</fb_image_label>
+                <sort_order>1</sort_order>
+            </fb>
+        </sociallogin>
+    </default>
+</config>

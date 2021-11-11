@@ -1,0 +1,78 @@
+.wrapping-lab-properties-container > .card-body {
+  padding: 2rem;
+}
+
+.wrapping-lab-properties-item {
+  margin: 0;
+  border: none;
+}
+
+.wrapping-lab-properties-item:hover .card-header {
+  background-color: mistyrose;
+}
+
+.wrapping-lab-properties-item .card-header {
+  background: transparent;
+}
+
+.wrapping-lab-properties-item .card-body {
+  margin-bottom: 2rem;
+}
+
+.wrapping-lab-properties-type-thumbnail {
+  height: 3rem;
+  margin-right: 2rem;
+}
+
+.wrapping-lab-properties-variant-modal {
+  width: 90%;
+  max-width: unset;
+}
+
+.wrapping-lab-properties-variant-container {
+  margin-right: 1rem;
+  width: 12rem;
+  position: relative;
+}
+
+.wrapping-lab-properties-variant-container > div {
+  width: 12rem;
+  height: 12rem;
+  margin-right: 3%;
+  position: relative;
+}
+
+.wrapping-lab-properties-variant-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapping-lab-properties-variant-container input {
+  width: 100%;
+  margin: 0.25rem 0 0;
+  text-align: center;
+  border-radius: 2px;
+  border: 1px solid lightgray;
+}
+
+.wrapping-lab-properties-variant-container .row {
+  margin: 0 0 1rem;
+}
+
+.wrapping-lab-properties-variant-container i {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0.5rem;
+  cursor: pointer;
+  color: red;
+  font-size: 1.4rem;
+}
+
+.wrapping-lab-properties-variant-container i:hover {
+  color: white;
+}
+
+.wrapping-lab-properties-buttons {
+  width: calc((100% - 0.5rem) / 2);
+}

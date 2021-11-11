@@ -1,0 +1,88 @@
+<?php 
+$_helper = $this->helper('catalog/output');
+$_cat_id = $this->getCategory();
+$_listMedia = $this->getLayout()->createBlock("ajax/listmedia");
+?>
+<div class="slider-container styleoftheday">
+    <div class="strike-through"><h5><?php echo Mage::getStoreConfig('milanoconfig/homeoptions/style_of_the_day_title'); ?></h5></div>
+	<?php if (($_products = $this->getProductCollection()) && $_products->getSize() > 0): 
+		if($_cat_id) {
+			$_products->addUrlRewrite($_cat_id);
+			$_category = Mage::getModel('catalog/category')->load($_cat_id); 
+		}
+	?>
+    	<div class="product-slider" id="styleoftheday">        	
+            <div class="carousel">
+                <div class="slider">
+					<?php $i=0; foreach ($_products->getItems() as $_product): $i++; ?>
+                    	<div class="slide <?php if($i == $_products->getPageSize()): ?> last<?php endif; ?>">
+							<?php if($_product->isGrouped()) $_associatedProducts = $_product->getTypeInstance(true)->getAssociatedProducts($_product); ?>
+                            <div class="left">
+                                <div class="style-name">
+                                    <div class="labels-container"><?php include('view/labels.phtml'); ?></div>
+                                    <h3><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()); ?></a></h3>
+                                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                                </div>
+                                <p><?php echo $_product->getShortDescription(); ?></p>
+                                <?php //echo $this->getPriceHtml($_product, true) ?>
+                                <p><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="readMore"><?php echo $this->__('Add to Wishlist') ?></a> | <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="readMore icons"><?php echo $this->__('See Full Style') ?></a></p>
+                                <h3><?php echo $this->__('Shop This Style'); ?></h3>
+                                <ul class="productsList">
+                                <?php foreach ($_associatedProducts as $_item): ?>
+                                    <li>
+                                    	<a href="<?php echo $_item->getProductUrl(); ?>"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'small_image')->resize(50); ?>" /></a>
+                                        <span><?php echo $this->htmlEscape($_item->getName()); ?></span>
+                                    </li>
+                                <?php endforeach; ?>
+                                </ul>
+                                <div class="clear"></div>
+                                <a href="<?php if(!empty($_category)) echo $_category->getUrlPath(); ?>" class="viewMore">View More Looks</a>
+                            </div>
+                            <div class="right">
+                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="hover-image-container">
+                                    <?php $backImg = $_listMedia->setTemplate("catalog/product/list/media.phtml")->setData('size', 260)->setData('height', 500)->setData('product', $_product)->toHtml(); ?>
+                                    <?php if($backImg != 'null' && $backImg): ?><img src="<?php echo $backImg ?>" class="hover-image" width="260" height="500" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /><?php endif; ?>
+                                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(260,500) ?>"  <?php if($backImg != 'null' && $backImg): ?>class="hover-main-image" <?php endif; ?> width="260" height="500" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+                <div class="prev stodd-arrow">&nbsp;</div>
+                <div class="next stodd-arrow">&nbsp;</div>
+                <ul id="styleoftheday-thumbs">
+                <?php foreach ($_products->getItems() as $_product): ?>
+                    <li><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(70,110) ?>" width="70" height="110" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" /></li>
+                <?php endforeach; ?>
+                </ul>
+        </div>
+            <div class="clear"></div>
+			<?php if($_products->getSize() > 1): ?>
+            	<script type="text/javascript">
+                    jQuery('.stodd-arrow.prev').addClass('disabled');
+                    jQuery('#styleoftheday > .carousel').iosSlider({
+                        desktopClickDrag: true,
+                        snapToChildren: true,
+                        infiniteSlider: false,
+                        navNextSelector: '.stodd-arrow.next',
+                        navPrevSelector: '.stodd-arrow.prev',
+                        navSlideSelector: '#styleoftheday-thumbs > li',
+                        lastSlideOffset: 0,
+                        onFirstSlideComplete: function(){
+                            jQuery('.stodd-arrow.prev').addClass('disabled');
+                        },
+                        onLastSlideComplete: function(){
+                            jQuery('.stodd-arrow.next').addClass('disabled');
+                        },
+                        onSlideChange: function(){
+                            jQuery('.stodd-arrow.prev').removeClass('disabled');
+                            jQuery('.stodd-arrow.next').removeClass('disabled');
+                        }
+                    });
+                </script>
+        	<?php endif; ?>
+        	<div class="clear"></div>
+    </div>
+    <?php endif; ?>
+</div>

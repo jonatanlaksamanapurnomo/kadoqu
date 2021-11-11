@@ -1,0 +1,83 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $this->getGoogleMapApiKey(); ?>&v=3.exp&sensor=false&libraries=places&language=en"></script>
+<script type="text/javascript">if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+        $$('.onestepcheckout-index-index')[0].addClassName('iphone');
+    }</script>
+<?php $styleChange = Mage::helper('onestepcheckout')->getStyle(); ?>
+<?php $background_color = Mage::helper('onestepcheckout')->getBackgroundColor($styleChange); ?>
+<?php $background_button = Mage::helper('onestepcheckout')->getCheckoutButtonColor(); ?>
+<?php if (!$styleChange || $styleChange == 'orange'): ?>
+    <?php $styleUse = Mage::helper('onestepcheckout')->getBackgroundColor('orange'); ?>
+<?php elseif ($styleChange == 'custom'): ?>
+    <?php $styleUse = '#' . Mage::helper('onestepcheckout')->getStyleColor(); ?>
+<?php else: ?>
+    <?php $styleUse = Mage::helper('onestepcheckout')->getBackgroundColor($styleChange); ?>
+<?php endif; ?>
+<style type="text/css">
+
+    .one-step-checkout h3 {
+        /* background-color:
+    <?php //echo $styleUse ?>  !important;*/
+    }
+
+    .one-step-checkout h3:before {
+        background-color: <?php echo $styleUse ?> !important;
+    }
+
+    .checkbox:checked:before {
+        border-color: <?php echo $styleUse ?> !important;
+    }
+
+    .one-step-checkout .radioparent .inner {
+        background-color: <?php echo $styleUse ?> !important
+    }
+
+    .one-step-checkout .radioparent input:checked + .outer {
+        border: 2px solid <?php echo $styleUse ?> !important;
+    }
+
+    button.onestepcheckout-btn-checkout {
+        background: <?php echo $background_button ?> !important;
+    }
+
+    button#add_coupon_code_button,
+    .onestepcheckout-popup-wrapper h1,
+    #onestepcheckout-login-popup button.button,
+    #onestepcheckout-forgot-button,
+    #onestepcheckout-toc-popup h1,
+    .onestepcheckout-login-link a span,
+    #onestepcheckout-forgot-table li.last p a span,
+    #onestepcheckout-register-table li.last p a span,
+    p.forgot-link a span,
+    p.register-link a span {
+        background-color: <?php echo $styleUse ?> !important;
+
+    }
+
+    p.forgot-link a,
+    p.register-link a,
+    .onestepcheckout-login-link a,
+    #onestepcheckout-forgot-table li.last p a,
+    #onestepcheckout-register-table li.last p a {
+        color: <?php echo $styleUse ?> !important;
+    }
+
+    .gift-messages-form .bar:before, .gift-messages-form .bar:after, #onestepcheckout-login-popup .bar:before, #onestepcheckout-login-popup .bar:after, .onestepcheckout-discount .discount-form .bar:before, .onestepcheckout-discount .discount-form .bar:after, #showhide_shipping .bar:before, #showhide_shipping .bar:after, #billing-new-address-form .bar:before, #billing-new-address-form .bar:after, .delivery-sercurity-box .bar:before, .delivery-sercurity-box .bar:after {
+        background: <?php echo $styleUse ?> !important;
+    }
+
+    .checkbox-group label .check {
+        border: 2px solid <?php echo $styleUse ?>;
+        border-top: none;
+        border-left: none;
+    }
+
+    #onestepcheckout-login-popup #onestepcheckout-register-button, #onestepcheckout-login-popup #onestepcheckout-forgot-button, #onestepcheckout-forgot-button, #onestepcheckout-login-popup #onestepcheckout-login-button {
+        color: <?php echo $styleUse ?> !important;
+    }
+</style>
+<!-- Start: Added by Daniel - 02/04/2015 - set background color for top links buttons after login from OSC -->
+<style type='text/css'>
+    .onestepcheckout-index-index #osc_top_links a {
+        background: <?php echo $styleUse?>;
+    }
+</style>

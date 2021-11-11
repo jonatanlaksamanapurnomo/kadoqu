@@ -1,0 +1,49 @@
+<ul id="runningProcess"></ul>
+
+<script type="text/javascript">
+    var processingTemplate = new Template("<li>#{message}</li>");
+    var waitingTemplate = '<li class="dowloading"><img src="<?php echo $this->getSkinUrl('images/rule-ajax-loader.gif'); ?>"/></li>';
+    var url = '<?php echo $this->getDownloadUrl() ?>';
+
+    function downloadDatabase() {
+        $("runningProcess").innerHTML = "";
+        runDownload({
+            'message': '<?php echo $this->__('Starting download GeoIP database...') ?>',
+            'action': 'start'
+        });
+    }
+
+    function runDownload(data) {
+        $$('.dowloading').each(function (el) {
+            el.remove();
+        });
+
+        var processingElement = $("runningProcess");
+
+        Element.insert(processingElement, processingTemplate.evaluate(data));
+
+        if (data.error || data.stop) {
+            if (data.stop && data.last_updated_label && $('geoip_last_updated_label')) {
+                $('geoip_last_updated_label').innerHTML = data.last_updated_label;
+            }
+            return true;
+        }
+
+        if (!data.action) {
+            return false;
+        }
+
+        Element.insert(processingElement, waitingTemplate);
+
+        new Ajax.Request(url, {
+            loaderArea: false,
+            method: "get",
+            parameters: {action: data.action},
+            onSuccess: function (transport) {
+                if (transport.responseText.isJSON()) {
+                    runDownload(transport.responseText.evalJSON());
+                }
+            }
+        });
+    }
+</script>

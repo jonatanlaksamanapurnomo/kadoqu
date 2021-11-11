@@ -1,0 +1,15 @@
+.user-list-admin-row {
+  background-color: lightyellow;
+}
+
+.user-list-admin-row:hover {
+  background-color: rgb(233, 233, 200);
+}
+
+.user-list-merchant-row {
+  background-color: white;
+}
+
+.user-list-merchant-row:hover {
+  background-color: rgb(233, 233, 233);
+}

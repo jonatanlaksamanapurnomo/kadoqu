@@ -1,0 +1,446 @@
+.header {
+  z-index: 3;
+}
+
+.header-nav-item {
+  padding: 0;
+  display: inline-block;
+  margin-left: 1.8rem;
+}
+
+.header i {
+  color: var(--darkGreen);
+}
+
+.header-guest,
+.header-user {
+  width: 3rem;
+}
+
+.header-transparent-default-theme {
+  background-color: transparent;
+  position: absolute;
+}
+
+.header-gida-theme {
+  background-color: transparent;
+  position: absolute;
+}
+
+.header-default-theme {
+  background-color: white;
+  position: relative;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.header-default-theme i {
+  color: var(--darkGreen);
+}
+
+.header-gida-theme i {
+  color: white;
+}
+.header-gida-theme img {
+  color: white;
+}
+.header-gida-theme img:is(.header-cart) {
+  filter: brightness(0) invert(1);
+}
+
+.header-gida-theme img:not(.header-user) {
+  filter: brightness(0) invert(1);
+}
+
+.header-gida-theme .react-autosuggest__input {
+  filter: brightness(0) invert(1);
+}
+
+.header-gida-theme .react-autosuggest__input--focused {
+  filter: none;
+}
+
+.header-logo {
+  height: 3rem;
+}
+
+.header-burger-button {
+  font-size: 2em;
+}
+
+*:focus {
+  outline: none;
+}
+
+.react-autosuggest__input {
+  background-image: url(https://ik.imagekit.io/nwiq66cx3pvsy/icon_search_1.png);
+  background-position: 5px center;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  border: none;
+  cursor: pointer;
+  height: 60px;
+  margin: 3px 0;
+  padding: 0 0 0 60px;
+  position: relative;
+  -webkit-transition: width 400ms ease, background 400ms ease;
+  transition: width 400ms ease, background 400ms ease;
+  width: 0;
+  font-family: "Gotham";
+  font-weight: 300;
+  border-radius: 0.2rem !important;
+}
+
+.react-autosuggest__input--focused {
+  background-color: #f5f5f5;
+  background-size: 30px 30px;
+  cursor: text;
+  outline: 0;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.react-autosuggest__input--open {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.react-autosuggest__suggestions-container {
+  display: none;
+}
+
+.react-autosuggest__suggestions-container--open {
+  display: block;
+  position: absolute;
+  background-color: #f5f5f5;
+  top: 51px;
+  width: 300px;
+  margin-left: 0px;
+  font-weight: 300;
+  font-size: 16px;
+  z-index: 2;
+  margin-top: 9px;
+  border-top: 2px solid var(--darkGreen);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.react-autosuggest__suggestions-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.react-autosuggest__suggestion {
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.react-autosuggest__suggestion--highlighted {
+  background-color: #ddd;
+}
+
+.react-autosuggest__input:focus {
+  width: 300px;
+  z-index: 1;
+
+  cursor: text;
+}
+
+.sidenav {
+  height: 100vh;
+  width: 85vw;
+  max-width: 0px;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  z-index: 50;
+}
+
+.sidenav .btn-link {
+  color: black;
+  text-decoration: none;
+
+  font-weight: lighter;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.header-sidenav-head {
+  background-color: var(--darkGreen);
+  margin: auto 0 auto;
+}
+.header-sidenav-head i {
+  color: white;
+  font-size: 25px !important;
+}
+.header-sidenav-head img {
+  height: 1.9rem;
+}
+.header-sidenav-contents i {
+  font-size: 3rem;
+}
+.header-sidenav-contents {
+  padding: 0.7rem 1rem 0;
+}
+
+.header-sidenav-text-container {
+  padding: 0.5rem 1rem 0;
+}
+
+.header-sign-out {
+  font-weight: 700;
+  font-size: 1.2rem;
+  width: 94%;
+  bottom: 2%;
+  padding-top: 10px;
+  border-top: 3px solid var(--lightBlue);
+  cursor: pointer;
+}
+
+.header-sidenav-cart p {
+  font-size: 27px;
+  margin-left: 1rem;
+}
+
+.header-sidenav-cart {
+  border-bottom: 1px solid var(--darkGreen);
+  padding: 0 1rem 0.5rem;
+  align-items: center;
+}
+
+.header-sidenav-button {
+  background-color: #f5f5f5;
+  height: 80px;
+  border-radius: 0;
+  line-height: initial;
+  font-size: 0.7rem;
+  padding: 0 0.2rem 0;
+}
+.header-sidenav-button img {
+  margin-left: -0.5rem;
+}
+.header-sidenav-button-title {
+  display: flex;
+  font-size: 1.1rem;
+  margin-left: 2rem;
+}
+#header-user-popover {
+  font-family: "Gotham";
+  font-size: large;
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  border-radius: 0;
+  width: 20rem;
+}
+#header-user-popover .popover-body {
+  padding: 0;
+}
+#header-user-popover .arrow::after {
+  border-bottom-color: #d1eff7;
+}
+.header-user-popover-upper-section {
+  background-color: #d1eff7;
+}
+#header-user-popover a {
+  color: black !important;
+}
+[class|="header-user-popover"] {
+  padding: 2rem;
+}
+
+.header-terms-and-policy {
+  color: black;
+  font-weight: 100;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.header-terms-and-policy-before-login {
+  bottom: 3%;
+  right: 0;
+}
+
+.header-terms-and-policy-after-login {
+  bottom: 7%;
+  right: 0;
+  margin-top: 30%;
+}
+
+.header-user-button {
+  border: none;
+  padding: none;
+  background: none;
+
+  margin-left: 1.8rem;
+}
+
+.header-user-button:hover {
+  border: none;
+  padding: none;
+  background: none;
+}
+
+.header-terms-and-policy a {
+  color: var(--grey-1);
+  display: inline;
+  padding: 0;
+}
+
+@media screen and (min-width: 600px) {
+  .header-sidenav-text-container {
+    padding: 0.5rem 1rem 2rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .header-sidenav-button {
+    font-size: 9.5px;
+    background-color: #f5f5f5;
+    height: 45px;
+    border-radius: 0;
+    line-height: initial;
+    padding: 0 0.2rem 0;
+  }
+  .header-terms-and-policy a {
+    font-size: 0.7rem;
+  }
+  .header-sidenav-button-title {
+    margin-left: 1rem;
+    font-size: 0.7rem;
+  }
+  .header-sidenav-button img {
+    width: 30px;
+  }
+  .header-terms-and-policy {
+    font-size: 12px;
+  }
+  .header-sign-out {
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding-top: 7px;
+    border-top: 3px solid var(--lightBlue);
+  }
+  .sidenav .btn-link {
+    color: black;
+    text-decoration: none;
+    font-weight: lighter;
+    font-size: 0.75rem;
+    margin-bottom: 0.8rem;
+  }
+  .header-sidenav-cart img {
+    width: 32px;
+    height: 32px;
+  }
+  .header-sidenav-cart p {
+    font-size: 17px;
+    margin-left: 0.5rem;
+  }
+}
+
+.input-field {
+  width: 30vw;
+  outline: none;
+  background-color: #f5f5f5;
+  border: none;
+  height: 8vw;
+}
+
+@media (max-width: 992px) {
+  .header {
+    padding: 0;
+  }
+  .header-logo {
+    height: 1.9rem;
+  }
+  .react-autosuggest__input {
+    background-color: #f5f5f5;
+    background-size: 30px 30px;
+    cursor: text;
+    outline: 0;
+    width: 100%;
+    padding-left: 2.5rem;
+    height: 2.8rem !important;
+  }
+  .react-autosuggest__input--focused {
+    width: 100% !important;
+    box-shadow: none !important;
+  }
+  .react-autosuggest__suggestions-container--open {
+    position: fixed;
+    background-color: #f5f5f5;
+    top: 4.4rem;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1 !important;
+    margin-top: 0;
+    border-top: none;
+    box-shadow: none !important;
+  }
+
+  .header-gida-theme .react-autosuggest__input {
+    filter: none;
+  }
+}
+@media (max-width: 450px) and (min-width: 351px) {
+  .header-logo {
+    height: 1.5rem;
+  }
+  .header-sidenav-text-container {
+    padding: 0.5rem 1rem 1rem;
+  }
+  .header-terms-and-policy a {
+    font-size: 0.8rem;
+  }
+  .react-autosuggest__input {
+    height: 2.4rem !important;
+    font-size: 0.6rem;
+  }
+  .header-burger-button {
+    font-size: 1.4em;
+  }
+  .react-autosuggest__suggestions-container--open {
+    top: 4rem;
+  }
+  .header-sidenav-cart img {
+    width: 34px;
+  }
+  .header-sidenav-cart p {
+    font-size: 19px;
+    margin-left: 0.7rem;
+  }
+
+  .sidenav .btn-link {
+    color: black;
+    text-decoration: none;
+    font-weight: lighter;
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+  }
+  .header-sign-out {
+    font-weight: 700;
+    font-size: 1rem;
+    padding-top: 7px;
+    border-top: 3px solid var(--lightBlue);
+  }
+  .header-sidenav-button {
+    font-size: 13px;
+    background-color: #f5f5f5;
+    height: 50px;
+    border-radius: 0;
+    line-height: initial;
+    padding: 0 0.2rem 0;
+  }
+  .header-sidenav-button-title {
+    margin-left: 1rem;
+    font-size: 0.8rem;
+  }
+  .header-sidenav-button img {
+    width: 35px;
+  }
+}
+.menu-mobile-bars {
+}

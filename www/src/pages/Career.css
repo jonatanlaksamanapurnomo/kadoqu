@@ -1,0 +1,114 @@
+.career-banner {
+  width: 100%;
+  z-index: 1;
+}
+.Career-title {
+  font-size: 3.1vw !important;
+  text-decoration: none !important;
+  text-align: center;
+}
+.Career-title-avail{  font-size: 2.1vw !important;
+  text-decoration: none !important;
+  text-align: center;
+font-weight: 100 !important;}
+.career-button {
+  margin-left: 15%;
+}
+.career-button-mob {
+  margin-left: 5%;
+ 
+}
+.career-image-left{
+  padding-left: 7% !important;
+  padding-right: 7% !important;
+}
+.partner-image-left{
+  padding-left: 7% !important;
+  padding-right: 15% !important;
+}
+.career-image {
+  margin-bottom: 10%;
+  padding-left: 0%;
+  padding-right: 7px !important;
+}
+.partner-image {
+  margin-bottom: 10%;
+  padding-left: 0%;
+  padding-right: 7px !important;
+}
+.career-detail-desc {
+  font-size: 2.5vw !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  z-index: 10;
+  color: #f9d268 !important;
+}
+.career-detail-desc-mob {
+  font-size: 2.5vw !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  z-index: 10;
+  color: #f9d268 !important;
+}
+
+.career-detail-desc-bg {
+  background-color: #f9d268;
+  height: 10px;
+}
+.career-detail-desc-bgwhite {
+  background-color: white;
+}
+.job-title {
+  font-size: 2.3vw !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-bottom: 2%;
+  padding-top: 2%;
+}
+.job-title-hire {
+  font-size: 1.5vw !important;
+  font-weight: 100 !important;
+  text-decoration: none !important;
+  margin-left: 10%;
+  margin-bottom: 2%;
+  padding-top: 2%;
+}
+.job-title-hire-mob {
+  font-size: 2vw !important;
+  font-weight: 100 !important;
+  text-decoration: none !important;
+  margin-left: 10%;
+  margin-bottom: 2%;
+  padding-top: 2%;
+}
+.Job-Requirements {
+  font-size: 1.4vw !important;
+  font-weight: 100 !important;
+  text-decoration: none !important;
+
+  margin-left: 10%;
+  margin-bottom: 3%;
+  padding-bottom: 2%;
+}
+.apply-button {
+  margin-left: 15%;
+  font-size: 1.5vw !important;
+  width: 20% !important;
+}
+.apply-button-mob {
+  margin-left: 5%;
+  margin-top: -1%;
+  font-size: 2vw !important;
+  width: 20% !important;
+}
+.Career-title-mob {
+  font-size: 5.1vw !important;
+  text-decoration: none !important;
+
+}
+.disable {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}

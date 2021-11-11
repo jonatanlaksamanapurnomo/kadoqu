@@ -1,0 +1,22 @@
+.list-action-cell {
+  font-size: large;
+}
+
+.list-action-cell .fa {
+  cursor: pointer;
+}
+
+.list-action-cell .fa-pencil {
+  color: #ffc000;
+}
+
+.list-action-cell .fa-trash {
+  color: #f14c4c;
+}
+
+.list-bootstrap-table .search-label {
+  width: 100%;
+}
+.react-bootstrap-table table {
+  table-layout: auto;
+}

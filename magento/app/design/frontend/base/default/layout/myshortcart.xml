@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+
+    <myshortcart_payment_noidr>
+        <reference name="head">
+            <action method="setTitle" translate="title"><title>Ganti Mata Uang</title></action>
+        </reference>
+        <reference name="root">
+		     <action method="setTemplate"><template>page/1column.phtml</template></action>
+            <action method="setHeaderTitle" translate="title"><title>Ganti Mata Uang</title></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="myshortcart" template="mygateway/noidr.phtml"/>
+			<block type="directory/currency" name="currency" template="directory/currency.phtml"/>
+        </reference>
+    </myshortcart_payment_noidr>
+	
+    <myshortcart_billing_index>
+        <reference name="head">
+            <action method="setTitle" translate="title"><title>Konfirmasi Pembayaran myShortCart</title></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+            <action method="setHeaderTitle" translate="title"><title>Konfirmasi Pembayaran </title></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="myshortcartForm" template="myshortcart/billing/form.phtml"/>
+        </reference>
+    </myshortcart_billing_index>
+	
+    <myshortcart_billing_post>
+        <reference name="head">
+            <action method="setTitle" translate="title"><title>Konfirmasi Pembayaran Terkirim</title></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+            <action method="setHeaderTitle" translate="title"><title>Konfirmasi Pembayaran Terkirim</title></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="myshortcartSubmitted" template="myshortcart/billing/submitted.phtml"/>
+        </reference>
+    </myshortcart_billing_post>
+	
+	<checkout_onepage_success>
+		<reference name="checkout.success">
+			<action method="setTemplate">
+				<template>myshortcart/checkout/success.phtml</template>
+			</action>
+		</reference>
+	</checkout_onepage_success>
+
+</layout>

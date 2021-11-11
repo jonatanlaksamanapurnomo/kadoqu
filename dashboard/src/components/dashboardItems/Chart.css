@@ -1,0 +1,118 @@
+.chart-container {
+  height: 100%;
+}
+
+.chart-container select,
+.chart-container input:not([type="checkbox"]) {
+  width: auto;
+  display: inline-block;
+  border: 0;
+  border-bottom: #b9b9b9 1px solid;
+  color: black;
+  border-radius: 0;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+}
+.GIdA-dashboard{
+
+  width: 15%;
+  margin-left: 30%;
+}
+
+.chart-container select:focus,
+.chart-container select:active,
+.chart-container input:focus,
+.chart-container input:active {
+  box-shadow: none;
+  color: black;
+  border-color: #8ad4ee;
+}
+
+.chart-container .react-datepicker-wrapper:focus,
+.chart-container .react-datepicker__input-container,
+.chart-container input {
+  outline: none;
+}
+
+.chart-container .react-datepicker-wrapper input {
+  text-align: center;
+}
+
+.chart-title-section {
+  margin-bottom: 4%;
+}
+
+.sales-chart-wrapper,
+.revenue-chart-wrapper {
+  height: 300px;
+}
+
+.sales-chart-growth {
+  font-weight: 700;
+  font-size: 30pt;
+  line-height: 1;
+}
+
+.sales-chart-growth-range input,
+.ratings-period-range input {
+  width: 3rem !important;
+}
+.Graph-Category{
+  padding-bottom: 50px;
+}
+.error-page {
+  font-size: 0.8rem;
+}
+
+.error-page h1 {
+  font-size: 2.5em;
+}
+
+.error-page .display-4 {
+  font-size: 3.5em;
+}
+
+.error-page .h3 {
+  font-size: 1.75em;
+}
+
+@media (min-width: 370px) {
+  .error-page {
+    font-size: 1rem;
+  }
+}
+.verifikasi-text{
+font-size: 3.9rem;
+}
+.verifikasi-text-mob{
+  font-size: 3rem !important;
+  }
+.second-text-verifikasi{
+  font-size: 1.8rem !important;
+  padding-top: 18px;
+  padding-right: 500px;
+}
+.email-verifikasi{
+  font-size: 1.5rem;
+}
+.kadoqu-primary-button-green {
+  background-color: #059487 !important;
+  color: white;
+  border: 0;
+  padding: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: larger;
+  
+}
+.font-weight-light {
+  font-weight: 300 !important;
+}
+.cs-button{
+width: 10vw !important;
+height: 2vw;
+}
+.hub-cs-text{
+  padding-bottom: 5%;
+  font-weight:100 !important;
+}

@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magegiant
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the magegiant.com license that is
+ * available through the world-wide-web at this URL:
+ * http://magegiant.com/license-agreement/
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magegiant
+ * @package     Magegiant_YhLogin
+ * @copyright   Copyright (c) 2014 Magegiant (http://magegiant.com/)
+ * @license     http://magegiant.com/license-agreement/
+ */
+-->
+<config>
+    <modules>
+        <Magegiant_YhLogin>
+            <version>0.1.0</version>
+        </Magegiant_YhLogin>
+    </modules>
+    <frontend>
+        <routers>
+            <yhlogin>
+                <use>standard</use>
+                <args>
+                    <module>Magegiant_YhLogin</module>
+                    <frontName>yhlogin</frontName>
+                </args>
+            </yhlogin>
+        </routers>
+        <layout>
+            <updates>
+                <yhlogin>
+                    <file>magegiant/yhlogin.xml</file>
+                </yhlogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magegiant_YhLogin>
+                    <files>
+                        <default>Magegiant_YhLogin.csv</default>
+                    </files>
+                </Magegiant_YhLogin>
+            </modules>
+        </translate>
+        <events>
+            <social_button_create_before>
+                <observers>
+                    <yalogin_observers>
+                        <class>yhlogin/frontend_observer</class>
+                        <method>addYhButton</method>
+                    </yalogin_observers>
+                </observers>
+            </social_button_create_before>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <yhloginadmin>
+                <use>admin</use>
+                <args>
+                    <module>Magegiant_YhLogin</module>
+                    <frontName>yhloginadmin</frontName>
+                </args>
+            </yhloginadmin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <yhlogin>
+                    <file>magegiant/yhlogin.xml</file>
+                </yhlogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magegiant_YhLogin>
+                    <files>
+                        <default>Magegiant_YhLogin.csv</default>
+                    </files>
+                </Magegiant_YhLogin>
+            </modules>
+        </translate>
+    </adminhtml>
+    <global>
+        <models>
+            <yhlogin>
+                <class>Magegiant_YhLogin_Model</class>
+                <resourceModel>yhlogin_mysql4</resourceModel>
+            </yhlogin>
+            <!--<yhlogin_mysql4>
+                <class>Magegiant_YhLogin_Model_Mysql4</class>
+                <entities>
+                    <yhlogin>
+                        <table>yhlogin</table>
+                    </yhlogin>
+                </entities>
+            </yhlogin_mysql4>-->
+        </models>
+        <resources>
+            <yhlogin_setup>
+                <setup>
+                    <module>Magegiant_YhLogin</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </yhlogin_setup>
+            <yhlogin_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </yhlogin_write>
+            <yhlogin_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </yhlogin_read>
+        </resources>
+        <blocks>
+            <yhlogin>
+                <class>Magegiant_YhLogin_Block</class>
+            </yhlogin>
+        </blocks>
+        <helpers>
+            <yhlogin>
+                <class>Magegiant_YhLogin_Helper</class>
+            </yhlogin>
+        </helpers>
+        <!-- <events>
+            <controller_action_predispatch>
+                <observers>
+                    <yhlogin_observers>
+                        <class>yhlogin/observer</class>
+                        <method>controllerActionPredispatch</method>
+                    </yhlogin_observers>
+                </observers>
+            </controller_action_predispatch>
+        </events> -->
+    </global>
+
+    <default>
+        <sociallogin>
+            <yh>
+                <enable>0</enable>
+                <yh_image>default/yh.png</yh_image>
+                <yh_image_label>Yahoo</yh_image_label>
+                <sort_order>4</sort_order>
+            </yh>
+        </sociallogin>
+    </default>
+
+</config>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_konfirmasipembayaran_index>
+        <reference name="content">
+            <block type="konfirmasipembayaran/adminhtml_konfirmasipembayaran" name="konfirmasipembayaran" />
+        </reference>
+    </adminhtml_konfirmasipembayaran_index>
+</layout>

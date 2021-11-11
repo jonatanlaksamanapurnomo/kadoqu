@@ -1,0 +1,201 @@
+<script type="text/javascript">
+    vZeroIntegration.addMethods({
+        getHostedFieldsStyles: function () {
+            return {
+                'input': {
+                    'font-size': '14px',
+                    'color': '#343434'
+                }
+            };
+        },
+        validateAll: function () {
+            if (!Singleton.get(OnePage).isCheckoutValid()) {
+                Singleton.get(OnePage).tryPlaceOrder();
+            }
+
+            return Singleton.get(OnePage).isCheckoutValid();
+        },
+        /**
+         * Set the loading state
+         */
+        setLoading: function () {
+            Singleton.get(PaymentMethod).showLoader(Singleton.get(OnePage).sectionContainer);
+        },
+        /**
+         * Reset the loading state
+         */
+        resetLoading: function () {
+            Singleton.get(PaymentMethod).hideLoader(Singleton.get(OnePage).sectionContainer);
+        },
+        /**
+         * Return the current payment method
+         *
+         * @returns {*}
+         */
+        getPaymentMethod: function () {
+            return Singleton.get(PaymentMethod).getPaymentMethodCode();
+        },
+        /**
+         * Capture the original submit function
+         */
+        captureOriginalSubmitFn: function () {
+            this._originalApplyResponseFn = Singleton.get(PaymentMethod).applyResponse;
+            this._originalSaveSectionFn = Singleton.get(PaymentMethod).saveSection;
+            this._originalOnSavePaymentMethodSuccessFn = Singleton.get(PaymentMethod).onSavePaymentMethodSuccess;
+            return true;
+        },
+        prepareSubmitObserver: function () {
+            var vzeroIntegration = this;
+
+            Singleton.get(PaymentMethod).saveSection = function (onSuccess, onComplete, onError) {
+                var paymentThis = this;
+                var paymentArguments = arguments;
+                if (vzeroIntegration.shouldInterceptSubmit('creditcard')) {
+                    if (!vzeroIntegration.validateHostedFields()) {
+                        return false;
+                    }
+                    vzeroIntegration.submit('creditcard', function () {
+                        return vzeroIntegration._originalSaveSectionFn.apply(paymentThis, paymentArguments);
+                    });
+                } else {
+                    return vzeroIntegration._originalSaveSectionFn.apply(paymentThis, paymentArguments);
+                }
+            };
+        },
+        preparePaymentMethodSwitchObserver: function () {
+            var vzeroIntegration = this;
+
+            Singleton.get(PaymentMethod).applyResponse = function (methods) {
+                var result = vzeroIntegration._originalApplyResponseFn.apply(this, arguments);
+                vzeroIntegration.paymentMethodSwitch();
+                vzeroIntegration.initSavedMethods();
+                return result;
+            };
+
+            Singleton.get(PaymentMethod).onSavePaymentMethodSuccess = function (result) {
+                vzeroIntegration.paymentMethodSwitch();
+                vzeroIntegration.initSavedMethods();
+                return vzeroIntegration._originalOnSavePaymentMethodSuccessFn.apply(this, arguments);
+            };
+
+
+            // When the credit card payment methods is loaded init the hosted fields if enabled
+            vZero.prototype.creditCardLoaded = function () {
+                // When the credit card is loaded call the init hosted fields function
+                vzeroIntegration.initHostedFields();
+                vzeroIntegration.initSavedMethods();
+            };
+
+            vZero.prototype.paypalLoaded = function () {
+                vzeroIntegration.initSavedPayPal();
+                vzeroIntegration.initSavedMethods();
+            };
+
+            vZero.prototype.setupHostedFieldsClient = function(){
+
+                // If there are iframes within the fields already, don't run again!
+                // This function has a delay from the original call so we need to verify everything is still good to go!
+                if ($$('iframe[name^="braintree-"]').length > 0) {
+                    return false;
+                }
+
+                this._hostedIntegration = false;
+
+                // Retrieve the client from the class
+                this.getClient(function (clientInstance) {
+                    // Build our hosted fields options
+                    var options = {
+                        client: clientInstance,
+                        styles: this.getHostedFieldsStyles(),
+                        fields: {
+                            number: {
+                                selector: "#card-number",
+                                placeholder: "<?php echo $this->escapeHtml($this->__('Credit Card Number')); ?>"
+                            },
+                            expirationMonth: {
+                                selector: "#expiration-month",
+                                placeholder: "<?php echo $this->escapeHtml($this->__('MM')); ?>"
+                            },
+                            expirationYear: {
+                                selector: "#expiration-year",
+                                placeholder: "<?php echo $this->escapeHtml($this->__('YYYY')); ?>"
+                            }
+                        }
+                    };
+
+                    // Include the CVV field with the request
+                    if ($('cvv') !== null) {
+                        options.fields.cvv = {
+                            selector: "#cvv",
+                            placeholder: "<?php echo $this->escapeHtml($this->__('CVV')); ?>"
+                        };
+                    }
+
+                    // Detect if AVS is enabled, if so we need to display a postal code field
+                    var config = clientInstance.getConfiguration();
+                    if (typeof config.gatewayConfiguration.challenges === 'object'
+                        && config.gatewayConfiguration.challenges.indexOf('postal-code') !== -1
+                    ) {
+                        if ($$('.braintree-avs-postal-code').first() == undefined) {
+                            console.error('We\'ve detected you have AVS rules enabled, ' +
+                                'however the braintree-avs-postal-code field is not present in your ' +
+                                'Hosted Fields form. Please ensure you haven\'t overriden hostedfields.phtml ' +
+                                'and if you have please update it.');
+                        } else {
+                            $$('.braintree-avs-postal-code').first().show();
+                            options.fields.postalCode = {
+                                selector: "#postal-code",
+                                placeholder: "<?php echo $this->escapeHtml($this->__('Postal Code')); ?>"
+                            };
+                        }
+                    }
+
+                    // Create a new instance of hosted fields
+                    braintree.hostedFields.create(options, function (hostedFieldsErr, hostedFieldsInstance) {
+                        // Handle hosted fields errors
+                        if (hostedFieldsErr) {
+                            // Duplicate IFRAME error can occur with certain checkouts implementations
+                            if (hostedFieldsErr.code == 'HOSTED_FIELDS_FIELD_DUPLICATE_IFRAME') {
+                                return;
+                            }
+
+                            // Handle error in Hosted Fields creation
+                            console.error(hostedFieldsErr);
+                            return;
+                        }
+
+                        // Run on ready function
+                        return this.hostedFieldsOnReady(hostedFieldsInstance);
+                    }.bind(this));
+                }.bind(this));
+            };
+
+            vZero.prototype.updateCardType = function(cardNumber, cardType){
+                if($ji('#credit-card-form #card-number').length){
+                    $ji('#credit-card-form #card-number').closest('.iwd_opc_cc_wrapper')
+                        .attr('data-cc-type', cardType);
+                }
+            };
+        },
+        /**
+         * Any operations that need to happen after the PayPal integration has completed
+         *
+         * @returns {boolean}
+         */
+        afterPayPalComplete: function () {
+            Singleton.get(OnePage).tryPlaceOrder();
+        }
+    });
+    /**
+     * Start a new instance of our integration
+     *
+     * @type {vZeroIntegration}
+     */
+    new vZeroIntegration(
+        (window.vzero || false),
+        (window.vzeroPaypal || false),
+        '<div id="paypal-complete"><div id="paypal-container"></div></div>',
+        '#iwd_opc_place_order_button',
+        true
+    );
+</script>

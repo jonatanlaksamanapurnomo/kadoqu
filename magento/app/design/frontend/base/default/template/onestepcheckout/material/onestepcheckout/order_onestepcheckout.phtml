@@ -1,0 +1,119 @@
+<?php
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Onestepcheckout
+ * @copyright   Copyright (c) 2017 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+?>
+<?php $_order = $this->getOrder() ?>
+<?php if ($_order): ?>
+
+    <table cellspacing="0" cellpadding="0" border="0" width="100%" class="data-table">
+        <thead>
+        <tr>
+            <th align="left" bgcolor="#EAEAEA"
+                style="font-size:13px; padding:3px 9px"><?php echo $this->__('Product Name') ?></th>
+            <th align="left" bgcolor="#EAEAEA"
+                style="font-size:13px; padding:3px 9px"><?php echo $this->__('Sku') ?></th>
+            <th align="left" bgcolor="#EAEAEA"
+                style="font-size:13px; padding:3px 9px"><?php echo $this->__('Price') ?></th>
+            <th align="center" bgcolor="#EAEAEA"
+                style="font-size:13px; padding:3px 9px"><?php echo $this->__('Qty') ?></th>
+            <th align="right" bgcolor="#EAEAEA"
+                style="font-size:13px; padding:3px 9px"><?php echo $this->__('Subtotal') ?></th>
+        </tr>
+        </thead>
+
+        <?php $i = 0;
+        foreach ($_order->getAllItems() as $_item): ?>
+            <?php if ($_item->getParentItem()) continue; else $i++; ?>
+            <tbody<?php echo $i % 2 ? ' bgcolor="#F6F6F6"' : '' ?>>
+            <?php echo $this->getItemHtml($_item) ?>
+            </tbody>
+        <?php endforeach; ?>
+        <tbody>
+        <?php
+        $delivery = Mage::getModel('onestepcheckout/delivery')->load($_order->getId(), 'order_id');
+        if ($delivery->getId()):
+        ?>
+
+        <thead>
+        <tr>
+            <th colspan="5" align="left" bgcolor="#EAEAEA"
+                style="font-size:13px; padding:3px 9px"><?php echo $this->__('Time of Delivery') ?></th>
+        </tr>
+        </thead>
+
+        <tr>
+            <td colspan="5" align="left" valign="top" style="font-size:11px; padding:3px 9px;">
+                <strong style="font-size:12px;"><?php echo $delivery->getDeliveryTimeDate(); ?></strong>
+            </td>
+        </tr>
+    <?php endif; ?>
+        </tbody>
+
+        <?php $securityCode = $delivery->getDeliverySecurityCode(); ?>
+        <?php if (!empty($securityCode)): ?>
+            <tbody>
+            ?>
+
+            <thead>
+            <tr>
+                <th colspan="5" align="left" bgcolor="#EAEAEA"
+                    style="font-size:13px; padding:3px 9px"><?php echo $this->__('Delivery Security Code') ?></th>
+            </tr>
+            </thead>
+
+            <tr>
+                <td colspan="5" align="left" valign="top" style="font-size:11px; padding:3px 9px;">
+                    <strong style="font-size:12px;"><?php echo $securityCode; ?></strong>
+                </td>
+            </tr>
+            </tbody>
+        <?php endif; ?>
+        <tbody class="odd">
+        <?php echo $this->getChildHtml('order_totals') ?>
+        </tbody>
+    </table>
+
+
+    <?php if ($this->helper('giftmessage/message')->isMessagesAvailable('order', $_order, $_order->getStore()) && $_order->getGiftMessageId()): ?>
+        <?php $_giftMessage = $this->helper('giftmessage/message')->getGiftMessage($_order->getGiftMessageId()); ?>
+        <?php if ($_giftMessage): ?>
+            <br/>
+            <table cellspacing="0" cellpadding="0" border="0" width="100%" style="border:1px solid #EAEAEA;">
+                <thead>
+                <tr>
+                    <th align="left" bgcolor="#EAEAEA" style="font-size:13px; padding:3px 9px">
+                        <strong><?php echo $this->__('Gift Message for this Order') ?></strong></th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr>
+                    <td colspan="4" align="left" style="padding:3px 9px">
+                        <strong><?php echo $this->__('From:'); ?></strong> <?php echo $this->escapeHtml($_giftMessage->getSender()) ?>
+                        <br/><strong><?php echo $this->__('To:'); ?></strong> <?php echo $this->escapeHtml($_giftMessage->getRecipient()) ?>
+                        <br/><strong><?php echo $this->__('Message:'); ?></strong><br/> <?php echo $this->escapeHtml($_giftMessage->getMessage()) ?>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

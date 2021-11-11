@@ -1,0 +1,21 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: ordertrackchecker
+spec:
+  schedule: "0 7-22/5 * * *"
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 100
+      template:
+        spec:
+          containers:
+            - name: ordertrackchecker
+              image: curlimages/curl:7.67.0
+              args:
+                - "https://edge.kadoqu.com/"
+                - "-H"
+                - "content-type: application/json"
+                - "-d"
+                - '{"operationName":"orderWaybillTrack","variables":{},"query":"mutation orderWaybillTrack {\n  orderWaybillTrack\n}\n"}'
+          restartPolicy: OnFailure

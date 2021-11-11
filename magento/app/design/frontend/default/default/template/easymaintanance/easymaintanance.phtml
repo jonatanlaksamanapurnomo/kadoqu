@@ -1,0 +1,177 @@
+<?php /* ?>
+    <script language="javascript" type="text/javascript">setTimeout("location.reload();",20000);</script>
+<?php */ ?>
+<?php $storeId = Mage::app()->getStore()->getStoreId(); ?>
+  <?php
+                $bg_image =  Mage::getStoreConfig('easymaintanance/general/background_image',$storeId);
+                if(isset($bg_image) && $bg_image != null )
+                {
+                    $image_path = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'easysitemaintenance/'.$bg_image;
+                }
+            ?>
+<html>    
+    <head>  
+        <title>
+            <?php 
+                Mage::getSingleton('core/translate')->setLocale(Mage::app()->getLocale()->getLocaleCode())->init('frontend', true);
+                
+                if(Mage::getStoreConfig('easymaintanance/general/page_title',$storeId) != ''){
+                    echo strip_tags(Mage::getStoreConfig('easymaintanance/general/page_title',$storeId),NULL);
+                }
+                else{
+                    echo $this->__('Site Maintenance');
+                }    
+                $folderName = 'favicon';
+                $storeConfig = Mage::getStoreConfig('design/head/shortcut_icon');
+                $faviconFile = Mage::getBaseUrl('media') . $folderName . '/' . $storeConfig;
+                $absolutePath = Mage::getBaseDir('media') . '/' . $folderName . '/' . $storeConfig;
+                if(!is_null($storeConfig) && is_file($absolutePath)) {
+                    $url = $faviconFile;
+                } else {
+                    $url = $this->getSkinUrl('favicon.ico');
+                }
+            ?>  
+        </title>
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl("easymaintanance/css/easymaintanance.css") ?>">
+        <link rel="icon" href="<?php echo $url; ?>" type="image/x-icon" /> 
+        <link rel="shortcut icon" href="<?php echo $url; ?>" type="image/x-icon" />     
+        <?php if (Mage::getStoreConfig('easymaintanance/contactus/active', $storeId) == 1 || Mage::getStoreConfig('easymaintanance/notify/active', $storeId) == 1 ): ?>
+            <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl("easymaintanance/css/popup.css") ?>">
+            <script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS) . "prototype/prototype.js" ?>"></script>
+            <script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS) . "prototype/effects.js" ?>"></script>
+            <script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS) . "prototype/validation.js" ?>"></script>
+            <script src="<?php echo $this->getSkinUrl("easymaintanance/js/popup.js") ?>"></script>
+        <?php endif; ?>         
+        <script src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS) . "mage/translate.js" ?>"></script>
+        <script type="text/javascript">//<![CDATA[
+        var Translator = new Translate([]);
+        //]]></script>
+    </head>
+    <?php if(Mage::getStoreConfig('easymaintanance/timer/timer_enabled',$storeId) == 1): ?>
+        <body onLoad="countdown(year,month,day,hour,minute)" <?php if(isset($image_path)){ ?>style="background-image: url(<?php echo $image_path ?>); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+        src='<?php echo $image_path ?>', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $image_path ?>',sizingMethod='scale'); " <?php } ?>>
+    <?php else: ?>
+        <body  <?php if(isset($image_path)){ ?>style="background-image: url(<?php echo $image_path ?>);  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(
+    src='<?php echo $image_path ?>', sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?php echo $image_path ?>',sizingMethod='scale') ;" <?php } ?>>
+    <?php endif; ?>
+        <div class="main-container">
+            <?php
+                if(Mage::getStoreConfig('easymaintanance/general/logo')){
+                    $width = Mage::getStoreConfig('easymaintanance/general/logo_width');
+                    if(!$width)
+                        $width = 80;
+                    $height = Mage::getStoreConfig('easymaintanance/general/logo_height');
+                    if(!$height)
+                        $height = 80;
+            ?>
+                <div>
+                    
+                    <img height="<?php echo $height; ?>px" width="<?php echo $width; ?>px" src="<?php echo Mage::getBaseUrl('media').'easysitemaintenance/'. Mage::getStoreConfig('easymaintanance/general/logo'); ?>" alt="Easysitemaintenance Logo">                
+                </div>
+            <?php } ?>
+            <?php 
+                $date =  Mage::getStoreConfig('easymaintanance/timer/timer_end_date',$storeId);
+                $formatedDate = date('m/d/Y',strtotime($date));
+                $date = explode('/', $formatedDate);
+                $year = $date[2];
+                $month = $date[0];
+                $day = $date[1];
+                $hour = Mage::getStoreConfig('easymaintanance/timer/timer_end_hour',$storeId);
+                $min1 = Mage::getStoreConfig('easymaintanance/timer/timer_end_min',$storeId);
+                
+                $day = floor ($min1 / 1440);
+                $hour1 = floor (($min1 - $day * 1440) / 60);
+                $min = $min1 - ($day * 1440) - ($hour1 * 60);
+                
+                $finaldate = date('m/d/Y', strtotime($formatedDate. ' + '.$day.' days'));
+                $date = explode('/', $finaldate);
+                $year = $date[2];
+                $month = $date[0];
+                $day = $date[1];
+                $hour += $hour1;
+            ?>
+            <?php
+
+                $helper = Mage::helper('cms');
+                $processor = $helper->getPageTemplateProcessor();
+                $maintenancePage = $processor->filter(trim(Mage::getStoreConfig('easymaintanance/general/maintenanceHtml',$storeId)));
+                // $maintenancePage = trim(Mage::getStoreConfig('easymaintanance/general/maintenanceHtml',$storeId));
+                echo $maintenancePage;
+            ?>    
+            <?php if(Mage::getStoreConfig('easymaintanance/timer/timer_enabled',$storeId) == 1): ?>   
+                <div class="message clearfix" id="timer-text">
+                    <?php $text = Mage::getStoreConfig('easymaintanance/timer/timer_text',$storeId); ?>
+                    <h2 id="launch-text"><?php echo $text; ?></h2>
+                </div>
+
+
+                <script type="text/javascript">
+
+                    var current="Time is over!";    
+                    var year='<?php echo $year; ?>';    
+                    var month='<?php echo $month; ?>';      
+                    var day='<?php echo $day; ?>';       
+                    var hour='<?php echo $hour; ?>';      
+                    var minute='<?php echo $min; ?>';    
+                    //    DO NOT CHANGE THE CODE BELOW!
+                    var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+                    function countdown(yr,m,d,hr,min){
+
+                        theyear=yr;themonth=m;theday=d;thehour=hr;theminute=min;
+                        var today  = new Date();
+                        var todayy=today.getYear();
+                        if (todayy < 1000)
+                            todayy+=1900;
+                        var todaym=today.getMonth();
+                        var todayd=today.getDate();
+                        var todayh=today.getHours();
+                        var todaymin=today.getMinutes();
+                        var todaysec=today.getSeconds();
+                        var todaystring=montharray[todaym]+" "+todayd+", "+todayy+" "+todayh+":"+todaymin+":"+todaysec;
+                        var futurestring=montharray[m-1]+" "+d+", "+yr+" "+hr+":"+min+":"+"00";
+                        var dd=Date.parse(futurestring)-Date.parse(todaystring);
+                        var dday=Math.floor(dd/(60*60*1000*24)*1);
+                        var dhour=Math.floor((dd%(60*60*1000*24))/(60*60*1000)*1);
+                        var dmin=Math.floor(((dd%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+                        var dsec=Math.floor((((dd%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+                        if (dday <= 0 && dhour <= 0 && dmin <= 0 && dsec <= 0) {
+                            document.getElementById('timer-text').style.display = "none";
+                            document.getElementById('timer-table').style.display = "none";
+                
+                        }
+                        if(dday == 0 && dhour == 0 && dmin == 0 && dsec == 0)
+                        {
+                            var url = "<?php echo $this->getUrl('easymaintanance/index/checkTimer/'); ?>";
+                            new Ajax.Request(url, {
+                                onSuccess: function(data) {
+                                    if (data.responseText !== null) {                                
+                                       window.location.reload();
+                                    }
+                                }
+                            });
+                        }
+                        else {
+                            document.getElementById('count2').style.display="none";
+                            document.getElementById('dday').innerHTML=dday;
+                            document.getElementById('dhour').innerHTML=dhour;
+                            document.getElementById('dmin').innerHTML=dmin;
+                            document.getElementById('dsec').innerHTML=dsec;
+                            setTimeout("countdown(theyear,themonth,theday,thehour,theminute)",1000);
+                        }
+
+                    }
+                </script>
+
+                    <div class="countdown" >
+                        <div class="timer" id="timer-table">
+                            <div class="numbers" id="count2" style="padding: 5px 0 0 0; "></div>
+                            <div><strong id="dday"></strong><?php echo $this->__('Days'); ?></div>
+                            <div><strong id="dhour"></strong><?php echo $this->__('Hours'); ?></div>
+                            <div><strong id="dmin"></strong><?php echo $this->__('Minutes'); ?></div>
+                            <div class="last"><strong id="dsec"></strong><?php echo $this->__('Seconds'); ?></div>
+                        </div>
+                    </div>
+            <?php endif; ?> 
+        </div>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+<mjml>
+  <mj-body>
+    <mj-hero>
+      <mj-image width="100px" align="left" src="https://ik.imagekit.io/nwiq66cx3pvsy/Footer/kadoqu_HJeQl-ptdN.png"></mj-image>
+      <mj-text font-size="10px" font-family="helvetica">Dear Customer</mj-text>
+      <mj-text align="left" font-size="30px" color="#00998D">Pesanan Baru yang perlu dikirim</mj-text>
+    </mj-hero>
+    <mj-section>
+      <mj-column>
+        <mj-table line-height="1px">
+          <tr>
+            <td>
+              <p>No Pesanan</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Pesanan Atas Nama</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Tanggal Pemesanan</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+              <mj-text align="left" font-size="30px" color="#00998D">Unwrapping Gift</mj-text>
+        <mj-table>
+          <tr>
+            <td>
+              <img width="50px" src="https://ik.imagekit.io/nwiq66cx3pvsy/confirm_email_2_proses_pesanan.png"></img>
+            </td>
+            <td>
+              <p style="color:#00998D">Product One</p>
+            </td>
+            <td>
+              <p>X1</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img width="50px" src="https://ik.imagekit.io/nwiq66cx3pvsy/confirm_email_2_proses_pesanan.png"></img>
+            </td>
+            <td>
+              <p style="color:#00998D">Product One</p>
+            </td>
+            <td>
+              <p>X1</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+        </mj-table>
+        <mj-divider border-width="1px" border-style="solid" border-color="#00998D" />
+      </mj-column>
+    </mj-section>
+        <mj-section>
+      <mj-column>
+              <mj-text align="left" font-size="30px" color="#00998D">Wrapping Gift</mj-text>
+        		  <mj-text align="left" color="#00998D">Wrapper : </mj-text>
+
+        <mj-table>
+          <tr>
+            <td>
+              <img width="50px" src="https://ik.imagekit.io/nwiq66cx3pvsy/confirm_email_2_proses_pesanan.png"></img>
+            </td>
+            <td>
+              <p style="color:#00998D">Product One</p>
+            </td>
+            <td>
+              <p>X1</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img width="50px" src="https://ik.imagekit.io/nwiq66cx3pvsy/confirm_email_2_proses_pesanan.png"></img>
+            </td>
+            <td>
+              <p style="color:#00998D">Product One</p>
+            </td>
+            <td>
+              <p>X1</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+        </mj-table>
+        <mj-divider border-width="1px" border-style="solid" border-color="#00998D" />
+      </mj-column>
+    </mj-section>
+    <mj-hero>
+      <mj-text align="center" padding-top="0px">
+        Powered By Kadoqu
+      </mj-text>
+      <mj-button background-color="#00998D" >Check Order</mj-button>
+    </mj-hero>
+  </mj-body>
+</mjml>

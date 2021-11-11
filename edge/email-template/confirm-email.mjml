@@ -1,0 +1,158 @@
+<mjml>
+  <mj-body>
+    <mj-hero>
+      <mj-image width="100px" align="left" src="https://ik.imagekit.io/nwiq66cx3pvsy/Footer/kadoqu_HJeQl-ptdN.png"></mj-image>
+      <mj-text font-size="10px" font-family="helvetica">Dear Customer</mj-text>
+      <mj-image align="center" src="https://ik.imagekit.io/nwiq66cx3pvsy/confirm_email_2_proses_pesanan.png"></mj-image>
+      <mj-text align="center" font-size="30px" color="#00998D">Pesanan Kamu Sedang GIdA Proses</mj-text>
+      <mj-text font-size="20px" align="center">Terima Kasih Telah Berbelanja di kadoqu</mj-text>
+      <mj-text font-size="15px" align="center" padding-top="0px">Pembayaran Menggunakan Bank Transfer Telah di Konfirmasi dan Berhasil</mj-text>
+    </mj-hero>
+    <mj-section>
+      <mj-group>
+        <mj-column>
+          <mj-table>
+            <tr>
+              <th style="padding: 0 15px 0 0; text-align:center; ">Total Pembayaran</th>
+            </tr>
+            <tr>
+              <td>
+                <p style="color:#00998D; font-size:20px;text-align:center">Rp 310.000</p>
+              </td>
+            </tr>
+            <tr>
+              <th style="padding: 0 15px 0 0; text-align:center; ">Metode Pembayaran</th>
+            </tr>
+            <tr>
+              <td style="padding: 0 15px 0 0;">
+                <p style="color:#00998D; font-size:20px; text-align:center">Bank Transfer</p>
+              </td>
+            </tr>
+          </mj-table>
+        </mj-column>
+        <mj-column>
+          <mj-table>
+            <tr>
+              <th style="padding: 0 15px 0 0; text-align:left; text-align:center ">No Pesanan</th>
+            </tr>
+            <tr>
+              <td>
+                <p style="color:#00998D; font-size:20px; text-align:center">Rp 310.000</p>
+              </td>
+            </tr>
+            <tr>
+              <th style="padding: 0 15px 0 0; text-align:left; text-align:center ">Waktu Pembayaran</th>
+            </tr>
+            <tr>
+              <td style="padding: 0 15px 0 0;">
+                <p style="color:#00998D; font-size:20px ; text-align:center ">Bank Transfer</p>
+              </td>
+            </tr>
+          </mj-table>
+        </mj-column>
+      </mj-group>
+    </mj-section>
+    <mj-hero>
+      <mj-button font-family="Helvetica" background-color="#00998D" color="white" align="center">
+        Cek Pesanan
+      </mj-button>
+      <mj-divider border-width="1px" border-style="solid" border-color="#00998D" />
+      <mj-text padding-bottom="0px">
+        <h3>Alamat Pengiriman</h3>
+      </mj-text>
+      <mj-text padding-top="0px" color="#00998D">
+        <h4> Jalan Professor Eyckman No.28 Pavilliun, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</h4>
+      </mj-text>
+      <mj-text padding-bottom="0px">
+        <h3>Detail Pesanan #123123123</h3>
+        <p style="color:gray">Kurir : JNE & Yes</p>
+      </mj-text>
+    </mj-hero>
+    <mj-section>
+      <mj-column>
+        <mj-table>
+          <tr>
+            <td>
+              <img width="50px" src="https://ik.imagekit.io/nwiq66cx3pvsy/confirm_email_2_proses_pesanan.png"></img>
+            </td>
+            <td>
+              <p style="color:#00998D">Product One</p>
+            </td>
+            <td>
+              <p>X1</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img width="50px" src="https://ik.imagekit.io/nwiq66cx3pvsy/confirm_email_2_proses_pesanan.png"></img>
+            </td>
+            <td>
+              <p style="color:#00998D">Product One</p>
+            </td>
+            <td>
+              <p>X1</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+        </mj-table>
+        <mj-divider border-width="1px" border-style="solid" border-color="#00998D" />
+      </mj-column>
+    </mj-section>
+    <mj-hero>
+      <mj-table line-height="5px" container-background-color="#2FC">
+        <tr>
+          <td>
+            <p>Total Harga Barang : </p>
+          </td>
+          <td>
+            <p>Rp 300.000</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Biaya Pengiriman : </p>
+          </td>
+          <td>
+            <p>Rp 300.000</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Jasa Bungkus : </p>
+          </td>
+          <td>
+            <p>Rp 300.000</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p style="color:red">Potongan Discount : </p>
+          </td>
+          <td>
+            <p style="color:red">Rp 300.000</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Grand Total : </p>
+          </td>
+          <td>
+            <p>Rp 300.000</p>
+          </td>
+        </tr>
+      </mj-table>
+        <mj-divider border-width="1px" border-style="solid" border-color="#00998D" />
+      <mj-text align="center">
+      		Jika Kamu Masih memiliki Pertanyaan Silahkan COntact Kami di hello@kadoqu.com
+      </mj-text>
+        <mj-text align="center" padding-top="0px">
+      		Atau Bisa Kontak GIdA di 0812181600
+      </mj-text>
+    </mj-hero>
+  </mj-body>
+</mjml>

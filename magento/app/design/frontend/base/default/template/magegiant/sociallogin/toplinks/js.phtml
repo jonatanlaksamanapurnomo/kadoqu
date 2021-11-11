@@ -1,0 +1,60 @@
+<script type="text/javascript">
+    //<![CDATA[
+    var social_config = {
+        html: <?php echo Mage::helper('core')->jsonEncode($this->getChildHtml('sociallogin.popup'));?>,
+<!--        url: "--><?php //echo $this->getUrl('sociallogin/index/index',array('_secure' => true));?><!--",-->
+        boxid: 'social_login',
+        fixed: false,
+        <?php echo $this->getPopupConfig('width')?'width:'.$this->getPopupConfig('width').',':''?>
+        <?php echo $this->getPopupConfig('height')?'height:'.$this->getPopupConfig('height').',':''?>
+        <?php echo $this->getPopupConfig('top')?'top:'.$this->getPopupConfig('top').',':''?>
+        <?php echo $this->getPopupConfig('left')?'left:'.$this->getPopupConfig('left').',':''?>
+        openjs: function () {
+            var options = {
+                email: $('magegiant-sociallogin-popup-email').value,
+                pass: $('magegiant-sociallogin-popup-pass').value,
+                login_url: "<?php echo $this->getUrl('sociallogin/popup/login',array('_secure' => true));?>",
+                send_pass_url: "<?php echo $this->getUrl('sociallogin/popup/sendPass',array('_secure' => true));?>",
+                create_url: "<?php echo $this->getUrl('sociallogin/popup/createAcc',array('_secure' => true));?>",
+            };
+            new LoginPopup(options);
+        },
+        animate: false
+    };
+    var socialLogin = function () {
+        TINY2.box.show(social_config);
+
+    }
+    document.observe('dom:loaded', function () {
+        /*find login link*/
+        if($$('.links').length){
+            $$('.links').first().childElements().each(function (el) {
+                if (el.down('a').href.indexOf('account/login/') != -1 || el.down('a').href.indexOf('wishlist') != -1) {
+                    var bt_login = el.down('a');
+                    if (bt_login) {
+                        bt_login.href = 'javascript:socialLogin();';
+                    }
+                }
+            });
+        }
+        $$('#header-account li').each(function (el) {
+            if (el.down('a').href.indexOf('account/login/') != -1 || el.down('a').href.indexOf('wishlist') != -1) {
+                var bt_login = el.down('a');
+                if (bt_login) {
+                    bt_login.href = 'javascript:socialLogin();';
+                }
+            }
+        });
+        /*end*/
+
+    });
+    //]]>
+</script>
+<?php $request = Mage::app()->getRequest() ?>
+<?php if ($request->getRouteName() == 'customer' && $request->getControllerName() == 'account' && $request->getActionName() == 'login'): ?>
+    <script>
+        //<![CDATA[
+        socialLogin();
+        //]]>
+    </script>
+<?php endif; ?>

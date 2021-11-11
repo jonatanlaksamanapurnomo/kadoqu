@@ -1,0 +1,139 @@
+.order-track-header {
+  background-color: #d1eff7;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.order-track-date-1,
+.order-track-date-2,
+.order-track-date-3 {
+  background-color: #eccb33;
+  font-size: 0.8rem;
+  padding-left: 0.5rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  letter-spacing: -1.2px;
+  font-weight: 700;
+}
+
+.order-track-date-4,
+.order-track-date-5 {
+  background-color: #59d823;
+  font-size: 0.8rem;
+  padding-left: 0.5rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  letter-spacing: -1.2px;
+  font-weight: 700;
+}
+
+.order-track-status-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.order-track-note {
+  font-size: 0.7rem;
+  font-weight: 200;
+  margin-top: -0.45rem;
+}
+
+.order-track-button {
+  width: 40%;
+
+  background-color: var(--green-1) !important;
+  color: white;
+  border: 0;
+  padding: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: large;
+  margin-bottom: 0.3rem;
+}
+
+.order-track-buttons {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.order-track-note a {
+  font-size: 0.7rem;
+  font-weight: 400;
+  margin-top: -0.45rem;
+  margin-left: 0.07rem;
+  color: var(--darkGreen);
+}
+
+.order-track-status-div {
+  margin-top: -0.35rem;
+  /* height: 2.5rem; */
+}
+
+.order-track-status {
+  color: var(--darkGreen);
+}
+
+.order-track-statuses {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.order-track-title {
+  font-size: 2.8rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.order-track-no-resi {
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+.order-track-stat {
+  padding-left: 2.5rem;
+  margin-top: 1rem;
+}
+
+.order-track-stat-resi {
+  padding-left: 2.5rem;
+  margin-top: -0.1rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .order-track-status-text {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .order-track-statuses {
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .order-track-no-resi {
+    font-weight: 300;
+    font-size: 0.95rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .order-track-buttons {
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.order-track-waybill {
+  border-left: 5px solid #dee2e6;
+}
+
+.order-track-manifest {
+  left: -0.5rem;
+}
+
+.order-track-manifest-circle {
+  color: #59d823;
+  text-shadow: 0 0 10px #59d823;
+}

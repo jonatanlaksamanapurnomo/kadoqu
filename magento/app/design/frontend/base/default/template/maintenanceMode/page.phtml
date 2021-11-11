@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]> <html lang="en" class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]>	<html lang="en" class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]>	<html lang="en" class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]>	<html lang="en" class="ie ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title><?php echo $this->getStaticBlockTitle(); ?></title>
+    <meta name="description" content="Site Under Maintenance">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->getFavicon(); ?>">
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,bold">
+    <link rel="stylesheet" type="text/css" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);?>js/maintenancemode/css/styles.css">
+</head>
+
+<body id="home">
+<div id="Header">
+    <div class="wrapper">
+        <h1><?php echo $this->getCurrentStoreName();?></h1>
+    </div>
+</div>
+<div id="Content" class="wrapper">
+    <?php if($this->getHelper()->hasCountdown()) : ?>
+        <div class="countdown styled"></div>
+    <?php endif; ?>
+
+    <?php echo $this->getChildHtml($this->getStaticPageIdentifier()); ?>
+</div>
+
+<div id="overlay"></div>
+
+<!--Scripts-->
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>maintenancemode/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>maintenancemode/js/Backstretch.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>maintenancemode/js/jquery.plugin.min.js"></script>
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>maintenancemode/js/jquery.countdown.min.js"></script>
+
+<?php //Zend_Debug::dump(Mage::getStoreConfig('general/locale/timezone')); exit;?>
+
+<script type="text/javascript">
+    $( function() {
+        $.backstretch('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>maintenancemode/images/image1.jpg');
+
+        <?php if($this->getHelper()->hasCountdown()) : ?>
+        var timeLeft = "<?php echo $this->getHelper()->getCountdownTime('upDateTime'); ?>";
+
+        $('.countdown.styled').countdown({
+            until: timeLeft,
+            layout: '<div>{dn}<span>{dl}</span></div><div>{hn}<span>{hl}</span></div><div>{mn}<span>{ml}</span></div><div>{sn}<span>{sl}</span></div>'
+        });
+        <?php endif; ?>
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+.pop-up-main-backdrop {
+  background-color: transparent !important;
+}
+
+.pop-up-logout-container {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  background-color: rgb(245, 245, 245);
+  border-radius: 0;
+}
+
+.pop-up-cart-container {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  background-color: rgba(245, 245, 245, 0.85);
+}
+
+.pop-up-cart-button {
+  width: 45%;
+}
+
+.pop-up-cart-header {
+  width: -webkit-max-content;
+  width: max-content;
+  margin: auto;
+}
+
+.pop-up-main-title {
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+.pop-up-main-title-2 {
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+
+.pop-up-main-subtitle {
+  font-size: 1em;
+  font-weight: 300;
+}
+
+.swal2-styled.kadoqu-primary-button {
+  padding: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .pop-up-main-title {
+    font-size: 1.875em;
+  }
+
+  .pop-up-main-subtitle {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .pop-up-main-backdrop {
+    background-color: rgba(0, 0, 0, 0.25) !important;
+  }
+  .pop-up-cart-container {
+    box-shadow: none;
+    background-color: white;
+  }
+  .pop-up-cart-button {
+    width: 90%;
+  }
+  .pop-up-cart-title {
+    font-size: 2em;
+  }
+  .pop-up-cart-header {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 552px) {
+  .pop-up-cart-title {
+    font-size: 1.4em;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .pop-up-cart-title {
+    font-size: 1.1em;
+  }
+}

@@ -1,0 +1,566 @@
+import React from "react";
+import { Query } from "react-apollo";
+import ChatBot, { Loading } from "react-simple-chatbot";
+import { ThemeProvider } from "styled-components";
+import gql from "graphql-tag";
+import { Row, Col, Image } from "react-bootstrap";
+import { myFirestore, myFirebase } from "../library/firebase";
+import IMAGES from "../data/images";
+import { AppString } from "../data/constants";
+import { getUserLogin } from "../utils/userChecker";
+import showTransformationsPhoto from "../library/ShowImageTransformation";
+import { rpFormat } from "../utils/currencyFormatter";
+
+import "./ChatBot.css";
+
+const theme = {
+  background: "#daece8",
+  fontFamily: "Gotham",
+  headerBgColor: "#059487",
+  headerFontColor: "#fff",
+  headerFontSize: "15px",
+  botBubbleColor: "#a1d1cc",
+  botFontColor: "#000",
+  userBubbleColor: "#fff",
+  userFontColor: "#000"
+};
+
+const QUERY_GET_PRODUCTS = gql`
+  query getProductsData(
+    $sortingField: String
+    $isAscending: Boolean
+    $filters: FiltersInput
+    $limit: Int
+    $offset: Int
+  ) {
+    getAvailableProducts(
+      sortingField: $sortingField
+      isAscending: $isAscending
+      filters: $filters
+      limit: $limit
+      offset: $offset
+    ) {
+      length
+      products {
+        id
+        name
+        slug
+        merchant
+        inStock
+        price
+        discountPrice
+        isFavorite
+        isPo
+        newToDate
+        merchantDiscountUntil
+        kadoquDiscountUntil
+        photos {
+          url
+        }
+      }
+    }
+  }
+`;
+
+const ProductItem = props => {
+  const {
+    slug,
+    photo,
+    name,
+    merchant,
+    price,
+    discountPrice
+    // isPo,
+    // newToDate,
+    // kadoquDiscountUntil,
+    // merchantDiscountUntil
+  } = props.details;
+  // const isSale =
+  //   (kadoquDiscountUntil || merchantDiscountUntil) &&
+  //   (new Date(kadoquDiscountUntil) > new Date() ||
+  //     new Date(merchantDiscountUntil) > new Date());
+
+  return (
+    <div
+      className="chatbot-product-box cursor-pointer"
+      onClick={() => {
+        props.history.push("/product/" + slug);
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }}
+    >
+      <div className="chatbot-product-image-container">
+        <img
+          className="chatbot-product-image"
+          src={showTransformationsPhoto(200, 200, photo)}
+          alt={name}
+        />
+      </div>
+      <div className="chatbot-product-description">
+        <div className="chatbot-product-merchant">{merchant}</div>
+        <div className="chatbot-product-title">{name}</div>
+        <div className="product-item-price">
+          <div className="product-price-container">
+            <div className="product-price">{rpFormat(price)}</div>
+            {discountPrice && <div className="product-price-strikethrough" />}
+          </div>
+          {discountPrice && (
+            <div className="product-price product-price-discount">
+              {rpFormat(discountPrice)}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ProductNotFoundNotice = props => (
+  <Row>
+    <Col xs={12} className="text-center">
+      <Image
+        className="w-50"
+        src={IMAGES["Error Page"]["product-not-found"]}
+        alt="Product not found"
+      />
+    </Col>
+    <Col xs={12} className="text-center">
+      <h3 className="kadoqu-primary-color font-weight-bold mb-0">
+        GIdA gak nemu barangnya
+      </h3>
+      <div className="font-weight-light">Coba pakai kata lain</div>
+    </Col>
+  </Row>
+);
+
+class Product extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      product: props.steps["Product-2"].value,
+      trigger: false,
+      slidingState: {
+        startX: 0,
+        currentScrollLeft: 0,
+        isDown: false
+      }
+    };
+  }
+
+  triggerNext = () => {
+    this.setState({ trigger: true }, () => {
+      this.props.triggerNextStep();
+    });
+  };
+
+  startSliding = e => {
+    e.preventDefault();
+    const slider = this.container;
+    slider.classList.add("active");
+    this.setState({
+      slidingState: Object.assign(this.state.slidingState, {
+        isDown: true,
+        startX: e.pageX,
+        currentScrollLeft: slider.scrollLeft
+      })
+    });
+  };
+
+  stopSliding = () => {
+    this.setState({
+      slidingState: Object.assign(this.state.slidingState, {
+        isDown: false
+      })
+    });
+    const slider = this.container;
+    slider.classList.remove("active");
+  };
+
+  onSliding = e => {
+    if (!this.state.slidingState.isDown) {
+      return;
+    }
+    const slider = this.container;
+    const walk = (e.pageX - this.state.slidingState.startX) * 1.4;
+    this.setState({}, () => {
+      slider.scrollLeft = this.state.slidingState.currentScrollLeft - walk;
+    });
+  };
+
+  render() {
+    const { product, trigger } = this.state;
+    const query = {
+      query: QUERY_GET_PRODUCTS,
+      variables: {
+        sortingField: "created_at",
+        isAscending: false,
+        filters: {
+          others: product
+        }
+      }
+    };
+
+    return (
+      <Query {...query}>
+        {({ loading, error, data }) => {
+          if (loading) return <Loading />;
+          if (error) return <p>{error.message || error}</p>;
+          const products = data.getAvailableProducts.products;
+          if (!trigger) this.triggerNext();
+
+          if (products.length === 0) return <ProductNotFoundNotice />;
+          return (
+            <div
+              ref={el => (this.container = el)}
+              className="chatbot-scrolling-wrapper"
+              onMouseDown={this.startSliding}
+              onMouseLeave={this.stopSliding}
+              onMouseUp={this.stopSliding}
+              onMouseMove={this.onSliding}
+            >
+              {products.map(product => (
+                <ProductItem
+                  details={{
+                    ...product,
+                    photo: product.photos[0] ? product.photos[0].url : ""
+                  }}
+                  history={this.props.history}
+                />
+              ))}
+            </div>
+          );
+        }}
+      </Query>
+    );
+  }
+}
+
+const user = getUserLogin();
+const config = {
+  floating: true,
+  headerTitle: "GIdA",
+  botAvatar: IMAGES["Photo Profile"][1],
+  userAvatar: user
+    ? IMAGES["Photo Profile"][user.photo]
+    : IMAGES["Photo Profile"][1]
+};
+
+// class Chat extends React.Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.state = {
+//       isLoading: false
+//     };
+
+//     this.listMessage = [];
+//     this.removeListener = null;
+//   }
+
+//   componentDidMount() {
+//     // For first render, it's not go through componentWillReceiveProps
+//     this.getListHistory();
+//   }
+
+//   componentWillUnmount() {
+//     if (this.removeListener) {
+//       this.removeListener();
+//     }
+//   }
+
+//   getListHistory = () => {
+//     if (this.removeListener) {
+//       this.removeListener();
+//     }
+
+//     this.listMessage.length = 0;
+//     this.setState({ isLoading: true });
+
+//     // Get history and listen new data added
+//     this.removeListener = myFirestore
+//       .collection(AppString.NODE_MESSAGES)
+//       .doc(user.data)
+//       .collection("messages")
+//       .where("timestamp", ">", new Date())
+//       .onSnapshot(
+//         snapshot => {
+//           snapshot.docChanges().forEach(change => {
+//             if (change.type === AppString.DOC_ADDED) {
+//               const data = change.doc.data();
+//               if (data.idTo === user.data) {
+//                 this.listMessage.push(data);
+//                 this.setState({ isLoading: false });
+//                 this.props.triggerNextStep();
+//               }
+//               // this.props.addStep({
+//               //   id: "Chat-1",
+//               //   message: change.doc.data().content
+//               // });
+//             }
+//           });
+//         },
+//         err => {
+//           // Toast.fire(err.toString());
+//         }
+//       );
+//   };
+
+//   render() {
+//     return (
+//       <div>
+//         {this.state.isLoading ? (
+//           <Loading />
+//         ) : (
+//           <div>
+//             {this.listMessage.map((item, index) => {
+//               return <div>{item.content}</div>;
+//             })}
+//           </div>
+//         )}
+//       </div>
+//     );
+//   }
+// }
+
+class Chat extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      // idx: 0,
+      content: "",
+      trigger: false
+    };
+  }
+
+  // componentWillMount() {
+  //   this.setState({ idx: this.props.listMessage.length });
+  // }
+
+  triggerNext = () => {
+    this.setState({ trigger: true }, () => {
+      this.props.triggerNextStep();
+    });
+  };
+
+  // componentWillReceiveProps() {
+  //   const { idx, trigger } = this.state;
+  //   const { listMessage } = this.props;
+  //   if (idx + 1 === listMessage.length) {
+  //     if (listMessage.length > 0) {
+  //       this.setState({ content: listMessage[idx].content }, () => {
+  //         if (!trigger) this.triggerNext();
+  //       });
+  //     }
+  //   }
+  // }
+
+  componentWillReceiveProps() {
+    const { trigger } = this.state;
+    if (!trigger) {
+      const { listMessage } = this.props;
+      if (listMessage.length > 0) {
+        this.setState(
+          { content: listMessage[listMessage.length - 1].content },
+          () => {
+            if (!trigger) this.triggerNext();
+          }
+        );
+      }
+    }
+  }
+
+  shouldComponentUpdate() {
+    const { trigger } = this.state;
+    return !trigger;
+  }
+
+  render() {
+    const { content } = this.state;
+    return content || <Loading />;
+  }
+}
+
+class SimpleForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: false
+    };
+
+    this.removeListener = null;
+    this.listMessage = [];
+  }
+
+  resetStep = () => {
+    this.setState({ steps: [] });
+  };
+
+  addStep = data => {
+    this.setState({ steps: [...this.state.steps, data] });
+  };
+
+  getListHistory = () => {
+    if (this.removeListener) {
+      this.removeListener();
+    }
+
+    this.listMessage.length = 0;
+    this.setState({ isLoading: true });
+
+    // Get history and listen new data added
+    this.removeListener = myFirestore
+      .collection(AppString.NODE_MESSAGES)
+      .doc(user.data)
+      .collection("messages")
+      .where("timestamp", ">", new Date())
+      .onSnapshot(
+        snapshot => {
+          snapshot.docChanges().forEach(change => {
+            if (change.type === AppString.DOC_ADDED) {
+              const data = change.doc.data();
+              if (data.idTo === user.data) {
+                this.listMessage.push(data);
+                this.setState({
+                  isLoading: false
+                });
+              }
+            }
+          });
+        },
+        err => {
+          // Toast.fire(err.toString());
+        }
+      );
+  };
+
+  onSendMessage = (content, type) => {
+    // if (this.state.isShowSticker && type === 2) {
+    //   this.setState({ isShowSticker: false });
+    // }
+
+    if (!content || content.trim() === "") {
+      return;
+    }
+
+    const dateNow = Date.now();
+    const timestamp = (~~(dateNow / 1000)).toString();
+
+    const itemMessage = {
+      idFrom: user.data,
+      idTo: "bfd0405d-6318-462b-b77b-542ea82aec23",
+      timestamp: myFirebase.firestore.Timestamp.fromMillis(dateNow),
+      content: content.trim(),
+      type: type
+    };
+
+    myFirestore
+      .collection(AppString.NODE_MESSAGES)
+      .doc(user.data)
+      .collection("messages")
+      .doc(timestamp)
+      .set(itemMessage)
+      .then(() => {})
+      .catch(err => {
+        // Toast.fire(err.toString());
+      });
+
+    myFirestore
+      .collection(AppString.NODE_USERS)
+      .doc(user.data)
+      .update({
+        updatedAt: myFirebase.firestore.Timestamp.fromMillis(dateNow),
+        newMessages: myFirebase.firestore.FieldValue.increment(1)
+      })
+      .then(() => {})
+      .catch(err => {
+        // Toast.fire(err.toString());
+      });
+  };
+
+  render() {
+    let steps = [
+      {
+        id: "1",
+        message:
+          (user ? `Hi, ${user.name}! ` : "") + "Selamat datang di Kadoqu!",
+        trigger: "Menu"
+      },
+      {
+        id: "Menu",
+        message: "Ada yang bisa GIdA bantu?",
+        trigger: "Menu-2"
+      },
+      {
+        id: "Menu-2",
+        options: [
+          { value: 1, label: "Cari Produk", trigger: "Product" },
+          { value: 2, label: "Customer Service", trigger: "CS" },
+          { value: 3, label: "Selesai", trigger: "End" }
+        ]
+      },
+      {
+        id: "Product",
+        message: "Produk apa yang ingin kamu cari?",
+        trigger: "Product-2"
+      },
+      {
+        id: "Product-2",
+        user: true,
+        trigger: "Product-3"
+      },
+      {
+        id: "Product-3",
+        message: "Hasil pencarian produk {previousValue}",
+        trigger: "Product-4"
+      },
+      {
+        id: "Product-4",
+        component: <Product history={this.props.history} />,
+        waitAction: true,
+        trigger: "Menu"
+      },
+      {
+        id: "CS",
+        message: "Apa yang ingin kamu tanyakan pada GIdA?",
+        trigger: ({ value, steps }) => {
+          this.getListHistory();
+          return "CS-2";
+        }
+      },
+      {
+        id: "CS-2",
+        user: true,
+        trigger: ({ value, steps }) => {
+          // console.log(value);
+          this.onSendMessage(value, 0);
+          return "Chat";
+        }
+      },
+      {
+        id: "Chat",
+        component: <Chat listMessage={this.listMessage} />,
+        asMessage: true,
+        waitAction: true,
+        trigger: ({ value, steps }) => {
+          return "CS-2";
+        }
+      },
+      {
+        id: "End",
+        message: "GIdA senang bisa membantu :)",
+        end: true
+      }
+    ];
+
+    return (
+      <ThemeProvider theme={theme}>
+        <ChatBot {...config} steps={steps} />
+      </ThemeProvider>
+    );
+  }
+}
+
+export default SimpleForm;

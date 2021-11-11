@@ -1,0 +1,99 @@
+.merchant-preview-title {
+  text-align: center;
+  font-size: 1.8vw;
+  font-weight: 500;
+  margin-bottom: 1.4vw;
+}
+
+.merchant-preview-carousel .carousel-item {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .merchant-preview-title {
+    font-size: 1em;
+  }
+  .merchant-preview-container {
+    margin-bottom: 9%;
+  }
+}
+
+.merchant-preview-content a {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.merchant-preview-item-container {
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+
+@media only screen and (min-width: 992px) {
+  .merchant-preview-item-container {
+    height: 130px;
+  }
+  .merchant-preview-content > * {
+    margin: 0 15px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .merchant-preview-item-container {
+    height: 75px;
+  }
+  .merchant-preview-content > * {
+    margin: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .merchant-preview-item-container {
+    height: 50px;
+  }
+  .merchant-preview-content > *:first-child {
+    margin-left: 15px;
+    margin-right: 5px;
+  }
+  .merchant-preview-content > *:last-child {
+    margin-left: 5px;
+    margin-right: 15px;
+  }
+  .merchant-preview-content > *:not(:first-child):not(:last-child) {
+    margin: 0 5px;
+  }
+}
+
+.merchant-preview-item-container img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Carousel custom animation */
+.active.carousel-item-left .merchant-preview-content > *:not(:first-child),
+.active.carousel-item-right .merchant-preview-content > *:not(:last-child) {
+  visibility: hidden;
+}
+
+.merchant-preview-carousel.carousel-5
+  .carousel-item-next:not(.carousel-item-left),
+.merchant-preview-carousel.carousel-5 .active.carousel-item-right {
+  transform: translateX(20%);
+}
+
+.merchant-preview-carousel.carousel-5
+  .carousel-item-prev:not(.carousel-item-right),
+.merchant-preview-carousel.carousel-5 .active.carousel-item-left {
+  transform: translateX(-20%);
+}
+.merchant-preview-carousel.carousel-4
+  .carousel-item-next:not(.carousel-item-left),
+.merchant-preview-carousel.carousel-4 .active.carousel-item-right {
+  transform: translateX(25%);
+}
+
+.merchant-preview-carousel.carousel-4
+  .carousel-item-prev:not(.carousel-item-right),
+.merchant-preview-carousel.carousel-4 .active.carousel-item-left {
+  transform: translateX(-25%);
+}

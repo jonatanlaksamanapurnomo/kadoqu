@@ -1,0 +1,247 @@
+.CompanyCelebration-title {
+  font-size: 3.8vw !important;
+  text-decoration: none !important;
+  margin-top: 35%;
+  margin-left: 20%;
+  margin-bottom: 0;
+}
+.CompanyCelebration-subtitle {
+  font-size: 1.5vw;
+  text-decoration: none !important;
+  margin-left: 20%;
+  color: var(--darkGreen);
+  width: 100%;
+}
+.CompanyCelebration-subtitlesecond {
+  font-size: 1.4vw;
+  text-decoration: none !important;
+  font-weight: 300;
+  margin-left: 20%;
+  width: 100%;
+}
+.CompanyCelebration-image {
+  width: 140%;
+  margin-top: 30%;
+  margin-left: 0%;
+  margin-bottom: 20%;
+}
+.CompanyCelebration-package {
+  margin-top: 20%;
+  width: 100%;
+  background: var(--lightGreen);
+  margin: 0 !important;
+  height: 100%;
+}
+.CompanyCelebration-package-premium {
+  margin-top: 20%;
+  width: 100%;
+  background: var(--cream-1);
+  margin: 0 !important;
+  height: 100%;
+}
+.Celebration-menu,
+.Celebration-menu:hover {
+  font-size: 2.5vw !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  margin-left: 1vh;
+  margin-bottom: 2vh;
+  padding-top: 2vh;
+  outline: none !important;
+  background: var(--lightGreen);
+  width: 50%;
+  text-align: center;
+  border: none;
+  color: black;
+}
+.Celebration-menu-mob,
+.Celebration-menu-mob:hover {
+  font-size: 4vw !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  margin-left: 0vh;
+  margin-bottom: 1vh;
+   outline: none !important;
+  padding-top: 2vh;
+  background: var(--lightGreen);
+  width: 48.5%;
+  text-align: center;
+  border: none;
+  color: black;
+}
+.Celebration-menu-premium-mob,
+.Celebration-menu-premium-mob:hover {
+  font-size: 4vw !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  margin-left: 0.01vh;
+  padding-top: 1.8vh;
+  margin-bottom: 2vh;
+  outline: none !important;
+  width: 51%;
+  text-align: center;
+  background: var(--cream-1);
+  border: none;
+  color: black;
+}
+.Celebration-menu-premium,
+.Celebration-menu-premium:hover,
+.Celebration-menu-premium:active {
+  font-size: 2.2vw !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  outline: none !important;
+  margin-left: 0.01vh;
+  margin-bottom: 2vh;
+  padding-top: 2vh;
+  width: 49%;
+  text-align: center;
+  background: var(--cream-1);
+  border: none;
+  color: black;
+}
+.Celebration-menu-premium-mob,
+.Celebration-menu-premium-mob:hover {
+  font-size: 4w !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  margin-left: 0.6vh;
+  padding-top: 1.8vh;
+  margin-bottom: 2vh;
+  outline: none !important;
+  width: 50%;
+  text-align: center;
+  background: var(--cream-1);
+  border: none;
+  color: black;
+}
+.Celebration-menu-premium,
+.Celebration-menu-premium:hover,
+.Celebration-menu-premium:active {
+  font-size: 2.2vw !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  margin-left: 0.01vh;
+  margin-bottom: 2vh;
+  padding-top: 2vh;
+  width: 49%;
+  outline: none !important;
+  text-align: center;
+  background: var(--cream-1);
+  border: none;
+  color: black;
+}
+.Celebration-menu-dua {
+  font-size: 3.1vw !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+.CelebrationPackage {
+  width: 100%;
+}
+.Celebration-menu-card {
+  margin-left: 15%;
+}
+.Celebration-card {
+  margin-right: 8vh;
+  margin-bottom: 10vh;
+  margin-left: 8vh;
+}
+.CompanyCelebration-Batas {
+  margin-bottom: 20vh;
+}
+.CompanyCelebration-contactus {
+  font-weight: 100;
+  text-align: center;
+  font-size: 1.3vw;
+}
+.CompanyCelebration-contactus-button {
+  text-align: center;
+  width: 20vh;
+  margin-left: 45%;
+  margin-top: 3%;
+  margin-bottom: 10vh;
+  height: 5vh;
+}
+.CompanyCelebration-contactus-button-mob {
+  text-align: center;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 3%;
+  margin-bottom: 10vh;
+  height: 5vh;
+  font-size: 2vh;
+}
+@media screen and (max-width: 1284px) {
+  .Celebration-card {
+    margin-right: 10vh;
+    margin-bottom: 10vh;
+    margin-left: 5vh;
+  }
+  .Celebration-menu-premium {
+    font-size: 2.2vw !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    margin-left: 0.01vh;
+    margin-bottom: 5vh;
+    padding-top: 2vh;
+    width: 49%;
+    text-align: center;
+    background: var(--cream-1);
+  }
+}
+.CompanyCelebration-contactus-mob {
+  font-weight: 100;
+  text-align: center;
+  font-size: 3vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+.Celebration-card-mob {
+  margin-bottom: 10vw;
+  margin-right: 20px;
+}
+.Celebration-card-mob-first {
+  margin-bottom: 10vw;
+  margin-left: 60px;
+}
+.alice-carousel__stage-item {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+  width: 400px !important;
+}
+.CompanyCelebration-title-mob {
+  font-size: 5.5vw !important;
+  text-decoration: none !important;
+  margin-top: 20%;
+  margin-left: 25%;
+  margin-bottom: 0;
+}
+.CompanyCelebration-subtitle-mob {
+  font-size: 2.7vw;
+  text-decoration: none !important;
+  margin-left: 25%;
+  color: var(--darkGreen);
+  width: 80%;
+}
+.CompanyCelebration-subtitlesecond-mob {
+  font-size: 2.5vw;
+  text-decoration: none !important;
+  font-weight: 300;
+  margin-left: 25%;
+  width: 70%;
+  margin-bottom: 1.5vh;
+  padding-right: 2vh;
+}
+.CompanyCelebration-image-mob {
+  width: 160%;
+  margin-top: 30%;
+  margin-left: 5%;
+  margin-bottom: 40%;
+}
+
+@media (max-width: 991px) {
+  .CompanyCelebration-Batas {
+    margin-bottom: 10vh;
+  }
+}

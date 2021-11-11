@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <HM_Bestseller>
+            <version>1.0.0</version>
+        </HM_Bestseller>
+    </modules>
+
+	<frontend> 
+        <layout>
+            <updates>
+                <bestseller>
+                    <file>hm_bestseller.xml</file>
+                </bestseller>
+            </updates>
+        </layout>
+	</frontend>
+	
+	<global>
+		<models>
+			<bestseller>
+				<class>HM_Bestseller_Model</class>
+			</bestseller>
+		</models>
+		
+		
+        <blocks>
+            <bestseller>
+                <class>HM_Bestseller_Block</class>
+            </bestseller>
+        </blocks>		
+		
+	</global>
+</config>

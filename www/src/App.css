@@ -1,0 +1,489 @@
+/*note i copied gisel css all credit belongs to  her :p thanks btw such a great work -jo*/
+body {
+  font-family: "Gotham";
+  min-height: 100vh;
+  padding-right: 0 !important;
+  background-color: #d1eff7;
+  background-image: -webkit-linear-gradient(
+    172deg,
+    #d1eff7 0%,
+    #d1eff7 50%,
+    #f9f9f9 50%,
+    #f9f9f9 50%
+  );
+}
+
+body.waiting {
+  cursor: wait !important;
+}
+
+/*if you need color variable to make your work easy */
+:root {
+  /* primary color */
+  --green-1: #059487;
+  /*it belongs on background color */
+  --lightBlue: #d1eff7;
+  /*it belongs on footer background*/
+  --lightGreen: #b8f0e4;
+  /*it belongs on footer text colors*/
+  --darkGreen: #00998d;
+  /*it belongs on shopping cart*/
+  --sideYellow: #ebff7a;
+  --sideYellow-2: #eaf769;
+  --turquoise-1: #83e4d1;
+  --turquoise-2: #82dbd0;
+  --red-3: #8b0000;
+  /*it belongs on shopping cart*/
+  --blue-2: #97cee3;
+  /*it belongs on shopping cart*/
+  --orange-1: #ffcf69;
+  /*it belongs on shopping cart*/
+  --blue-3: #83e4d1;
+  /*it belongs on address card*/
+  --grey-1: #6d6d6d;
+  --grey-2: #bbbbbb;
+  /*it belongs on  event remainder*/
+  --pink-1: #efb1ee;
+  --green-2: #9af690;
+  --grey-3: #a0a0a0;
+  --blue-2: #0194b6;
+
+  --red: #cd002e;
+  /*flash message*/
+  --cream-1: #ffde9b;
+  --red-2: #ab2331;
+  --green-3: #92ffa6;
+  /*profile sider header*/
+  --blue-4: #a4dbef;
+  --grey-3: #f1f1f1;
+  /*profile buton color*/
+  --grey-4: #83a29d;
+  /* it belongs to wrapping lab */
+  --mint-1: #dae8e8;
+  --grey-6: #e0dde6;
+  /* it belongs to product detail */
+  --grey-4: #c8c7c8;
+  --yellow-1: #eefe87;
+  /* it belongs to About Us Background   */
+  --grey-5: #efefef;
+}
+
+.stop-scrolling {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.w-45 {
+  width: 45%;
+}
+
+.w-95 {
+  width: 95%;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
+.kadoqu-primary-color {
+  color: var(--darkGreen);
+}
+
+.grayscale {
+  filter: grayscale();
+}
+
+.line-height-initial {
+  line-height: initial;
+}
+
+.justify-content-space-evenly {
+  justify-content: space-evenly;
+}
+
+.bg-kadoqu-primary {
+  background-color: #d1eff7;
+}
+
+.bg-kadoqu-secondary {
+  background-color: #f9f9f9;
+}
+
+.kadoqu-primary-button {
+  background-color: var(--green-1) !important;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14.3pt;
+  font-weight: 500;
+  height: 42px;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 0 1rem;
+}
+
+.kadoqu-primary-button:hover {
+  background-color: #2fc1a5 !important;
+}
+
+.kadoqu-primary-button:active {
+  background-color: #00685b !important;
+  border-color: none;
+}
+
+.kadoqu-danger-button {
+  background-color: #b5313e !important;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14.3pt;
+  font-weight: 500;
+  border: none;
+  height: 42px;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 0 1rem;
+}
+
+.kadoqu-danger-button:hover {
+  background-color: #d1506f !important;
+}
+
+.kadoqu-danger-button:active {
+  background-color: #962031 !important;
+  border-color: none;
+}
+
+.kadoqu-grey-button {
+  background-color: var(--grey-2) !important;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14.3pt;
+  font-weight: 500;
+  border: none;
+  height: 42px;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 0 1rem;
+}
+
+.kadoqu-grey-button:hover {
+  background-color: var(--grey-1) !important;
+}
+
+.kadoqu-grey-button:active {
+  background-color: var(--grey-1) !important;
+  border-color: initial !important;
+}
+
+.kadoqu-secondary-button {
+  background-color: var(--green-2) !important;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14.3pt;
+  font-weight: 500;
+  height: 42px;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 0 1rem;
+}
+
+.kadoqu-secondary-button:hover {
+  background-color: #b1f7a9 !important;
+}
+
+.kadoqu-secondary-button:active {
+  background-color: #5bb152 !important;
+  border-color: none;
+}
+
+.kadoqu-primary-button.long,
+.kadoqu-danger-button.long,
+.kadoqu-grey-button.long,
+.kadoqu-secondary-button.long {
+  width: 265px;
+  padding: 0;
+}
+
+.kadoqu-primary-button.short,
+.kadoqu-danger-button.short,
+.kadoqu-grey-button.short,
+.kadoqu-secondary-button.short {
+  width: 165px;
+}
+
+.kadoqu-primary-button:focus,
+.kadoqu-danger-button:focus,
+.kadoqu-grey-button:focus,
+.kadoqu-secondary-button:focus {
+  border: double;
+}
+
+.kadoqu-primary-button:disabled,
+.kadoqu-danger-button:disabled,
+.kadoqu-secondary-button:disabled {
+  background-color: var(--grey-1) !important;
+  cursor: not-allowed !important;
+  opacity: initial;
+}
+
+@media (max-width: 768px) {
+  .kadoqu-primary-button,
+  .kadoqu-danger-button,
+  .kadoqu-grey-button,
+  .kadoqu-secondary-button {
+    height: 24px;
+    font-size: 11pt;
+  }
+  .kadoqu-primary-button.long,
+  .kadoqu-danger-button.long,
+  .kadoqu-grey-button.long,
+  .kadoqu-secondary-button.long {
+    width: 170px;
+  }
+  .kadoqu-primary-button.short,
+  .kadoqu-danger-button.short,
+  .kadoqu-grey-button.short,
+  .kadoqu-secondary-button.short {
+    width: unset;
+  }
+}
+
+.kadoqu-image-button:hover {
+  opacity: 0.8;
+}
+
+.kadoqu-image-button:active {
+  filter: brightness(0.9);
+  opacity: 1;
+}
+
+.kadoqu-image-button:focus {
+  border: double var(--darkGreen);
+}
+
+.kadoqu-primary-button-green {
+  background-color: var(--green-1) !important;
+  color: white;
+  border: 0;
+  padding: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: larger;
+}
+.kadoqu-primary-button-grey {
+  background-color: var(--grey-1) !important;
+  color: white;
+  border: 0;
+  padding: 4px;
+  border-radius: 5px;
+  cursor: not-allowed;
+  font-size: larger;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(./assets/fonts/GOTHAM-LIGHT.woff) format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(assets/fonts/GOTHAM-LIGHTITALIC.woff) format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(assets/fonts/GOTHAM-MEDIUM.woff) format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(assets/fonts/GOTHAM-MEDIUMITALIC.woff) format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(assets/fonts/GOTHAM-BOLD.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url(assets/fonts/GOTHAM-BOLDITALIC.woff) format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+.kadoqu-page-title {
+  color: black;
+  text-decoration: underline;
+  font-weight: bolder;
+  font-size: 40pt;
+  -webkit-text-underline-position: under;
+  -ms-text-underline-position: below;
+  text-underline-position: under;
+}
+
+img.washed-white {
+  filter: brightness(0) invert(1);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default !important;
+}
+
+.cursor-grab {
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.kadoqu-box-shadow {
+  box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.2);
+}
+
+.kadoqu-radio-button [type="radio"]:checked,
+.kadoqu-radio-button [type="radio"]:not(:checked) {
+  display: none;
+}
+
+.kadoqu-radio-button [type="radio"]:checked + label,
+.kadoqu-radio-button [type="radio"]:not(:checked) + label {
+  position: relative;
+  padding-left: 10px;
+  cursor: pointer;
+  line-height: 20px;
+}
+
+.kadoqu-radio-button [type="radio"]:disabled + label {
+  cursor: default !important;
+}
+
+.kadoqu-radio-button [type="radio"]:checked + label:before,
+.kadoqu-radio-button [type="radio"]:not(:checked) + label:before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid black;
+  border-radius: 100%;
+  background: transparent;
+}
+
+.kadoqu-radio-button [type="radio"]:disabled + label:before {
+  border-color: #6c757d !important;
+}
+
+.kadoqu-radio-button [type="radio"]:checked + label:after,
+.kadoqu-radio-button [type="radio"]:not(:checked) + label:after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--darkGreen);
+  position: absolute;
+  top: 3px;
+  left: -17px;
+  border-radius: 100%;
+  -webkit-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+.kadoqu-radio-button [type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+.kadoqu-radio-button [type="radio"]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.kadoqu-checkbox-button
+  .custom-control-input:checked
+  ~ .custom-control-label::before {
+  background-color: var(--darkGreen);
+  border-color: var(--darkGreen);
+}
+
+.kadoqu-checkbox-button input,
+.kadoqu-checkbox-button label {
+  cursor: pointer;
+  line-height: 1.7;
+}
+
+.modal-with-gida {
+  width: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal-with-gida .modal-content {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 0;
+  box-shadow: 3px 3px 25px #757575;
+}
+
+.modal-with-gida .modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.modal-with-gida img {
+  width: 15%;
+}
+
+.modal-with-gida-buttons-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.modal-with-gida-buttons-container button {
+  width: 40%;
+}
+
+.fa-star.favorite-star {
+  color: #c8c7c8;
+  cursor: pointer;
+}
+
+.fa-star.favorite-star.active {
+  color: #eefe87;
+}
+
+.empty-banner {
+  height: 20vw;
+  color: var(--grey-4);
+}

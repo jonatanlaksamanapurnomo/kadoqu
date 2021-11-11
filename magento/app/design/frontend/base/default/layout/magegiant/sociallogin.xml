@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MageGiant
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MageGiant.com license that is
+ * available through the world-wide-web at this URL:
+ * http://magegiant.com/license-agreement/
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    MageGiant
+ * @package     MageGiant_SocialLogin
+ * @copyright   Copyright (c) 2014 MageGiant (http://magegiant.com/)
+ * @license     http://magegiant.com/license-agreement/
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addJs">
+                <script>magegiant/sociallogin/sociallogin.js</script>
+            </action>
+            <action method="addJs">
+                <script>magegiant/tinybox2/tinybox.js</script>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/magegiant/sociallogin/style.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/magegiant/sociallogin/grid-magegiant.css</stylesheet>
+            </action>
+            <action method="addCss">
+                <stylesheet>css/magegiant/sociallogin/tinybox2/style.css</stylesheet>
+            </action>
+            <reference name="head">
+                <block type="sociallogin/sociallogin" name="sociallogin.css" template="magegiant/sociallogin/css.phtml"/>
+            </reference>
+        </reference>
+        <reference name="before_body_end">
+            <block type="sociallogin/js" name="sociallogin.js" template="magegiant/sociallogin/toplinks/js.phtml">
+                <block type="sociallogin/abstract" name="sociallogin.popup" template="magegiant/sociallogin/sociallogin.phtml">
+                    <block type="sociallogin/sociallogin" name="login.popup" template="magegiant/sociallogin/login.phtml"/>
+                    <block type="core/text_list" name="extra.content"/>
+                </block>
+            </block>
+        </reference>
+    </default>
+    <sociallogin_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/popup.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="sociallogin/abstract" name="sociallogin_popup" template="magegiant/sociallogin/sociallogin.phtml">
+                <block type="sociallogin/sociallogin" name="login.popup" template="magegiant/sociallogin/login.phtml"/>
+                <block type="core/text_list" name="extra.content"/>
+            </block>
+        </reference>
+    </sociallogin_index_index>
+    <sociallogin_fblogin_callback>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/popup.phtml</template>
+            </action>
+        </reference>
+    </sociallogin_fblogin_callback>
+    <gglogin_index_callback>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/popup.phtml</template>
+            </action>
+        </reference>
+    </gglogin_index_callback>
+    <yhlogin_index_callback>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/popup.phtml</template>
+            </action>
+        </reference>
+    </yhlogin_index_callback>
+    <twlogin_index_callback>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/popup.phtml</template>
+            </action>
+        </reference>
+    </twlogin_index_callback>
+    <catalog_category_default>
+        <reference name="before_body_end">
+            <block type="sociallogin/sociallogin" name="social.power" template="magegiant/sociallogin/footer.phtml"/>
+        </reference>
+    </catalog_category_default>
+
+</layout>

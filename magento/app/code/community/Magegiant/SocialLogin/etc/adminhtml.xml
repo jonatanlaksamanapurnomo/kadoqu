@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Magegiant
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the magegiant.com license that is
+* available through the world-wide-web at this URL:
+* http://magegiant.com/license-agreement/
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category    Magegiant
+* @package     Magegiant_SocialLogin
+* @copyright   Copyright (c) 2014 Magegiant (http://magegiant.com/)
+* @license     http://magegiant.com/license-agreement/
+*/
+-->
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <sociallogin translate="title">
+                                        <title>Social Login</title>
+                                        <sort_order>50</sort_order>
+                                    </sociallogin>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,292 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+
+    $plg_options_list = array(
+        'image_width'          => Mage::getStoreConfig('productlistgallery/list/image_width', Mage::app()->getStore()),
+        'image_height'         => Mage::getStoreConfig('productlistgallery/list/image_height', Mage::app()->getStore()),
+        'thumbs_active'        => Mage::getStoreConfig('productlistgallery/list/active', Mage::app()->getStore()),
+        'thumb_size_w'           => Mage::getStoreConfig('productlistgallery/list/thumb_size_w', Mage::app()->getStore()),
+        'thumb_size_h'           => Mage::getStoreConfig('productlistgallery/list/thumb_size_h', Mage::app()->getStore()),
+    );
+
+    $plg_options_grid = array(
+        'image_width'          => Mage::getStoreConfig('productlistgallery/grid/image_width', Mage::app()->getStore()),
+        'image_height'         => Mage::getStoreConfig('productlistgallery/grid/image_height', Mage::app()->getStore()),
+        'thumbs_active'        => Mage::getStoreConfig('productlistgallery/grid/active', Mage::app()->getStore()),
+        'thumb_size_w'           => Mage::getStoreConfig('productlistgallery/grid/thumb_size_w', Mage::app()->getStore()),
+        'thumb_size_h'           => Mage::getStoreConfig('productlistgallery/grid/thumb_size_h', Mage::app()->getStore()),
+        'img_hover_active'        => Mage::getStoreConfig('productlistgallery/grid/img_hover_active', Mage::app()->getStore()),
+    );   
+
+
+    $configurable_swatches = array(
+        'in_listing'            => Mage::getStoreConfig('configswatches/general/product_list_attribute', Mage::app()->getStore()),
+    );
+
+?>
+
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+    <div class="category-products">
+    <?php echo $this->getToolbarHtml() ?>
+    <?php // List mode ?>
+    <?php if($this->getMode()!='grid'): ?>
+    <?php $_iterator = 0; ?>
+    <ul class="products-list" id="products-list">
+    <?php foreach ($_productCollection as $_product): ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>" itemscope itemtype="http://schema.org/product">
+            <?php // Product Image ?>            
+
+            <div class="product-image-container">
+
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image" itemprop="url">
+                    <img id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($plg_options_list['image_width'], $plg_options_list['image_height']); ?>" width="<?php echo $plg_options_list['image_width']; ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
+                </a>
+
+                <?php 
+                if ( !sizeof($_product->getData('list_swatch_attr_values')) ) {
+                    if ($plg_options_list['thumbs_active']) { ?>                
+                        <ul class="product-thumbs">
+                            <?php 
+                            $product_id = $_product->getId();               
+                            $list_product = Mage::getModel('catalog/product')->load($product_id);
+                            $count_thumbs = 1;
+                            foreach ($list_product->getMediaGalleryImages() as $image) { 
+                                if($count_thumbs <= 3){
+                                ?>
+                                <li class="product-thumb">
+                                    <a href="<?php echo $this->helper('catalog/image')->init($_product, 'small_image', $image->getFile())->resize($plg_options_list['image_width']); ?>">
+                                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->resize($plg_options_list['image_width'], $plg_options_list['image_height']); ?>" width="<?php echo $plg_options_list['thumb_size_w']; ?>" height="<?php echo $plg_options_list['thumb_size_h']; ?>" alt="" />
+                                    </a>
+                                </li>
+                            <?php } 
+                                  $count_thumbs++;
+                                }
+                            ?>
+                        </ul>
+                    <?php } 
+                    }
+                ?>
+                
+            </div>
+            
+            <?php // Product description ?>
+            <div class="product-shop">
+                <div class="f-fix">
+                    <div class="product-primary">
+                        <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                        <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>" itemprop="name"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+                        <?php if($_product->getRatingSummary()): ?>
+                            <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                        <?php endif; ?>
+                        <?php
+                            // Provides extra blocks on which to hang some features for products in the list
+                            // Features providing UI elements targeting this block will display directly below the product name
+                            if ($this->getChild('name.after')) {
+                                $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
+                                foreach ($_nameAfterChildren as $_nameAfterChildName) {
+                                    $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
+                                    $_nameAfterChild->setProduct($_product);
+                                    echo $_nameAfterChild->toHtml();
+                                }
+                            }
+                        ?>
+                        <div class="desc std">
+                            <div itemprop="description"><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?></div>
+                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+                        </div>
+                    </div>
+                    <div class="product-secondary">
+                        <?php echo $this->getPriceHtml($_product, true) ?> 
+                        <?php if($_product->isSaleable()): ?>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                        <ul class="add-to-links">
+                            <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                <li><a title="<?php echo $this->__('Add to Wishlist') ?>" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist tooltips"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                            <?php endif; ?>
+                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                <li><span class="separator">|</span> <a title="<?php echo $this->__('Add to Compare') ?>" href="<?php echo $_compareUrl ?>" class="link-compare tooltips"><?php echo $this->__('Add to Compare') ?></a></li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
+            <div class="label-product">             
+                <?php if($_product->getData('new')){echo '<span class="new">'.$this->__('New').'</span>';  }?>
+                <?php if($_product->getData('sale')){echo '<span class="sale">'.$this->__('Sale').'</span>';  }?>
+            </div>
+
+        </li>
+    <?php endforeach; ?>
+    </ul>
+    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
+
+    <?php else: ?>
+
+    <?php // Grid Mode ?>
+    <?php $_collectionSize = $_productCollection->count() ?>
+    <?php $_columnCount = $this->getColumnCount(); ?>
+    <?php $i=0; foreach ($_productCollection as $_product): ?>
+        <?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid row">
+        <?php endif ?>
+            <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?> col-xs-12 col-sm-4" itemscope itemtype="http://schema.org/product">
+                <?php $_product_1 = Mage::getModel('catalog/product')->load($_product->getId()); ?>
+                <div class="wrapper-hover">
+                    <div class="product-image-container">
+
+                        <div class="collection-img">
+                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image" itemprop="url">
+                                <img id="product-collection-image-<?php echo $_product->getId(); ?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($plg_options_grid['image_width'], $plg_options_grid['image_height']); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
+
+                                <?php if ($plg_options_grid['img_hover_active']): ?>
+                                    <?php $img_true = $_product_1->getThumbnail_hover(); if(!isset($img_true) || $img_true == 'no_selection'): ?>
+                                        <?php else: ?>
+                                            <?php echo $this->__('<img class="thumbnail-hover" alt="" src="%s"/>',$this->helper('catalog/image')->init($_product_1, 'thumbnail_hover')->resize($plg_options_grid['image_width'], $plg_options_grid['image_height'])); ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
+                            </a>
+                            <ul class="add-to-links">
+                                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                    <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                                <?php endif; ?>
+                                <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                    <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+
+                        <?php 
+                            if ( !sizeof($_product->getData('list_swatch_attr_values')) ) {
+                                if ($plg_options_grid['thumbs_active']) { ?>                
+                                    <ul class="product-thumbs">
+                                        <?php 
+                                        $product_id = $_product->getId();               
+                                        $list_product = Mage::getModel('catalog/product')->load($product_id);
+                                        $count_thumbs = 1;
+                                        foreach ($list_product->getMediaGalleryImages() as $image) { 
+                                            if($count_thumbs <= 4){
+                                        ?>
+                                            <li class="product-thumb">
+                                                <a href="<?php echo $this->helper('catalog/image')->init($_product, 'small_image', $image->getFile())->resize($plg_options_grid['image_width']); ?>">
+                                                   <img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail', $image->getFile())->resize($plg_options_grid['image_width'], $plg_options_grid['image_height']); ?>" width="<?php echo $plg_options_grid['thumb_size_w']; ?>" height="<?php echo $plg_options_grid['thumb_size_h']; ?>" alt="" />
+                                                </a>
+                                            </li>
+
+                                        <?php } 
+                                            $count_thumbs++;
+                                            }?>
+                                    </ul>
+                            <?php } 
+                             }
+                        ?>
+                    </div>
+
+                   <div class="product-info">
+                        <?php
+                        // Provides extra bloc->keepFrame(false)s on which to hang some features for products in the list
+                        // Features providing UI elements targeting this block will display directly below the product name
+                        if ($this->getChild('name.after')) {
+                            $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
+                            foreach ($_nameAfterChildren as $_nameAfterChildName) {
+                                $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
+                                $_nameAfterChild->setProduct($_product);
+                                
+                                echo $_nameAfterChild->toHtml();
+                            }
+                        }
+                        ?>
+                        <?php echo $this->getPriceHtml($_product, true) ?>
+                       <h2 class="product-name">
+                           <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>">
+                               <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                           </a>
+                       </h2>
+
+                        <div class="wrapper-hover-hiden">
+                            <?php if($_product->getRatingSummary()): ?>
+                            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                            <?php endif; ?>
+                            <div class="actions">
+                                <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                                    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                                <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                                    <a title="<?php echo $this->__('View Details') ?>" class="button btn-details" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                                <?php else: ?>
+                                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="label-product">             
+                        <?php if($_product_1->getData('new')){echo '<span class="new">'.$this->__('New').'</span>';  }?>
+                        <?php if($_product_1->getData('sale')){echo '<span class="sale">'.$this->__('Sale').'</span>';  }?>
+                    </div>
+                </div>
+            </li>
+        <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+        <?php endif ?>
+        <?php endforeach ?>
+        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+    <?php endif; ?>
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+</div>
+<?php endif; ?>
+
+<?php
+// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+if ($this->getChild('after')) {
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach ($_afterChildren as $_afterChildName) {
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        //set product collection on after blocks
+        $_afterChild->setProductCollection($_productCollection);
+        echo $_afterChild->toHtml();
+    }
+}
+?>

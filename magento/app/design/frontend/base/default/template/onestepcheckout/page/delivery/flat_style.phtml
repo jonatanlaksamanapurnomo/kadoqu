@@ -1,0 +1,35 @@
+<li class="delivery">
+    <div class="delivery_time_date">
+        <label for="delivery_date"><?php echo $this->__('Select a date') ?>
+            : </label>
+        <p class="datetime-delivery">
+            <input readonly="readonly" id="delivery_date" type="text" size="7"
+                   style="background: none repeat scroll 0 center rgba(0, 0, 0, 0); border: medium none; box-shadow: none; cursor: default; font-weight: bold;"
+                   value="<?php echo date('m.d.Y') ?>"
+                   name="delivery[onestepcheckout-date]"/>
+            <img src="<?php echo Mage::getBaseUrl('skin') ?>frontend/base/default/images/onestepcheckout/flatnew/calendar.png"
+                 alt="dateinput" class="v-middle" id="delivery_date_trig"
+                 title="dateinput" width="21" height="21"/>
+        </p>
+        <select name="delivery[onestepcheckout-time]" style="margin-left:6px;">
+            <?php for ($i = 0; $i <= 23; $i++): if (!$this->isEnableHour($i)) continue; ?>
+                <option value="<?php echo str_pad($i, 2, '0', STR_PAD_LEFT) ?>:00"><?php echo str_pad($i, 2, '0', STR_PAD_LEFT) ?>
+                    :00
+                </option>
+            <?php endfor; ?>
+        </select>
+    </div>
+    <?php if ($this->enableDeliverySecurityCode()): ?>
+        <div class="clear"></div>
+        <div class="delivery-sercurity-box"
+             style="padding: 0px 4%;margin-bottom:10px">
+            <div class="input-box ">
+                <label class="label"
+                       for="delivery_security_code"><?php echo $this->__('Security access code (Buildings/gated communities)'); ?></label>
+                <input id="delivery_security_code" class="input-text"
+                       type="text" size="25" name="delivery_security_code"/>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php echo $this->getChildHtml('onestepcheckout.calendar') ?>
+</li>

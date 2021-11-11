@@ -1,0 +1,49 @@
+.start-page-margin {
+  padding-top: 15vh;
+}
+
+.start-page-title {
+  font-weight: 900;
+  font-size: 4em;
+  color: white;
+}
+
+.start-page-button {
+  font-size: 2.3em;
+  font-weight: 400;
+  padding-right: 4vw;
+  padding-left: 4vw;
+}
+
+.start-page-image-container {
+  height: 40vh;
+  width: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .start-page-margin {
+    padding-top: 23vh;
+  }
+
+  .start-page-title {
+    font-weight: 900;
+    font-size: 2em;
+    color: white;
+  }
+
+  .start-page-button {
+    font-size: 1.5em;
+    font-weight: 400;
+    padding-right: 4vw;
+    padding-left: 4vw;
+  }
+
+  .start-page-image-container {
+    height: 25vh;
+    width: auto;
+  }
+}
+
+.start-page-mama-gida-text {
+  color: #00978c;
+}

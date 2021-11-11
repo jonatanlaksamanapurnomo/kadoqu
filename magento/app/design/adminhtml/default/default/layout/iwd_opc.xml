@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <iwd_free_opc_locked_handler>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/iwd/opc/locked.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/iwd/opc/locked.js</name>
+            </action>
+            <action method="addLinkRel">
+                <rel>stylesheet</rel>
+                <href>//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css</href>
+            </action>
+        </reference>
+    </iwd_free_opc_locked_handler>
+    <adminhtml_iwd_opc_locked_types>
+        <update handle="iwd_free_opc_locked_handler"/>
+        <reference name="content">
+            <block type="core/template" template="iwd/opc/locked_types.phtml"/>
+        </reference>
+    </adminhtml_iwd_opc_locked_types>
+    <adminhtml_iwd_opc_locked_products>
+        <update handle="iwd_free_opc_locked_handler"/>
+        <reference name="content">
+            <block type="core/template" template="iwd/opc/locked_products.phtml"/>
+        </reference>
+    </adminhtml_iwd_opc_locked_products>
+    <adminhtml_iwd_opc_locked_subscriptions>
+        <update handle="iwd_free_opc_locked_handler"/>
+        <reference name="content">
+            <block type="core/template" template="iwd/opc/locked_subscriptions.phtml"/>
+        </reference>
+    </adminhtml_iwd_opc_locked_subscriptions>
+    <adminhtml_system_config_edit>
+        <update handle="iwd_free_opc_locked_handler"/>
+    </adminhtml_system_config_edit>
+</layout>

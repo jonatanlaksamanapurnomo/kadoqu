@@ -1,0 +1,39 @@
+<mjml>
+  <mj-body>
+    <mj-hero>
+      <mj-image width="100px" align="left" src="https://ik.imagekit.io/nwiq66cx3pvsy/Footer/kadoqu_HJeQl-ptdN.png"></mj-image>
+      <mj-text font-size="12px" font-family="helvetica" font-weight="900">Dear (Customer Name) ,</mj-text>
+
+      <mj-text align="center" font-size="30px" color="#00998D" font-weight="600">Terima Kasih Sudah</mj-text>
+        <mj-text align="center" font-size="30px" color="#00998D" font-weight="600">Bergabung di Kadoqu.com</mj-text>
+      <mj-text align="center" padding-top="0" font-weight="100"> Cukup Klik Tombol dibawah ini untuk verfikasi akun kamu </mj-text>
+       <mj-button font-family="Helvetica" background-color="#00998D" color="white" href="https://kadoqu.com/">
+          Klik disni
+         </mj-button>
+      <mj-text align="center" font-weight="100">Jika kamu merasa tidak membuat akun </mj-text>
+      <mj-text align="center" padding-top="0" font-weight="100"> Kamu bisa abaikan pesan ini atau hubungi customer service kami </mj-text>
+
+
+
+
+      <mj-divider border-width="1px" border-style="solid" border-color="#00998D" />
+      <mj-text align="center" font-size="10px" font-weight="100" >
+        Jika Kamu Masih memiliki Pertanyaan Silahkan Contact Kami di hello@kadoqu.com
+      </mj-text>
+      <mj-text align="center" padding-top="0px" font-size="10px"font-weight="100" >
+        Atau Bisa Kontak GIdA di 0812181600
+      </mj-text>
+       </mj-hero>
+      <mj-section>
+      <mj-group>
+      <mj-column>
+            <mj-image width="30px" align="center" padding-left="250px" src="https://ik.imagekit.io/nwiq66cx3pvsy/fb.png"></mj-image>
+ </mj-column>
+         <mj-column>
+            <mj-image width="30px" align="left"  src="https://ik.imagekit.io/nwiq66cx3pvsy/ig.png"></mj-image>
+        </mj-column>
+</mj-group>
+        </mj-section>
+
+  </mj-body>
+</mjml>

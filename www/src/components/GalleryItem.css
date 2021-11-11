@@ -1,0 +1,41 @@
+.gallery-item-container {
+  position: relative;
+}
+
+.gallery-item-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.gallery-item-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  display: flex;
+  overflow: hidden;
+  padding: 5%;
+  border-radius: 0.5rem;
+  font-weight: 300;
+}
+
+.gallery-item-container:hover .gallery-item-overlay {
+  opacity: 1;
+}
+
+.gallery-item-testimony {
+  color: white;
+  font-size: 1.8vw;
+  font-style: italic;
+  text-align: center;
+  margin: auto;
+}

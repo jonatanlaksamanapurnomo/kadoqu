@@ -1,0 +1,29 @@
+.new-option-input {
+  border: none;
+  border-radius: 0;
+}
+
+.new-option-input:focus {
+  border: none;
+  border-bottom: 1px #80bdff solid;
+  outline: none;
+  width: 50%;
+  box-shadow: none;
+}
+
+.edit-product-rejection-message {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  min-height: 10rem;
+  width: 20rem;
+  padding: 1rem;
+  background: lightgoldenrodyellow;
+  border: 1px solid;
+  border-color: gold;
+  opacity: 0.6;
+}
+
+.edit-product-rejection-message:hover {
+  opacity: 1;
+}

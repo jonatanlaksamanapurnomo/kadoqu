@@ -1,0 +1,202 @@
+<?php
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Onestepcheckout
+ * @copyright   Copyright (c) 2017 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+echo $this->getChildHtml('onestepcheckout.styles'); ?>
+<?php $_helper = Mage::helper('onestepcheckout'); ?>
+    <!-- End: Added by Daniel - 02/04/2015 - set background color for top links buttons after login from OSC -->
+    <div id="ajaxcart-load-ajax" style="display:none;">
+        <div id="load" class="ajaxcart-overlay">&nbsp;</div>
+        <div id="ajaxcart-loading" class="ajaxcart-loading">
+            <img alt="<?php echo $this->__('Loading') ?>..."
+                 src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>"/><br/>
+            <?php echo $this->__('Loading') ?>...
+        </div>
+        <div id="form-paypal" style="display:none;" class="form-paypal"></div>
+    </div>
+
+    <ol class="one-step-checkout two-columns-osc clearfix">
+        <li>
+            <?php $checkoutTittle = $this->getCheckoutTitle(); ?>
+            <h1 class="checkout_header"><?php echo $this->__($checkoutTittle); ?></h1>
+            <p class="subtitle">
+                <?php $description = $this->configData['checkout_description'] ? $this->configData['checkout_description'] : 'Please fill in the fields below and click Place order to complete your purchase!'; ?>
+                <?php echo $this->__($description); ?>
+            </p>
+        </li>
+        <?php if (($this->isShowLoginLink() || $this->isShowRegisterLink()) && !$this->isCustomerLoggedIn()): ?>
+            <li id='onestepcheckout_login_link' class="onestepcheckout-login-link">
+                <a href="javascript:void(0);" id="onestepcheckout-login-link"><span>&nbsp;</span>
+                    <?php if ($this->configData['login_link_title']): ?>
+                        <?php echo $this->configData['login_link_title'] ?>
+                    <?php else: ?>
+                        <?php if (Mage::helper('onestepcheckout')->enableRegistration()): ?>
+                            <?php echo $this->__('Click here to login or create a new account') ?>
+                        <?php else: ?>
+                            <?php echo $this->__('Already have an account?Click here to login') ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </a>
+            </li>
+        <?php endif ?>
+        <!-- Start: Added by Daniel - 02/04/2015 - Top links buttons after login from OSC -->
+        <li id='osc_top_links'>
+            <a href='<?php echo $this->getUrl('customer/account/', array('_secure' => true)); ?>'
+               title='<?php echo $this->__('My Account'); ?>'><?php echo $this->__('My Account'); ?></a>
+            <a href='<?php echo $this->getUrl('checkout/cart/', array('_secure' => true)); ?>'
+               title='<?php echo $this->__('My Cart'); ?>'><?php echo $this->__('My Cart'); ?></a>
+            <a href='<?php echo $this->getUrl('customer/account/logout', array('_secure' => true)); ?>'
+               title='<?php echo $this->__('Log Out'); ?>'><?php echo $this->__('Log Out'); ?></a>
+        </li>
+        <!-- End: Added by Daniel - 02/04/2015 - Top links buttons after login from OSC -->
+        <li class='payment_buttons'>
+            <?php if (Mage::helper('core')->isModuleEnabled('Amazon_Payments')) echo $this->getChildHtml('amazon_button'); ?>
+        </li>
+        <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+        <li class="address-order">
+            <form id="one-step-checkout-form" method="post" action="<?php echo $this->getCheckoutUrl(); ?>">
+                <div class="address-information address-info-3-columns">
+
+                    <!-- Start: Modified by Daniel -01042015- Reload data after login -->
+                    <div id='onestepcheckout-billing-section'>
+                        <?php echo $this->getChildHtml('onestepcheckout.billing'); ?>
+                    </div>
+                    <div id='onestepcheckout-shipping-section'>
+                        <?php echo $this->getChildHtml('onestepcheckout.shipping'); ?>
+                    </div>
+                    <!-- End: Modified by Daniel -01042015- Reload data after login -->
+
+                </div>
+                <div class="onestepcheckout-shipping-payment-review">
+                    <?php if ($this->isVirtual() || !Mage::helper('onestepcheckout')->isHideShippingMethod() || $_helper->enabledDelivery()): ?>
+                        <?php if (!$this->isVirtual() && !Mage::helper('onestepcheckout')->isHideShippingMethod()): ?>
+                            <div class="order-information order-info-3-columns">
+                                <ol>
+                                    <li class="shipping-method">
+                                        <h3 style="float:left" id="shipping_method_step_header" class="step_2">
+                                            <?php echo $this->__('Shipping Method'); ?>
+                                        </h3>
+                                        <div class="ajax-loader3" id="ajax-shipping"
+                                             style="display:none; float: left; margin-top: 14px; margin-left: 10px;"></div>
+                                        <div class="clear"></div>
+
+                                        <div class="onestepcheckout-shipping-method-section"
+                                             id="onestepcheckout-shipping-method-section">
+                                            <?php echo $this->getChildHtml('onestepcheckout.shipping_method'); ?>
+                                        </div>
+                                        <div class="ajax-loader1" id="ajax-loader1" style="display:none;"></div>
+                                        <div id="control_overlay_shipping"
+                                             style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 9998; display: none;"></div>
+                                    </li>
+                                    <?php if ($_helper->enabledDelivery()): ?>
+                                        <?php echo $this->getChildHtml('onestepcheckout.delivery') ?>
+                                    <?php endif; ?>
+                                </ol>
+                            </div>
+                        <?php endif; ?>
+
+                    <?php endif; ?>
+
+                    <!--2014.18.11 fix hide shipping start-->
+                    <?php if (Mage::helper('onestepcheckout')->isHideShippingMethod()): ?>
+                        <?php $_shippingMethod = $this->hasOnlyOneShippingMethod(); ?>
+                        <span class="no-display">
+                        <input name="shipping_method" type="radio" value="<?php echo $_shippingMethod; ?>"
+                               id="s_method_<?php echo $_shippingMethod; ?>" checked="checked"/>
+                    </span>
+                    <?php endif; ?>
+                    <div class="order-review-section"
+                         style="<?php if (Mage::helper('onestepcheckout')->isHideShippingMethod() && !$_helper->enabledDelivery()) if ($this->hasOnlyOneShippingMethod()) echo 'width: 100% !important'; ?>">
+                        <ol>
+                            <li class="payment-method">
+                                <h3 style="float:left"
+                                    id="payment_method_step_header" <?php if (!$this->isVirtual() && !Mage::helper('onestepcheckout')->isHideShippingMethod() && $_helper->enabledDelivery()): ?> class="step_4"<?php elseif (!$this->isVirtual() && Mage::helper('onestepcheckout')->isHideShippingMethod() && !$_helper->enabledDelivery()): ?>class="step_2"<?php else: ?> class="step_3"<?php endif; ?>>
+                                    <?php echo $this->__('Payment Method'); ?>
+                                </h3>
+                                <div class="ajax-loader3" id="ajax-payment"
+                                     style="display:none; float: left; margin-top: 14px; margin-left: 10px;"></div>
+                                <div class="clear"></div>
+                                <div id="onestepcheckout-payment-methods" class="onestepcheckout-payment-methods">
+                                    <?php echo $this->getChildHtml('onestepcheckout.payment_method'); ?></div>
+                                <div id="control_overlay_payment"
+                                     style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 9998; display: none;"></div>
+                            </li>
+
+                        </ol>
+                    </div>
+
+                    <div class="onestepcheckout-review-info">
+                        <ol>
+                            <li class="order-review-info">
+
+                                <div class="ajax-loader3" id="ajax-review"
+                                     style="display:none; float: left; margin-top: 14px; margin-left: 10px;"></div>
+                                <div class="clear"></div>
+                                <?php echo $this->getChildHtml('onestepcheckout.review') ?>
+                                <div class="ajax-loader3" id="ajax-loader3" style="display:none;"></div>
+                                <div id="control_overlay_review"
+                                     style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 9998; display: none;"></div>
+
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="button-set clearfix button-onestepcheckout">
+                        <!--
+                        <label for="forgot"><?php echo $this->__('Forgot an Item?') ?> <a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo $this->__('Edit Your Cart') ?></a></label>
+                        <br />-->
+                        <div class="clear"></div>
+                        <button onclick="oscPlaceOrder(this);" id="onestepcheckout-button-place-order" type="button"
+                                title="<?php echo $this->__('Place Order') ?>"
+                                class="btn-proceed-checkout onestepcheckout-btn-checkout onestepcheckout-place">
+                            <span>
+                                <span>
+                                    <?php echo $this->__('Place order now') ?>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                    <div id="onestepcheckout-place-order-loading" style="display:none;margin-top:10px; ">
+                        <p style="float:left;padding-top:5px;">
+                            &nbsp;&nbsp;<?php echo $this->__('Please wait, processing your order...') ?></p>
+                    </div>
+                </div>
+                <!--Leonard SUPEE9767-->
+                <?php echo $this->getBlockHtml('formkey') ?>
+                <!-- Leonard SUPEE 9767-->
+                <?php if (!$_helper->isCustomerLoggedIn() && $_helper->showLoginLink()): ?>
+                    <?php echo $this->getChildHtml('login-popup'); ?>
+                <?php endif; ?>
+
+            </form>
+        </li>
+    </ol>
+    <div id="sellerdeck-payment"></div>
+    <div id="onestepcheckout_popup_overlay" style="display: none;">&nbsp;</div>
+    <div id="loading-process" style="display: none;"></div>
+<?php echo $this->getChildHtml('tco_iframe'); ?>
+    <div id="notify-email-invalid" style="display:none;">
+        <p style="float:left;padding-top:27px;color:#000;font-family:tahoma;margin-left:10px;"><span
+                    style="display:block;float:left;margin-right:2px;"><?php echo $this->__('Email is ') ?></span><img
+                    style="float:left;margin-right:2px;"
+                    src="<?php echo $this->getSkinUrl('images/onestepcheckout/material/invalidIcon.jpg'); ?>"/><?php echo $this->__(' please check it again!') ?>
+        </p>
+    </div>
+    <div id="notify-email-invalid-overlay" style="display:none;"></div>
+<?php echo $this->getChildHtml('onestepcheckout.jsprocess'); ?>

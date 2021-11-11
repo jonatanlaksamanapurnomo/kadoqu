@@ -1,0 +1,76 @@
+.wrapping-lab-dropping-area {
+  background-color: var(--mint-1);
+  height: calc(30vw + 8vw + (3vw * 1.8) + 4vw);
+}
+
+.wrapping-lab-dragging-area-hint {
+  width: 80%;
+  margin: auto;
+  height: 100%;
+  font-size: 4vw;
+  font-weight: 100;
+  color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: initial;
+  text-align: center;
+}
+
+.wrapping-lab-dragging-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 4vw 0;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  transition: all 0.2s;
+  transform: scale(0.98);
+  will-change: transform;
+  user-select: none;
+  cursor: pointer;
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
+  overflow: -moz-scrollbars-none;
+}
+
+.wrapping-lab-dragging-area.active {
+  background: rgba(255, 255, 255, 0.3);
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  transform: scale(1);
+}
+
+.wrapping-lab-dragging-area::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 576px) {
+  .wrapping-lab-dropping-area {
+    height: calc(10rem + 3rem + (0.8rem * 1.8));
+  }
+
+  .wrapping-lab-dragging-area-hint {
+    font-size: 1.5em;
+  }
+
+  .wrapping-lab-dragging-area {
+    padding: 1.5rem 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .wrapping-lab-dropping-area {
+    height: 300px;
+  }
+
+  .wrapping-lab-dragging-area-hint {
+    width: 60%;
+    font-size: 2em;
+  }
+
+  .wrapping-lab-dragging-area {
+    padding: 2rem 0;
+  }
+}

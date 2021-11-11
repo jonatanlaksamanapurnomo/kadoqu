@@ -1,0 +1,498 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/** @var Mage_Checkout_Block_Onepage_Billing $this */
+$store_id = Mage::app()->getStore()->getCode();
+?>
+<form id="co-billing-form" action="">
+<div class="fieldset">
+    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+    <ul class="form-list">
+    <?php if ($this->customerHasAddresses()): ?>
+        <li class="wide">
+            <label for="billing-address-select"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></label>
+            <div class="input-box">
+                <?php echo $this->getAddressesHtmlSelect('billing') ?>
+            </div>
+        </li>
+    <?php endif; ?>
+    <li id="billing-new-address-form"<?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif; ?> class="scaffold-form">
+        <div class="fieldset">
+            <input type="hidden" name="billing[address_id]" value="<?php echo $this->getAddress()->getId() ?>" id="billing:address_id" />
+            <ul>
+                <li class="fields"><?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getAddress()->getFirstname() ? $this->getAddress() : $this->getQuote()->getCustomer())->setForceUseCustomerRequiredAttributes(!$this->isCustomerLoggedIn())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?></li>
+                <li class="fields">
+<!--                    <div class="field">
+                        <label for="billing:company"><?php echo $this->__('Company') ?></label>
+                        <div class="input-box">
+                            <input type="text" id="billing:company" name="billing[company]" value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>" title="<?php echo $this->__('Company') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" />
+                        </div>
+                    </div>-->
+        <?php if(!$this->isCustomerLoggedIn()): ?>
+                    <div class="field">
+                        <label for="billing:email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                        <div class="input-box">
+                            <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="billing[email]" id="billing:email" value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
+                        </div>
+                    </div>
+        <?php endif; ?>
+                </li>
+        <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+                <li class="wide">
+                    <label for="billing:street1" class="required"><em>*</em><?php echo $this->__('Address') ?></label>
+                    <div class="input-box">
+                        <input type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="input-text <?php echo $_streetValidationClass ?>" />
+                    </div>
+                </li>
+                <?php if ($this->helper('customer/address')->isVatAttributeVisible()) : ?>
+                <li class="wide">
+                    <label for="billing:vat_id"><?php echo $this->__('VAT Number') ?></label>
+                    <div class="input-box">
+                        <input type="text" id="billing:vat_id" name="billing[vat_id]" value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()) ?>" title="<?php echo $this->__('VAT Number') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('vat_id') ?>" />
+                    </div>
+                </li>
+                <?php endif; ?>
+				
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:country_id" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+                        <div class="input-box">
+                            <?php echo $this->getCountryHtmlSelect('billing') ?>
+                        </div>
+                    </div>
+					<div class="field">
+                        <label for="billing:region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                        <div class="input-box">
+                            <select id="billing:region_id" name="billing[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display:none;">
+                                <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                            </select>
+                            <script type="text/javascript">
+                            //<![CDATA[
+                                $('billing:region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                            //]]>
+                            </script>
+                            <input type="text" id="billing:region" name="billing[region]" value="<?php echo $this->escapeHtml($this->getAddress()->getRegion()) ?>"  title="<?php echo $this->__('State/Province') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" style="display:none;" />
+                        </div>
+                    </div>
+                </li>
+
+                <li class="fields">
+					<div class="field">
+                        <label for="billing:city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+                        <div class="input-box">
+                            <input type="text" title="<?php echo $this->__('City') ?>" name="billing[city]" value="<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="billing:city" style="display:none;" />
+														<select name="billing[cityx]" id="billing:cityx" class="validate-select" >
+															<?php if($store_id=="id"): ?>
+															<option>Silakan pilih Provinsi terlebih dahulu</option>
+															<?php else: ?>
+															<option>Please Select Province First</option>
+															<?php endif; ?>
+														</select>
+                        </div>
+                    </div>
+                    <div class="field">
+												<?php $_i = 2; ?>
+                        <label for="billing:street<?php echo $_i ?>" class="required"><em>*</em><?php echo $this->__('District') ?></label>
+												<div class="input-box">
+													<input type="text" title="<?php echo $this->__('Street Address %s', $_i) ?>" name="billing[street][]" id="billing:street<?php echo $_i ?>" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet($_i)) ?>" class="input-text <?php echo $_streetValidationClass ?>" style="display:none;" />
+													<select name="billing[district]" id="billing:district" class="validate-select" >
+														<?php if($store_id=="id"): ?>
+														<option>Silakan pilih Kota/Kab. terlebih dahulu</option>
+														<?php else: ?>
+														<option>Select City First</option>
+														<?php endif; ?>
+													</select>
+												</div>
+                    </div>
+                </li>
+
+                <li class="fields">				
+                    <div class="field">
+                        <label for="billing:telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                        <div class="input-box">
+                            <input type="tel" name="billing[telephone]" value="<?php echo $this->escapeHtml($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" id="billing:telephone" />
+                        </div>
+                    </div>
+<!--                <div class="field">
+                        <label for="billing:fax"><?php echo $this->__('Fax') ?></label>
+                        <div class="input-box">
+                            <input type="tel" name="billing[fax]" value="<?php echo $this->escapeHtml($this->getAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('fax') ?>" id="billing:fax" />
+                        </div>
+                    </div>-->
+                </li>
+
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:postcode" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                        <div class="input-box">
+                            <input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="billing[postcode]" id="billing:postcode" value="<?php echo $this->escapeHtml($this->getAddress()->getPostcode()) ?>" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
+                        </div>
+                    </div>
+                </li>
+
+                <?php if(!$this->isCustomerLoggedIn()): ?>
+
+        <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+            <?php if ($_dob->isEnabled() || $_gender->isEnabled()): ?>
+                <li class="fields">
+                <?php if ($_dob->isEnabled()): ?>
+                    <div class="field">
+                        <?php echo $_dob->setDate($this->getQuote()->getCustomerDob())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+                    </div>
+                <?php endif; ?>
+                <?php if ($_gender->isEnabled()): ?>
+                    <div class="field">
+                        <?php echo $_gender->setGender($this->getQuote()->getCustomerGender())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+                    </div>
+                <?php endif ?>
+                </li>
+            <?php endif ?>
+
+            <?php if ($this->isTaxvatEnabled()):?>
+                <li><?php echo $this->getTaxvatHtml() ?></li>
+            <?php endif; ?>
+
+                <li class="fields" id="register-customer-password">
+                    <div class="field">
+                        <label for="billing:customer_password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="billing[customer_password]" id="billing:customer_password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="billing:confirm_password" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="billing[confirm_password]" title="<?php echo $this->__('Confirm Password') ?>" id="billing:confirm_password" class="input-text required-entry validate-cpassword" />
+                        </div>
+                    </div>
+                </li>
+                <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+                <?php endif; ?>
+                <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()):?>
+                    <li class="control">
+                        <input type="checkbox" name="billing[save_in_address_book]" value="1" title="<?php echo $this->__('Save in address book') ?>" id="billing:save_in_address_book" onchange="if(window.shipping) shipping.setSameAsBilling(false);"<?php if ($this->getAddress()->getSaveInAddressBook()):?> checked="checked"<?php endif;?> class="checkbox" /><label for="billing:save_in_address_book"><?php echo $this->__('Save in address book') ?></label>
+                    </li>
+                <?php else:?>
+                    <li class="no-display"><input type="hidden" name="billing[save_in_address_book]" value="1" /></li>
+                <?php endif; ?>
+                <?php echo $this->getChildHtml('form.additional.info'); ?>
+            </ul>
+            <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+        </div>
+     </li>
+    <?php if ($this->canShip()): ?>
+        <li class="control">
+            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_yes" value="1"<?php if ($this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo  $this->__('Ship to this address') ?>" onclick="$('shipping:same_as_billing').checked = true;" class="radio" /><label for="billing:use_for_shipping_yes"><?php echo  $this->__('Ship to this address') ?></label></li>
+        <li class="control">
+            <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_no" value="0"<?php if (!$this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo $this->__('Ship to different address') ?>" onclick="$('shipping:same_as_billing').checked = false;" class="radio" /><label for="billing:use_for_shipping_no"><?php echo $this->__('Ship to different address') ?></label>
+        </li>
+    <?php endif; ?>
+    </ul>
+    <?php if (!$this->canShip()): ?>
+        <input type="hidden" name="billing[use_for_shipping]" value="1" />
+    <?php endif; ?>
+    <div class="buttons-set" id="billing-buttons-container">
+        <button type="button" title="<?php echo $this->__('Continue') ?>" class="button" onclick="billing.save()"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+        <span class="please-wait" id="billing-please-wait" style="display:none;">
+            <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading next step...') ?>" title="<?php echo $this->__('Loading next step...') ?>" class="v-middle" /> <?php echo $this->__('Loading next step...') ?>
+        </span>
+    </div>
+</div>
+</form>
+<script type="text/javascript">
+	/*
+	* Script created by Daeng
+	* Jangan diedit, tanya dulu
+*/ 
+/**
+	* Enable CORS for prototype.js and get rid of the message "Refused to get unsafe header X-JSON"
+	* play with it: http://jsfiddle.net/Ajx2k/11/
+	*
+	* Created by Smiley <@codemasher> on 11.01.14.
+*/
+
+// Enable CORS for Prototype: http://kourge.net/node/131
+// With this, the console will still tell you: Refused to get unsafe header "X-JSON"
+Ajax.Responders.register({
+	onCreate: function(response){
+		var t = response.transport;
+		//for PHPStorm's sake
+		//noinspection FunctionWithInconsistentReturnsJS
+		t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v){
+			if(/^(accept|accept-language|content-language)$/i.test(k) ||
+			(/^content-type$/i.test(k) && /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))){
+				return original(k, v);
+			}
+			//for PHPStorm's sake
+			//noinspection UnnecessaryReturnStatementJS
+			return;
+		});
+	}
+});
+
+// So, then lets get rid of this nasty message
+// it is caused by _getHeaderJSON() which tries to receive this header
+
+// the long way if you want to keep the original methods
+
+// so let's override the original method in Ajax.Response
+// see: http://prototypejs.org/learn/class-inheritance
+Ajax.JSONResponse = Class.create(Ajax.Response, {
+	_getHeaderJSON: Prototype.emptyFunction
+});
+
+// next, we need to replace all occurences of Ajax.Response with our new class Ajax.JSONResponse
+// this is kinda lazy but works fine - more elegant anyone?
+Ajax.JSON = Class.create(Ajax.Request, {
+	request: function(url) {
+		this.url = url;
+		this.method = this.options.method;
+		var params = Object.isString(this.options.parameters) ?
+		this.options.parameters :
+		Object.toQueryString(this.options.parameters);
+		
+		if (!['get', 'post'].include(this.method)) {
+			params += (params ? '&' : '') + "_method=" + this.method;
+			this.method = 'post';
+		}
+		
+		if (params && this.method === 'get') {
+			this.url += (this.url.include('?') ? '&' : '?') + params;
+		}
+		
+		this.parameters = params.toQueryParams();
+		
+		try {
+			var response = new Ajax.JSONResponse(this);
+			if (this.options.onCreate) this.options.onCreate(response);
+			Ajax.Responders.dispatch('onCreate', this, response);
+			
+			this.transport.open(this.method.toUpperCase(), this.url,
+			this.options.asynchronous);
+			
+			if (this.options.asynchronous) this.respondToReadyState.bind(this).defer(1);
+			
+			this.transport.onreadystatechange = this.onStateChange.bind(this);
+			this.setRequestHeaders();
+			
+			this.body = this.method == 'post' ? (this.options.postBody || params) : null;
+			this.transport.send(this.body);
+			
+			/* Force Firefox to handle ready state 4 for synchronous requests */
+			if (!this.options.asynchronous && this.transport.overrideMimeType)
+			this.onStateChange();
+			
+		}
+		catch (e) {
+			this.dispatchException(e);
+		}
+	},
+	
+	respondToReadyState: function(readyState) {
+		var state = Ajax.Request.Events[readyState], response = new Ajax.JSONResponse(this);
+		
+		if (state == 'Complete') {
+			try {
+				this._complete = true;
+				(this.options['on' + response.status]
+				|| this.options['on' + (this.success() ? 'Success' : 'Failure')]
+				|| Prototype.emptyFunction)(response, response.headerJSON);
+				} catch (e) {
+				this.dispatchException(e);
+			}
+			
+			var contentType = response.getHeader('Content-type');
+			if (this.options.evalJS == 'force'
+			|| (this.options.evalJS && this.isSameOrigin() && contentType
+			&& contentType.match(/^\s*(text|application)\/(x-)?(java|ecma)script(;.*)?\s*$/i)))
+			this.evalResponse();
+		}
+		
+		try {
+			(this.options['on' + state] || Prototype.emptyFunction)(response, response.headerJSON);
+			Ajax.Responders.dispatch('on' + state, this, response, response.headerJSON);
+			} catch (e) {
+			this.dispatchException(e);
+		}
+		
+		if (state == 'Complete') {
+			this.transport.onreadystatechange = Prototype.emptyFunction;
+		}
+	}
+});
+
+
+// TL;DR: the short and nasty way:
+Ajax.Response.prototype._getHeaderJSON = Prototype.emptyFunction;
+
+
+// ok, lets test it
+
+// native Ajax.Request
+var $AJAX = function(url, fn){
+	new Ajax.Request(url, {
+		method: 'get',
+		onSuccess: function(r){
+			fn(r.responseJSON);
+		}
+	});
+};
+
+// our new Ajax.JSON
+var $JSON = function(url, fn){
+	new Ajax.JSON(url, {
+		method: 'get',
+		onSuccess: function(r){
+			fn(r.responseJSON);
+		}
+	});
+};
+</script>
+<script type="text/javascript">
+//<![CDATA[
+    var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('checkout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('checkout/onepage/saveBilling') ?>');
+    var billingForm = new VarienForm('co-billing-form');
+
+    //billingForm.setElementsRelation('billing:country_id', 'billing:region', '<?php echo $this->getUrl('directory/json/childRegion') ?>', '<?php echo $this->__('Select State/Province...') ?>');
+    $('billing-address-select') && billing.newAddress(!$('billing-address-select').value);
+
+    var billingRegionUpdater = new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'billing:postcode');
+    if ($('onepage-guest-register-button')) {
+        Event.observe($('onepage-guest-register-button'), 'click', function(event) {
+            var billingRememberMe = $('co-billing-form').select('#remember-me-box');
+            if (billingRememberMe.length > 0) {
+                if ($('login:guest') && $('login:guest').checked) {
+                    billingRememberMe[0].hide();
+                } else if ($('login:register') && ($('login:register').checked || $('login:register').type == 'hidden')) {
+                    billingRememberMe[0].show();
+                }
+            }
+        });
+    }
+//]]>
+
+var jq = jQuery.noConflict();
+jq(document).ready(function(){
+	console.log("billing persistent");
+	function isID(){
+		jq('#billing\\:street2').css('display','none');
+		jq('#billing\\:district').css('display','');
+		jq('#billing\\:city').css('display','none');
+		jq('#billing\\:cityx').css('display','');
+		dapatkanKabKota();
+	}
+	function isntID(){
+		jq('#billing\\:street2').css('display','');
+		jq('#billing\\:district').css('display','none');
+		jq('#billing\\:city').css('display','');
+		jq('#billing\\:cityx').css('display','none');
+	}
+	var negara_kode = jq('#billing\\:country_id option:selected').val();
+	if(negara_kode == "ID"){
+		isID();
+	}else{
+		isntID();
+	}
+	jq('#billing\\:country_id').on("change",function(e){
+		var negara_kode = jq('#billing\\:country_id option:selected').val();
+		if(negara_kode == "ID"){
+			isID();
+		}else{
+			isntID();
+		}
+	});
+	function dapatkanKabKota(){
+		var sk = '<?php echo $store_id; ?>';
+		var propinsi = jq('#billing\\:region_id option:selected').text();
+		if(propinsi =='Please select region, state or province' || propinsi =='Silakan pilih Provinsi'){
+			var city = '<option>Pilih Provinsi Dulu</option>';
+			if(sk=='en') city = '<option>Please Select Province First</option>';
+			jq('#shipping\\:cityx').html(city);
+		}else{
+			var url = '<?php echo $GLOBALS['panel_url']; ?>api/alamat/kabkota/?prop='+encodeURI(propinsi);
+			console.log("url: "+url);
+			var city = '';
+			jq.get(url).done(function(data){
+				console.log(data[0]);
+				jq.each(data,function(i,val){
+					city += '<option value="'+val.nilai+'">'+val.nama+'</option>';
+				});
+				jq('#billing\\:cityx').html(city);
+				var kabkota = jq('#billing\\:cityx').val();
+				jq('#billing\\:city').val(kabkota);
+				dapatkanKecamatan();
+			});
+		}
+	}
+	function dapatkanKecamatan(){
+		var sk = '<?php echo $store_id; ?>';
+		var propinsi = jq('#billing\\:region_id option:selected').text();
+		var kabkota = jq('#billing\\:cityx option:selected').val();
+		if(kabkota =='Pilih Provinsi Dulu' || kabkota =='Please Select Province First' || kabkota==undefined){
+			var kec = '<option>Pilih Kab./Kota Dulu</option>';
+			if(sk=='en') kec = '<option>Please Select City First</option>';;
+			jq('#shipping\\:district').html(kec);
+		}else{
+			var url = '<?php echo $GLOBALS['panel_url']; ?>api/alamat/kecamatan/?prop='+encodeURI(propinsi)+"&kabkota="+encodeURI(kabkota);
+			console.log("url: "+url);
+			var kec = '';
+			jq.get(url).done(function(data){
+				console.log(data);
+				jq.each(data,function(i,val){
+					kec += '<option>'+val+'</option>';
+				});
+				jq('#billing\\:district').html(kec);
+				var kecamatan = jq('#billing\\:district').val();
+				jq('#billing\\:street2').val(kecamatan);
+			});
+		}
+	}
+	jq('#billing\\:region_id').on("change",function(e){
+		var negara_kode = jq('#billing\\:country_id option:selected').val();
+		if(negara_kode == "ID"){
+			dapatkanKabKota();
+		}
+	});
+	jq('#billing\\:cityx').on("change",function(e){
+		setTimeout(function(){
+			var negara_kode = jq('#billing\\:country_id option:selected').val();
+			if(negara_kode == "ID"){
+				var kabkota = jq('#billing\\:cityx').val();
+				jq('#billing\\:city').val(kabkota);
+				dapatkanKecamatan();
+			}
+		},1000);
+	});
+	jq('#billing\\:district').on("change",function(e){
+		var negara_kode = jq('#billing\\:country_id option:selected').val();
+		if(negara_kode == "ID"){
+			var kecamatan = jq('#billing\\:district').val();
+			jq('#billing\\:street2').val(kecamatan);
+		}
+	});
+});
+//]]>
+</script>

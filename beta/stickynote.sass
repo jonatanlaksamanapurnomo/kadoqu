@@ -1,0 +1,19 @@
+===== Tables =====
+1. Age&Gender = name,type,description,status(1,2,3)
+2. Size Setting =
+-[size_type : name,code,description,status(1,2,3)] //Parent\\
+->[size_setting : size_type(dari size_type), age&gender(dari age&gender), name,status,description,image]
+3. Colour Setting = colour picker, name,status,description
+4. Brand Setting = Name,code,has page(y/n),has product(y/n),status(active/inactive),description,images
+5. Categories Setting = Parent Category, name, code, has page(y/n),has product(y/n),status(active/inactive),description,images
+6.Products = Brand,Categories(dari Categories) , name product coed, age/gender, publish(publish, draft,schedueld)
+					Description = Description, tags, tagline
+					Seo seting = Meta title, meta keywords, meta description
+					Varian & Price List  = Size Chart, weight, basic price, discount,colour varian,packaging,publish price,discount price
+
+					
+$("#tahun").val("<?= $data['TAHUN'] ?>").trigger('change');
+$("#jenis").val("<?= $data['JENIS'] ?>").trigger('change');
+
+
+***** MENU Size Setting YANG EDIT BELUM BISA D BAG SELLCT NYA ***** -> Inget njer tong lupa der ke poho maneh mh

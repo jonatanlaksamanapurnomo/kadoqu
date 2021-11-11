@@ -1,0 +1,105 @@
+.product-review-merchants {
+  background: lavenderblush;
+  height: 4rem;
+  overflow: auto;
+  padding: 0 0.5rem;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.product-review-merchant-box {
+  background: white;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  margin: auto 0.5rem auto 0;
+  box-shadow: 0.1rem 0.2rem 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+.product-review-container {
+  height: -webkit-fill-available;
+}
+
+.product-review-photos {
+  height: 12rem;
+  overflow: auto;
+  display: flex;
+}
+
+.product-review-photos img {
+  height: 100%;
+  margin: auto 0.5rem auto 0;
+}
+
+.product-review-popover {
+  padding: 0.5rem;
+  background: antiquewhite;
+  opacity: 0.3;
+}
+
+.product-review-popover:hover {
+  opacity: 1;
+}
+
+.product-review-popover .arrow::after {
+  border-left-color: antiquewhite;
+}
+
+.product-review-popover input {
+  border-color: transparent;
+  background: transparent;
+}
+
+.product-review-popover input:focus {
+  border-bottom: 1px solid dimgray;
+  outline: none;
+}
+
+.product-review-container table td:nth-child(2) {
+  width: 1rem;
+}
+
+.product-review-color-box {
+  height: 1.5rem;
+  width: 1.5rem;
+  display: inline-block;
+  border: 1px grey double;
+  margin: 0 1px;
+  border-radius: 50%;
+}
+
+.product-review-no-data {
+  font-style: italic;
+  color: grey;
+}
+
+.product-review-field-name {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 8rem;
+  padding-right: 0.2rem;
+}
+
+.product-review-element {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.product-review-element:hover {
+  background: snow;
+}
+.react-bootstrap-table table {
+  table-layout: auto;
+}
+@media (max-width: 992px) {
+  .mob-container{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .prod-review-mob{
+ 
+  }
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Promo
+ */
+-->
+<layout>
+     <adminhtml_promo_quote_edit>
+        <reference name="head">
+                 <action method="setCanLoadExtJs"><flag>1</flag></action>
+                 <action method="setCanLoadTinyMce"><flag>1</flag></action>
+                 <action method="addJs"><script>mage/adminhtml/variables.js</script></action>
+                 <action method="addJs"><script>mage/adminhtml/wysiwyg/widget.js</script></action>
+                 <action method="addJs"><script>lib/flex.js</script></action>
+                 <action method="addJs"><script>lib/FABridge.js</script></action>
+                 <action method="addJs"><script>mage/adminhtml/flexuploader.js</script></action>
+                 <action method="addJs"><script>mage/adminhtml/browser.js</script></action>
+                 <action method="addJs"><script>prototype/window.js</script></action>
+                 <action method="addJs"><script>prototype/prototype.js</script></action>
+                 <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+                 <action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
+                 <action method="addJs"><script>amasty/ampromo/admin.js</script></action>
+                 <action method="addJs"><name>amasty/ampromo/notifications.js</name></action>
+                 <action method="addJs"><script>amasty/ampromo/validation.js</script></action>
+         </reference>
+
+         <reference name="content">
+             <block type="ampromo/adminhtml_notifications" name="ampromo_notif" as="ampromo_notif" template="amasty/ampromo/notifications.phtml"></block>
+         </reference>
+
+        <reference name="promo_quote_edit_tabs">
+
+            <block type="ampromo/adminhtml_promo_quote_edit_tab_price" name="ampromo_items_price"/>
+            <block type="ampromo/adminhtml_promo_quote_edit_tab_banner" name="ampromo_product_page_banners"/>
+            <action method="addTab">
+                <name>ampromo_items_price</name>
+                <block>ampromo_items_price</block>
+            </action>
+            <action method="addTab">
+                <name>ampromo_product_page_banners</name>
+                <block>ampromo_product_page_banners</block>
+            </action>
+        </reference>
+         <update handle="editor"/>
+    </adminhtml_promo_quote_edit>
+</layout>

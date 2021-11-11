@@ -1,0 +1,71 @@
+<?php if ($this->hasSavedDetails() && $this->getMethod()->isVaultEnabled()) { ?>
+    <div class="iwd_opc_universal_wrapper">
+        <div class="iwd_opc_payment_label">
+            <?php echo $this->escapeHtml($this->__('Saved Cards')); ?>
+        </div>
+        <div class="iwd_opc_payment_text">
+            <?php echo $this->escapeHtml(
+                $this->__('The following credit cards are currently linked with your account.')
+            ); ?>
+        </div>
+    </div>
+
+    <div class="iwd_opc_universal_wrapper" id="creditcard-saved-accounts">
+        <?php
+        $count = 0;
+        foreach ($this->getSavedDetails() as $savedDetail) {
+            ?>
+            <div class="iwd_opc_universal_wrapper">
+                <label class="iwd_opc_radio_label"
+                       title="<?php echo $savedDetail->last4; ?>"
+                       for="<?php echo $savedDetail->token; ?>">
+                    <?php if ($this->getMethod()->is3DEnabled()) { ?>
+                        <input type="radio"
+                               name="payment[card_payment_method_token]"
+                               id="<?php echo $savedDetail->token; ?>"
+                               class="iwd_opc_radio iwd_opc_field"
+                               data-token="<?php echo $savedDetail->token; ?>"
+                               data-threedsecure-nonce="<?php echo $this->getMethod()->getThreeDSecureVaultNonce(
+                                   $savedDetail->token
+                               ); ?>"
+                               value="threedsecure"
+                               <?php if ($count == 0){ ?>checked="checked" <?php } ?>/>
+                    <?php } else { ?>
+                        <input type="radio"
+                               class="iwd_opc_radio iwd_opc_field"
+                               name="payment[card_payment_method_token]"
+                               id="<?php echo $savedDetail->token; ?>"
+                               value="<?php echo $savedDetail->token; ?>"
+                               <?php if ($count == 0){ ?>checked="checked" <?php } ?>/>
+                    <?php } ?>
+                    <span class="iwd_opc_radio_label_value">
+                        <img src="<?php echo $this->getSkinUrl(
+                            'images/gene/braintree/' . Gene_Braintree_Block_Creditcard::getCardIcon($savedDetail->cardType)
+                        ) ?>"/>
+                        xxxx - xxxx - xxxx - <?php echo $savedDetail->last4; ?>
+                        <br/>
+                        <em><?php echo $this->__('Expires:'); ?></em>
+                        <?php echo $savedDetail->expirationMonth; ?>/<?php echo $savedDetail->expirationYear; ?>
+                    </span>
+                </label>
+            </div>
+            <?php
+            ++$count;
+        } ?>
+        <div class="iwd_opc_universal_wrapper">
+            <label class="iwd_opc_radio_label"
+                   title="<?php echo $this->__('New Credit Card'); ?>"
+                   for="other-creditcard">
+                <input type="radio"
+                       class="iwd_opc_radio iwd_opc_field"
+                       name="payment[card_payment_method_token]"
+                       id="other-creditcard"
+                       value="other"/>
+                <span class="iwd_opc_radio_label_value">
+                    <?php echo $this->__('New Credit Card'); ?>
+                </span>
+            </label>
+        </div>
+    </div>
+
+<?php } ?>

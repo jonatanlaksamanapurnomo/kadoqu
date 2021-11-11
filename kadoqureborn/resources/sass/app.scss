@@ -1,0 +1,338 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+/* Overrides */
+.navbar-light .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(1, 153, 141, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+}
+
+.navbar-light .navbar-toggler {
+	border-color: transparent;
+}
+
+/* Custom */
+.custom-stripe {
+	width:100%; 
+	line-height:1.75em; 
+	background-color: #97D4CC;
+	margin-bottom: 1.25em;
+}
+
+.custom-search-form {
+	background-color: #f0f0ee;
+    border-radius: 50% 50% 50% 50% / 250% 250% 250% 250%;
+    padding: .5rem 1rem;
+    margin-right: 10px; 
+    height: 2.4em;
+}
+
+.custom-search:focus {
+	outline: none;
+	border-bottom: 1px dotted grey;
+}
+
+.custom-search {
+	font-family: "Gotham-Light";
+	border:0;
+	background-color: transparent;
+	margin-bottom: 6px;
+}
+
+.custom-navbar {
+	background-color: #f0f0ee;
+	padding: 0;
+	margin: .5rem 1rem;
+}
+
+.custom-navbar a {
+	margin: .175rem 1rem;
+	color: #01998D;
+	font-family: "Montserrat";
+	font-style: bold;
+	font-weight: 700;
+}
+
+.custom-navbar .nav-item.active {
+	background-color: #97d4cc;
+}
+
+.custom-navbar .nav-item.active a{
+	color: #ffffff;
+}
+
+.custom-carousel-indicators {
+	bottom: 0;
+}
+
+.custom-carousel-indicators li {
+	width: .75rem;
+	height: .75rem;
+	margin: 0 .5em;
+	border-radius: 50%;
+	background-color: #01998D;	
+	opacity: 0.4;
+}
+
+.custom-carousel-indicators li.active {
+	background-color: #01998D;	
+	opacity: 1;
+}
+
+body {
+	font-family: "Open Sans";
+}
+
+.montserrat{
+	font-family: "Montserrat"!important;	
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+h1 {
+	font-size: 64pt;
+}
+
+h2 {
+	font-size: 48pt;
+}
+
+h3 {
+	font-size: 32pt;
+}
+
+h4 {
+	font-size: 22pt;
+}
+
+h5 {
+	font-size: 18pt;
+}
+
+h6 {
+	font-size: 14pt;
+}
+
+/* Colors. Name from: https://www.htmlcsscolor.com/ */
+
+.main-color {
+	color: #01998D;
+}
+
+.clear-day {
+	color: #DAEFE8
+}
+
+.dark-gray{
+	color: #AAAAAA;
+}
+
+.eucalyptus {
+	color: #2BA969;
+}
+
+.jelly-bean {
+	color: #447596;
+}
+
+.lavender-rose {
+	color: #FFA9FF;
+}
+
+.light-cyan {
+	color: #E5F3F3;
+}
+
+.lime-green {
+	color: #2ED32F;
+}
+
+.mandy {
+	color: #DB5556;
+}
+
+.melon {
+	color: #FFB3A6;
+}
+
+.morning-glory {
+	color: #9FDCDD;
+}
+
+.pale-cornflower-blue {
+	color: #A6C6FF;
+}
+
+.persian-green {
+	color: #01998D;
+}
+
+.red {
+	color: #EA0101;
+}
+
+.sinbad {
+	color: #97D4CC;
+}
+
+.sugar-cane {
+	color: #F0F0EE;
+}
+
+.sweet-corn {
+	color: #FFE270;
+}
+
+.vivid-tangerine {
+	color: #FF9380;
+}
+
+.whisper {
+	color: #EAEAEA;
+}
+
+.white-smoke {
+	color: #F8F8F8;
+}
+
+// Footer
+
+#footer {
+  background: $secondary-bg;
+  margin-top: 30px;
+}
+
+#footer h6 {
+  color: #01998D;
+}
+
+#footer a {
+  color: black;
+}
+
+#footer input {
+  border: 0;
+}
+
+#footer .btn {
+  border-radius: 0;
+}
+
+// Produk Terbaru
+
+#produkterbaru {
+	background: $secondary-bg;
+	margin-top: 30px;
+	padding-bottom: 35px;  
+}
+
+#produkterbaru .item{
+	background: white;
+	padding: 15px;
+	text-align: center;
+}
+
+#produkterbaru h6{
+	margin-top: 20px;
+}
+
+#produkterbaru a:hover{
+	text-decoration: none;
+}
+
+.produk-terbaru-title{
+	color: black;
+	font-size: 1em;
+}
+
+.produk-terbaru-harga{
+	color: black;
+}
+
+// Produk Terbaru
+
+.produk-pic {
+	position: relative;
+	display: inline-block;
+}
+
+.info {
+	position: absolute;
+    top: 5%;
+	color: white;
+	left: 10%;
+}
+
+.info-circle-new {
+	display: inline-block;
+	color: white;
+	border-radius: 60px;
+	background: #32A96A;
+	box-shadow: 0px 0px 2px #888;
+	padding: 0.5em 0.6em;
+}
+
+.info-circle-discount {
+	display: inline-block;
+	color: white;
+	border-radius: 60px;
+	background: #D15252;
+	box-shadow: 0px 0px 2px #888;
+	padding: 0.5em 0.6em;
+}
+
+.produk-pic:hover .edit {
+	display: block;
+}
+
+.produk-terbaru-carousel .item:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.edit {
+	position: absolute;
+	display: none;
+    bottom: 5%;
+}
+
+.edit a {
+	color: white;
+}
+
+.cart-icon {
+	left: 10%;
+}
+
+.view-icon {
+	left: 30%;
+}
+
+.star-icon {
+	right: 30%;
+}
+
+.share-icon {
+	right: 10%;
+}
+
+.produk-pic .fa {
+  display: inline-block;
+  border-radius: 60px;
+  background: $icon-color;
+  padding: 0.5em 0.6em;
+}
+
+.produk-pic .fa:hover{
+	box-shadow: 0px 0px 2px #888;
+}

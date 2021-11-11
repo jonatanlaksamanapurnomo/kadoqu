@@ -1,0 +1,21 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: orderchecker
+spec:
+  schedule: "*/10 * * * *"
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 100
+      template:
+        spec:
+          containers:
+            - name: orderchecker
+              image: curlimages/curl:7.67.0
+              args:
+                - "https://edge.kadoqu.com/"
+                - "-H"
+                - "content-type: application/json"
+                - "-d"
+                - '{"operationName":"orderChecker","variables":{},"query":"mutation orderChecker {\n  orderChecker\n}\n"}'
+          restartPolicy: OnFailure

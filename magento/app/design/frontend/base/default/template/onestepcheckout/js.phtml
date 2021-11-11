@@ -1,0 +1,571 @@
+<script type="text/javascript">
+
+    //<![CDATA[
+    var preloadImage = '<?php echo $this->getSkinUrl('images/onestepcheckout/material/preload.gif') ?>';
+    var shipping_method_url = '<?php echo $this->getUrl('onestepcheckout/index/save_shipping', array('_secure' => true)); ?>';
+    var enable_update_payment = <?php echo $this->configData['update_payment'] ? 'true' : 'false'; ?>;
+    var login_url = '<?php echo $this->getUrl('onestepcheckout/index/show_login', array('_secure' => true)); ?>';
+    var show_login_link = <?php echo $this->configData['show_login_link'] ? 'true' : 'false'; ?>;
+    var show_term_condition_url = '<?php echo $this->getUrl('onestepcheckout/index/show_term_condition', array('_secure' => true)); ?>';
+    var form = $('one-step-checkout-form');
+    var reload_payment = <?php echo $this->configData['reload_payment']; ?>;
+
+    function showloginbox() {
+        var url = '<?php echo $this->getUrl('onestepcheckout/index/show_login', array('_secure' => true)); ?>';
+        showLogin(url);
+    }
+
+    function showforgotpwd() {
+        var url = '<?php echo $this->getUrl('onestepcheckout/index/show_password', array('_secure' => true)); ?>';
+        showpwdbox(url);
+    }
+
+
+    function submitLoginForm() {
+        var login_validator = new Validation('onestepcheckout-login-form');
+        if (login_validator.validate()) {
+            showLoginLoading();
+            var url = '<?php echo $this->getUrl('onestepcheckout/index/loginPost', array('_secure' => true)) ?>';
+            var email = $('osclogin:email_address').value;
+            var password = $('osclogin:password').value;
+            var parameters = {email: email, password: password};
+            var loginRequest = new Ajax.Request(url, {
+                parameters: parameters,
+                onComplete: loginProcess.bindAsEventListener(this),
+                onFailure: ""
+            });
+        }
+    }
+
+    function retrievePassword() {
+        var passwordValidator = new Validation('osc-forgotpassword-form');
+        if (passwordValidator.validate()) {
+            showPassLoading();
+            var url = '<?php echo $this->getUrl('onestepcheckout/index/retrievePassword', array('_secure' => true)) ?>';
+            var email = $('forgotpassword_email_address').value;
+            var parameters = {email: email};
+            var loginRequest = new Ajax.Request(url, {
+                parameters: parameters,
+                onComplete: passwordProcess.bindAsEventListener(this),
+                onFailure: ""
+            });
+        }
+    }
+
+
+    <?php $storeId = Mage::app()->getStore(true)->getStoreId() ?>
+    var save_address_url = '<?php echo $this->getUrl('onestepcheckout/index/saveAddressOnestepcheckout', array('_secure' => true)) ?>';
+    var update_address_shipping = '<?php echo Mage::getStoreConfig('onestepcheckout/ajax_update/address_shipping', $storeId) ?>';
+    var update_address_payment = '<?php echo Mage::getStoreConfig('onestepcheckout/ajax_update/address_payment', $storeId) ?>';
+    var update_address_review = '<?php echo Mage::getStoreConfig('onestepcheckout/ajax_update/address_review', $storeId) ?>';
+    var update_shipping_payment = '<?php echo Mage::getStoreConfig('onestepcheckout/ajax_update/shipping_payment', $storeId) ?>';
+    var update_shipping_review = '<?php echo Mage::getStoreConfig('onestepcheckout/ajax_update/shipping_review', $storeId) ?>';
+    var update_payment_review = '<?php echo Mage::getStoreConfig('onestepcheckout/ajax_update/payment_review', $storeId) ?>';
+
+    /* Begin Iways Paypal Plus */
+    $$('#checkout-payment-method-load dt input').invoke('observe', 'click', function(e) {
+        if(e.element().id == 'p_method_iways_paypalplus_payment'){
+            $('ppplus').down('iframe').style.width = '100%';
+        }
+    });
+    /* End Iways Paypal Plus */
+
+    <?php if (Mage::getStoreConfig('onestepcheckout/ajax_update/enable_ajax', $storeId)): ?>
+
+    //save address when change country field
+    <?php if ($this->isAjaxBillingField('country')): ?>
+    //2014.18.11 fix VAT apply start
+    if ($('billing:taxvat'))
+        Event.observe('billing:taxvat', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('billing-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+        });
+    //2014.18.11 fix VAT apply end
+
+    //save billing when country is changed
+    if ($('billing:country_id'))
+        Event.observe('billing:country_id', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('billing-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+            //Thinhnd
+            <?php if (Mage::getStoreConfig('onestepcheckout/field_require_management/region')): ?>
+            if ($('billing:region').style.display != 'none') {
+                $('billing:region').addClassName('required-entry');
+                $$('span.required')[8].style.display = '';
+            }
+            <?php endif; ?>
+            //end
+        });
+    <?php if ($this->isShowShippingAddress()): ?>
+    if ($('shipping:country_id'))
+        Event.observe('shipping:country_id', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('shipping-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+        });
+    <?php endif; ?>
+    <?php endif; ?>
+
+    //save address when change state/region field
+    <?php if ($this->isAjaxBillingField('state/region')): ?>
+    //save billing when state / region is changed
+    if ($('billing:region_id'))
+        Event.observe('billing:region_id', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('billing-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+        });
+    if ($('billing:region'))
+        Event.observe('billing:region', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('billing-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+        });
+    <?php if ($this->isShowShippingAddress()): ?>
+    if ($('shipping:region_id'))
+        Event.observe('shipping:region_id', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('shipping-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+        });
+    if ($('shipping:region'))
+        Event.observe('shipping:region', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('shipping-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+        });
+    <?php endif; ?>
+    <?php endif; ?>
+
+    //save address when change postcode field
+    <?php if ($this->isAjaxBillingField('postcode')): ?>
+    //save billing when postcode is changed
+    if ($('billing:postcode'))
+        Event.observe('billing:postcode', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('billing-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+        });
+    <?php if ($this->isShowShippingAddress()): ?>
+    if ($('shipping:postcode'))
+        Event.observe('shipping:postcode', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('shipping-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+        });
+    <?php endif; ?>
+    <?php endif; ?>
+
+    //save address when change city field
+    <?php if ($this->isAjaxBillingField('city')): ?>
+    //save billing when city is changed
+    if ($('billing:city'))
+        Event.observe('billing:city', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('billing-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+        });
+    <?php if ($this->isShowShippingAddress()): ?>
+    if ($('shipping:city'))
+        Event.observe('shipping:city', 'change', function () {
+            //check empty fields
+            var empty = checkEmptyFields($('shipping-new-address-form'));
+            if (empty == false || reload_payment == 2)
+                save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+        });
+    <?php endif; ?>
+    <?php endif; ?>
+
+    //2014.18.11 delete reload when change telephone
+    <?php endif ?>
+
+    //document.observe('dom:loaded', function() {
+    //fix for IE9
+    Event.observe(window, 'load', function () {
+        if ($('create_account_checkbox_id')) {
+            if ($('create_account_checkbox_id').checked)
+                $('password_section_id').show();
+            else
+                $('password_section_id').hide();
+        }
+        if ($RF(form, 'payment[method]') != null) {
+            var payment_method = $RF(form, 'payment[method]');
+            if ($('container_payment_method_' + payment_method)) {
+                $('container_payment_method_' + payment_method).show();
+            }
+            if ($('payment_form_' + payment_method)) {
+                $('payment_form_' + payment_method).show();
+            }
+        }
+    });
+
+
+    function savePaymentRedirect(params) {
+        var request = new Ajax.Request(
+            '<?php echo $this->getUrl('onestepcheckout/index/savePayment', array('_secure' => true)); ?>',
+            {
+                method: 'post',
+                onComplete: this.onComplete,
+                onSuccess: function (transport) {
+                    window.location.href = transport.responseText;
+                },
+                onFailure: function (transport) {
+                    savePaymentRedirect(params);
+                },
+                parameters: params
+            });
+    }
+
+    function oscPlaceOrder(element) {
+        var validator = new Validation('one-step-checkout-form');
+        var form = $('one-step-checkout-form');
+        /* validate email address */
+        if($('email-error-message') && $('email-error-message').innerHTML) {
+            alert('<?php echo $this->__('Invalid email address!')?>');
+            return;
+        }
+        if (validator.validate()) {
+            if (($('p_method_hosted_pro') && $('p_method_hosted_pro').checked) || ($('p_method_payflow_advanced') && $('p_method_payflow_advanced').checked)) {
+                $('onestepcheckout-place-order-loading').show();
+                $('onestepcheckout-button-place-order').removeClassName('onestepcheckout-btn-checkout');
+                $('onestepcheckout-button-place-order').addClassName('place-order-loader');
+                $('ajaxcart-load-ajax').show();
+                checkAjax('<?php echo $this->getUrl('onestepcheckout/index/saveOrderPro', array('_secure' => true)); ?>');
+            } else {
+                if (checkpayment()) {
+                    var options = document.getElementsByName('payment[method]');
+                    var paymentChecked;
+                    for (var i = 0; i < options.length; i++) {
+                        if ($(options[i].id).checked) {
+                            paymentChecked = options[i].value;
+                        }
+                    }
+                    if (paymentChecked == 'paymentecommerce') {
+                        /* Integrate SellerDeck Payment */
+                        sellerdeckPayment();
+                        $$('#onestepcheckout-button-place-order')[0].click();
+                        $('onestepcheckout-button-place-order').disable();
+                        $('onestepcheckout-button-place-order').addClassName('disable-button');
+                    } else if(paymentChecked == 'iways_paypalplus_payment') {
+                        /*Integrate Iways PayPal Plus */
+                        $('onestepcheckout-place-order-loading').show();
+                        window.ppp.doCheckout();
+                    } else {
+                        element.disabled = true;
+                        var already_placing_order = true;
+                        disable_payment();
+                        $('onestepcheckout-place-order-loading').show();
+                        $('onestepcheckout-button-place-order').removeClassName('onestepcheckout-btn-checkout');
+                        $('onestepcheckout-button-place-order').addClassName('place-order-loader');
+                        //$('one-step-checkout-form').submit();
+                        for (var i = 0; i < options.length; i++) {
+                            if ($(options[i].id).checked) {
+                                if (options[i].id.indexOf("tco") != -1) {
+                                    var params = Form.serialize('one-step-checkout-form');
+                                    var request = new Ajax.Request(
+                                        '<?php echo $this->getCheckoutUrl() . 'isAjax/tco'; ?>',
+                                        {
+                                            method: 'post',
+                                            onComplete: this.onComplete,
+                                            onSuccess: function (transport) {
+                                                if (transport.status == 200) {
+                                                    if (transport.responseText.isJSON) {
+                                                        var response = JSON.parse(transport.responseText);
+                                                        $('onestepcheckout-place-order-loading').style.display = 'none';
+                                                        $('checkout-' + response.update_section.name + '-load').update(response.update_section.html);
+                                                        $('onestepcheckout-button-place-order').removeAttribute('onclick');
+                                                        $('onestepcheckout-button-place-order').observe('click', formsubmit());
+                                                        $('onestepcheckout-button-place-order').disabled = false;
+                                                    }
+                                                }
+                                            },
+                                            onFailure: '', //checkout.ajaxFailure.bind(checkout),
+                                            parameters: params
+                                        });
+                                }
+                                else if (options[i].id.indexOf("wirecard") != -1) {
+                                    var params = Form.serialize('one-step-checkout-form');
+                                    var request = new Ajax.Request(
+                                        '<?php echo $this->getCheckoutUrl() . 'isAjax/wirecard'; ?>',
+                                        {
+                                            method: 'post',
+                                            onComplete: this.onComplete,
+                                            onSuccess: function (transport) {
+                                                var response = JSON.parse(transport.responseText);
+                                                if (response.url) {
+                                                    window.location.href = response.url;
+                                                } else {
+                                                    var payment_method = $RF(form, 'payment[method]');
+                                                    var wireparams = {'paymentMethod': payment_method};
+                                                    url = '<?php echo Mage::getBaseUrl() . 'wirecard_checkout_page/processing/wirecard_checkout_pagecheckout/'; ?>';
+                                                    var wirerequest = new Ajax.Request(
+                                                        qmoreIsIframe,
+                                                        {
+                                                            method: 'get',
+                                                            parameters: wireparams,
+                                                            onSuccess: function (innerTransport) {
+                                                                if (innerTransport && innerTransport.responseText) {
+                                                                    try {
+                                                                        var innerResponse = eval('(' + innerTransport.responseText + ')');
+                                                                    }
+                                                                    catch (e) {
+                                                                        innerResponse = {};
+                                                                    }
+                                                                    if (innerResponse.isIframe) {
+                                                                        toggleQMoreIFrame();
+                                                                        $('qmore-iframe').src = url;
+                                                                    } else {
+                                                                        window.location.href = url;
+                                                                    }
+                                                                }
+                                                            },
+                                                            onFailure: ''
+                                                        });
+                                                }
+                                            },
+                                            onFailure: '', //checkout.ajaxFailure.bind(checkout),
+                                            parameters: params
+                                        });
+                                }
+                                else {
+                                    if (isUseAmazon() == false) {
+                                        $('one-step-checkout-form').submit();
+                                    }
+                                    else {
+                                        <?php
+                                        if (Mage::helper('core')->isModuleEnabled('Amazon_Payments')) {
+                                            $helperAmz = new Amazon_Payments_Helper_Data();
+                                            if (isset($helperAmz))
+                                                $checkoutUrl = $helperAmz->getCheckoutUrl(false);
+                                        }
+                                        ?>
+                                        window.location.href = "<?php if (isset($checkoutUrl)) echo $checkoutUrl;?>";
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function sellerdeckPayment() {
+        $('onestepcheckout-place-order-loading').show();
+        new Ajax.Request('<?php echo Mage::getUrl('PaymentEcommerce/standard/redirectPayment', array('_secure' => true)); ?>', {
+            method: "post",
+            onSuccess: function (transport) {
+                $('sellerdeck-payment').insert({after: transport.responseText});
+            }.bind(this)
+        });
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.text = "customreview = new CustomReview('<?php echo $this->getUrl('checkout/onepage/saveOrder', array('form_key' => Mage::getSingleton('core/session')->getFormKey())); ?>',  '<?php echo $this->getUrl('PaymentEcommerce/standard/getReservedOrderId', array('form_key' => Mage::getSingleton('core/session')->getFormKey())); ?>', '<?php echo $this->getUrl('checkout/onepage/success'); ?>', $(\'checkout-agreements\'),'');"
+        $('sellerdeck-payment').insert({after: script});
+        setTimeout(function () {
+            customreview.save();
+        }, 1000);
+    }
+
+    save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review, true);
+
+</script>
+
+<!-- Terms and conditions -->
+<?php $_helper = Mage::helper('onestepcheckout'); ?>
+<?php $width = $_helper->getTermPopupWidth() ? $_helper->getTermPopupWidth() : 482; ?>
+<?php $height = $_helper->getTermPopupHeight() ? $_helper->getTermPopupHeight() : 530; ?>
+
+<?php if ($_helper->enableTermsAndConditions()): ?>
+
+
+    <script>
+        //<![CDATA[
+        Event.observe(window, 'load', function () {
+
+            var termsPopup = new Control.Modal($('onestepcheckout-toc-popup'), {
+                overlayOpacity: 0.65,
+                fade: true,
+                fadeDuration: 0.3
+            });
+
+            $('onestepcheckout-toc-link').observe('click', function (e) {
+                e.preventDefault();
+                termsPopup.open();
+                var controlOverlay = $('control_overlay');
+                controlOverlay.style.opacity = 0.65;
+                /*window.scrollTo(0, 20);*/
+            });
+
+            $$('div#onestepcheckout-toc-popup p.close a').invoke('observe', 'click', function (e) {
+                e.preventDefault();
+                termsPopup.close();
+            });
+
+        });
+
+        Event.observe(window, 'scroll', function () {
+            var toc_popup = $('onestepcheckout-toc-popup');
+            if (toc_popup) {
+                var toc_popup_height = toc_popup.clientHeight;
+                var window_height = window.innerHeight;
+                var document_height = document.documentElement.clientHeight;
+                if (typeof(window_height) == 'undefined') {
+                    window_height = document_height;
+                }
+                if (toc_popup_height <= window_height) {
+                    toc_popup.addClassName('fix-possition-toc-popup');
+                } else {
+                    toc_popup.removeClassName('fix-possition-toc-popup');
+                }
+            }
+
+        });
+
+        //]]>
+    </script>
+<?php endif; ?>
+
+<?php if (Mage::getStoreConfig('onestepcheckout/general/suggest_address', Mage::app()->getStore()->getStoreId())): ?>
+    <script type="text/javascript">
+        function fillAddress(type, street, city, region_id, region, country, postal_code, sublocality) {
+            var street1Field = document.getElementById(type + ':street1'),
+                street2Field = document.getElementById(type + ':street2'),
+                cityField = document.getElementById(type + ':city'),
+                countryField = document.getElementById(type + ':country_id'),
+                regionField = document.getElementById(type + ':region'),
+                regionIdField = document.getElementById(type + ':region_id'),
+                postcodeField = document.getElementById(type + ':postcode');
+            if (street) {
+                street1Field.value = street;
+            } else {
+                street1Field.value = '';
+            }
+            if (sublocality) {
+                if (street2Field)
+                    street2Field.value = sublocality;
+                else
+                    street1Field.value += ' ' + sublocality;
+            } else {
+                if (street2Field)
+                    street2Field.value = '';
+            }
+            if (city) {
+                if (cityField)
+                    cityField.value = city;
+            } else {
+                if (cityField)
+                    cityField.value = '';
+            }
+            if (country && countryField)
+                countryField.value = country;
+            if (type == 'billing')
+                billingRegionUpdater.update();
+            if (type == 'shipping')
+                shippingRegionUpdater.update();
+            if (region) {
+                if (regionField)
+                    regionField.value = region;
+            } else {
+                if (regionField)
+                    regionField.value = '';
+            }
+            if (postal_code) {
+                if (postcodeField)
+                    postcodeField.value = postal_code;
+            } else {
+                if (postcodeField)
+                    postcodeField.value = '';
+            }
+            var params = {country: country, region_id: region_id, default_name: region};
+            var request = new Ajax.Request(
+                '<?php echo $this->getUrl('onestepcheckout/index/getreionid'); ?>',
+                {
+                    method: 'post',
+                    onSuccess: function (transport) {
+                        if (transport.status == 200) {
+                            var id = JSON.parse(transport.responseText).id;
+                            if (region_id) {
+                                if (regionIdField)
+                                    regionIdField.value = id;
+                            } else {
+                                if (regionIdField)
+                                    regionIdField.value = '';
+                            }
+                        }
+                    },
+                    onComplete: function (transport) {
+                        save_address_information(save_address_url, update_address_shipping, update_address_payment, update_address_review);
+                    },
+                    onFailure: '',
+                    parameters: params
+                });
+        }
+    </script>
+<?php endif; ?>
+<script type="text/javascript">
+    var invalidEmailPopup = new Control.Modal($('notify-email-invalid'), {
+        overlayOpacity: 0.65,
+        fade: true,
+        fadeDuration: 0.3
+    });
+
+    function check_valid_email(transport) {
+        var response = getResponseText(transport);
+        var message = response.message;
+        if (message == 'valid') {
+            $('email-error-message').update('');
+            $('valid_email_address_image').show();
+            /*
+            $('onestepcheckout-button-place-order').disabled = false;
+            $('onestepcheckout-button-place-order').addClassName('onestepcheckout-btn-checkout');
+            $('onestepcheckout-button-place-order').removeClassName('place-order-loader');
+            */
+            if ($('emailvalid'))
+                $('emailvalid').value = 'valid';
+            invalidEmailPopup.close();
+
+        }
+        else if (message == 'invalid') {
+            $('valid_email_address_image').hide();
+            $('email-error-message').update('<?php echo $this->__('<p>Invalid Email Address</p>') ?>');
+            /*
+            $('onestepcheckout-button-place-order').disabled = true;
+            $('onestepcheckout-button-place-order').removeClassName('onestepcheckout-btn-checkout');
+            $('onestepcheckout-button-place-order').addClassName('place-order-loader');
+            */
+            if ($('emailvalid'))
+                $('emailvalid').value = 'invalid';
+            invalidEmailPopup.open();
+
+        }
+        else if (message == 'exists') {
+            if ($('emailvalid'))
+                $('emailvalid').value = 'valid';
+            $('valid_email_address_image').hide();
+            if (show_login_link)
+                $('email-error-message').update('<?php echo '<p>' . $this->__('Email address already registered.') . ' ' . $this->__('You may') . ' ' . '<a href="" onclick="login_popup.show(); return false;">' . $this->__('login') . '</a>' . ' ' . $this->__('if you wish to do so') . ' </p>' ?>');
+            else {
+                $('email-error-message').update('<?php echo $this->__('<p>Email address already registered. Please use another email address.</p>') ?>');
+            }
+        }
+    }
+
+</script>
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    $j('html').addClass('placeholder' in document.createElement('input') ? 'placeholder' : 'no-placeholder');
+</script>

@@ -1,0 +1,93 @@
+<?php
+/**
+ * Hello Magento
+ *
+ * @package    HM
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @see HM_Bestseller_Model_Bestseller
+ */
+?>
+
+<script type="text/javascript">
+jQuery.noConflict();
+function mycarousel_initCallback(carousel)
+{
+    // Disable autoscrolling if the user clicks the prev or next button.
+    carousel.buttonNext.bind('click', function() {
+        carousel.startAuto(0);
+    });
+
+    carousel.buttonPrev.bind('click', function() {
+        carousel.startAuto(0);
+    });
+
+    // Pause autoscrolling if the user moves with the cursor over the clip.
+    carousel.clip.hover(function() {
+        carousel.stopAuto();
+    }, function() {
+        carousel.startAuto();
+    });
+};
+function Boxgrid(){
+	jQuery('.boxgrid.caption').hover(function(){
+		jQuery(".cover", this).stop().animate({top:'65px'},{queue:false,duration:160});
+	}, function() {
+		jQuery(".cover", this).stop().animate({top:'100px'},{queue:false,duration:160});
+	});
+}
+
+
+jQuery(document).ready(function() {
+    jQuery('#mycarousel').jcarousel({
+        vertical: true,
+		auto: 2,
+        wrap: 'last',
+        initCallback: mycarousel_initCallback
+    });
+});
+
+</script>
+
+
+<?php 
+ 
+$total_products = ($this->show_total) ? $this->show_total : 6;
+$_productCollection = $this->getBestsellers($total_products); 
+$_collectionSize = count($_productCollection);
+?>
+
+
+<?php if(count($_productCollection) > 0): ?>
+
+<?php /* BELOW IS DEFAULT MAGENTO TEMPLATE CODE FROM catalog/product/list.phtml file */ ?>
+<div class="listing-type-grid catalog-listing">
+<div class="product_body" >
+<?php $_collectionSize = count($_productCollection) ?>
+	<ul id="mycarousel" class="jcarousel-skin-tango">
+    <?php $i=0; foreach ($_productCollection as $_product): ?>    
+        
+            <li >
+                <div class="boxgrid caption">
+                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>">
+                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135, 135); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+                    </a>					
+					<div class="cover boxcaption">
+						<div class="group_box">
+							<div class="box_price">								
+								<span><?php echo $this->helper('checkout')->formatPrice($_product->getPrice()) ?></span>  								
+							</div>
+							<div class="box_adtocat">	
+								<a href="<?php echo  Mage::helper('checkout/cart')->getAddUrl($_product);?>">
+								<?php echo $this->__('Add to Cart') ?></a>
+							</div>
+							<div class="clear_both"><span></span></div>
+						</div>						
+						<h3><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h3>
+					</div>
+                </div>				
+            </li>
+    <?php endforeach ?>
+		</ul>
+	</div>
+</div>
+<?php endif; ?>

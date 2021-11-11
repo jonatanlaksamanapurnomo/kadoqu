@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+	<global>
+		<events>
+			<!--after order-->
+			<sales_order_place_after>
+				<observers>
+					<DRex_Smssimple_save_after>
+						<type>singleton</type>
+						<class>DRex_Smssimple_Model_Observer</class>
+						<method>sendSmsOrdered</method>
+					</DRex_Smssimple_save_after>
+				</observers>
+			</sales_order_place_after>
+			<!--after invoiced-->
+			<sales_order_invoice_save_after>
+				<observers>
+					<DRex_Smssimple_invoice_after>
+						<type>singleton</type>
+						<class>DRex_Smssimple_Model_Observer</class>
+						<method>sendSmsInvoiced</method>
+					</DRex_Smssimple_invoice_after>
+				</observers>
+			</sales_order_invoice_save_after>
+			<!--after shipping-->
+			<sales_order_shipment_save_before>
+				<observers>
+					<DRex_Smssimple_ship_before>
+						<type>singleton</type>
+						<class>DRex_Smssimple_Model_Observer</class>
+						<method>sendSmsShipped</method>
+					</DRex_Smssimple_ship_before>
+				</observers>
+			</sales_order_shipment_save_before>
+		</events>
+	</global>
+</config>

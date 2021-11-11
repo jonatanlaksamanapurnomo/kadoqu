@@ -1,0 +1,66 @@
+<!-- List all categories and their second level subcategories -->
+<div class="block block-list block-categories">
+    <div id="block-categories" class="block-title active">
+        <strong><span>Categories </span></strong>
+    </div>
+
+    <div id="leftnav" class="block-content" style="display:block">
+        <?php $helper = $this->helper('catalog/category') ?>
+        <?php $categories = $this->getStoreCategories() ?>
+        <?php if (count($categories) > 0): ?>
+            <ul id="leftnav-tree" class="level0">
+                <?php foreach ($categories as $category): ?>
+                    <li class="level0<?php if ($this->isCategoryActive($category)): ?> active-category<?php endif; ?>">
+                        <a href="<?php echo $helper->getCategoryUrl($category) ?>" title="<?php echo $this->escapeHtml($category->getName()) ?>"><span><?php echo $this->escapeHtml($category->getName()) ?></span></a>
+                        <?php $subcategories = $category->getChildrenCategories() ?>
+                        <?php if (count($subcategories) > 0): ?>
+                            <div class="toggle-btn"></div>
+                            <ul id="leftnav-tree-<?php echo $category->getId() ?>" class="level1">
+                                <?php foreach ($subcategories as $subcategory): ?>
+                                    <li class="level1<?php if ($this->isCategoryActive($subcategory)): ?> active<?php endif; ?>">
+                                        <a href="<?php echo $helper->getCategoryUrl($subcategory) ?>" title="<?php echo $this->escapeHtml(trim($subcategory->getName(), '- ')) ?>"><?php echo $this->escapeHtml(trim($subcategory->getName(), '- ')) ?></a>
+                                        <?php $secondLevelSubcategories = $subcategory->getChildrenCategories() ?>
+                                        <?php if (count($secondLevelSubcategories) > 0): ?>
+                                            <ul id="leftnav-tree-<?php echo $subcategory->getId() ?>" class="level2">
+                                                <?php foreach ($secondLevelSubcategories as $secondLevelSubcategory): ?>
+                                                    <li class="level2<?php if ($this->isCategoryActive($secondLevelSubcategory)): ?> active<?php endif; ?>">
+                                                        <a href="<?php echo $helper->getCategoryUrl($secondLevelSubcategory) ?>" title="<?php echo $this->escapeHtml(trim($secondLevelSubcategory->getName(), '- ')) ?>"><?php echo $this->escapeHtml(trim($secondLevelSubcategory->getName(), '- ')) ?></a>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                            <script type="text/javascript">
+                                                decorateList('leftnav-tree-<?php echo $category->getId() ?>', 'recursive');
+                                            </script>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                            </ul>
+                            <script type="text/javascript">
+                                decorateList('leftnav-tree-<?php echo $category->getId() ?>', 'recursive');
+                            </script>
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <script type="text/javascript">
+                decorateList('leftnav-tree', 'recursive');
+            </script>
+        <?php endif; ?>
+    </div>
+</div>
+<script type="text/javascript">
+
+    jQuery('#leftnav-tree li.level0 .toggle-btn').each(function () {
+        jQuery(this).on("click", function () {
+            if (jQuery(this).parent().hasClass('active-category')) {
+                jQuery(this).parent().removeClass('active-category');
+                jQuery(this).parent().find("ul.level1").slideUp(200);
+            }
+
+            else {
+                jQuery(this).parent().addClass('active-category');
+                jQuery(this).parent().find("ul.level1").slideDown(200);
+            }
+        });
+    });
+
+</script>

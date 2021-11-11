@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Dewata_Posems>
+      <version>0.1.0</version>
+    </Dewata_Posems>
+  </modules>
+  <global>
+    <helpers>
+      <posems>
+        <class>Dewata_Posems_Helper</class>
+      </posems>
+    </helpers>
+	<models>
+	  <posems>
+			<class>Dewata_Posems_Model</class>
+			<resourceModel>posems_mysql4</resourceModel>
+	  </posems>
+	</models>
+  </global>    
+	<default>
+        <carriers>
+            <posems>
+                <active>1</active>
+                <model>posems/carrier_posems</model>
+                <name>POS EMS</name>
+                <title>POS EMS</title>
+                <description>POS EMS</description>
+                <sort_order>0</sort_order>
+            </posems>
+        </carriers>
+    </default>
+</config> 

@@ -1,0 +1,130 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Promo
+ */
+?>
+<?php
+$products = $this->getNewItems();
+?>
+<?php if (sizeof($products) > 0): ?>
+    <script type="text/javascript">
+        Object.extend(Product.Config.prototype, {
+            reloadOptionLabels: function(){},
+            changeSelection: function(){},
+            reloadPrice: function(){}
+        });
+    </script>
+
+    <div id="ampromo-overlay" style="display: none;">
+        <div id="ampromo-items" class="<?php echo sizeof($products) > 2 ? 'amcarousel' : ''?>">
+            <h4><?php echo $this->__('Free Items')?></h4>
+
+            <a href="javascript:" class="close"></a>
+
+            <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/product/view/options/js.phtml')->toHtml() ?>
+            <?php echo $this->getLayout()->createBlock('core/html_calendar')->setTemplate('page/js/calendar.phtml')->toHtml() ?>
+
+            <a href="javascript:" class="ampromo-carousel-control prev" rel="prev">Previous slide</a>
+            <div id="ampromo-carousel-wrapper">
+                <div id="ampromo-carousel-content">
+                    <?php foreach ($products as $product): ?>
+                        <div class="ampromo-slide">
+                            <div class="ampromo-item" data-product-id="<?php echo $product->getId()?>" data-product-sku="<?php echo $product->getSku()?>"<?php if($product->getTypeId() == 'amgiftcard'):?>style="width: 400px;"<?php endif;?>>
+                                <form method="POST" action="<?php echo $this->getFormActionUrl()?>" class="ampromo_items_form" id="ampromo_items_form-<?php echo $product->getId()?>">
+                                    <input type='hidden' name='referer' value='<?php echo $this->_getReferer()?>' />
+                                    <div class="ampromo-item-title">
+                                        <?php if ($product->getVisibility() != Mage_Catalog_Model_Product_Visibility::VISIBILITY_NOT_VISIBLE):?>
+                                        <h4><a href="<?php echo $product->getProductUrl()?>"><?php echo $product->getName()?></a></h4>
+                                        <?php else: ?>
+                                        <h4><?php echo $product->getName()?></h4>
+                                        <?php endif?>
+                                    </div>
+                                    <img src="<?php echo $product->getSmallImageUrl(160, 160) ?>" class="ampromo-item-image"/>
+
+                                    <div class="ampromo-item-options"  <?php if($product->getTypeId() == 'amgiftcard'):?>style="overflow-y: scroll; max-height: 300px"<?php endif;?>>
+										<?php
+
+                                        if (Mage::registry('current_product'))
+                                            Mage::unregister('current_product');
+
+                                        Mage::register('current_product', $product);
+
+										switch($product->getTypeId()){
+                                            case 'downloadable':
+                                                $_blockOpt = 'downloadable/catalog_product_links';
+                                                $_templateOpt = 'amasty/ampromo/items/downloadable.phtml';
+                                                break;
+                                            case 'configurable':
+												$_blockOpt = 'catalog/product_view_type_configurable';
+												$_templateOpt = 'amasty/ampromo/items/configurable.phtml';
+												break;
+											case 'bundle':
+												$_blockOpt = 'ampromo/items_bundle';
+												$_templateOpt = 'bundle/catalog/product/view/type/bundle/options.phtml';
+												break;
+											case 'amgiftcard':
+												$_blockOpt = 'amgiftcard/catalog_product_view_type_giftCard';
+												$_templateOpt = 'amasty/amgiftcard/catalog/product/view/type/giftcard.phtml';
+												break;
+                                            case 'virtual':
+                                                $_blockOpt = 'catalog/product_view_type_virtual';
+                                                break;
+                                            case 'giftcard':
+                                                $_blockOpt = 'enterprise_giftcard/catalog_product_view_type_giftcard';
+//                                                $_templateOpt = 'giftcard/catalog/product/view/type/giftcard.phtml';
+                                                $_templateOpt = 'amasty/ampromo/items/giftcard.phtml';
+                                                break;
+                                            case 'amstcred':
+                                                $_blockOpt = 'amstcred/catalog_product_view_type_storeCredit';
+                                                $_templateOpt = 'amasty/amstcred/catalog/product/view/type/amstcred.phtml';
+                                                break;
+										}
+										if(!empty($_blockOpt) && !empty($_templateOpt)) {
+
+											$block = $this->getLayout()
+                                                ->createBlock(
+                                                    $_blockOpt,
+                                                    'ampromo_item_' . $product->getId(),
+                                                    array('product' => $product)
+                                                )
+												->setProduct($product)
+												->setTemplate($_templateOpt);
+
+                                            switch($product->getTypeId()){
+                                                case 'giftcard':
+                                                    $child = $this->getLayout()->createBlock('enterprise_giftcard/catalog_product_view_type_giftcard_form', 'product.info.giftcard.form')
+                                                    ->setTemplate('giftcard/catalog/product/view/type/giftcard/form.phtml');
+
+                                                    $block->setChild('product.info.giftcard.form', $child);
+                                                break;
+                                            }
+
+                                            echo $block->toHtml();
+										}
+										?>
+
+                                        <?php echo $this->getLayout()
+                                            ->createBlock('ampromo/items_options', '', array('product' => $product))
+                                            ->toHtml()
+                                        ;?>
+                                    </div>
+
+                                    <input type="hidden" value="<?php echo $product->getId() ?>" name="product_id" />
+                                    <?php
+                                        echo $this->getPriceHtml($product);
+                                    ?>
+                                    <div class="ampromo-item-buttons">
+                                        <button type="button" title="<?php echo $this->__('Add to cart')?>" class="button btn-cart add amcart-ignore"><span><span><?php echo $this->__('Add to cart')?></span></span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+            <a href="javascript:" class="ampromo-carousel-control next" rel="next">Next slide</a>
+        </div>
+    </div>
+<?php endif ?>

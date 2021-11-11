@@ -1,0 +1,143 @@
+<mjml>
+  <mj-body>
+    <mj-hero>
+      <mj-image width="100px" align="left" src="https://ik.imagekit.io/nwiq66cx3pvsy/Footer/kadoqu_HJeQl-ptdN.png"></mj-image>
+      <mj-text font-size="10px" font-family="helvetica">Dear Customer</mj-text>
+      <mj-text align="left" font-size="30px" color="#00998D">Pesanan Selesai</mj-text>
+    </mj-hero>
+    <mj-section>
+      <mj-column>
+        <mj-table line-height="1px">
+          <tr>
+            <td>
+              <p>No Pesanan</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Pesanan Atas Nama</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Tanggal Pemesanan</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+            <tr>
+            <td>
+              <p>Tanggal Sampai</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+        </mj-table>
+      </mj-column>
+    </mj-section>
+    <mj-hero>
+      <mj-divider border-width="1px" border-style="solid" border-color="#00998D" />
+      <mj-text padding-top="0px" color="#00998D">
+        <h5>Pesanan Dengan Rincian di atas telah sampai ke customer dan dinyatakan Selesai </p>
+      </mj-text>
+      <mj-text padding-bottom="0px">
+        <h3>Detail Pesanan #123123123</h3>
+        <p style="color:gray">Kurir : JNE & Yes</p>
+      </mj-text>
+    </mj-hero>
+    <mj-section>
+      <mj-column>
+        <mj-table>
+          <tr>
+            <td>
+              <img width="50px" src="https://ik.imagekit.io/nwiq66cx3pvsy/confirm_email_2_proses_pesanan.png"></img>
+            </td>
+            <td>
+              <p style="color:#00998D">Product One</p>
+            </td>
+            <td>
+              <p>X1</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img width="50px" src="https://ik.imagekit.io/nwiq66cx3pvsy/confirm_email_2_proses_pesanan.png"></img>
+            </td>
+            <td>
+              <p style="color:#00998D">Product One</p>
+            </td>
+            <td>
+              <p>X1</p>
+            </td>
+            <td>
+              <p>Rp 300.000</p>
+            </td>
+          </tr>
+        </mj-table>
+        <mj-divider border-width="1px" border-style="solid" border-color="#00998D" />
+      </mj-column>
+    </mj-section>
+    <mj-hero>
+      <mj-table line-height="5px" container-background-color="#2FC">
+        <tr>
+          <td>
+            <p>Total Harga Barang : </p>
+          </td>
+          <td>
+            <p>Rp 300.000</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Biaya Pengiriman : </p>
+          </td>
+          <td>
+            <p>Rp 300.000</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Jasa Bungkus : </p>
+          </td>
+          <td>
+            <p>Rp 300.000</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p style="color:red">Potongan Discount : </p>
+          </td>
+          <td>
+            <p style="color:red">Rp 300.000</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>Grand Total : </p>
+          </td>
+          <td>
+            <p>Rp 300.000</p>
+          </td>
+        </tr>
+      </mj-table>
+      <mj-divider border-width="1px" border-style="solid" border-color="#00998D" />
+      <mj-text align="center">
+        Jika Kamu Masih memiliki Pertanyaan Silahkan COntact Kami di hello@kadoqu.com
+      </mj-text>
+      <mj-text align="center" padding-top="0px">
+        Atau Bisa Kontak GIdA di 0812181600
+      </mj-text>
+    </mj-hero>
+  </mj-body>
+</mjml>

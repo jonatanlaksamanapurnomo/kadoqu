@@ -1,0 +1,116 @@
+.wrapping-lab-greeting-card-container table {
+  max-width: 45rem;
+  width: 100%;
+}
+
+.wrapping-lab-greeting-card-container td {
+  vertical-align: baseline;
+  vertical-align: -webkit-baseline-middle;
+  padding-bottom: 0.5rem;
+}
+
+.wrapping-lab-greeting-card-container td:first-child {
+  width: 9rem;
+}
+
+.wrapping-lab-greeting-card-container tr:first-child td:last-child input {
+  width: 95%;
+}
+
+.wrapping-lab-greeting-card-mobile-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 3vw;
+}
+
+.wrapping-lab-greeting-card-mobile-container .form-group {
+  margin-bottom: 0;
+}
+
+.wrapping-lab-container
+  .wrapping-lab-greeting-card-mobile-button.kadoqu-primary-button {
+  margin: 0;
+  width: 120px;
+}
+
+.wrapping-lab-greeting-card-mobile-container .custom-control {
+  display: flex;
+  align-items: center;
+}
+
+.wrapping-lab-greeting-card-mobile-container .custom-control-label::before,
+.wrapping-lab-greeting-card-mobile-container .custom-control-label::after {
+  top: 0;
+}
+
+.wrapping-lab-greeting-card-mobile-title-container {
+  background-color: var(--lightBlue);
+  padding: 7px 15px;
+}
+
+.wrapping-lab-greeting-card-mobile-form {
+  padding: 3vw 8vw 7vw;
+  font-weight: 300;
+  font-size: 3.5vw;
+  min-height: 63vh;
+}
+
+.wrapping-lab-greeting-card-mobile-form .kadoqu-primary-button {
+  display: block;
+  margin: 9vw auto 0;
+}
+
+.wrapping-lab-greeting-card-mobile-form input {
+  width: 75%;
+  min-width: 10rem;
+}
+
+.wrapping-lab-greeting-card-mobile-form textarea {
+  resize: none;
+  height: 40vw;
+}
+
+.wrapping-lab-greeting-card-mobile-form .form-control {
+  background: var(--grey-3);
+  box-shadow: 1vw 1vw 0.5rem rgba(0, 0, 0, 0.15);
+  border: none;
+  margin-bottom: 2rem;
+  font-size: 0.9em;
+  font-weight: 300;
+}
+
+@media (min-width: 576px) {
+  .wrapping-lab-greeting-card-mobile-container {
+    font-size: 1rem;
+  }
+
+  .wrapping-lab-container
+    .wrapping-lab-greeting-card-mobile-button.kadoqu-primary-button {
+    width: 170px;
+  }
+
+  .wrapping-lab-greeting-card-mobile-container .custom-control-label::before,
+  .wrapping-lab-greeting-card-mobile-container .custom-control-label::after {
+    top: 0.25rem;
+  }
+
+  .wrapping-lab-greeting-card-mobile-title-container {
+    padding: 10px 20px;
+    font-size: 1.3rem;
+  }
+  .wrapping-lab-greeting-card-mobile-form .kadoqu-primary-button {
+    margin: 2.5rem auto 0;
+  }
+  .wrapping-lab-greeting-card-mobile-form {
+    padding: 3vw 3rem 7vw;
+    font-size: 1rem;
+  }
+  .wrapping-lab-greeting-card-mobile-form .form-control {
+    box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.15);
+  }
+  .wrapping-lab-greeting-card-mobile-form textarea {
+    height: 30vw;
+  }
+}

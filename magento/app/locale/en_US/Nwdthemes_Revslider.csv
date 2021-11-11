@@ -1,0 +1,850 @@
+"Revolution Slider","Revolution Slider"
+"Following directories not found or not writable, please change permissions to: ","Following directories not found or not writable, please change permissions to: "
+"<i class='revicon-pencil-1'></i>New Product","<i class='revicon-pencil-1'></i>New Product"
+"Sliders Dashboard","Sliders Dashboard"
+"Slider Settings","Slider Settings"
+"Template Settings","Template Settings"
+"Slides List","Slides List"
+"Edit Slide","Edit Slide"
+"Revolution Slider - ","Revolution Slider - "
+"Css generation error: %s","Css generation error: %s"
+"Next >","Next >"
+"< Prev","< Prev"
+Image,Image
+of,of
+Close,Close
+"This feature requires inline frames. You have iframes disabled or your browser does not support them.","This feature requires inline frames. You have iframes disabled or your browser does not support them."
+Help,Help
+"Global Settings","Global Settings"
+"Revolution Sliders","Revolution Sliders"
+"No Sliders Found","No Sliders Found"
+"Revolution Slider Templates","Revolution Slider Templates"
+"No Template Sliders Found","No Template Sliders Found"
+"How To Use the Slider","How To Use the Slider"
+"From the","From the"
+"CMS block or page editor","CMS block or page editor"
+"insert the shortcode from the sliders table","insert the shortcode from the sliders table"
+"To insert Revolution Slider <b>Widget</b> in CMS editor click Insert Widget icon or button. Select <b>NWDthemes Revolution Slider</b> widget. In <b>Widget Options</b> select slider you want to insert and click <b>Insert Widget</b> button.","To insert Revolution Slider <b>Widget</b> in CMS editor click Insert Widget icon or button. Select <b>NWDthemes Revolution Slider</b> widget. In <b>Widget Options</b> select slider you want to insert and click <b>Insert Widget</b> button."
+"To create Revolution Slider <b>Widget Instance</b> go to ","To create Revolution Slider <b>Widget Instance</b> go to "
+"CMS > Widget","CMS > Widget"
+" section page and push <b>Add New Widget Instance</b> button. Select <b>NWDthemes Revolution Slider</b> widget type, choose design package/theme and click <b>Continue</b>. Fill <b>Frontend Properties</b> form giving widget instance name, assign store views and sort order. Click <b>Add Layout Update</b> button and select pages and block you want to display widget on. Switch to <b>Widget Options</b> tab and select slider for this widget instance. Click <b>Save</b> to update widget options."," section page and push <b>Add New Widget Instance</b> button. Select <b>NWDthemes Revolution Slider</b> widget type, choose design package/theme and click <b>Continue</b>. Fill <b>Frontend Properties</b> form giving widget instance name, assign store views and sort order. Click <b>Add Layout Update</b> button and select pages and block you want to display widget on. Switch to <b>Widget Options</b> tab and select slider for this widget instance. Click <b>Save</b> to update widget options."
+"XML layout","XML layout"
+use,use
+example,example
+code,code
+"Version Information","Version Information"
+"Installed Version","Installed Version"
+"Update History","Update History"
+"Import Slider","Import Slider"
+"Choose the import file","Choose the import file"
+"Note: custom styles will be updated if they exist!","Note: custom styles will be updated if they exist!"
+"Custom Animations:","Custom Animations:"
+overwrite,overwrite
+append,append
+"Static Styles:","Static Styles:"
+"General Settings","General Settings"
+"Include RevSlider libraries globally:","Include RevSlider libraries globally:"
+On,On
+Off,Off
+"ON - Add CSS and JS Files to all pages. </br>Off - CSS and JS Files will be only loaded on specified pages.","ON - Add CSS and JS Files to all pages. </br>Off - CSS and JS Files will be only loaded on specified pages."
+"Pages to include RevSlider libraries:","Pages to include RevSlider libraries:"
+"Specify the page handles that the front end includes will be included in. Example: cms_page_view,catalog_product_view","Specify the page handles that the front end includes will be included in. Example: cms_page_view,catalog_product_view"
+"Enable Markup Export option:","Enable Markup Export option:"
+"This will enable the option to export the Slider Markups to copy/paste it directly into websites.","This will enable the option to export the Slider Markups to copy/paste it directly into websites."
+"Enable Logs:","Enable Logs:"
+"Enable console logs for debugging.","Enable console logs for debugging."
+Update,Update
+"Add Video Layout","Add Video Layout"
+"Choose video type","Choose video type"
+Youtube,Youtube
+Vimeo,Vimeo
+HTML5,HTML5
+"Enter Vimeo ID or URL","Enter Vimeo ID or URL"
+"example:  30300114","example:  30300114"
+"Enter Youtube ID or URL","Enter Youtube ID or URL"
+"Poster Image Url","Poster Image Url"
+Example,Example
+"Video MP4 Url","Video MP4 Url"
+"Video WEBM Url","Video WEBM Url"
+"Video OGV Url","Video OGV Url"
+"Video Size","Video Size"
+"Full Width:","Full Width:"
+Width,Width
+Height,Height
+Cover:,Cover:
+"Dotted Overlay:","Dotted Overlay:"
+none,none
+"2 x 2 Black","2 x 2 Black"
+"2 x 2 White","2 x 2 White"
+"3 x 3 Black","3 x 3 Black"
+"3 x 3 White","3 x 3 White"
+"Aspect Ratio:","Aspect Ratio:"
+16:9,16:9
+4:3,4:3
+"Video Settings","Video Settings"
+Autoplay:,Autoplay:
+"Loop Video:","Loop Video:"
+Disable,Disable
+Loop,Loop
+"Loop, Slide does not stop","Loop, Slide does not stop"
+"Only 1st Time:","Only 1st Time:"
+"Next Slide On End:","Next Slide On End:"
+"Force Rewind:","Force Rewind:"
+"Hide Controls:","Hide Controls:"
+Mute:,Mute:
+"Disable Mobile:","Disable Mobile:"
+"Video Speed:","Video Speed:"
+0.25,0.25
+0.50,0.50
+1,1
+1.5,1.5
+2,2
+"Video Preload:","Video Preload:"
+Auto,Auto
+Metadata,Metadata
+"Preview Image","Preview Image"
+Set,Set
+Remove,Remove
+Arguments:,Arguments:
+"Add This Video","Add This Video"
+"Update Video","Update Video"
+"Slider Main Image / Background","Slider Main Image / Background"
+"Background Source:","Background Source:"
+"Image BG","Image BG"
+"Change Image","Change Image"
+"External URL","External URL"
+"Get External","Get External"
+Transparent,Transparent
+"Solid Colored","Solid Colored"
+"Background Settings:","Background Settings:"
+"Background Fit:","Background Fit:"
+"Background Repeat:","Background Repeat:"
+"Background Position:","Background Position:"
+"Ken Burns / Pan Zoom Settings:","Ken Burns / Pan Zoom Settings:"
+Background,Background
+Start,Start
+End,End
+"Start Position:","Start Position:"
+"Start Fit: (in %)","Start Fit: (in %)"
+Easing:,Easing:
+"End Position:","End Position:"
+"End Fit: (in %)","End Fit: (in %)"
+"Rotation (in °):","Rotation (in °):"
+"Duration (in ms):","Duration (in ms):"
+"Static / Global Layers","Static / Global Layers"
+Slide,Slide
+"Helper Grid:","Helper Grid:"
+Disabled,Disabled
+"Snap to:","Snap to:"
+None,None
+"Help Lines","Help Lines"
+Layers,Layers
+"Show Layers from Slide:","Show Layers from Slide:"
+"Add Layer","Add Layer"
+"Add Layer: Image","Add Layer: Image"
+"Add Layer: Product Image","Add Layer: Product Image"
+"Add Layer: Video","Add Layer: Video"
+"Duplicate Layer","Duplicate Layer"
+"Delete Layer","Delete Layer"
+"Delete All Layers","Delete All Layers"
+"Layers Timing & Sorting","Layers Timing & Sorting"
+z-Index,z-Index
+"Hide All Layers","Hide All Layers"
+"Lock All Layers","Lock All Layers"
+"Snap to Slide End / Custom End","Snap to Slide End / Custom End"
+Timing,Timing
+"Show / Hide Timer Settings","Show / Hide Timer Settings"
+"Static Options","Static Options"
+"Static Layers will be shown on every slide in template sliders","Static Layers will be shown on every slide in template sliders"
+"Start on Slide","Start on Slide"
+"End on Slide","End on Slide"
+"Layer General Parameters","Layer General Parameters"
+"Layer Content","Layer Content"
+"Align, Position & Styling","Align, Position & Styling"
+"Image Scale (dimensions in pixel)","Image Scale (dimensions in pixel)"
+"Reset Size","Reset Size"
+"Final Rotation","Final Rotation"
+"Parallax Setting","Parallax Setting"
+"Layer Animation","Layer Animation"
+"Preview Transition (Star end Endtime is Ignored during Demo)","Preview Transition (Star end Endtime is Ignored during Demo)"
+"Start Transition","Start Transition"
+"Custom Animation","Custom Animation"
+"End Transition (optional)","End Transition (optional)"
+"Loop Animation","Loop Animation"
+"Layer Animation Settings Panel","Layer Animation Settings Panel"
+Randomize,Randomize
+Transition,Transition
+X:,X:
+Y:,Y:
+Z:,Z:
+Rotation,Rotation
+Scale,Scale
+Skew,Skew
+Opacity,Opacity
+Perspective,Perspective
+Origin,Origin
+"Test Parameters","Test Parameters"
+"*These Settings are only for Customizer. Settings can be set per Start and End Animation.","*These Settings are only for Customizer. Settings can be set per Start and End Animation."
+"Transition Direction","Transition Direction"
+"Overwrite the current selected Animation ","Overwrite the current selected Animation "
+" or save as a new Animation?"," or save as a new Animation?"
+"Save as Animation:","Save as Animation:"
+"Layer Links & Advanced Params","Layer Links & Advanced Params"
+"Links (optional)","Links (optional)"
+"Caption Sharp Corners (optional only with BG color)","Caption Sharp Corners (optional only with BG color)"
+"Advanced Responsive Settings","Advanced Responsive Settings"
+"Attributes (optional)","Attributes (optional)"
+"Template Insertions","Template Insertions"
+"Post Replace Placeholders:","Post Replace Placeholders:"
+"Any custom product attribute","Any custom product attribute"
+"Product Name","Product Name"
+"Product Price","Product Price"
+"Short Description","Short Description"
+Description,Description
+"Link to view product","Link to view product"
+"Add to cart link","Add to cart link"
+"Add to wishlist link","Add to wishlist link"
+Slider:,Slider:
+"Edit Template Slide","Edit Template Slide"
+Title:,Title:
+"Static Layer","Static Layer"
+"Add Slide","Add Slide"
+"General Slide Settings","General Slide Settings"
+"Update Slide","Update Slide"
+"Update Static Layers","Update Static Layers"
+updating,updating
+"To Slider Settings","To Slider Settings"
+"To Slide List","To Slide List"
+"Delete Slide","Delete Slide"
+"Delete this slide?","Delete this slide?"
+ID,ID
+Name,Name
+Shortcode,Shortcode
+Source,Source
+"N. Slides","N. Slides"
+Actions,Actions
+Gallery,Gallery
+Products,Products
+Settings,Settings
+"Edit Slides","Edit Slides"
+"Export Slider","Export Slider"
+"HTML &LT;/&GT;","HTML &LT;/&GT;"
+Delete,Delete
+Duplicate,Duplicate
+Preview,Preview
+"Create New Template Slider","Create New Template Slider"
+"Create New Slider","Create New Slider"
+All,All
+"API Functions","API Functions"
+"API Methods","API Methods"
+"Please copy / paste those functions into your functions js file","Please copy / paste those functions into your functions js file"
+"Pause Slider","Pause Slider"
+"Resume Slider","Resume Slider"
+"Previous Slide","Previous Slide"
+"Next Slide","Next Slide"
+"Go To Slide","Go To Slide"
+"Get Num Slides","Get Num Slides"
+"Get Current Slide Number","Get Current Slide Number"
+"Get Last Playing Slide Number","Get Last Playing Slide Number"
+"External Scroll","External Scroll"
+"Redraw Slider","Redraw Slider"
+"Kill and Remove Slider","Kill and Remove Slider"
+"API Events","API Events"
+"Copy and Paste the Below listed API Functions into your jQuery Functions for Revslider Event Listening","Copy and Paste the Below listed API Functions into your jQuery Functions for Revslider Event Listening"
+"is the index of the li container in this Slider","is the index of the li container in this Slider"
+"is the current slide jQuery object (the li element)","is the current slide jQuery object (the li element)"
+"CSS / JavaScript","CSS / JavaScript"
+"Custom CSS","Custom CSS"
+"Custom JavaScript","Custom JavaScript"
+"Edit Slider Template","Edit Slider Template"
+"Edit Slider","Edit Slider"
+"Main Slider Settings","Main Slider Settings"
+"Save Settings","Save Settings"
+updating...,updating...
+"Delete Slider","Delete Slider"
+"Preview Slider","Preview Slider"
+" Can be different based on Theme Style"," Can be different based on Theme Style"
+"New Slider Template","New Slider Template"
+"New Slider","New Slider"
+"(Can be different based on Theme Style)","(Can be different based on Theme Style)"
+"Create Slider","Create Slider"
+"Import / Export","Import / Export"
+"Note, that when you importing slider, it delete all the current slider settings and slides, then replace it with the new ones","Note, that when you importing slider, it delete all the current slider settings and slides, then replace it with the new ones"
+"Export with Dummy Images","Export with Dummy Images"
+"Replace Image Url's","Replace Image Url's"
+"Replace all layer and background image url's. Example: http://localhost/ to http://yourwbsite.com/. <br> Note, the replace is not reversible","Replace all layer and background image url's. Example: http://localhost/ to http://yourwbsite.com/. <br> Note, the replace is not reversible"
+"Replace From (example - http://localhost)","Replace From (example - http://localhost)"
+"Replace To (example - http://yoursite.com)","Replace To (example - http://yoursite.com)"
+Replace,Replace
+Replacing...,Replacing...
+"New Slide","New Slide"
+"New Transparent Slide","New Transparent Slide"
+"Adding Slide...","Adding Slide..."
+"Select Store View: ","Select Store View: "
+"Select image or multiple images to add slide or slides","Select image or multiple images to add slide or slides"
+"Edit Static / Global Layers","Edit Static / Global Layers"
+"Do It!","Do It!"
+"Copy / move slide","Copy / move slide"
+"Choose Slider","Choose Slider"
+"Choose Operation","Choose Operation"
+Copy,Copy
+Move,Move
+"Select Slide Image","Select Slide Image"
+"Saving Order","Saving Order"
+"No Slides Found","No Slides Found"
+"Unpublish Slide","Unpublish Slide"
+"Publish Slide","Publish Slide"
+"Store Views:","Store Views:"
+"Deleting Slide...","Deleting Slide..."
+"Copy / Move","Copy / Move"
+Working...,Working...
+"Edit Product","Edit Product"
+"The slides are products that taken from multiple sources.","The slides are products that taken from multiple sources."
+"Sort by","Sort by"
+"Updating Sorting...","Updating Sorting..."
+"Delete this product slide?","Delete this product slide?"
+"Choose Image","Choose Image"
+"Style Editor","Style Editor"
+"Simple Editor:","Simple Editor:"
+"enable ","enable "
+Family:,Family:
+Size:,Size:
+Color:,Color:
+Line-Height:,Line-Height:
+Padding:,Padding:
+Weight:,Weight:
+Style:,Style:
+italic,italic
+Decoration:,Decoration:
+Transparency:,Transparency:
+Width:,Width:
+Radius:,Radius:
+"Advanced Editor:","Advanced Editor:"
+"Save Styles","Save Styles"
+"Overwrite the current selected class ","Overwrite the current selected class "
+" or save the styles as a new class?"," or save the styles as a new class?"
+"Save As","Save As"
+"Save as class:","Save as class:"
+"Global Style Editor","Global Style Editor"
+"Dynamic Styles (Not Editable):","Dynamic Styles (Not Editable):"
+"Save Static Styles","Save Static Styles"
+"Overwrite current static styles?","Overwrite current static styles?"
+"The slider successfully created","The slider successfully created"
+"Slider updated","Slider updated"
+"The slider deleted","The slider deleted"
+"The duplicate successfully, refreshing page...","The duplicate successfully, refreshing page..."
+"Slide Created","Slide Created"
+"Slides Created","Slides Created"
+"Slide Created, redirecting...","Slide Created, redirecting..."
+"Slide updated","Slide updated"
+"Static Global Layers updated","Static Global Layers updated"
+"Product Slide Deleted Successfully","Product Slide Deleted Successfully"
+"Slide Deleted Successfully","Slide Deleted Successfully"
+"Slide Duplicated Successfully","Slide Duplicated Successfully"
+"The operation successfully, refreshing page...","The operation successfully, refreshing page..."
+"CSS saved succesfully!","CSS saved succesfully!"
+"Style deleted succesfully!","Style deleted succesfully!"
+"Animation saved succesfully!","Animation saved succesfully!"
+"Order updated successfully","Order updated successfully"
+"Slide Changed Successfully","Slide Changed Successfully"
+"All files successfully updated","All files successfully updated"
+"General settings updated","General settings updated"
+"Sortby updated","Sortby updated"
+"Image urls replaced","Image urls replaced"
+"Settings in all Slides changed","Settings in all Slides changed"
+"The API key, the Purchase Code and the Username need to be set!","The API key, the Purchase Code and the Username need to be set!"
+"Purchase Code Successfully Activated","Purchase Code Successfully Activated"
+"Purchase Code is invalid","Purchase Code is invalid"
+"Successfully removed validation","Successfully removed validation"
+"Could not remove Validation!","Could not remove Validation!"
+.,.
+"importing slider setings and data...","importing slider setings and data..."
+"Go Back","Go Back"
+"Slider Import Success, redirecting...","Slider Import Success, redirecting..."
+"Replace image path:","Replace image path:"
+From:,From:
+To:,To:
+Header,Header
+"Mark to Copy","Mark to Copy"
+CSS,CSS
+Body,Body
+Script,Script
+"Loading Preview...","Loading Preview..."
+"No slides found, please add at least one Slide Template to the choosen Template Slider.","No slides found, please add at least one Slide Template to the choosen Template Slider."
+"No slides found, please add some slides","No slides found, please add some slides"
+"Revolution Slider Error","Revolution Slider Error"
+"Screen Width","Screen Width"
+"Slider Width","Slider Width"
+"animations imported!","animations imported!"
+"no custom animations found, if slider uses custom animations, the provided export may be broken...","no custom animations found, if slider uses custom animations, the provided export may be broken..."
+"dynamic styles imported!","dynamic styles imported!"
+"no dynamic styles found, if slider uses dynamic styles, the provided export may be broken...","no dynamic styles found, if slider uses dynamic styles, the provided export may be broken..."
+" not found!<br>"," not found!<br>"
+"Include RevSlider libraries globally","Include RevSlider libraries globally"
+"Add slider css and js includes on all pages. If turned to off they will be added to specified pages only.","Add slider css and js includes on all pages. If turned to off they will be added to specified pages only."
+"Pages to include RevSlider libraries","Pages to include RevSlider libraries"
+"Enable Markup Export option","Enable Markup Export option"
+"Enable Logs","Enable Logs"
+"Layer Params","Layer Params"
+layer_params,layer_params
+caption_green,caption_green
+Style,Style
+"Text / Html","Text / Html"
+"Image Link","Image Link"
+"Same Window","Same Window"
+"New Window","New Window"
+"Link Open In","Link Open In"
+"Start Animation","Start Animation"
+"Start Easing","Start Easing"
+ms,ms
+" ms (keep it low i.e. 1- 200)"," ms (keep it low i.e. 1- 200)"
+"Split Text per","Split Text per"
+"Hide Under Width","Hide Under Width"
+"Link ID","Link ID"
+"Link Classes","Link Classes"
+"Link Title","Link Title"
+"Link Rel","Link Rel"
+Width/Height,Width/Height
+"Scale Proportional","Scale Proportional"
+"No Movement","No Movement"
+3,3
+4,4
+5,5
+6,6
+7,7
+8,8
+9,9
+10,10
+Level,Level
+OffsetX,OffsetX
+X,X
+OffsetY,OffsetY
+Y,Y
+"Hor Align","Hor Align"
+"Vert Align","Vert Align"
+"&nbsp;(example: 50px, auto)","&nbsp;(example: 50px, auto)"
+"Max Width","Max Width"
+"Max Height","Max Height"
+"2D Rotation","2D Rotation"
+"Rotation Origin X","Rotation Origin X"
+"Rotation Origin Y","Rotation Origin Y"
+Normal,Normal
+Pre,Pre
+No-wrap,No-wrap
+Pre-Wrap,Pre-Wrap
+Pre-Line,Pre-Line
+"White Space","White Space"
+"Link To Slide","Link To Slide"
+px,px
+"Scroll Under Slider Offset","Scroll Under Slider Offset"
+"Change Image Source","Change Image Source"
+"Edit Video","Edit Video"
+"End Time","End Time"
+"End Duration","End Duration"
+"End Animation","End Animation"
+"End Easing","End Easing"
+"No Corner","No Corner"
+Sharp,Sharp
+"Sharp Reversed","Sharp Reversed"
+"Left Corner","Left Corner"
+"Right Corner","Right Corner"
+"Responsive Through All Levels","Responsive Through All Levels"
+Classes,Classes
+Title,Title
+Rel,Rel
+Pendulum,Pendulum
+Rotate,Rotate
+Slideloop,Slideloop
+Pulse,Pulse
+Wave,Wave
+Animation,Animation
+Speed,Speed
+"&nbsp;(0.00 - 10.00)","&nbsp;(0.00 - 10.00)"
+"Start Degree","Start Degree"
+"End Degree","End Degree"
+"&nbsp;(-720 - 720)","&nbsp;(-720 - 720)"
+"x Origin","x Origin"
+%,%
+"y Origin","y Origin"
+"% (-250% - 250%)","% (-250% - 250%)"
+"x Start Pos.","x Start Pos."
+"x End Pos.","x End Pos."
+"px (-2000px - 2000px)","px (-2000px - 2000px)"
+"y Start Pos.","y Start Pos."
+"y End Pos.","y End Pos."
+"Start Zoom","Start Zoom"
+"End Zoom","End Zoom"
+"&nbsp;(0.00 - 20.00)","&nbsp;(0.00 - 20.00)"
+Angle,Angle
+"° (0° - 360°)","° (0° - 360°)"
+Radius,Radius
+"px (0px - 2000px)","px (0px - 2000px)"
+Easing,Easing
+"Slider Title","Slider Title"
+"The title of the slider. Example: Slider1","The title of the slider. Example: Slider1"
+"Slider Alias","Slider Alias"
+"The alias that will be used for embedding the slider. Example: slider1","The alias that will be used for embedding the slider. Example: slider1"
+"Slider Shortcode","Slider Shortcode"
+"Specific Products","Specific Products"
+"Source Type","Source Type"
+"Type here the Products IDs you want to use separated by coma. ex: 23,24,25","Type here the Products IDs you want to use separated by coma. ex: 23,24,25"
+"Specific Products List","Specific Products List"
+"Source Types","Source Types"
+"Product Categories","Product Categories"
+"Filter Events By","Filter Events By"
+"Sort Products By","Sort Products By"
+"Sort Direction","Sort Direction"
+"Max Products Per Slider","Max Products Per Slider"
+"Limit The Description To","Limit The Description To"
+"Template Slider","Template Slider"
+Fixed,Fixed
+Custom,Custom
+"Auto Responsive","Auto Responsive"
+"Full Screen","Full Screen"
+"Slider Layout","Slider Layout"
+"Example: #header or .header, .footer, #somecontainer | The height of fullscreen slider will be decreased with the height of these Containers to fit perfect in the screen","Example: #header or .header, .footer, #somecontainer | The height of fullscreen slider will be decreased with the height of these Containers to fit perfect in the screen"
+"Offset Containers","Offset Containers"
+"Defines an Offset to the top. Can be used with px and %. Example: 40px or 10%","Defines an Offset to the top. Can be used with px and %. Example: 40px or 10%"
+"Offset Size","Offset Size"
+"Min. Fullscreen Height","Min. Fullscreen Height"
+"FullScreen Align","FullScreen Align"
+"Unlimited Height","Unlimited Height"
+"Force Full Width","Force Full Width"
+"Min. Height","Min. Height"
+"
+- The <span class=""prevxmpl"">LAYERS GRID</span> is the container of layers within the <span class=""prevxmpl"">SLIDER</span> <br>
+- The ""Grid Size"" setting does not relate to the actual ""Slider Size"". <br>
+- ""Max Height"" of the slider equals the ""Grid Height""<br>
+- ""Slider Width"" can be greater than the set ""Grid Width","
+- The <span class=""prevxmpl"">LAYERS GRID</span> is the container of layers within the <span class=""prevxmpl"">SLIDER</span> <br>
+- The ""Grid Size"" setting does not relate to the actual ""Slider Size"". <br>
+- ""Max Height"" of the slider equals the ""Grid Height""<br>
+- ""Slider Width"" can be greater than the set ""Grid Width"
+"Layers Grid Size","Layers Grid Size"
+"Responsive Sizes","Responsive Sizes"
+"The title of the slide, will be shown in the slides list.","The title of the slide, will be shown in the slides list."
+"Slide Title","Slide Title"
+"Slide will be visible on selected stores","Slide will be visible on selected stores"
+"Store View","Store View"
+"The state of the slide. The unpublished slide will be excluded from the slider.","The state of the slide. The unpublished slide will be excluded from the slider."
+Published,Published
+Unpublished,Unpublished
+State,State
+"If set, slide will be visible after the date is reached","If set, slide will be visible after the date is reached"
+"Visible from","Visible from"
+"If set, slide will be visible till the date is reached","If set, slide will be visible till the date is reached"
+"Visible until","Visible until"
+"The appearance transitions of this slide.","The appearance transitions of this slide."
+Transitions,Transitions
+"The number of slots or boxes the slide is divided into. If you use boxfade, over 7 slots can be juggy.","The number of slots or boxes the slide is divided into. If you use boxfade, over 7 slots can be juggy."
+"Slot Amount","Slot Amount"
+"Rotation (-720 -> 720, 999 = random) Only for Simple Transitions.","Rotation (-720 -> 720, 999 = random) Only for Simple Transitions."
+"The duration of the transition (Default:300, min: 100 max 2000). ","The duration of the transition (Default:300, min: 100 max 2000). "
+"Transition Duration","Transition Duration"
+"A new delay value for the Slide. If no delay defined per slide, the delay defined via Options (","A new delay value for the Slide. If no delay defined per slide, the delay defined via Options ("
+"ms) will be used","ms) will be used"
+Delay,Delay
+"Save Performance","Save Performance"
+"Enable Link","Enable Link"
+Enable,Enable
+Regular,Regular
+"To Slide","To Slide"
+"Link Type","Link Type"
+"A link on the whole slide pic (use %view_link% or %cart_link% in template sliders to link to a product or add to cart)","A link on the whole slide pic (use %view_link% or %cart_link% in template sliders to link to a product or add to cart)"
+"Slide Link","Slide Link"
+"The target of the slide link","The target of the slide link"
+"-- Not Chosen --","-- Not Chosen --"
+"-- Next Slide --","-- Next Slide --"
+"-- Previous Slide --","-- Previous Slide --"
+"-- Scroll Below Slider --","-- Scroll Below Slider --"
+"Slide Thumbnail. If not set - it will be taken from the slide image.","Slide Thumbnail. If not set - it will be taken from the slide image."
+Thumbnail,Thumbnail
+"Apply to full width mode only. Centering vertically slide images.","Apply to full width mode only. Centering vertically slide images."
+"Full Width Centering","Full Width Centering"
+"Background Type","Background Type"
+"Adds a unique class to the li of the Slide like class=""rev_special_class"" (add only the classnames, seperated by space)","Adds a unique class to the li of the Slide like class=""rev_special_class"" (add only the classnames, seperated by space)"
+Class,Class
+"Adds a unique ID to the li of the Slide like id=""rev_special_id"" (add only the id)","Adds a unique ID to the li of the Slide like id=""rev_special_id"" (add only the id)"
+"Adds a unique Attribute to the li of the Slide like attr=""rev_special_attr"" (add only the attribute)","Adds a unique Attribute to the li of the Slide like attr=""rev_special_attr"" (add only the attribute)"
+Attribute,Attribute
+"Add as many attributes as you wish here. (i.e.: data-layer=""firstlayer"" data-custom=""somevalue"")","Add as many attributes as you wish here. (i.e.: data-layer=""firstlayer"" data-custom=""somevalue"")"
+"Custom Fields","Custom Fields"
+"Shuffle Mode","Shuffle Mode"
+"Lazy Load","Lazy Load"
+"Enable Static Layers","Enable Static Layers"
+"Next Slide on Focus","Next Slide on Focus"
+"Initialization Delay","Initialization Delay"
+"Loop and Progress","Loop and Progress"
+"Stop Slider","Stop Slider"
+"Stop After Loops","Stop After Loops"
+"Stop At Slide","Stop At Slide"
+"Show Progressbar","Show Progressbar"
+"Loop Single Slide","Loop Single Slide"
+Position,Position
+"Position on the page","Position on the page"
+"Margin Top","Margin Top"
+"Margin Bottom","Margin Bottom"
+"Margin Left","Margin Left"
+"Margin Right","Margin Right"
+Appearance,Appearance
+"Shadow Type","Shadow Type"
+"Padding (border)","Padding (border)"
+"&lt;div class='setting_info_small'&gt;Background Image Options (best used with transparent slides)&lt;/div&gt;","&lt;div class='setting_info_small'&gt;Background Image Options (best used with transparent slides)&lt;/div&gt;"
+"Background color","Background color"
+"Dotted Overlay Size","Dotted Overlay Size"
+"Show Background Image","Show Background Image"
+"Background Image Url","Background Image Url"
+"Background Fit","Background Fit"
+"Background Repeat","Background Repeat"
+"Background Position","Background Position"
+Navigation,Navigation
+"Stop On Hover","Stop On Hover"
+"Keyboard Navigation","Keyboard Navigation"
+"Navigation Style","Navigation Style"
+"Bullet Type","Bullet Type"
+"Navigation Arrows","Navigation Arrows"
+"Always Show Navigation","Always Show Navigation"
+"Hide Navigation After","Hide Navigation After"
+"&lt;div class='setting_info_small'&gt;Bullets / Thumbnail Position&lt;/div&gt;","&lt;div class='setting_info_small'&gt;Bullets / Thumbnail Position&lt;/div&gt;"
+"Navigation Horizontal Align","Navigation Horizontal Align"
+"Navigation Vertical Align","Navigation Vertical Align"
+"Navigation Horizontal Offset","Navigation Horizontal Offset"
+"Navigation Vertical Offset","Navigation Vertical Offset"
+"&lt;div class='setting_info_small'&gt;Left Arrow Position&lt;/div&gt;","&lt;div class='setting_info_small'&gt;Left Arrow Position&lt;/div&gt;"
+"Left Arrow Horizontal Align","Left Arrow Horizontal Align"
+"Left Arrow Vertical Align","Left Arrow Vertical Align"
+"Left Arrow Horizontal Offset","Left Arrow Horizontal Offset"
+"Left Arrow Vertical Offset","Left Arrow Vertical Offset"
+"&lt;div class='setting_info_small'&gt;Right Arrow Position&lt;/div&gt;","&lt;div class='setting_info_small'&gt;Right Arrow Position&lt;/div&gt;"
+"Right Arrow Horizontal Align","Right Arrow Horizontal Align"
+"Right Arrow Vertical Align","Right Arrow Vertical Align"
+"Right Arrow Horizontal Offset","Right Arrow Horizontal Offset"
+"Right Arrow Vertical Offset","Right Arrow Vertical Offset"
+Thumbnails,Thumbnails
+"Thumb Width","Thumb Width"
+"Thumb Height","Thumb Height"
+"Thumb Amount","Thumb Amount"
+Spinner,Spinner
+"Choose Spinner","Choose Spinner"
+"Spinner Color","Spinner Color"
+Parallax,Parallax
+"Enable Parallax","Enable Parallax"
+"Disable on Mobile","Disable on Mobile"
+Type,Type
+"BG Freeze","BG Freeze"
+"Level Depth 1","Level Depth 1"
+"Level Depth 2","Level Depth 2"
+"Level Depth 3","Level Depth 3"
+"Level Depth 4","Level Depth 4"
+"Level Depth 5","Level Depth 5"
+"Level Depth 6","Level Depth 6"
+"Level Depth 7","Level Depth 7"
+"Level Depth 8","Level Depth 8"
+"Level Depth 9","Level Depth 9"
+"Level Depth 10","Level Depth 10"
+"Mobile Touch","Mobile Touch"
+"Touch Enabled","Touch Enabled"
+"Swipe Treshhold (0 - 200)","Swipe Treshhold (0 - 200)"
+"Swipe Min Finger","Swipe Min Finger"
+"Drag Block Vertical","Drag Block Vertical"
+"Mobile Visibility","Mobile Visibility"
+"Disable Slider on Mobile","Disable Slider on Mobile"
+"Disable KenBurn On Mobile","Disable KenBurn On Mobile"
+"Hide Slider Under Width","Hide Slider Under Width"
+"Hide Defined Layers Under Width","Hide Defined Layers Under Width"
+"Hide All Layers Under Width","Hide All Layers Under Width"
+"Hide Arrows on Mobile","Hide Arrows on Mobile"
+"Hide Bullets on Mobile","Hide Bullets on Mobile"
+"Hide Thumbnails on Mobile","Hide Thumbnails on Mobile"
+"Hide Thumbs Under Width","Hide Thumbs Under Width"
+"Hide Mobile Nav After","Hide Mobile Nav After"
+"Alternative First Slide","Alternative First Slide"
+"Start With Slide","Start With Slide"
+"First Transition Active","First Transition Active"
+"First Transition Type","First Transition Type"
+"First Transition Duration","First Transition Duration"
+"First Transition Slot Amount","First Transition Slot Amount"
+Fallbacks,Fallbacks
+"Simplify on IOS4/IE8","Simplify on IOS4/IE8"
+"Use Alternative","Use Alternative"
+"Alternate Image","Alternate Image"
+"Global Overwrites","Global Overwrites"
+"Reset Transitions","Reset Transitions"
+"Reset Transition Duration","Reset Transition Duration"
+Top,Top
+Bottom,Bottom
+Hide,Hide
+Left,Left
+Center,Center
+Right,Right
+"No Shadow","No Shadow"
+Yes,Yes
+No,No
+cover,cover
+contain,contain
+normal,normal
+no-repeat,no-repeat
+repeat,repeat
+repeat-x,repeat-x
+repeat-y,repeat-y
+"center top","center top"
+"center right","center right"
+"center bottom","center bottom"
+"center center","center center"
+"left top","left top"
+"left center","left center"
+"left bottom","left bottom"
+"right top","right top"
+"right center","right center"
+"right bottom","right bottom"
+Round,Round
+Navbar,Navbar
+"Preview 1","Preview 1"
+"Preview 2","Preview 2"
+"Preview 3","Preview 3"
+"Preview 4","Preview 4"
+"Old Round","Old Round"
+"Old Square","Old Square"
+"Old Navbar","Old Navbar"
+Bullet,Bullet
+Thumb,Thumb
+"With Bullets","With Bullets"
+Solo,Solo
+off,off
+0,0
+"Mouse Position","Mouse Position"
+"Scroll Position","Scroll Position"
+"Mouse and Scroll","Mouse and Scroll"
+"Replace me!","Replace me!"
+"On Mobile","On Mobile"
+"On IE8","On IE8"
+"On Mobile and IE8","On Mobile and IE8"
+"Choose to operate","Choose to operate"
+"Random Flat","Random Flat"
+"Random Premium","Random Premium"
+"Random Flat and Premium","Random Flat and Premium"
+"Slide To Top","Slide To Top"
+"Slide To Bottom","Slide To Bottom"
+"Slide To Right","Slide To Right"
+"Slide To Left","Slide To Left"
+"Slide Horizontal (depending on Next/Previous)","Slide Horizontal (depending on Next/Previous)"
+"Slide Vertical (depending on Next/Previous)","Slide Vertical (depending on Next/Previous)"
+"Slide Boxes","Slide Boxes"
+"Slide Slots Horizontal","Slide Slots Horizontal"
+"Slide Slots Vertical","Slide Slots Vertical"
+"No Transition","No Transition"
+Fade,Fade
+"Fade Boxes","Fade Boxes"
+"Fade Slots Horizontal","Fade Slots Horizontal"
+"Fade Slots Vertical","Fade Slots Vertical"
+"Fade and Slide from Right","Fade and Slide from Right"
+"Fade and Slide from Left","Fade and Slide from Left"
+"Fade and Slide from Top","Fade and Slide from Top"
+"Fade and Slide from Bottom","Fade and Slide from Bottom"
+"Fade To Left and Fade From Right","Fade To Left and Fade From Right"
+"Fade To Right and Fade From Left","Fade To Right and Fade From Left"
+"Fade To Top and Fade From Bottom","Fade To Top and Fade From Bottom"
+"Fade To Bottom and Fade From Top","Fade To Bottom and Fade From Top"
+"Parallax to Right","Parallax to Right"
+"Parallax to Left","Parallax to Left"
+"Parallax to Top","Parallax to Top"
+"Parallax to Bottom","Parallax to Bottom"
+"Zoom Out and Fade From Right","Zoom Out and Fade From Right"
+"Zoom Out and Fade From Left","Zoom Out and Fade From Left"
+"Zoom Out and Fade From Top","Zoom Out and Fade From Top"
+"Zoom Out and Fade From Bottom","Zoom Out and Fade From Bottom"
+ZoomOut,ZoomOut
+ZoomIn,ZoomIn
+"Zoom Slots Horizontal","Zoom Slots Horizontal"
+"Zoom Slots Vertical","Zoom Slots Vertical"
+"Curtain from Left","Curtain from Left"
+"Curtain from Right","Curtain from Right"
+"Curtain from Middle","Curtain from Middle"
+"3D Curtain Horizontal","3D Curtain Horizontal"
+"3D Curtain Vertical","3D Curtain Vertical"
+"Cube Vertical","Cube Vertical"
+"Cube Horizontal","Cube Horizontal"
+"In Cube Vertical","In Cube Vertical"
+"In Cube Horizontal","In Cube Horizontal"
+"TurnOff Horizontal","TurnOff Horizontal"
+"TurnOff Vertical","TurnOff Vertical"
+"Paper Cut","Paper Cut"
+"Fly In","Fly In"
+"The time one slide stays on the screen in Milliseconds","The time one slide stays on the screen in Milliseconds"
+"Turn Shuffle Mode on and off! Will be randomized only once at the start.","Turn Shuffle Mode on and off! Will be randomized only once at the start."
+"The lazy load means that the images will be loaded by demand, it speeds the loading of the slider.","The lazy load means that the images will be loaded by demand, it speeds the loading of the slider."
+"This will enable the static layerss, giving you the option to have layers that stay on the slider on more then one slide","This will enable the static layerss, giving you the option to have layers that stay on the slider on more then one slide"
+"Enabling this will move to the next slide if the Slider gets into focus if the user switched between tabs","Enabling this will move to the next slide if the Slider gets into focus if the user switched between tabs"
+"Sets a delay before the Slider gets initialized","Sets a delay before the Slider gets initialized"
+"On / Off to stop slider after some amount of loops / slides","On / Off to stop slider after some amount of loops / slides"
+"Stop the slider after certain amount of loops. 0 related to the first loop.","Stop the slider after certain amount of loops. 0 related to the first loop."
+"Stop the slider at the given slide","Stop the slider at the given slide"
+"Show the top running progressbar","Show the top running progressbar"
+"If only one Slide is in the Slider, you can choose wether the Slide should loop or if it should stop.","If only one Slide is in the Slider, you can choose wether the Slide should loop or if it should stop."
+"The position of the slider on the page, (float:left, float:right, margin:0px auto;)","The position of the slider on the page, (float:left, float:right, margin:0px auto;)"
+"The top margin of the slider wrapper div","The top margin of the slider wrapper div"
+"The bottom margin of the slider wrapper div","The bottom margin of the slider wrapper div"
+"The left margin of the slider wrapper div","The left margin of the slider wrapper div"
+"The right margin of the slider wrapper div","The right margin of the slider wrapper div"
+"The Shadow display underneath the banner. The shadow apply to fixed and responsive modes only, the full width slider don't have a shadow.","The Shadow display underneath the banner. The shadow apply to fixed and responsive modes only, the full width slider don't have a shadow."
+"The wrapper div padding, if it has value, then together with background color it it will make border around the slider.","The wrapper div padding, if it has value, then together with background color it it will make border around the slider."
+"Slider wrapper div background color, for transparent slider, leave empty.","Slider wrapper div background color, for transparent slider, leave empty."
+"Show a dotted overlay on the whole slider, choose width of dots","Show a dotted overlay on the whole slider, choose width of dots"
+"yes / no to put background image to the main slider wrapper.","yes / no to put background image to the main slider wrapper."
+"The background image that will be on the slider wrapper. Will be shown at slider preloading.","The background image that will be on the slider wrapper. Will be shown at slider preloading."
+"How the background will be fitted into the Slider","How the background will be fitted into the Slider"
+"How the background will be repeated into the Slider","How the background will be repeated into the Slider"
+"How the background will be positioned into the Slider","How the background will be positioned into the Slider"
+"Stop the Timer when hovering the slider","Stop the Timer when hovering the slider"
+"Allow/disallow to navigate the slider with keyboard","Allow/disallow to navigate the slider with keyboard"
+"Look of the navigation bullets  ** If you choose navbar, we recommend to choose Navigation Arrows to nexttobullets","Look of the navigation bullets  ** If you choose navbar, we recommend to choose Navigation Arrows to nexttobullets"
+"Display type of the navigation bar (Default:none","Display type of the navigation bar (Default:none"
+"Display position of the Navigation Arrows (** By navigation Type Thumb arrows always centered or none visible)","Display position of the Navigation Arrows (** By navigation Type Thumb arrows always centered or none visible)"
+"Always show the navigation and the thumbnails.","Always show the navigation and the thumbnails."
+"Time after that the Navigation and the Thumbs will be hidden(Default: 200 ms)","Time after that the Navigation and the Thumbs will be hidden(Default: 200 ms)"
+"Horizontal Align of Bullets / Thumbnails","Horizontal Align of Bullets / Thumbnails"
+"Vertical Align of Bullets / Thumbnails","Vertical Align of Bullets / Thumbnails"
+"Offset from current Horizontal position of Bullets / Thumbnails negative and positive direction","Offset from current Horizontal position of Bullets / Thumbnails negative and positive direction"
+"Offset from current Vertical  position of Bullets / Thumbnails negative and positive direction","Offset from current Vertical  position of Bullets / Thumbnails negative and positive direction"
+"Horizontal Align of left Arrow (only if arrow is not next to bullets)","Horizontal Align of left Arrow (only if arrow is not next to bullets)"
+"Vertical Align of left Arrow (only if arrow is not next to bullets)","Vertical Align of left Arrow (only if arrow is not next to bullets)"
+"Offset from current Horizontal position of of left Arrow  negative and positive direction","Offset from current Horizontal position of of left Arrow  negative and positive direction"
+"Offset from current Vertical position of of left Arrow negative and positive direction","Offset from current Vertical position of of left Arrow negative and positive direction"
+"Horizontal Align of right Arrow (only if arrow is not next to bullets)","Horizontal Align of right Arrow (only if arrow is not next to bullets)"
+"Vertical Align of right Arrow (only if arrow is not next to bullets)","Vertical Align of right Arrow (only if arrow is not next to bullets)"
+"Offset from current Horizontal position of of right Arrow negative and positive direction","Offset from current Horizontal position of of right Arrow negative and positive direction"
+"Offset from current Vertical position of of right Arrow negative and positive direction","Offset from current Vertical position of of right Arrow negative and positive direction"
+"The basic Width of one Thumbnail (only if thumb is selected)","The basic Width of one Thumbnail (only if thumb is selected)"
+"the basic Height of one Thumbnail (only if thumb is selected)","the basic Height of one Thumbnail (only if thumb is selected)"
+"the amount of the Thumbs visible same time (only if thumb is selected)","the amount of the Thumbs visible same time (only if thumb is selected)"
+"Select a Spinner for your Slider","Select a Spinner for your Slider"
+"The Color the Spinner will be shown in","The Color the Spinner will be shown in"
+"Enabling this, will give you new options in the slides to create a unique parallax effect","Enabling this, will give you new options in the slides to create a unique parallax effect"
+"If set to on, parallax will be disabled on mobile devices to save performance","If set to on, parallax will be disabled on mobile devices to save performance"
+"Defines on what input type the parallax should react to","Defines on what input type the parallax should react to"
+"Setting this to on will freeze the background so that it is not affected by the parallax effect","Setting this to on will freeze the background so that it is not affected by the parallax effect"
+"Defines a level that can be used in Slide Editor for this Slider","Defines a level that can be used in Slide Editor for this Slider"
+"Enable Swipe Function on touch devices","Enable Swipe Function on touch devices"
+"Defines the sensibility of gestures. Smaller values mean a higher sensibility","Defines the sensibility of gestures. Smaller values mean a higher sensibility"
+"Defines how many fingers are needed minimum for swiping","Defines how many fingers are needed minimum for swiping"
+"Scroll below slider on vertical swipe","Scroll below slider on vertical swipe"
+"If this is enabled, the slider will not be loaded on mobile devices.","If this is enabled, the slider will not be loaded on mobile devices."
+"This will disable KenBurns on mobile devices to save performance","This will disable KenBurns on mobile devices to save performance"
+"Hide the slider under some slider width. Works only in Responsive Style. Not available for Fullwidth.","Hide the slider under some slider width. Works only in Responsive Style. Not available for Fullwidth."
+"Hide some defined layers in the layer properties under some slider width.","Hide some defined layers in the layer properties under some slider width."
+"Hide all layers under some slider width","Hide all layers under some slider width"
+"Show/Hide the Navigation Arrows on Mobile Devices","Show/Hide the Navigation Arrows on Mobile Devices"
+"Show/Hide the Navigation Bullets on Mobile Devices","Show/Hide the Navigation Bullets on Mobile Devices"
+"Show/Hide the Thumbnails on Mobile Devices","Show/Hide the Thumbnails on Mobile Devices"
+"Hide the Thumbnails on Mobile Devices under some slider width","Hide the Thumbnails on Mobile Devices under some slider width"
+"Time after that the Navigation and the Thumbs will be hidden on mobile devices(Default: 1500 ms)","Time after that the Navigation and the Thumbs will be hidden on mobile devices(Default: 1500 ms)"
+"Change it if you want to start from a different slide then 1","Change it if you want to start from a different slide then 1"
+"If active, it will overwrite the first slide transition. Use it when you want a special transition for the first slide only.","If active, it will overwrite the first slide transition. Use it when you want a special transition for the first slide only."
+"First slide transition type","First slide transition type"
+"First slide transition duration (Default:300, min: 100 max 2000)","First slide transition duration (Default:300, min: 100 max 2000)"
+"The number of slots or boxes the slide is divided into. If you use boxfade, over 7 slots can be juggy","The number of slots or boxes the slide is divided into. If you use boxfade, over 7 slots can be juggy"
+"Simplyfies the Slider on IOS4 and IE8","Simplyfies the Slider on IOS4 and IE8"
+"Disables the Slider on the setting you make and shows an alternative image instead","Disables the Slider on the setting you make and shows an alternative image instead"
+"The image that will used as the alternative to the Slider","The image that will used as the alternative to the Slider"
+"Resets all Slide Transitions of this Slider to your desired type (if empty, no changes will be made)","Resets all Slide Transitions of this Slider to your desired type (if empty, no changes will be made)"
+"Reset all transition durations to choosen number (Default:300, min: 100 max 2000, if 0, no changes will be made)","Reset all transition durations to choosen number (Default:300, min: 100 max 2000, if 0, no changes will be made)"

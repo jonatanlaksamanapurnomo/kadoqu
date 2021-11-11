@@ -1,0 +1,137 @@
+.gida-menu-container {
+  width: 90vw;
+  margin: 5.5vw auto 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.gida-menu-container .nav-link {
+  width: 100%;
+  padding: 0;
+  margin-top: 3.5vw;
+}
+
+div[class|="gida-menu-banner"] {
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gida-menu-banner-event-reminder {
+  background-image: url(https://ik.imagekit.io/nwiq66cx3pvsy/Gida_Menu/bg_event-reminder.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.gida-menu-banner-gida-search-engine {
+  background-image: url(https://ik.imagekit.io/nwiq66cx3pvsy/Gida_Menu/bg_search-engine.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.gida-menu-banner-wrapping-lab {
+  background-image: url(https://ik.imagekit.io/nwiq66cx3pvsy/Gida_Menu/bg_wrapping-lab.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.gida-menu-text {
+  font-size: 4vw;
+  line-height: 1;
+  margin-left: 7vw;
+  color: black;
+}
+
+.gida-menu-text hr {
+  width: 20%;
+  border: solid black 3px;
+  margin: 1.4rem 0;
+}
+
+.gida-menu-title {
+  font-weight: 500;
+  text-shadow: 2.5px 2.5px 1px rgba(0, 0, 0, 0.25);
+}
+
+.gida-menu-image {
+  position: relative;
+  width: 100%;
+}
+
+.gida-menu-desc {
+  width: 50%;
+  margin: 8% auto;
+  text-align: center;
+  font-size: 1.35vw;
+  font-weight: 100;
+}
+
+.gida-menu-desc img {
+  width: 17vw;
+}
+
+@media screen and (min-width: 992px) {
+  .gida-menu-container {
+    height: 45vw;
+    margin: 0 auto;
+    flex-direction: row;
+  }
+
+  div[class|="gida-menu-banner"] {
+    display: block;
+    align-items: center;
+  }
+
+  .gida-menu-container .nav-link {
+    height: 100%;
+    width: 32%;
+    margin-top: 0;
+  }
+
+  .gida-menu-desc img {
+    width: unset;
+  }
+
+  .gida-menu-image {
+    bottom: 0;
+    position: absolute;
+  }
+
+  [class^="gida-menu-banner"]:hover .gida-menu-image {
+    transform: translate(0, 0);
+  }
+
+  .gida-menu-banner-event-reminder .gida-menu-image {
+    transform: translate(0, 11vw);
+  }
+
+  .gida-menu-banner-gida-search-engine .gida-menu-image {
+    transform: translate(0, 14vw);
+  }
+
+  .gida-menu-banner-wrapping-lab .gida-menu-image {
+    transform: translate(0, 17.7vw);
+  }
+
+  .gida-menu-text {
+    margin: 24% 10% 0;
+  }
+}
+.gida-menu-desc-mob img {
+  width: 40vw;
+
+}
+.gida-menu-desc-mob {
+  width: 80%;
+  margin: 8% auto;
+  text-align: center;
+  font-size: 3.3vw;
+  font-weight: 100;
+}

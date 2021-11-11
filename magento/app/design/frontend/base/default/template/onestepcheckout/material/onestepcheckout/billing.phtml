@@ -1,0 +1,772 @@
+<?php
+$penolong = Mage::helper('proaongkir');
+?>
+
+<div class="billing_address">
+    <h3 id="billing_step_header" class="step_1"><?php echo($this->__("Billing Address")); ?></h3>
+    <?php if ($this->customerHasAddresses()): ?>
+        <p class="label"><?php echo $this->__('Select a billing address from your address book or enter a new address.') ?></p>
+        <ul>
+            <li>
+                <div class="one-field mdl-selectfield has-address"><?php echo $this->getAddressesHtmlSelect('billing') ?></div>
+            </li>
+            <li><input type='hidden' name='islogin2' id='islogin2' value='1'/></li>
+        </ul>
+    <?php endif; ?>
+    <fieldset class="group-select"
+              id="billing-new-address-form" <?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif; ?>>
+        <input type="hidden" name="billing[address_id]" value="<?php echo $this->getBillingAddress()->getId() ?>"
+               id="billing:address_id"/>
+        <ul>
+            <?php $helper = Mage::helper('onestepcheckout') ?>
+            <?php $fieldValue = $helper->getFieldValue() ?>
+            <?php $fields = $helper->getFieldEnables() ?>
+            <?php $checkCountry = 0 ?>
+            <?php $checkRegion = 0 ?>
+            <?php $row = 0; ?>
+            <?php for ($i = 0; $i < 20; $i++): ?>
+                <?php if ($fields[$i]['value'] == 'country') $checkCountry = 1 ?>
+                <?php if ($fields[$i]['value'] == 'region') $checkRegion = 1 ?>
+                <?php if (Mage::getSingleton('customer/session')->isLoggedIn() && $fields[$i]['value'] == 'email') continue; ?>
+                <?php if (!$fields[$i]['value'] || $fields[$i]['value'] == '0') continue; ?>
+                <?php if (($i % 2 == 0) || (($i % 2 != 0) && (!$fields[$i - 1]['value'] || $fields[$i - 1]['value'] == '0' || (Mage::getSingleton('customer/session')->isLoggedIn() && $fields[$i - 1]['value'] == 'email')))): ?>
+                    <li>
+                <?php endif ?>
+                <?php if ((($i % 2 == 0) && ($fields[$i]['value'] && $fields[$i]['value'] != '0') && (!$fields[$i + 1]['value'] || $fields[$i + 1]['value'] == '0' || (Mage::getSingleton('customer/session')->isLoggedIn() && $fields[$i + 1]['value'] == 'email'))) || (($i % 2 != 0) && ($fields[$i]['value'] && $fields[$i]['value'] != '0') && (!$fields[$i - 1]['value'] || $fields[$i - 1]['value'] == '0' || (Mage::getSingleton('customer/session')->isLoggedIn() && $fields[$i - 1]['value'] == 'email')))):
+                ?>
+                <div class="one-field<?php if ($fields[$i]['value'] == 'country' || $fields[$i]['value'] == 'region') echo ' mdl-selectfield'; ?>">
+                <?php else: ?>
+                <div class="two-fields <?php if ($row % 2 != 0) echo 'last' ?> <?php if ($fields[$i]['value'] == 'country' || $fields[$i]['value'] == 'region') echo ' mdl-selectfield'; ?>">
+                <?php $row++; ?>
+            <?php endif ?>
+                <?php if (!$fields[$i]['value'] || $fields[$i]['value'] == '0') continue; ?>
+                <?php if ($fields[$i]['value'] == 'street'): ?>
+
+                <input onkeyup="validateElement(this.id)" type="text"
+                       title="<?php echo Mage::helper('core')->quoteEscape($this->__('Street Address')) ?>"
+                       name="billing[street][]" id="billing:street1"
+                       value="<?php echo $this->htmlEscape($this->getBillingAddress()->getStreet(1)) ?>"
+                       class="<?php if ($helper->getFieldRequire($fields[$i]['value'])) echo 'required-entry'; ?> input-text"
+                       required/>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label id="billing-street-label"
+                           <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>class="required" <?php endif ?>
+                           for="billing:street1"><?php echo $this->__('Address') ?>
+                        <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>
+                            <em>*</em>
+                        <?php endif ?>
+                    </label>
+                    <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines();
+                               $_i <= $_n;
+                               $_i++): ?>
+                    <div class="street-more">
+                        <input onkeyup="validateElement(this.id)" style="margin-top:10px;" type="text"
+                               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Street Address ' . $_i)) ?>"
+                               name="billing[street][]" id="billing:street<?php echo $_i ?>"
+                               value="<?php echo $this->htmlEscape($this->getBillingAddress()->getStreet($_i)) ?>"
+                               class="input-text" required/>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                    </div>
+                <?php endfor ?>
+                <?php elseif ($fields[$i]['value'] == 'country'): ?>
+                    <label <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>class="required" <?php endif ?>
+                           for="billing:country_id"><?php echo $this->__('Country') ?>
+                        <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>
+                            <em>*</em>
+                        <?php endif ?>
+                    </label>
+                <?php echo $this->getCountryHtmlSelect('billing') ?>
+                <?php if (!$helper->getFieldRequire($fields[$i]['value'])): ?>
+                    <script type="text/javascript">
+                        if ($('billing:country_id'))
+                            $('billing:country_id').removeClassName('validate-select');
+                    </script>
+                <?php endif ?>
+                <?php elseif ($fields[$i]['value'] == 'region'): ?>
+                    <label <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>class="required"<?php endif ?>
+                           for="billing:region"><?php echo $this->__('State/Province') ?>
+                        <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>
+                            <em>*</em>
+                        <?php endif ?>
+                    </label>
+                    <select id="billing:region_id" name="billing[region_id]"
+                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>"
+                            class="<?php if ($helper->getFieldRequire($fields[$i]['value'])) echo "validate-select"; ?>"
+                            style="display:none;width:135px;">
+                        <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                    </select>
+                <?php if (!$helper->enableGeoip()): ?>
+                    <script type="text/javascript">
+                        $('billing:region_id').setAttribute('defaultValue', "<?php echo $this->htmlEscape($this->getBillingAddress()->getRegionId()) ?>");
+                    </script>
+                <?php endif; ?>
+                <input onkeyup="validateElement(this.id)" type="text" class="billing-region-input" id="billing:region"
+                       name="billing[region]"
+                       value="<?php echo $this->htmlEscape($this->getBillingAddress()->getRegion()) ?>"
+                       title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>"
+                       class="<?php if ($helper->getFieldRequire($fields[$i]['value'])) echo 'required-entry'; ?> input-text"
+                       style="display:none" required/>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                <?php if (!$helper->getFieldRequire($fields[$i]['value'])): ?>
+                    <script type="text/javascript">
+                        if ($('billing:region_id')) {
+                            $('billing:region_id').removeClassName('validate-select');
+                        }
+                    </script>
+                <?php endif; ?>
+                <?php elseif ($fields[$i]['value'] == 'prefix'): ?>
+                <?php $customerNameBlock = Mage::getBlockSingleton('customer/widget_name') ?>
+                    <label <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>class="required"<?php endif ?>
+                           for="billing:prefix"><?php echo $this->__('Prefix Name') ?>
+                        <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>
+                            <em>*</em>
+                        <?php endif ?>
+                    </label><br/>
+                    <?php if ($customerNameBlock->getPrefixOptions() === false): ?>
+                <input onkeyup="validateElement(this.id)" type="text"
+                       id="<?php echo $customerNameBlock->getFieldId('prefix') ?>"
+                       name="billing[<?php echo $customerNameBlock->getFieldName('prefix') ?>]" value=""
+                       title="<?php echo Mage::helper('core')->quoteEscape($this->__('Prefix')) ?>"
+                       class="input-text <?php if ($helper->getFieldRequire($fields[$i]['value'])) echo "required-entry"; ?>" <?php echo $customerNameBlock->getFieldParams() ?> />
+                <?php else: ?>
+                    <select id="<?php echo $customerNameBlock->getFieldId('prefix') ?>"
+                            name="billing[<?php echo $customerNameBlock->getFieldName('prefix') ?>]"
+                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Prefix')) ?>"
+                            class="<?php if ($helper->getFieldRequire($fields[$i]['value'])) echo "required-entry"; ?>" <?php echo $customerNameBlock->getFieldParams() ?>>
+                        <?php foreach ($customerNameBlock->getPrefixOptions() as $_option): ?>
+                            <option value="<?php echo $_option ?>"><?php echo $this->__($_option) ?></option>
+                        <?php endforeach ?>
+                    </select>
+                <?php endif; ?>
+                <?php elseif ($fields[$i]['value'] == 'suffix'): ?>
+                <?php $customerNameBlock = Mage::getBlockSingleton('customer/widget_name') ?>
+                    <label <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>class="required" <?php endif ?>
+                           for="billing:prefix"><?php echo $this->__('Suffix Name') ?>
+                        <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>
+                            <em>*</em>
+                        <?php endif ?>
+                    </label><br/>
+                    <?php if ($customerNameBlock->getSuffixOptions() === false): ?>
+                <input onkeyup="validateElement(this.id)" type="text"
+                       id="<?php echo $customerNameBlock->getFieldId('suffix') ?>"
+                       name="billing[<?php echo $customerNameBlock->getFieldName('suffix') ?>]" value=""
+                       title="<?php echo Mage::helper('core')->quoteEscape($this->__('Suffix')) ?>"
+                       class="input-text <?php if ($helper->getFieldRequire($fields[$i]['value'])) echo "required-entry"; ?>" <?php echo $customerNameBlock->getFieldParams() ?> />
+                <?php else: ?>
+                    <select id="<?php echo $customerNameBlock->getFieldId('suffix') ?>"
+                            name="billing[<?php echo $customerNameBlock->getFieldName('suffix') ?>]"
+                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Suffix')) ?>"
+                            class="<?php if ($helper->getFieldRequire($fields[$i]['value'])) echo "required-entry"; ?>" <?php echo $customerNameBlock->getFieldParams() ?>>
+                        <?php foreach ($customerNameBlock->getSuffixOptions() as $_option): ?>
+                            <option value="<?php echo $_option ?>"><?php echo $this->__($_option) ?></option>
+                        <?php endforeach ?>
+                    </select>
+                <?php endif; ?>
+                <?php elseif ($fields[$i]['value'] == 'birthday'): ?>
+                    <?php $_dob = $this->getLayout()->createBlock('onestepcheckout/widget_dob') ?>
+                    <?php echo $_dob->setDate($this->getQuote()->getCustomerDob())->setFieldIdFormat('billing:%s')->setFieldNameFormat('billing[%s]')->toHtml() ?>
+                <?php elseif ($fields[$i]['value'] == 'gender'): ?>
+                <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+                    <label <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>class="required" <?php endif ?>
+                           for="<?php echo $_gender->getFieldId('gender') ?>"><?php echo $this->__('Gender') ?>
+                        <?php if ($helper->getFieldRequire($fields[$i]['value'])): ?>
+                            <em>*</em>
+                        <?php endif ?>
+                    </label><br/>
+                    <select id="<?php echo $_gender->getFieldId('gender') ?>"
+                            name="billing[<?php echo $_gender->getFieldName('gender') ?>]"
+                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Gender')) ?>"
+                            class="<?php if ($helper->getFieldRequire($fields[$i]['value'])) echo "validate-select"; ?>" <?php echo $_gender->getFieldParams() ?>>
+                        <?php $options = Mage::getResourceSingleton('customer/customer')->getAttribute('gender')->getSource()->getAllOptions(); ?>
+                        <?php $value = $_gender->getGender(); ?>
+                        <?php foreach ($options as $option): ?>
+                            <option value="<?php echo $option['value'] ?>"<?php if ($option['value'] == $value || $option['value'] == $this->getCustomerData($_gender->getFieldName('gender'))) echo ' selected="selected"' ?>><?php echo $option['label'] ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                <?php else: ?>
+
+
+                <input onkeyup="validateElement(this.id)" type="text" id="billing:<?php echo $fields[$i]['value']; ?>"
+                       autocomplete="<?php if ($fields[$i]['value'] == 'email') echo 'off'; ?>"
+                       name="billing[<?php echo $fields[$i]['value']; ?>]"
+                       value="<?php echo $this->htmlEscape($this->getCustomerData($fields[$i]['value'])) ?>"
+                       title="<?php echo Mage::helper('core')->quoteEscape($this->__($fieldValue[$fields[$i]['value']])) ?>"
+                       class="input-text <?php if ($helper->getFieldRequire($fields[$i]['value']) || $fields[$i]['value'] == 'firstname' || $fields[$i]['value'] == 'lastname' || $fields[$i]['value'] == 'email') echo 'required-entry'; ?>"
+                       required/>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label
+                        <?php if ($helper->getFieldRequire($fields[$i]['value']) || $fields[$i]['value'] == 'firstname' || $fields[$i]['value'] == 'lastname' || $fields[$i]['value'] == 'email'): ?>class="required" <?php endif ?>
+                        for="billing:<?php echo $fields[$i]['value']; ?>"><?php echo $this->__($fieldValue[$fields[$i]['value']]) ?>
+                        <?php if ($helper->getFieldRequire($fields[$i]['value']) || $fields[$i]['value'] == 'firstname' || $fields[$i]['value'] == 'lastname' || $fields[$i]['value'] == 'email'): ?>
+                            <em>*</em>
+                        <?php endif ?>
+                    </label>
+                    <?php if ($helper->enableGeoip()): ?>
+                    <?php if (($fields[$i]['value'] == 'postcode') && $helper->allowDetectByPostcode()): ?>
+                    <span id="billing_<?php echo $fields[$i]['value'] ?>_autocomplete_indicator"
+                          class="autocomplete-indicator" style="display:none;">
+                                            <img class="v-middle" alt="Loading..."
+                                                 src="<?php echo $this->getSkinUrl('images/geoip/indicator.gif') ?>">
+                                        </span>
+                    <div id="billing:<?php echo $fields[$i]['value'] . '_autocomplete'; ?>" class="autocomplete"
+                         style="display:none; position:absolute; background-color:#FFFFFF; max-height:230px; overflow:auto; border:1px solid #B6B6B6"></div>
+                <?php endif; ?>
+                    <?php if (($fields[$i]['value'] == 'city') && $helper->allowDetectByCity()): ?>
+                    <span id="billing_<?php echo $fields[$i]['value'] ?>_autocomplete_indicator"
+                          class="autocomplete-indicator" style="display:none;">
+                                            <img class="v-middle" alt="Loading..."
+                                                 src="<?php echo $this->getSkinUrl('images/geoip/indicator.gif') ?>">
+                                        </span>
+                    <div id="billing:<?php echo $fields[$i]['value'] . '_autocomplete'; ?>" class="autocomplete"
+                         style="display:none; position:absolute; background-color:#FFFFFF; max-height:230px; overflow:auto; border:1px solid #B6B6B6"></div>
+                <?php endif; ?>
+                <?php endif; ?>
+                    <?php if ($fields[$i]['value'] == 'email'): ?>
+                    <span id="valid_email_address_image" style="display:none;"><img
+                                src="<?php echo $this->getSkinUrl('images/onestepcheckout/material/valid.gif') ?>"
+                                title="<?php echo Mage::helper('core')->quoteEscape($this->__('Valid Email Address')); ?>"
+                                alt="<?php echo $this->__('Valid Email Address'); ?>" width="18"/></span>
+                    <div id="email-error-message" class="error-message"></div>
+                <?php endif ?>
+                <?php endif ?>
+                </div>
+                <?php if (($i % 2 != 0) || (($i % 2 == 0) && (!$fields[$i + 1]['value'] || $fields[$i + 1]['value'] == '0' || (Mage::getSingleton('customer/session')->isLoggedIn() && $fields[$i + 1]['value'] == 'email')))): ?>
+                    </li>
+                <?php endif ?>
+            <?php endfor ?>
+            <?php if ($checkCountry == 0): ?>
+                <div style="display:none;">
+                    <?php echo $this->getCountryHtmlSelect('billing') ?>
+                </div>
+            <?php endif ?>
+            <?php if (!$this->isCustomerLoggedIn() && Mage::helper('onestepcheckout')->enableRegistration() && Mage::helper('onestepcheckout')->allowGuestCheckout()): ?>
+                <li class="create_account">
+                    <div class="checkbox-group">
+                        <input id="create_account_checkbox_id" type="checkbox" name="create_account_checkbox" value="1"
+                               class="checkbox"/>
+                        <label for="create_account_checkbox_id" class="label--checkbox">
+                            <span class="check"></span>
+                            <span class="box-check"></span>
+                            <?php echo $this->__('Create an account for later use') ?></label>
+                    </div>
+                </li>
+                <script type="text/javascript">
+                    Event.observe('create_account_checkbox_id', 'click', function () {
+                        if ($('create_account_checkbox_id').checked)
+                            $('password_section_id').show();
+                        else
+                            $('password_section_id').hide();
+                    });
+                </script>
+            <?php endif; ?>
+            <?php if (!$this->isCustomerLoggedIn() && (Mage::helper('onestepcheckout')->enableRegistration() || !Mage::helper('onestepcheckout')->allowGuestCheckout())): ?>
+                <li id="password_section_id"
+                    <?php if (!Mage::helper('onestepcheckout')->allowGuestCheckout()): ?>style="display:block"
+                    <?php else: ?>style="display:none"<?php endif ?>>
+                    <div class="two-fields">
+                        <input type="password" name="billing[customer_password]" id="billing:customer_password"
+                               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Password')) ?>"
+                               class="input-text required-entry validate-password" required/>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label class="required" for="billing:customer_password"><?php echo $this->__('Password') ?> <em>*</em></label>
+                    </div>
+                    <div class="two-fields last">
+                        <input type="password" name="billing[confirm_password]"
+                               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Confirm Password')) ?>"
+                               id="billing:confirm_password" class="input-text required-entry validate-cpassword"
+                               required/>
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label class="required"
+                               for="billing:confirm_password"><?php echo $this->__('Confirm Password') ?>
+                            <em>*</span></em></label>
+                    </div>
+                </li>
+            <?php endif ?>
+            <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()): ?>
+                <li class="control shipping_other_address save-address">
+                    <div class="input-box checkbox-group">
+                        <input type="checkbox" name="billing[save_in_address_book]" value="1"
+                               title="<?php echo Mage::helper('core')->quoteEscape($this->__('Save in address book')) ?>"
+                               id="billing:save_in_address_book"
+                               onchange="if(window.shipping) shipping.setSameAsBilling(false);"<?php if ($this->getBillingAddress()->getSaveInAddressBook()): ?> checked="checked"<?php endif; ?>
+                               class="checkbox"/>
+                        <label for="billing:save_in_address_book"
+                               class="label--checkbox"><?php echo $this->__('Save in address book') ?>
+                            <span class="check"></span>
+                            <span class="box-check"></span>
+                        </label>
+                    </div>
+                </li>
+            <?php else: ?>
+                <li class="no-display" style="height:0;padding:0;margin:0"><input type="hidden"
+                                                                                  name="billing[save_in_address_book]"
+                                                                                  value="1"/></li>
+            <?php endif; ?>
+            <li style="display:none;height:0;padding:0;margin:0">
+                <input type="hidden" name="billing[use_for_shipping]" id="billing:use_for_shipping" value="1"/>
+            </li>
+
+            <?php if ($this->isCustomerLoggedIn()): ?>
+                <li style="height:0;padding:0;margin:0"><input type='hidden' name='islogin' id='islogin' value='1'/>
+                </li>
+            <?php endif; ?>
+            <li style="height:0;padding:0;margin:0"><input type='hidden' name='emailvalid' id='emailvalid' value=''/>
+            </li>
+
+        </ul>
+    </fieldset>
+    <?php if ($this->isShowShippingAddress()): ?>
+        <ul>
+            <li class="shipping_other_address">
+                <div class="input-box input-different-shipping checkbox-group">
+                    <input onclick="showDifferentAdress();" type="checkbox" name="shipping[different_shipping]"
+                           id="shipping:different_shipping" value="1"
+                           class="checkbox" <?php if (Mage::getSingleton('checkout/session')->getData('different_shipping')) echo 'checked'; ?> />
+                    <label for="shipping:different_shipping" class="label--checkbox">
+                        <span class="check"></span>
+                        <span class="box-check"></span>
+                        <?php echo $this->__('Ship to different address'); ?></label>
+                </div>
+            </li>
+        </ul>
+    <?php else: ?>
+        <!--<li>
+                        <input type="hidden" name="billing[use_for_shipping]" id="billing:use_for_shipping" value="1" />
+        </li>-->
+    <?php endif; ?>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+    var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('checkout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('checkout/onepage/saveBilling') ?>');
+    var billingForm = new VarienForm('co-billing-form');
+
+    //billingForm.setElementsRelation('billing:country_id', 'billing:region', '<?php echo $this->getUrl('directory/json/childRegion') ?>', '<?php echo $this->__('Select State/Province...') ?>');
+    $('billing-address-select') && billing.newAddress(!$('billing-address-select').value);
+
+    var billingRegionUpdater = new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'billing:postcode');
+    if ($('onepage-guest-register-button')) {
+        Event.observe($('onepage-guest-register-button'), 'click', function(event) {
+            var billingRememberMe = $('co-billing-form').select('#remember-me-box');
+            if (billingRememberMe.length > 0) {
+                if ($('login:guest') && $('login:guest').checked) {
+                    billingRememberMe[0].hide();
+                } else if ($('login:register') && ($('login:register').checked || $('login:register').type == 'hidden')) {
+                    billingRememberMe[0].show();
+                }
+            }
+        });
+    }
+//]]>
+</script>
+
+<?php if($penolong->config('jquery')): ?>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<?php endif ?>
+
+<script>
+
+function playAjax_billing(CURRENT_CITY_ID,PROV_ID)
+{
+	//var CURRENT_CITY_ID = 
+	jQuery.ajax({
+				type: 'GET', 
+				url: '<?php echo Mage::getUrl('proaongkir/index/city/', array('_secure'=>true)); ?>', 
+				data: 'prov_id='+PROV_ID,
+				dataType: 'json',
+				success: function(data){
+					if(data){
+						
+						jQuery('input#billing\\:city').replaceWith('<select name="billing[city]"  class="  required-entry" id="billing:city"></select>');
+						
+						jQuery('select#billing\\:city').empty().append(
+                            jQuery("<option value=''><?php echo $this->__('Please select city') ?></option>")
+							
+							
+                        );
+						
+						jQuery.each(data, function(index, city){
+							//console.log('CITY ID : '+city.city_id+' disp name :'+city.display_name);
+							
+						 if(CURRENT_CITY_ID == city.display_name){	
+							 jQuery('select#billing\\:city').append(	
+								jQuery("<option></option>")  
+								.text(city.display_name)
+								.val(city.display_name)
+								.prop('selected','selected')
+							  )
+						 }else
+						 {
+							 jQuery('select#billing\\:city').append(	
+								jQuery("<option></option>")  
+								.text(city.display_name)
+								.val(city.display_name)
+							  )
+						 }
+						  	
+						});
+					}
+				} 
+			});
+	
+	
+};
+
+
+function playAjaxCity_billing(CURRENT_KEC_ID,CITY_NAME,PROV_ID)
+{
+	
+	console.log('playAjaxCity_billing running');
+	//var CURRENT_CITY_ID = 
+	jQuery.ajax({
+				type: 'GET', 
+				url: '<?php echo Mage::getUrl('proaongkir/index/kecamatan/', array('_secure'=>true)); ?>', 
+				data: 'prov_id='+PROV_ID+'&city='+CITY_NAME,
+				dataType: 'json',
+				success: function(data){
+					if(data){
+						
+						jQuery('input#billing\\:subdistrict_name').replaceWith('<select name="billing[subdistrict_name]"  class="  required-entry" id="billing:subdistrict_name"></select>');
+						
+						jQuery('select#billing\\:subdistrict_name').empty().append(
+                            jQuery("<option value=''><?php echo $this->__('Please select Kecamatan') ?></option>")
+							
+							
+                        );
+						
+						jQuery.each(data, function(index, city){
+							//console.log('CITY ID : '+city.city_id+' disp name :'+city.display_name);
+							
+						 if(CURRENT_KEC_ID == city.display_name){	
+							 jQuery('select#billing\\:subdistrict_name').append(	
+								jQuery("<option></option>")  
+								.text(city.display_name)
+								.val(city.display_name)
+								.prop('selected','selected')
+							  )
+						 }else
+						 {
+							 jQuery('select#billing\\:subdistrict_name').append(	
+								jQuery("<option></option>")  
+								.text(city.display_name)
+								.val(city.display_name)
+							  )
+						 }
+						  	
+						});
+					}
+				} 
+			});
+	
+	
+};
+
+
+var proaongkir = jQuery.noConflict();
+
+
+jQuery(document).ready(function(e) {
+
+	var CURRENT_CITY_ID = '<?php echo $this->escapeHtml($this->getAddress()->getCity()) ?>' ;
+	var CURRENT_KEC_ID = '<?php echo $this->escapeHtml($this->getAddress()->getSubdistrictName()) ?>' ;
+	
+	var COUNTRY_ID = jQuery('select#billing\\:country_id :selected').val();
+	console.log('CURRENT_CITY_ID is '+CURRENT_CITY_ID);
+	console.log('CURRENT_KEC_ID is '+CURRENT_KEC_ID);
+	
+	var PROV_ID = jQuery('select#billing\\:region_id :selected').val();
+	
+	if(CURRENT_CITY_ID)
+	{
+		playAjax_billing(CURRENT_CITY_ID,PROV_ID);
+		//CURRENT_CITY_ID = jQuery('select#city :selected').val();
+		//jQuery('select#city').find('option[value="'+CURRENT_CITY_ID+'"]').attr('selected', 'selected');
+		
+		if(CURRENT_KEC_ID)
+		{
+			//playAjaxCity_billing(CURRENT_KEC_ID,CITY_NAME,PROV_ID)
+			playAjaxCity_billing(CURRENT_KEC_ID,CURRENT_CITY_ID,PROV_ID);
+		};
+	};
+	
+	
+	
+	jQuery('select#billing\\:region_id').change(function(e) {
+		PROV_ID = jQuery('select#billing\\:region_id :selected').val();			
+		playAjax_billing(CURRENT_CITY_ID,PROV_ID);					
+	});
+	
+	jQuery(document).on('change','select#billing\\:city',function(e) {
+		console.log('on change city 1 running');
+		PROV_ID = jQuery('select#billing\\:region_id :selected').val();	
+		CURRENT_CITY_ID  = jQuery('select#billing\\:city :selected').val();		
+		CURRENT_KEC_ID = jQuery('select#billing\\:subdistrict_name :selected').val();	
+		playAjaxCity_billing(CURRENT_KEC_ID,CURRENT_CITY_ID,PROV_ID);					
+	});
+	/*
+	jQuery(document).delegate('select#billing\\:city','change',function(e) {
+		console.log('on change city 2 running');
+		PROV_ID = jQuery('select#billing\\:region_id :selected').val();	
+		CURRENT_CITY_ID  = jQuery('select#billing\\:city :selected').val();		
+		CURRENT_KEC_ID = jQuery('select#billing\\:subdistrict_name :selected').val();	
+		playAjaxCity_billing(CURRENT_KEC_ID,CURRENT_CITY_ID,PROV_ID);					
+	});
+	
+	jQuery('select#billing\\:city').live('change',function(e) {
+		console.log('on change city 3 running');
+		PROV_ID = jQuery('select#billing\\:region_id :selected').val();	
+		CURRENT_CITY_ID  = jQuery('select#billing\\:city :selected').val();		
+		CURRENT_KEC_ID = jQuery('select#billing\\:subdistrict_name :selected').val();	
+		playAjaxCity_billing(CURRENT_KEC_ID,CURRENT_CITY_ID,PROV_ID);					
+	});
+	*/
+	
+    	
+
+	jQuery('select#billing\\:country_id').change(function(e) {
+        
+		COUNTRY_ID = jQuery('select#billing\\:country_id :selected').val();
+		
+		if(COUNTRY_ID != 'ID')
+		{
+			/*balikin ke awal*/
+			
+			jQuery('select#billing\\:city').replaceWith('<input type="text" title="City" name="billing[city]" value="" class="input-text  required-entry" id="billing:city">');
+			jQuery('select#billing\\:subdistrict_name').replaceWith('<input type="text" title="Kecamatan" name="billing[subdistrict_name]" value="" class="input-text  required-entry" id="billing:subdistrict_name">');
+			
+			
+		}else
+		{
+			jQuery('select#billing\\:region_id').find('option[value=""]').attr('selected', 'selected');
+			jQuery('input#billing\\:city').replaceWith('<select name="billing[city]"  class="  required-entry" id="billing:city"></select>');
+			jQuery('input#billing\\:subdistrict_name').replaceWith('<select name="billing[subdistrict_name]"  class="  required-entry" id="billing:subdistrict_name"></select>');
+			
+		}
+		
+    });
+
+	
+});
+</script>
+
+
+    <script type="text/javascript">var countryRegions = <?php echo $this->helper('directory')->getRegionJson() ?></script>
+    <script type="text/javascript">
+        //<![CDATA[
+
+        if ($('billing:region') || $('billing:region_id'))
+            var billingRegionUpdater = new RegionUpdater('billing:country_id', 'billing:region', 'billing:region_id', countryRegions);
+
+        <?php if (!$helper->getFieldRequire('region')): ?>
+        if ($('billing:region_id')) {
+            $('billing:region_id').removeClassName('validate-select');
+            $('billing:region_id').removeClassName('required-entry');
+        }
+        <?php endif ?>
+        if ($('billing:email')) {
+            Event.observe(document, "dom:loaded", function () {
+                var url = '<?php echo $this->getUrl('onestepcheckout/index/is_valid_email', array('_secure' => true)) ?>';
+                var email_address = $('billing:email').value;
+                if(email_address) {
+                    var parameters = {email_address: email_address};
+                    var request = new Ajax.Request(
+                        url,
+                        {
+                            parameters: parameters,
+                            onComplete: check_valid_email.bindAsEventListener($('billing:email')),
+                            onFailure: ''
+                        });
+                }
+            });
+            Event.observe('billing:email', 'change', function () {
+                var url = '<?php echo $this->getUrl('onestepcheckout/index/is_valid_email', array('_secure' => true)) ?>';
+                var email_address = $('billing:email').value;
+                var parameters = {email_address: email_address};
+                var request = new Ajax.Request(
+                    url,
+                    {
+                        parameters: parameters,
+                        onComplete: check_valid_email.bindAsEventListener(this),
+                        onFailure: ''
+                    });
+            });
+        }
+        if ($('billing-address-select')) {
+            Event.observe('billing-address-select', 'change', function () {
+                var isNew = $('billing-address-select').value ? false : true;
+                setNewAddress(isNew, 'billing', save_address_url, update_address_shipping, update_address_payment, update_address_review);
+            });
+        }
+        //]]>
+    </script>
+
+
+    <script type="text/javascript">
+        <?php if ($helper->enableGeoip()): ?>
+        /*
+         Show list postcode billing
+         */
+        <?php if ($helper->allowDetectByPostcode()): ?>
+        new Ajax.Autocompleter(
+            'billing:postcode',
+            'billing:postcode_autocomplete',
+            '<?php echo $this->getUrl('onestepcheckout/geoip/checkPostcode') ?>',
+            {
+                paramName: 'postcode',
+                minChars:<?php echo $helper->getMinCharsPostcode() ?>,
+                indicator: 'billing_postcode_autocomplete_indicator',
+                updateElement: fillFilterBilling,
+                evalJSON: 'force'
+            }
+        );
+        <?php endif; ?>
+
+        /*
+         Show list city billing
+         */
+        <?php if ($helper->allowDetectByCity()): ?>
+        new Ajax.Autocompleter(
+            'billing:city',
+            'billing:city_autocomplete',
+            '<?php echo $this->getUrl('onestepcheckout/geoip/checkCity') ?>',
+            {
+                paramName: 'city',
+                minChars:<?php echo $helper->getMinCharsCity() ?>,
+                indicator: 'billing_city_autocomplete_indicator',
+                updateElement: fillFilterBilling,
+                evalJSON: 'force'
+            }
+        );
+        <?php endif; ?>
+
+        function fillFilterBilling(li) {
+            var country = li.getAttribute('country');
+            var region = li.getAttribute('region');
+            var region_id = li.getAttribute('region_id');
+            var city = li.getAttribute('city');
+            var postcode = li.getAttribute('postcode');
+            if (city != '') {
+                if ($('billing:postcode')) {
+                    $('billing:postcode').value = postcode;
+                }
+            }
+            if (country != '') {
+                if ($('billing:country_id')) {
+                    $('billing:country_id').value = country;
+                }
+            }
+            if (region != '') {
+                if ($('billing:region')) {
+                    $('billing:region').value = region;
+                }
+            }
+
+            if (region_id != '') {
+                if ($('billing:region_id')) {
+                    $('billing:region_id').value = region_id;
+                }
+            }
+
+            if (city != '') {
+                if ($('billing:city')) {
+                    $('billing:city').value = city;
+                }
+            }
+
+            updateBillingRegion();
+
+        }
+        <?php endif; ?>
+        function updateBillingRegion() {
+            var countryEl = $('billing:country_id');
+            var regionTextEl = $('billing:region');
+            var regionSelectEl = $('billing:region_id');
+            var regions = <?php echo $this->helper('directory')->getRegionJson() ?>;
+            var config = regions['config'];
+            delete regions.config;
+            var regions = regions;
+            var zipEl = $(zipEl);
+            disableAction = (typeof disableAction == 'undefined') ? 'hide' : disableAction;
+
+            updateRegion(countryEl, regionTextEl, regionSelectEl, regions, disableAction, zipEl);
+        }
+        updateBillingRegion();
+    </script>
+
+    <?php if (Mage::getStoreConfig('onestepcheckout/general/suggest_address', Mage::app()->getStore()->getStoreId())): ?>
+
+        <script type="text/javascript">
+
+            $('billing-street-label').setStyle({top: '-7px'});
+            var autocompleteBilling;
+            //Huy - change from sublocality => sublocality_level_1
+            var componentBillingForm = {
+                subpremise: 'short_name',
+                street_number: 'short_name',
+                route: 'long_name',
+                locality: 'long_name',
+                administrative_area_level_1: 'short_name',
+                administrative_area_level_2: 'short_name',
+                country: 'short_name',
+                postal_code: 'short_name',
+                sublocality_level_1: 'long_name'
+            };
+
+            autocompleteBilling = new google.maps.places.Autocomplete(
+                (document.getElementById('billing:street1')),
+                {types: ['geocode']});
+
+            google.maps.event.addListener(autocompleteBilling, 'place_changed', function () {
+                fillBillingAddress();
+            });
+
+            function fillBillingAddress() {
+                var place = autocompleteBilling.getPlace();
+                var street, city, region_id, region, country, postal_code, sublocality;
+                if (place.address_components)
+                    for (var i = 0; i < place.address_components.length; i++) {
+
+                        var addressType = place.address_components[i].types[0];
+                        if (componentBillingForm[addressType]) {
+                            if (addressType == 'subpremise') {
+                                street = place.address_components[i]['long_name'];
+                            }
+                            if (addressType == 'street_number') {
+                                if (street)
+                                    street = street + '/' + place.address_components[i]['long_name'];
+                                else
+                                    street = place.address_components[i]['long_name'];
+                            }
+                            if (addressType == 'route') {
+                                if (street)
+                                    street += ' ' + place.address_components[i][componentBillingForm['route']];
+                                else
+                                    street = place.address_components[i][componentBillingForm['route']];
+                            }
+                            if (addressType == 'locality')
+                                city = place.address_components[i][componentBillingForm['locality']];
+                            if (addressType == 'administrative_area_level_1') {
+                                region_id = place.address_components[i]['short_name'];
+                                region = place.address_components[i]['long_name'];
+                            }
+                            if (addressType == 'country')
+                                country = place.address_components[i][componentBillingForm['country']];
+                            if (addressType == 'postal_code')
+                                postal_code = place.address_components[i][componentBillingForm['postal_code']];
+                            //Huy - change from sublocality => sublocality_level_1
+                            if (addressType == 'sublocality_level_1')
+                                sublocality = place.address_components[i][componentBillingForm['sublocality_level_1']];
+                        }
+                    }
+                fillAddress('billing', street, city, region_id, region, country, postal_code, sublocality);
+            }
+        </script>
+    <?php endif; ?>
+</div>

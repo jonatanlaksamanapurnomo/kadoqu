@@ -1,0 +1,48 @@
+<!--
+/**
+ * MageGiant
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MageGiant.com license that is
+ * available through the world-wide-web at this URL:
+ * http://magegiant.com/license-agreement/
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    MageGiant
+ * @package     MageGiant_Community
+ * @copyright   Copyright (c) 2014 MageGiant (http://magegiant.com/)
+ * @license     http://magegiant.com/license-agreement/
+ */
+-->
+
+<?php $installed = ''; try { $modules = Mage::getConfig()->getNode('modules')->children(); $list = array(); foreach ($modules as $key => $module) { if (strpos($key, 'Magegiant_') !== false) { if ($module->codePool == 'local') { $key = str_replace('Magegiant_', '', $key); $list[] = $key; } } } $installed = implode(',', $list); } catch (Exception $e) { } ?>
+<script>
+    //<![CDATA[
+	var ma_version = '<?php echo Mage::getVersion()?>';
+	var ma_domain = '<?php echo Mage::getBaseUrl()?>';
+	var giant_installed = '<?php echo $installed; ?>';
+
+	if ($$('.header-right')[0]) {
+		var notice = '<div id="magegiant_notice"></div>';
+		$$('.header-right')[0].insert(notice);
+
+	}
+	if ($$('.footer')[0]) {
+		var giant_iframe = '<div id="magegiant_iframe"></div>';
+		$$('.footer')[0].insert(giant_iframe);
+	}
+	(function (d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "//community.thegiantdata.com/jdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'magegiant-js'));
+	//]]>
+</script>

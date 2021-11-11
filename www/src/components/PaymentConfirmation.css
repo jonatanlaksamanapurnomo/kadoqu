@@ -1,0 +1,96 @@
+.payment-confirmation-title {
+  padding-top: 1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.payment-confirmation-container form {
+  margin-top: 3rem;
+  padding-bottom: 3rem;
+  background: #f9f9f9;
+}
+.preview-foto-payment {
+  font-weight: bold;
+}
+.preview-foto-payment small {
+  font-weight: 400;
+  color: red;
+}
+.payment-confirmation-container {
+  background: #f9f9f9;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.payment-confirmation-form-field {
+  border: none;
+  border-radius: 0;
+}
+.payment-confirmation-form-field-error {
+  border: solid var(--red) 1px;
+  border-radius: 0;
+}
+.dd {
+  width: 27%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.hh {
+  width: 40%;
+  padding-left: 0;
+}
+.mm {
+  width: 27%;
+  padding-left: 0;
+  padding-right: 0;
+}
+.yyyy {
+  width: 33%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.payment-confirmation-form-field::placeholder {
+  font-size: initial;
+}
+
+.payment-confirmation-date-time-container div input {
+  margin: 0 0.5rem;
+}
+
+.payment-confirmation-date-time-container div input:first-child {
+  margin-left: 0;
+}
+
+.payment-confirmation-date-time-container div input:last-child {
+  margin-right: 0;
+}
+
+@media only screen and (min-width: 993px) {
+  .payment-confirmation-container {
+    background: #f9f9f9;
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .payment-confirmation-title {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+  }
+  .payment-confirmation-container form {
+    margin-top: 1rem;
+  }
+  .payment-confirmation-form-field {
+    border: solid 1px var(--darkGreen);
+  }
+  .thank-you-text {
+    font-size: 0.8rem;
+  }
+}
+
+.img-uploader {
+  display: block !important;
+}

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Promo
+ */
+-->
+
+<layout version="0.1.0">
+    <ampromo_items>
+        <reference name="head">
+            <action method="addJs"><script>varien/product.js</script></action>
+
+            <!-- Fix for script load order -->
+            <action method="removeItem"><type>js</type><name>varien/configurable.js</name></action>
+            <action method="addJs"><script>varien/configurable.js</script></action>
+
+            <action method="addJs"><script>calendar/calendar.js</script></action>
+            <action method="addJs"><script>amasty/ampromo/carousel-min.js</script></action>
+            <action method="addItem"><type>skin_js</type><name>js/bundle.js</name></action>
+            <block type="core/text" name="head.viewport">
+                <action method="setText"><text><![CDATA[<meta name="viewport" content="initial-scale=1.0, width=device-width" />]]>&#10;</text></action>
+            </block>
+        </reference>
+        <reference name="before_body_end">
+            <block type="ampromo/items" name="ampromo.items" template="amasty/ampromo/items.phtml" />
+        </reference>
+        <block type="ampromo/add" name="ampromo.add" template="amasty/ampromo/add.phtml" />
+    </ampromo_items>
+
+    <checkout_cart_index>
+        <update handle="ampromo_items" />
+        <remove name="ampromo_notification" />
+        <reference name="checkout.cart.form.before">
+            <action method="append"><block>ampromo.add</block></action>
+        </reference>
+    </checkout_cart_index>
+
+    <checkout_onepage_index>
+        <update handle="ampromo_items" />
+
+        <reference name="ampromo_notification"> <!-- hide notification block -->
+            <action method="setTemplate" ifconfig="ampromo/popup/popup_on_checkout"><template></template></action>
+        </reference>
+
+        <!-- Amasty One Step Checkout -->
+        <!-- <reference name="checkout.onepage"> -->
+
+        <reference name="content">
+            <block type="page/html_wrapper" name="ampromo.onepage.review.before" as="review_before" before="-">
+                <action method="append" ifconfig="ampromo/popup/popup_on_checkout"><block>ampromo.add</block></action>
+            </block>
+        </reference>
+    </checkout_onepage_index>
+	
+	<!-- TM Firecheckout -->
+    <firecheckout_index_index>
+        <update handle="ampromo_items" />
+
+        <reference name="ampromo_notification"> <!-- hide notification block -->
+            <action method="setTemplate" ifconfig="ampromo/popup/popup_on_checkout"><template></template></action>
+        </reference>
+        <reference name="content">
+		     <block type="ampromo/items" name="ampromo.items" template="amasty/ampromo/items.phtml" />	
+			<block type="ampromo/add" name="ampromo.add" template="amasty/ampromo/add.phtml" />
+        </reference>
+	
+    </firecheckout_index_index>	
+	
+    <catalog_product_view>
+        <block  as="other" type="ampromo/banner" name="ampromo.banner.after_name" template="amasty/ampromo/banner.phtml">
+            <action method="setPosition"><position>after_name</position></action>
+        </block>
+
+        <block before="main" type="ampromo/banner" name="ampromo.banner.top" template="amasty/ampromo/banner.phtml">
+            <action method="setPosition"><position>top</position></action>
+        </block>
+
+        <reference name="content">
+            
+            <block before="main" type="ampromo/label" name="ampromo.label" template="amasty/ampromo/label.phtml"/>
+            <action method="insert" ifconfig="ampromo/banners/enabled_top"><block>ampromo.banner.top</block></action>
+            <reference name="product.info">
+                <block type="core/text_list" name="ampromo.after.name" as="other" translate="label">
+                    <action method="insert" ifconfig="ampromo/banners/enabled_above_cart"><block>ampromo.banner.after_name</block></action>
+                </block>
+            </reference>
+
+        </reference>
+    </catalog_product_view>
+
+    <default>
+        <reference name="head">
+            <action method="addCss"><name>css/amasty/ampromo/styles.css</name></action>
+            <action method="addJs"><script>amasty/ampromo/items.js</script></action>
+        </reference>
+
+        <block name="ampromo_notification" type="ampromo/notification" template="amasty/ampromo/notification.phtml" before="-" />
+
+        <!-- RWD theme:
+        to move this block to cart popup replace "content" with
+        "cart_sidebar.extra_actions" or "cart_sidebar.cart_promotion" -->
+        <reference name="content">
+            <action ifconfig="ampromo/messages/display_notification" method="append"><block>ampromo_notification</block></action>
+        </reference>
+    </default>
+</layout>

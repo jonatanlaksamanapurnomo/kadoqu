@@ -1,0 +1,42 @@
+.rating-title {
+  color: #16978c;
+}
+
+@media (max-width: 576px) {
+  .rating-form-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .rating-form-label {
+    font-size: 0.9rem;
+  }
+
+  .star-container {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .widget-svg {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+
+  .rating-submit-button {
+    width: 100% !important;
+    height: 3rem !important;
+  }
+}
+
+.product-rating {
+  padding-bottom: 5%;
+}
+
+.form-control {
+  border: 1px solid var(--darkGreen);
+  border-radius: 0;
+}
+
+.rating-upload-image input {
+  display: block;
+}

@@ -1,0 +1,82 @@
+<?php
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Onestepcheckout
+ * @copyright   Copyright (c) 2017 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+/* Start: Added by Daniel -01042015- Reload data after login */
+$session = Mage::getSingleton('customer/session');
+$login_error = $session->getData('login_result_error');
+$register_error = $session->getData('register_result_error');
+if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+    $customerFN = Mage::getSingleton('customer/session')->getCustomer()->getFirstname();
+    $customerLN = Mage::getSingleton('customer/session')->getCustomer()->getLastname();
+    $billing_html = $this->getChildHtml('onestepcheckout_billing');
+    $shipping_html = $this->getChildHtml('onestepcheckout_shipping');
+
+    $shipping_method_html = $this->getChildHtml('onestepcheckout_shipping_method');
+    $payment_method_html = $this->getChildHtml('onestepcheckout_payment_method');
+    $review_total_html = $this->getChildHtml('onestepcheckout_review');
+    $minicart = $this->getChildHtml('minicart_head');
+    /*$topLinks = $this->getChildHtml('topLinks');*/
+    $cartItemsNumber = Mage::helper('checkout/cart')->getSummaryCount();
+    if ($cartItemsNumber == 1) {
+        $mycarttext = $this->__('My Cart (%s item)', $cartItemsNumber);
+    } elseif ($cartItemsNumber > 0) {
+        $mycarttext = $this->__('My Cart (%s items)', $cartItemsNumber);
+    } else {
+        $mycarttext = $this->__('My Cart');
+    }
+
+    $topLinksBlock = Mage::app()->getLayout()->createBlock('page/template_links')->setBlockId('topx.links')
+        ->addLink($this->__("My Account"), 'customer/account/', $this->__("My Account"), true, array(), 10, null, null)
+        ->addLink($mycarttext, 'checkout/cart', $mycarttext, true, array(), 50, null, 'class="top-link-cart"')
+        ->addLink($this->__("Log Out"), 'customer/account/logout', $this->__("Log Out"), true, array(), 70, null, null);
+    if (Mage::helper('core')->isModuleEnabled('Mage_Wishlist')) {
+        $wishlistItemsNumber = Mage::helper('wishlist')->getItemCount();
+        if ($wishlistItemsNumber > 1) {
+            $mywishlisttext = $this->__('My Wishlist (%d items)', $wishlistItemsNumber);
+        } else if ($wishlistItemsNumber == 1) {
+            $mywishlisttext = $this->__('My Wishlist (%d item)', $wishlistItemsNumber);
+        } else {
+            $mywishlisttext = $this->__('My Wishlist');
+        }
+        $topLinksBlock->addLink($mywishlisttext, 'wishlist/', $mywishlisttext, true, array(), 20, null, null);
+    }
+    $topLinks = $topLinksBlock->toHtml();
+    $result = array('shipping_method' => $shipping_method_html,
+        'payment_method' => $payment_method_html,
+        'review' => $review_total_html);
+    if (isset($billing_html) && $billing_html != '') {
+        $result['billing'] = $billing_html;
+        $result['shipping'] = $shipping_html;
+    }
+    $result['welcome_msg'] = __('Welcome, ') . $customerFN . ' ' . $customerLN . '!';
+    $result['minicart'] = $minicart;
+    $result['toplinks'] = $topLinks;
+    $result['success'] = true;
+} elseif (isset($login_error)) {
+    $result['error'] = $login_error;
+    $session->setData('login_result_error', null);
+} elseif (isset($register_error)) {
+    $result['error'] = $register_error;
+    $session->setData('register_result_error', null);
+}
+echo Zend_Json::encode($result);
+/* End: Added by Daniel -01042015- Reload data after login */
+?>

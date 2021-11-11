@@ -1,0 +1,281 @@
+.forgot-password-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.forgot-password-container-mob {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.forgot-password-modal {
+  width: 650px;
+}
+.forgot-password-modal-mob {
+  width: 350px;
+}
+
+.forgot-password-modal .modal-content {
+  border: none;
+  border-radius: 0;
+  box-shadow: 4px 8px 20px #444444;
+}
+
+.forgot-password-modal-backdrop {
+  background-color: #444444;
+  opacity: 0.25 !important;
+}
+
+.forgot-password-button {
+  width: 100px;
+}
+.forgot-password-button-mob{
+  width: 100px;
+}
+
+.login-error,
+.register-error {
+  background-color: #ffde9b;
+  color: #fd3232;
+  font-size: 18px;
+}
+
+.login-container,
+.register-container {
+  padding: 60px 0;
+  font-weight: 300;
+}
+
+.login-container label,
+.register-container label {
+  margin-bottom: 0;
+}
+
+.login-card,
+.register-card {
+  width: 60rem;
+  box-shadow: 4px 8px 20px #b0b0b0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: none;
+}
+
+.login-form,
+.register-form {
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+.forgot-password-button-mob,
+.forgot-password-button,
+.register-button,
+.register-button:hover,
+.register-button:active {
+  background-color: #00978c !important;
+}
+.login-button:disabled {
+  background-color: var(--grey-1) !important;
+  cursor: not-allowed;
+}
+
+.login-button,
+.register-button {
+  width: 175px;
+}
+.register-button:disabled {
+  background-color: var(--grey-1) !important;
+  cursor: not-allowed;
+}
+.login-fas,
+.register-fas {
+  padding: 6px;
+  color: #00978b;
+}
+
+.login-card-fore,
+.register-card-fore {
+  box-shadow: 4px 8px 20px #b0b0b0;
+}
+
+.login-card-fore {
+  background-image: url("https://ik.imagekit.io/nwiq66cx3pvsy/Sign_In_Sign_Up/login-01_BkMVoxqu4.png");
+  background-color: var(--sideYellow);
+  height: 669px;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-direction: column;
+}
+
+.login-form .form-control,
+.login-form-mob .form-control,
+.register-form-mob .form-control,
+.forgot-password-form .form-control,
+.register-form .form-control {
+  background-color: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 0px;
+}
+
+.login-form .form-control:focus,
+.login-form .form-control:focus,
+.forgot-password-form .form-control:focus,
+.register-form .form-control:focus {
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.login-card-mob {
+  width: 60rem;
+  background-color: transparent;
+  overflow: hidden;
+  border: none;
+}
+.login-card-fore-mobile {
+  height: 29.1vw;
+  margin-top: 3rem;
+
+  box-shadow: 4px 8px 20px #b0b0b0;
+}
+.mobile-gida {
+  margin-left: -120px;
+  margin-top: 20px;
+}
+.text-mobile {
+  font-size: 12px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+.number-alert-phone{
+  font-family: "Gotham";
+}
+.Selamat-mobile {
+  font-size: 22px;
+  margin-left: 15px;
+  margin-top: 20px;
+}
+.textblm-mobile {
+  margin-left: 45px;
+  margin-top: -5px;
+}
+.Hello-mobile {
+  margin-left: -100px;
+  font-size: 25px;
+}
+.login-button-mob,
+.register-button-mob {
+  width: 175px;
+  background-color: #00978c !important;
+  font-size: 17px;
+  margin-top: -15px;
+  height: 35px;
+}
+.singlePostWrap .g-recaptcha iframe {
+  height: 76px;
+}
+
+@media (max-width: 960px) {
+  .register-card {
+    display: none;
+  }
+  .register-form-mob,
+  .login-form {
+    padding: 0 3rem;
+  }
+  .login-card-fore {
+    height: 500px;
+  }
+}
+@media (min-width: 960px) {
+  .login-card-mob {
+    display: none;
+  }
+}
+@media (max-width: 992px) {
+  .login-card-fore {
+    border-radius: 1rem;
+    height: 14rem;
+    flex-direction: row;
+  }
+  .login-card-fore img {
+    width: 9rem;
+    margin-right: 2rem;
+  }
+  .login-card-fore h2 {
+    margin: 0;
+  }
+}
+@media (max-width: 576px) {
+  .login-card-image {
+    padding: 0 1rem !important;
+  }
+}
+@media screen and (max-width: 500px) {
+  .login-container {
+    padding: 60px 1rem;
+  }
+  .login-error {
+    height: 60px;
+  }
+  .login-card-mob {
+    margin-top: -50px;
+  }
+  .mobile-form-group {
+    margin-top: 20%;
+  }
+  .login-error,
+  .register-error {
+    background-color: #ffde9b;
+    color: #fd3232;
+    font-size: 14px;
+  }
+  .batas-bawah-login {
+    margin-bottom: 10%;
+  }
+  .login-card-fore img {
+    width: 24vw;
+    margin-right: 2vw;
+  }
+  .login-card-fore h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 960px) {
+  #g-recaptcha {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    margin-left: 4.2%;
+  }
+}
+
+
+
+@media (max-width: 320px) {
+  #g-recaptcha {
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+  }
+  .login-card-mob #g-recaptcha {
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    margin-left: -2.8%;
+  }
+  .register-form-mob,
+  .login-form {
+    padding: 0 2rem;
+  }
+  .login-card-mobile {
+    overflow-x: hidden;
+  }
+  .login-card-fore-image-container {
+    min-width: 25%;
+    margin-right: 1rem;
+  }
+  .login-card-fore .btn {
+    max-width: 90%;
+  }
+}

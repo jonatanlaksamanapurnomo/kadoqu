@@ -1,0 +1,71 @@
+<h2>Konfirmasi Pembayaran</h2>
+
+<div class="awbali_formwrapper">
+	<form method="post" name="konfirmasipembayaranform" id="konfirmasipembayaranform" action="<?php echo Mage::getBaseUrl();?>konfirmasipembayaran/index/post">
+    	<h3>Data Pengirim</h3>
+        <div class="awbali_formcontent">
+            <label>Nama<em>*</em></label>
+            <input type="text" class="awbali_input required-entry" name="nama" />
+            <div class="clear"></div>
+        </div>
+        <div class="awbali_formcontent">
+            <label>Email<em>*</em></label>
+            <input type="text" class="awbali_input required-entry validate-email" name="email" />
+            <div class="clear"></div>
+        </div>
+        <div class="awbali_formcontent">
+            <label>No. Order<em>*</em></label>
+            <input type="text" class="awbali_input required-entry validate-number" name="noorder" />
+            <div class="clear"></div>
+        </div>
+        <div class="awbali_formcontent">
+            <label>Nama Bank Pengirim<em>*</em></label>
+            <input type="text" class="awbali_input required-entry" name="bankbuyer" />
+            <div class="clear"></div>
+        </div>
+        <div class="awbali_formcontent">
+            <label>No. Rekening Pengirim<em>*</em></label>
+            <input type="text" class="awbali_input required-entry" name="rekbuyer" />
+            <div class="clear"></div>
+        </div>
+        <h3>Data Transfer</h3>
+        <div class="awbali_formcontent">
+            <label>Jumlah Transfer<em>*</em></label>
+            <input type="text" class="awbali_input required-entry" name="jumlahtransfer" />
+            <div class="clear"></div>
+        </div>
+        <div class="awbali_formcontent">
+            <label>Bank Tujuan<em>*</em></label>
+            <select name="banktujuan" class="awbali_inputselect validate-select">
+            	<option value="">Pilih Bank Tujuan</option>
+                <option value="BCA">BCA Frigard Harjono No. Rek 5170308079</option>
+                <option value="Mandiri">Mandiri Frigard Harjono No. Rek 1310012540664</option>
+                <option value="BNI">BNI Frigard Harjono No. Rek 0419686981</option>
+            </select>
+            <div class="clear"></div>
+        </div>
+        <div class="awbali_formcontent">
+            <label>Metode Transfer<em>*</em></label>
+            <select name="metodetransfer" class="awbali_inputselect validate-select">
+            	<option value="">Pilih Metode Transfer</option>
+                <option value="Setoran Tunai">Setoran Tunai</option>
+                <option value="ATM">ATM</option>
+                <option value="Internet Banking">Internet Banking</option>
+                <option value="SMS Banking">SMS Banking</option>
+            </select>
+            <div class="clear"></div>
+        </div>
+        <div class="awbali_formcontent">
+            <label>Tanggal Transfer<em>*</em></label>
+            <input type="text" class="awbali_input required-entry" name="tanggaltransfer" placeholder="DD-MM-YYYY" />
+            <div class="clear"></div>
+        </div>
+        <input type="submit" value="Konfirmasi" class="awbali_submit" />
+    </form>
+</div>
+
+<script type="text/javascript">
+    //< ![CDATA[
+        var customForm = new VarienForm('konfirmasipembayaranform');
+    //]]>
+</script>

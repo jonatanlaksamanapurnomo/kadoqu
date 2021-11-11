@@ -1,0 +1,103 @@
+.cart-container {
+  padding: 0 0 2.5%;
+  background-color: #f9f9f9;
+  font-weight: 300;
+}
+.cart-items-container {
+  background-color: white;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.cart-estimation-box {
+  background-color: white;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  font-size: 1.1em;
+}
+.cart-estimation-box hr {
+  width: 100%;
+  border: black solid 0.7px;
+}
+.cart-price-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+.cart-red-text {
+  color: var(--red-3);
+}
+.cart-mobile-price-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1rem 3%;
+  width: 100%;
+}
+.cart-mobile-price-container > div {
+  font-size: 0.8em;
+}
+
+.cart-mob-title {
+  padding: 0.5rem 1rem !important;
+  margin-bottom: 1rem;
+}
+.cart-items-container {
+  margin-bottom: 1rem;
+}
+.kadoqu-page-title.cart-title {
+  font-size: 4.2vw !important;
+  text-decoration: none;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+@media (min-width: 576px) {
+  .cart-mob-title {
+    padding: 1rem 1.5rem !important;
+    margin-bottom: 1.5rem;
+  }
+  .cart-items-container {
+    margin-bottom: 1.5rem;
+  }
+  .cart-mobile-price-container > div {
+    font-size: 1em;
+  }
+}
+@media (min-width: 768px) {
+  .cart-container {
+    padding: 0 0 2.5%;
+    background-color: #f9f9f9;
+  }
+  .cart-mob-title {
+    padding: 1.5rem 3rem !important;
+    margin-bottom: 3rem;
+  }
+}
+@media (min-width: 992px) {
+  .cart-container {
+    padding: 2.5% 5% 2.5% 0;
+    background-color: transparent;
+  }
+  .kadoqu-page-title.cart-title {
+    text-decoration: underline;
+  }
+  .cart-items-container {
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
+ 
+}
+.Free-handsan{
+  padding-left: 16vh;
+  padding-bottom: 3vh;
+  font-size: 2vh;
+}
+.Free-handsan-mob{
+  padding-left: 5vh;
+  font-size: 2.5vw;
+
+}

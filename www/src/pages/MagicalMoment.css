@@ -1,0 +1,328 @@
+.MagicalMoment-container {
+  padding-left: 0 !important;
+  padding-top: 0 !important;
+}
+.magical-banner {
+  width: 100%;
+}
+.Produk-MM{
+  font-size: 1.5vw;
+  margin-left: 10%;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+.Produk-MM-Mob{
+  font-size: 2vw;
+  margin-left: 5%;
+  margin-top: 5%;
+  padding-bottom: 2%;
+}
+.MagicalMoment-subtitle {
+  font-size: 2.5vw;
+  text-decoration: none !important;
+  color: var(--darkGreen);
+  width: 100%;
+  margin-top: 5%;
+}
+.MagicalMoment-subtitlesecond {
+  font-size: 1.4vw;
+  text-decoration: none !important;
+  font-weight: 300;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3%;
+}
+.Magical-menu-card {
+  margin-left: 15%;
+  margin-top: 5%;
+}
+.Magical-card {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.19), 0 3px 2px rgba(0, 0, 0, 0.23);
+  margin-right: 1vh;
+  margin-bottom: 10vh;
+  margin-left: 7vh !important;
+}
+.MagicalMoment-package {
+  margin-top: 20%;
+  width: 100%;
+  background: #f4ceb5;
+  margin: 0 !important;
+  height: 100%;
+  margin-bottom: 10%;
+}
+/* .MagicalMoment-Image{
+    width: 100%;
+  margin: 0 !important;
+  height: 100%;
+
+  
+  } */
+/* .Magical-Package{
+    margin-bottom: 
+  } */
+.MagicalMoment-Image {
+  width: 100%;
+  margin-bottom: 5%;
+}
+.MagicalMoment-Image-right {
+  width: 130%;
+  margin-bottom: 5%;
+  float: right;
+  text-align: right;
+  margin-top: 5%;
+}
+.MagicalMoment-Image-right-mob {
+  width: 100%;
+  margin-bottom: 5%;
+  float: right;
+  text-align: right;
+  margin-top: 5%;
+}
+.Magical-card {
+  margin-top: 7vh;
+  margin-left: 6%;
+}
+
+.magical-card-mob {
+  margin-right: 5%;
+  padding-bottom: 2%;
+}
+.mm-contact {
+  padding-right: 5%;
+  padding-left: 5%;
+  margin: 0;
+}
+.Magical-extra-box {
+  background-color: white;
+  height: 120%;
+}
+.Magical-Orange-Line {
+  background-color: #f4ceb5;
+  height: 5vh;
+}
+.MagicalMoment-subtitle-menu {
+  font-size: 2.4vw;
+  text-decoration: none !important;
+  text-align: center;
+  color: var(--darkGreen);
+  width: 100%;
+  margin-top: 5%;
+}
+.MagicalMoment-subtitlesecond-bold {
+  font-size: 1.7vw;
+  text-decoration: none !important;
+  font-weight: 500;
+  margin-left: 1%;
+  width: 100%;
+  text-align: center;
+}
+.MagicalMoment-subtitlesecond-price {
+  font-size: 1.5vw;
+  text-decoration: none !important;
+  font-weight: 100;
+  margin-left: 1%;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3%;
+}
+.MagicalMoment-contactus-button {
+  text-align: center;
+  width: 20vh;
+  margin-left: 35%;
+  margin-top: 3%;
+  margin-bottom: 10vh;
+  height: 5vh;
+}
+
+@media (max-width: 991px) {
+  .MagicalMoment-subtitle {
+    font-size: 1.3rem;
+    text-decoration: none !important;
+    color: var(--darkGreen);
+    width: 100%;
+    margin-top: 5%;
+  }
+  .MagicalMoment-subtitlesecond {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 0.7rem;
+    text-decoration: none !important;
+    font-weight: 300;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3%;
+  }
+
+  .MagicalMoment-subtitlesecond-price {
+    font-size: 1rem;
+    text-decoration: none !important;
+    font-weight: 100;
+    margin-left: 1%;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3%;
+  }
+
+  .mm-contact {
+    padding: 0;
+    margin: 0;
+  }
+
+  .MagicalMoment-subtitle-menu {
+    font-size: 1rem;
+    text-decoration: none !important;
+    text-align: center;
+    color: var(--darkGreen);
+    width: 100%;
+    margin-top: 5%;
+  }
+  .MagicalMoment-subtitlesecond-bold {
+    font-size: 1rem;
+    text-decoration: none !important;
+    font-weight: 500;
+    margin-left: 1%;
+    width: 100%;
+    text-align: center;
+  }
+  .MagicalMoment-subtitlesecond-price {
+    font-size: 0.8rem;
+    text-decoration: none !important;
+    font-weight: 100;
+    margin-left: 1%;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3%;
+  }
+  .MagicalMoment-contactus-button {
+    text-align: center;
+    width: 18vh;
+    font-size: small;
+    margin-left: 35%;
+    margin-top: 3%;
+    margin-bottom: 10vh;
+    height: 5vh;
+  }
+  .Magical-extra-box {
+    background-color: white;
+    height: 90%;
+  }
+}
+.produk-line-MM {
+  border: none;
+  height: 3px;
+  margin-top: -3%;
+  margin-left: 15%;
+  color: #333; /* old IE */
+  background-color: #333; /* Modern Browsers */
+width: 73vw;
+
+}
+.produk-line-MM-Mob {
+  border: none;
+  height: 2px;
+  margin-top: -8.3%;
+  margin-left: 20%;
+  color: #333; /* old IE */
+  background-color: #333; /* Modern Browsers */
+width: 70vw;
+
+}
+.produk-line-MM2 {
+  border: none;
+  height: 3px;
+  margin-top: -3%;
+  margin-left: 24%;
+  color: #333; /* old IE */
+  background-color: #333; /* Modern Browsers */
+width: 65vw;
+margin-bottom: 0 !important;
+}
+.produk-line-MM2-Mob {
+  border: none;
+  height: 2px;
+  margin-top: -9%;
+  margin-left: 34%;
+  color: #333; /* old IE */
+  background-color: #333; /* Modern Browsers */
+width: 68vw;
+margin-bottom: 10%;
+}
+.MM-Form{
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+  background-color: white;
+  padding-bottom: 10vh ;
+}
+
+
+.MM-form-container{
+  margin-top: 5vh;
+  padding-left: 0 !important;
+  margin-left: 10vh !important;
+  width: 140vh !important;
+  padding-bottom: 20vh;
+}
+.MM-form-container-mob{
+  margin-top: 5vh;
+  padding-left: 0 !important;
+  margin-left:7% !important;
+  width: 125vh !important;
+  padding-bottom: 20vh;
+}
+.MM-info{
+  font-size: 3.5vh;
+  padding-left: 12vh;
+  padding-right: 12vh;
+  padding-top: 3vh;
+  font-weight: bold;
+}
+.MM-info-mob{
+  font-size: 1.9vh;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  padding-top: 3vh;
+  font-weight: bold;
+}
+.login-form .form-control,
+.login-form-mob .form-control,
+.register-form-mob .form-control,
+.forgot-password-form .form-control,
+.register-form .form-control {
+  background-color: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 0px;
+}
+.note-mm{
+  font-size: 1.5vh;
+  font-weight: 900;
+  font-style: italic;
+}
+.form-label-mm{
+  font-size: 2.1vh;
+}
+.mm-form-button{
+  margin-left: 35vh;
+  font-size: 2vh !important;
+  width: 25vh;
+  height: 6vh !important;
+}
+.mm-form-button-mob{
+  margin-left: 2vh;
+  font-size: 2vh !important;
+  width: 25vh;
+  height: 6vh !important;
+}
+.row-mm{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.row-mm-2{
+  padding-left: 10vh !important;
+  padding-right: 0 !important;
+}
+.row-mm-2-mob{
+  padding-top: 5vh;
+  padding-left: 5vh !important;
+  padding-right: 0 !important;
+}

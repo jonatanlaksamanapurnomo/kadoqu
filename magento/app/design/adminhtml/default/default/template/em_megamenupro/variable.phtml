@@ -1,0 +1,70 @@
+<div class="em_megamenu_bg" style="display:none"></div>
+
+<div class="em_megamenu_variable" style="display:none">
+	<div class="em_megamenu_variable_inner">
+		<div class="emvariable_top">
+			<div class="emvariable_title"><?php echo $this->__("Insert Variable ...") ?></div>
+			<div class="emvariable_close"><a href="javascript:void(0);" onclick="variablehide()" title="<?php echo $this->__("Close") ?>"><span><?php echo $this->__("Close") ?></span></a></div>
+		</div>
+		<div class="emvariable_content">
+			<div class="content-left">
+				<h3><?php echo $this->__("Store Contact Information") ?></h3>
+				<ul>
+					<?php foreach($store_contact as $value): ?>
+					<li><a onclick="insert_url('<?php echo str_replace("'","\\'",$value['link']) ?>')" href="javascript:void(0);"><?php echo $value['label'] ?></a></li>
+					<?php endforeach ?>
+				</ul>
+			</div>
+			<div class="content-right">
+				<h3><?php echo $this->__("Category") ?></h3>
+				<?php echo $category ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="em_megamenu_icon" style="display:none">
+	<div class="em_megamenu_icon_inner">
+		<div class="emicon_top">
+			<div class="emicon_title"><?php echo $this->__("Insert Image ...") ?></div>
+			<div class="emicon_close"><a href="javascript:void(0);" onclick="iconhide()" title="<?php echo $this->__("Close") ?>"><span><?php echo $this->__("Close") ?></span></a></div>
+		</div>
+
+		<div class="emicon_content">
+			<form method="post" action="<?php echo $this->getUrl("adminhtml/menueditor/upload/") ?>" name="UploadImageForm" id="upload_form">
+				<?php echo $this->getBlockHtml('formkey'); ?>
+				<div class="row_left"><?php echo $this->__("Select File") ?> : <p><?php echo $this->__("(Allow Image Format : jpg , png , gif)") ?></p></div>
+				<div class="row_right">
+					<input class="emicon_input" type="file" class="input-file" value="" name="emicon" />
+					<span class="img_loading" style="display:none"><img src="<?php echo $this->getSkinUrl("em/megamenupro/images/loader.gif") ?>" atl=""/></span>
+					<button class="em_btn_upload" onclick="upAjaxImage();" class="scalable add" type="button" title="<?php echo $this->__("Upload Image") ?>">
+						<span><span><span><?php echo $this->__("Upload Image") ?></span></span></span>
+					</button>
+				</div>
+			</form>
+			<div class="emicon_message"></div>
+			<div class="icon_num" style="display:none"><?php echo count($icon) ?></div>
+			<div class="emicon_urldel" style="display:none"><?php echo Mage::helper("adminhtml")->getUrl("adminhtml/menueditor/delupload") ?></div>
+			<div class="emicon_info">
+				<ul>
+					<li class="item item_title">
+						<div class="row_1"><?php echo $this->__("Number") ?></div>
+						<div class="row_2"><?php echo $this->__("Image") ?></div>
+						<div class="row_3"><?php echo $this->__("Action") ?></div>
+					</li>
+
+					<?php if(count($icon) > 0 ): ?>
+						<?php foreach($icon as $key=>$value): ?>
+							<?php $name = Mage::helper("megamenupro")->getNameImage($value) ?>
+							<li class="item vid_<?php echo $key+1 ?>">
+								<div class="row_1"><?php echo $key+1 ?></div>
+								<div class="row_2"><a onclick="insert_url('<?php echo str_replace("\"","\\'",$value) ?>')" href="javascript:void(0);"><img src="<?php echo Mage::helper("megamenupro")->getResizeImage($name,55,55); ?>" style="width:55px;height:55px;"/> <?php echo $name ?></a></div>
+								<div class="row_3"><a href="javascript:void(0);" onclick="delAjaxImage('<?php echo Mage::helper("adminhtml")->getUrl("adminhtml/menueditor/delupload") ?>','<?php echo $name ?>','<?php echo $key+1 ?>')" title="<?php echo $this->__("Delete") ?>"><span><?php echo $this->__("Delete") ?></span></a></div>
+							</li>
+						<?php endforeach ?>
+					<?php endif ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

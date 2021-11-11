@@ -1,0 +1,53 @@
+<?php
+if (Mage::getStoreConfig('customform/custom_form_column/active', Mage::app()->getStore())):
+?>
+<div class="block custom-contact-form" id="contactFormColumn">
+    <div class="block-content">
+        <div class="block-title">
+            <strong><span><?php echo Mage::helper('contacts')->__('Contact Information') ?></span></strong>
+        </div>
+        <div id="messages_product_view_footer"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+        <form action="<?php echo $this->getUrl('') ?>contacts/index/post/" method="post">
+            <div class="fieldset">
+    <!--            <p class="required">--><?php //echo Mage::helper('contacts')->__('* Required Fields') ?><!--</p>-->
+                <ul class="form-list">
+                    <li class="fields">
+                        <div class="field">
+    <!--                        <label for="name" class="required"><em>*</em>--><?php //echo Mage::helper('contacts')->__('Name') ?><!--</label>-->
+                            <div class="input-box">
+                                <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" placeholder="<?php echo Mage::helper('contacts')->__('Name') ?>"/>
+                            </div>
+                        </div>
+                        <div class="field">
+    <!--                        <label for="email" class="required"><em>*</em>--><?php //echo Mage::helper('contacts')->__('Email') ?><!--</label>-->
+                            <div class="input-box">
+                                <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" placeholder="<?php echo Mage::helper('contacts')->__('Email') ?>" />
+                            </div>
+                        </div>
+    <!--                    <div class="field last">-->
+    <!--                        <label for="telephone">--><?php //echo Mage::helper('contacts')->__('Telephone') ?><!--</label>-->
+    <!--                        <div class="input-box">-->
+    <!--                            <input name="telephone" id="telephone" title="--><?php //echo Mage::helper('contacts')->__('Telephone') ?><!--" value="" class="input-text" type="text" />-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <label for="comment" class="required"><em>*</em>--><?php //echo Mage::helper('contacts')->__('Comment') ?><!--</label>-->
+                        <div class="input-box">
+                            <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3" placeholder="<?php echo Mage::helper('contacts')->__('Comment') ?>"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="buttons-set-footer">
+                <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+                <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+                <button type="reset" title="<?php echo Mage::helper('contacts')->__('Clear') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Reset') ?></span></span></button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    var contactFormColumn = new VarienForm('contactFormColumn', true);
+//]]>
+</script>
+<?php endif; ?>

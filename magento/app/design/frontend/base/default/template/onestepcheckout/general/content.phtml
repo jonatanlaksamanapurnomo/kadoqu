@@ -1,0 +1,41 @@
+<!-- Start: Added by Daniel - 11/11/2016 - js for minicart-->
+<script type="text/javascript">
+    var $D = jQuery.noConflict();
+    var minicartOptions = {
+        formKey: '<?php echo $this->getFormKey();?>'
+    };
+
+    if (typeof Minicart != 'undefined') {
+        var Mini = new Minicart(minicartOptions);
+        Mini.init();
+
+        var updateMinicart = function () {
+            $D.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: {form_key: minicartOptions.formKey},
+                url: '<?php echo $this->getUrl('onestepcheckout/ajax/minicart');?>'
+            });
+        }
+
+        $D(document).ajaxComplete(function (event, xhr, settings) {
+            if (settings.url.indexOf('checkout/cart/ajaxUpdate') >= 0) {
+                save_address_information(save_address_url, 1, 1, 1);
+            }
+            if (settings.url.indexOf('checkout/cart/ajaxDelete') >= 0) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.qty != 0) {
+                    save_address_information(save_address_url, 1, 1, 1);
+                } else {
+                    window.location.href = "<?php echo $this->getUrl('checkout/cart');?>";
+                }
+            }
+            if (Mini && settings.url.indexOf('onestepcheckout/ajax/minicart') >= 0) {
+                var response = JSON.parse(xhr.responseText);
+                Mini.updateCartQty(response.qty);
+                Mini.updateContentOnUpdate(response);
+            }
+        });
+    }
+</script>
+<!-- End: Added by Daniel - 11/11/2016 - js for minicart-->

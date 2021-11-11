@@ -1,0 +1,19 @@
+.edit-product-photo-cell {
+  height: 22rem;
+  display: flex;
+  align-content: center;
+}
+
+.edit-product-photo-cell img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.edit-product-photo-column {
+  width: 45%;
+}
+
+.edit-product-caption-column {
+  width: 50%;
+}

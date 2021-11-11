@@ -1,0 +1,80 @@
+.exitButton {
+  width: 15rem;
+  height: 2.5rem;
+}
+.profile-sider-active {
+  color: var(--darkGreen);
+}
+.profile-sider-active:hover {
+  color: var(--darkGreen);
+  cursor: pointer;
+}
+
+.shadow {
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.shadow-right {
+  box-shadow: 5px 0 5px -5px rgba(0, 0, 0, 0.23);
+}
+
+.pt-link {
+  padding-top: 1.8rem !important;
+}
+
+.pl-link {
+  padding-left: 2.3rem !important;
+}
+.pr-link {
+  padding-right: 2.3rem !important;
+}
+.pt-button {
+  padding-top: 2.5rem !important;
+  padding-bottom: 2.5rem !important;
+  list-style-type: none;
+}
+.white {
+  background-color: white;
+}
+.ul-sider {
+  width: 100%;
+}
+.pbottom {
+  margin-top: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.li-sider {
+  padding-top: 0.6rem !important;
+  padding-left: 0.6rem !important;
+  padding-right: 0.6rem !important;
+  padding-bottom: 0.2rem !important;
+  border-bottom: 1px solid #96a5a3;
+  list-style-type: none;
+}
+
+.li-sider-non {
+  padding-top: 0.6rem !important;
+  padding-left: 0.6rem !important;
+  padding-right: 0.6rem !important;
+  padding-bottom: 0.2rem !important;
+  list-style-type: none;
+}
+.sider {
+  box-shadow: 0 0 1.2rem 0.7rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.li-sider :hover,
+.li-sider-non :hover {
+  color: var(--darkGreen);
+}
+@media (max-width: 767px) {
+  .active {
+    color: black;
+  }
+  .active:hover {
+    color: black;
+  }
+  .pt-link {
+    padding-top: 0.7rem !important;
+  }
+}

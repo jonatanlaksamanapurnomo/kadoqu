@@ -1,0 +1,17 @@
+.new-option-input {
+  border: none;
+  border-radius: 0;
+}
+
+.new-option-input:focus {
+  border: none;
+  border-bottom: 1px #80bdff solid;
+  outline: none;
+  width: 50%;
+  box-shadow: none;
+}
+
+.photo-uploader-preview div {
+  height: 9rem;
+  display: inline-block;
+}

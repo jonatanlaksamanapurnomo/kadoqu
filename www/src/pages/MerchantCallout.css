@@ -1,0 +1,113 @@
+.Merchant-title{
+    font-size: 3vw;
+    font-weight: 500;
+   text-align: center;
+   padding-top: 6%;
+  }
+  .Merchant-title-last{
+    font-size: 3vw;
+    font-weight: 500;
+   
+  }
+  .Merchant-detail{
+    font-size: 1.4vw;
+    font-weight: lighter;
+   color: black;
+   margin-left: 0%;
+   text-align: center;
+   padding-left: 5%;
+   padding-right: 5%;
+   padding-top: 1%;
+   padding-bottom: 5%;
+  }
+  .Merchant-detail-mob{
+    font-size: 2vw;
+    font-weight: lighter;
+   color: black;
+   margin-left: 0%;
+   text-align: center;
+   padding-left: 5%;
+   padding-right: 10%;
+   padding-top: 1%;
+   padding-bottom: 5%;
+  }
+  .Merchant-detail-last{
+    font-size: 1.4vw;
+    font-weight: lighter;
+   color: black;
+   margin-left: 0%;
+   padding-top: 1%;
+   padding-bottom: 2%;
+  }
+  .Callout-Section{
+      padding-left: 5%;
+  }
+  .Callout-image-visi{
+width: 60%;
+  }
+  .Merchant-subtitle{
+      padding-top: 5%;
+font-size: 2.5vw;
+font-weight: 500;
+margin-left: 0%;
+margin-top: -10%;
+text-align:left ;
+  }
+  .Merchant-subtitle-looking{
+    font-size: 2.5vw;
+    font-weight: 500;
+    margin-top: -10%;
+    text-align:left ;
+      }
+  .join-us-section{
+      font-size: 1.5vw;
+      font-weight: lighter;
+      padding-bottom: 10%;
+      padding-left: -36%;
+
+  }
+  .join-us-section-mob{
+    font-size: 2vw;
+    font-weight: lighter;
+    padding-bottom: 10%;
+
+
+}
+  .callout-button{
+      width: 10vw;
+      height: 3vw;
+      font-size: 2vw;
+      padding-left: 40%;
+  }
+  .callout-button-mob{
+    width: 20vw;
+    height: 7vw;
+    font-size: 3vw !important;
+    padding-left: 40%;
+}
+  .form-callout-section{
+      align-items: center;
+      padding-left: 0%;
+background-color: #97cee3;
+width: 100%;
+align-items: center;
+text-align: center;
+padding-top: 3%;
+padding-bottom: 3%;
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+margin-bottom: 7%;
+  }
+  .Merchant-section-two{
+    margin-left: -35%;
+    margin-top: 5%;
+    padding-bottom: 10%;
+  }
+  .Merchant-section-two-mob{
+    margin-left: -45%;
+    margin-top: 5%;
+    padding-bottom: 10%;
+  }
+  .list-callout{
+      padding-right: 10% !important;
+      padding-left: 0% !important;
+  }

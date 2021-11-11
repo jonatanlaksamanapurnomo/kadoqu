@@ -1,0 +1,37 @@
+{
+  "name": "edge",
+  "version": "0.0.1",
+  "description": "Kadoqu Edge Service",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.6.0",
+    "@sendgrid/mail": "^6.4.0",
+    "@socketlabs/email": "^1.0.2",
+    "apollo-server": "^2.4.8",
+    "axios": "^0.18.0",
+    "custom-env": "^1.0.0",
+    "elasticsearch": "^16.6.0",
+    "form-data": "^2.5.0",
+    "graphql": "^14.1.1",
+    "graphql-iso-date": "^3.6.1",
+    "graphql-type-json": "^0.3.0",
+    "imagekit": "^1.4.3",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "nexmo": "^2.4.1",
+    "nodemon": "^1.18.10",
+    "pdfmake": "^0.1.63",
+    "pg-promise": "^8.6.3",
+    "postmark": "^2.2.9",
+    "query-string": "^6.5.0",
+    "raja-sms": "^1.0.4",
+    "winston": "^3.2.1",
+    "winston-logzio": "^4.0.1"
+  }
+}

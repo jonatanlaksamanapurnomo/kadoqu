@@ -1,0 +1,139 @@
+NWDthemes.com - Slider Revolution Responsive Magento Extension
+
+
+1 February 2016
+-----------------
+version 5.1.6
+
+* updated: Completly updated interface and features for compatibility with 5.1.6 WordPress version
+
+
+
+2 November 2015
+-----------------
+version 1.2.8
+
+* fixed: 1.9.2.2 Security Patch
+* fixed: disable slider on mobile feature issue
+* fixed: disable_on_mobile cache issue
+* fixed: slide attribute feature
+* fixed: import routine for specified local file
+* fixed: missing Alt attribute in single slide mode
+* fixed: slider background in full width force mode
+
+
+
+24 July 2015
+-----------------
+version 1.2.7
+
+* fixed: Fix for Youtube video search.
+* fixed: Show custom css styles in admin slide editor.
+* fixed: Add gradient images to frontend.
+
+* updated: Updated install script.
+
+
+
+09 June 2015
+-----------------
+version 1.2.6
+
+* updated: example code
+
+* fixed: swipe touch issue
+* fixed: youtube api issue
+* fixed: remove product count from categories list
+
+
+
+15 April 2015
+-----------------
+version 1.2.5
+
+* fixed: Fix for line ending character convert issue in preview.
+* fixed: Fix for warning on create new template slider.
+* fixed: Fix for pagination bug on sliders page.
+* fixed: Fix for override font size in p tag of text layers.
+
+
+
+
+11 March 2015
+-----------------
+version 1.2.4
+
+* fixed: Fix for import dynamic styles from some export versions.
+
+
+
+
+21 January 2015
+-----------------
+version 1.2.3
+
+* fixed: Fix for duplicated store view controls on slider preview.
+
+
+
+
+19 January 2015
+-----------------
+version 1.2.2
+
+* added: Added selection of store view on slider preview.
+
+
+
+
+15 January 2015
+-----------------
+version 1.2.1
+
+* fixed: Fix for store specific slides bug on front end.
+
+
+
+
+13 January 2015
+-----------------
+version 1.2.0
+
+* fixed: missing background images for buttons
+* fixed: ssl bug with image popup
+* fixed: issue with navigation thumbnails on front end
+
+
+
+
+27 November 2014
+-----------------
+version 1.1.0
+
+* added: check for DB tables existance
+
+* updated: change extension namespace to nwdresliver to avoid collisions with other magento revolution slider extensions
+* updated: slider description on main view
+
+* fixed: header and footer styles override
+* fixed: fonts dropdown on slide edit page
+* fixed: slider custom css bug
+* fixed: permission check routine
+* fixed: duplicated alias bug in slider import
+
+
+
+
+3 November 2014
+-----------------
+version 1.0.1
+
+* fixed: incorrect acl in adminhtml.xml
+
+
+
+31 October 2014
+-----------------
+version 1.0.0
+
+initial release

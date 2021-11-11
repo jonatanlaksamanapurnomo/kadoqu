@@ -1,0 +1,54 @@
+.home-empty-carousel-banner {
+  height: calc(735.5 / 1417 * 100vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  background: var(--lightBlue);
+}
+
+.home-gida-carousel {
+  overflow: hidden;
+  height: calc(600 / 1417 * 100vw);
+}
+
+.home-gida-carousel .carousel-inner,
+.home-gida-carousel .carousel-item,
+.home-gida-carousel .carousel-item img {
+  height: 100%;
+  background: var(--lightBlue);
+}
+
+.home-item-padding {
+  padding: 9% 0px 0px;
+}
+.home-item-padding-second{
+  padding: 3% 0px 0px;
+
+}
+.home-other-service-section a {
+  padding: 0;
+}
+
+.home-other-service-section img {
+  border-radius: 2%;
+  box-shadow: 0.6rem 0.6rem 1.8rem rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 768px) {
+  .home-container .kadoqu-primary-button {
+    font-size: 0.75em;
+    width: auto !important;
+  }
+
+  .home-other-service-section .col-6 {
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
+  }
+
+  .home-other-service-section img {
+    border-radius: 2%;
+    box-shadow: 0.2rem 0.3rem 1rem rgba(0, 0, 0, 0.3);
+  }
+}
+

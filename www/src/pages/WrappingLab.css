@@ -1,0 +1,229 @@
+.wrapping-lab-container {
+  width: calc(100% - 16vw);
+  margin: 11vw auto 0;
+}
+
+.wrapping-lab-section-title {
+  color: var(--darkGreen);
+  text-transform: uppercase;
+  margin-bottom: 1vw;
+  margin-top: 7vw;
+  font-size: 3.5vw;
+  font-weight: 500;
+}
+
+.wrapping-lab-container hr {
+  border: solid 1px var(--darkGreen);
+}
+
+.wrapping-lab-container .kadoqu-primary-button {
+  display: block;
+  margin: 9vw auto 0;
+}
+
+#wrapping-lab-greeting-card-checkbox + label {
+  font-weight: 100;
+}
+
+.wrapping-lab-container textarea {
+  height: 8em;
+  resize: none;
+}
+
+.wrapping-lab-container input,
+.wrapping-lab-container textarea {
+  border: solid black 1px;
+  border-radius: 0;
+  font-weight: 300;
+}
+
+.wrapping-lab-container input::placeholder,
+.wrapping-lab-container textarea::placeholder {
+  color: #afafaf;
+}
+
+[class*="col-"].wrapping-lab-wrapped-container {
+  background-color: var(--mint-1);
+  width: 100%;
+  padding: 4vw 5%;
+  height: fit-content;
+}
+
+.wrapping-lab-wrapped-container-title {
+  font-size: 2.6vw;
+}
+
+.wrapping-lab-wrapped-products-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapping-lab-wrapped-products-container .wrapping-lab-product-item {
+  display: block;
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+  font-size: 2vw;
+  width: calc(50% - 2vw);
+}
+
+.wrapping-lab-wrapped-products-container .wrapping-lab-product-item:last-child {
+  margin-right: 0;
+}
+
+.wrapping-lab-wrapped-products-container .wrapping-lab-product-item-name {
+  padding-top: 0;
+  margin-top: 1vw;
+  line-height: 1;
+}
+
+.wrapping-lab-wrapped-container-title .fa-stack {
+  width: 1.5em;
+}
+
+.wrapping-lab-gift-icon {
+  height: 0.8em;
+  top: 50%;
+  transform: translate(0, -70%);
+}
+
+.wrapping-lab-gift-number {
+  font-weight: 500;
+  bottom: -0.1em;
+  font-size: 0.7em;
+}
+
+[class*="col-"].wrapping-lab-summary {
+  padding-left: 4%;
+}
+
+.wrapping-lab-fee-details {
+  font-size: 2vw;
+}
+
+.wrapping-lab-fee-details tr:not(:last-child) td:nth-child(1) {
+  font-weight: 300;
+}
+
+.wrapping-lab-fee-details td:nth-child(2),
+.wrapping-lab-fee-details tr:last-child td {
+  text-align: right;
+  padding-right: 5%;
+}
+
+.wrapping-lab-fee-details tr:nth-last-child(2) {
+  border-bottom: solid 1px var(--darkGreen);
+  padding-bottom: 2vw;
+}
+
+.wrapping-lab-fee-details tr:last-child {
+  color: var(--red-2);
+}
+
+.wrapping-lab-summary .kadoqu-primary-button.long {
+  width: 120px;
+}
+
+@media (min-width: 350px) {
+  .wrapping-lab-container {
+    width: calc(100% - 5rem);
+    margin: 4rem auto 0;
+  }
+
+  .wrapping-lab-section-title {
+    font-size: 2.5vw;
+  }
+  .wrapping-lab-container .kadoqu-primary-button {
+    margin: 2.5rem auto 0;
+  }
+
+  .wrapping-lab-wrapped-products-container .wrapping-lab-product-item,
+  .wrapping-lab-fee-details {
+    font-size: 1.9vw;
+  }
+}
+
+@media (min-width: 576px) {
+  .wrapping-lab-container {
+    width: calc(100% - 5rem);
+    margin: 4rem auto 0;
+  }
+
+  .wrapping-lab-section-title {
+    font-size: 2.5vw;
+  }
+  .wrapping-lab-container .kadoqu-primary-button {
+    margin: 2.5rem auto 0;
+  }
+
+  .wrapping-lab-wrapped-products-container .wrapping-lab-product-item {
+    margin-right: 2vw;
+  }
+  .wrapping-lab-wrapped-products-container .wrapping-lab-product-item,
+  .wrapping-lab-fee-details {
+    font-size: 0.9rem;
+  }
+  .wrapping-lab-wrapped-products-container .wrapping-lab-product-item-name {
+    margin-top: 0.5rem;
+  }
+
+  .wrapping-lab-summary .kadoqu-primary-button.long {
+    width: 170px;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrapping-lab-summary .kadoqu-primary-button.long {
+    width: 265px;
+  }
+}
+
+@media (min-width: 992px) {
+  .wrapping-lab-container {
+    width: calc(90% - 6rem);
+    margin: 9rem auto 0;
+  }
+
+  .wrapping-lab-section-title {
+    margin-bottom: 1rem;
+    margin-top: 3.5rem;
+    font-size: 1.75rem;
+  }
+  .wrapping-lab-container hr {
+    margin: 0 -3rem;
+  }
+  .wrapping-lab-container .kadoqu-primary-button {
+    margin: 3rem auto 0;
+  }
+
+  [class*="col-"].wrapping-lab-wrapped-container {
+    padding: 2rem;
+  }
+  .wrapping-lab-wrapped-container-title {
+    font-size: 1.5rem;
+  }
+  .wrapping-lab-wrapped-products-container .wrapping-lab-product-item {
+    width: calc(50% - 1rem);
+    margin-right: 1rem;
+  }
+  .wrapping-lab-fee-details {
+    font-size: 1.2rem;
+  }
+  .wrapping-lab-fee-details tr:nth-last-child(2) td:nth-child(2) {
+    border-bottom: solid 1px black;
+  }
+}
+
+@media (min-width: 1200px) {
+  [class*="col-"].wrapping-lab-wrapped-container {
+    padding: 3rem;
+  }
+  .wrapping-lab-wrapped-container-title {
+    font-size: 2rem;
+  }
+  .wrapping-lab-wrapped-products-container .wrapping-lab-product-item {
+    width: 9rem;
+  }
+  .wrapping-lab-fee-details {
+    font-size: 1.5rem;
+  }
+}

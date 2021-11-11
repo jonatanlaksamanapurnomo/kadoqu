@@ -1,0 +1,98 @@
+.left-menu-container {
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  transform: translate(-66%, -50%);
+}
+
+.left-menu-container:hover {
+  transform: translate(0, -50%);
+}
+
+.left-menu-container:hover .left-menu-element:not(:hover) {
+  transform: translate(-66%, 0);
+}
+
+.left-menu-element .row {
+  width: 168px;
+}
+
+.left-menu-element .nav-link {
+  padding: 0;
+  color: #00978b;
+}
+
+.left-menu-element {
+  background-color: #00978b;
+  color: #ffffff;
+  border-radius: 0px 50px 50px 0px;
+  padding: 6px;
+}
+
+.left-menu-element:hover {
+  background-color: #ffffff;
+  color: #00978b;
+  text-decoration: none;
+  box-shadow: 4px 4px 15px #888888;
+  transition: transform 0.25s ease-out;
+}
+
+.left-menu-element:hover .left-menu-icon {
+  filter: brightness(0) invert(40%) sepia(48%) saturate(2543%)
+    hue-rotate(148deg) brightness(86%) contrast(105%);
+}
+
+.left-menu-label {
+  font-size: 16px;
+  line-height: 1.3em;
+  height: 2.6em;
+}
+
+.left-menu-element.gida-menu .left-menu-icon {
+  height: 38px;
+  width: 38px;
+}
+
+.left-menu-element.inspirasi-kado .left-menu-icon,
+.left-menu-element.holiday .left-menu-icon {
+  height: 36px;
+  width: 36px;
+}
+
+.left-menu-element.gallery .left-menu-icon {
+  height: 34px;
+  width: 34px;
+  margin-top: 2px;
+}
+
+.left-menu-element:active {
+  transform: translateY(4px);
+}
+
+.left-menu-element.gida-menu.active:not(:hover),
+.left-menu-element.gida-menu:active {
+  background-color: #82e3d2;
+}
+
+.left-menu-element.magical-moment.active:not(:hover),
+.left-menu-element.magical-moment:active {
+  background-color: #82e3d2;
+}
+.left-menu-element.inspirasi-kado.active:not(:hover),
+.left-menu-element.inspirasi-kado:active {
+  background-color: #eeb0ef;
+}
+
+.left-menu-element.kids-party.active:not(:hover),
+.left-menu-element.kids-party:active {
+  background-color: #eeb0ef;
+}
+.left-menu-element.holiday.active:not(:hover),
+.left-menu-element.holiday:active {
+  background-color: #97cee3;
+}
+
+.left-menu-element.company-celebration.active:not(:hover),
+.left-menu-element.company-celebration:active {
+  background-color: #ebff79;
+}

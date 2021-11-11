@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Dewata_Jne>
+      <version>0.1.0</version>
+    </Dewata_Jne>
+  </modules>
+  <global>
+    <helpers>
+      <jne>
+        <class>Dewata_Jne_Helper</class>
+      </jne>
+    </helpers>
+		<models>
+			<jne>
+			<class>Dewata_Jne_Model</class>
+			<resourceModel>jne_mysql4</resourceModel>
+			</jne>
+		</models>
+  </global>
+	<adminhtml>	
+		<layout>
+			<updates>
+				<jne>
+					<file>dewata_jne.xml</file>
+				</jne>
+			</updates>
+		</layout>
+	</adminhtml>	
+	<default>
+		<carriers>
+			<jne>
+				<active>1</active>
+				<model>jne/carrier_jne</model>
+				<name>JNE</name>
+				<title>JNE Shipping</title>
+				<description>JNE</description>
+				<sort_order>0</sort_order>
+			</jne>
+		</carriers>
+	</default>
+</config> 

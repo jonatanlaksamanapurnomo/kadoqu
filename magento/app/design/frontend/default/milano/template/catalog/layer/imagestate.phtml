@@ -1,0 +1,39 @@
+<?php
+/**
+ * ShopShark Image Swatches Extension
+ * @version   1.0 09.05.2014
+ * @author    ShopShark http://www.shopshark.net <info@shopshark.net>
+ * @copyright Copyright (C) 2010 - 2014 ShopShark
+ */
+?><?php
+/**
+ * Category layered navigation state
+ *
+ * @see Mage_Catalog_Block_Layer_State
+ */
+?>
+<?php $_filters = $this->getActiveFilters() ?>
+<?php if(!empty($_filters)): ?>
+<div class="currently">
+    <p class="block-subtitle"><?php echo $this->__('Currently Shopping by:') ?></p>
+    <ol>
+    <?php foreach ($_filters as $_filter): ?>
+        <li>
+        	<a  class="btn-remove" href="<?php echo $_filter->getRemoveUrl() ?>" title="<?php echo $this->__('Remove This Item') ?>"><?php echo $this->__('Remove This Item') ?></a>
+            <?php
+            $swatch = Mage::getModel('imageswatches/swatch');
+            if(!is_array($_filter->getValue())) {
+                $swatch = $swatch->getSwatchByOption($_filter->getValue());
+            }
+            ?>
+            <span class="label"><?php echo $this->__($_filter->getName()) ?>:</span>
+            <?php if(!$swatch->getId() || !$swatch->getData('image')):?>
+            <span class="value"><?php echo $this->stripTags($_filter->getLabel()) ?></span>
+            <?php else:?>
+                <span class="value"><img class="swatch-option-image" src="<?php echo $swatch->getLayeredImage()?>" alt="<?php echo $this->stripTags($_filter->getLabel()) ?>" height="16" width="16" title="<?php echo $this->stripTags($_filter->getLabel()) ?>" /> <?php echo $this->stripTags($_filter->getLabel()) ?></span>
+            <?php endif?>
+        </li>
+    <?php endforeach; ?>
+    </ol>
+</div>
+<?php endif; ?>

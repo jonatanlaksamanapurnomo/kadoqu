@@ -1,0 +1,25 @@
+--insert into order_custome(
+--  "id",
+--  "order_id",
+--  "photos",
+--  "isi_ucapan",
+--  "notes_dari_customer"
+--)
+--values (
+--   '438221d7-4aa2-4f80-91bf-ba533b9a5ca5',
+--   'c28d141f-c0a9-431c-a228-2bf63e228c24',
+--   '{
+--        "image": ["https://ik.imagekit.io/nwiq66cx3pvsy/Wrapping_Lab/wrapper/premium/2.jpg" , "https://ik.imagekit.io/nwiq66cx3pvsy/Wrapping_Lab/wrapper/premium/2.jpg","https://ik.imagekit.io/nwiq66cx3pvsy/Wrapping_Lab/wrapper/premium/2.jpg"]
+--    }',
+--    'ini isi ucapan',
+--    'ini notes dari customer'
+--),
+--(
+--   '438221d7-4aa2-4f80-91bf-ba533b9a5ca6',
+--   'c28d141f-c0a9-431c-a228-2bf63e228c24',
+--   '{
+--        "image": ["https://ik.imagekit.io/nwiq66cx3pvsy/Wrapping_Lab/wrapper/premium/2.jpg" , "https://ik.imagekit.io/nwiq66cx3pvsy/Wrapping_Lab/wrapper/premium/2.jpg","https://ik.imagekit.io/nwiq66cx3pvsy/Wrapping_Lab/wrapper/premium/2.jpg"]
+--    }',
+--    'ini isi ucapan2',
+--    'ini notes dari customer2'
+--)

@@ -1,0 +1,96 @@
+{
+  "settings": {
+    "number_of_shards": 2,
+    "max_ngram_diff": 99,
+    "max_shingle_diff": 99,
+    "analysis": {
+      "analyzer": {
+        "query_analyzer": {
+          "tokenizer": "whitespace",
+          "filter": [
+            "lowercase"
+          ]
+        }
+      },
+      "tokenizer": {
+        "query_analyzer": {
+          "type": "ngram",
+          "min_gram": 4,
+          "max_gram": 16,
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "uuid": {
+        "type": "text"
+      },
+      "id": {
+        "type": "text"
+      },
+      "name": {
+        "type": "text",
+        "fielddata": true,
+        "analyzer": "query_analyzer",
+        "fields": {
+          "raw": {
+            "type": "keyword"
+          }
+        }
+      },
+      "merchant": {
+        "type": "text",
+        "fielddata": true,
+        "analyzer": "query_analyzer",
+        "fields": {
+          "raw": {
+            "type": "keyword"
+          }
+        }
+      },
+      "isEnable": {
+        "type": "boolean"
+      },
+      "price": {
+        "type": "float"
+      },
+      "storeCategories": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "text"
+          }
+        }
+      },
+      "categories": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "text"
+          }
+        }
+      },
+      "holidayCategories": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "text"
+          }
+        }
+      },
+      "merchantData": {
+        "type": "nested",
+        "properties": {
+          "merchantLevel": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

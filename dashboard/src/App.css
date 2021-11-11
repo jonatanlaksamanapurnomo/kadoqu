@@ -1,0 +1,87 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body.waiting {
+  cursor: wait !important;
+}
+
+.h-50px {
+  height: 50px;
+}
+
+.h-75vh {
+  height: 75vh;
+}
+
+.password-peeker {
+  cursor: pointer;
+  color: gray;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-zoom-in {
+  cursor: zoom-in;
+}
+
+.color-input {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 3px solid #ddd;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0 5px 5px 0;
+}
+
+.color-input:checked {
+  border-color: gray;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.19), 0 3px 2px rgba(0, 0, 0, 0.23);
+}
+
+.color-input:hover {
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.19), 0 3px 2px rgba(0, 0, 0, 0.23);
+}
+
+.justify-content-even {
+  justify-content: space-evenly;
+}
+
+.app-body {
+  overflow-y: hidden;
+}

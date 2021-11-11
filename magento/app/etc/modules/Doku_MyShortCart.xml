@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Doku_Myshortcart>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Doku_Myshortcart>
+    </modules>
+</config>

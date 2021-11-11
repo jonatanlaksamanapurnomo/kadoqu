@@ -1,0 +1,75 @@
+.result-product-container {
+  padding-top: 20vh;
+  padding-right: 20px;
+}
+
+.gida-result-title {
+  color: white;
+  text-align: center;
+  padding-top: 20vh;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.result-image-container {
+  height: auto;
+  width: 100%;
+}
+
+.gida-result-products-desktop {
+  padding-top: 15vh;
+  width: 90%;
+  margin: auto;
+}
+
+.gida-result-mobile-container {
+  display: flex;
+  white-space: nowrap;
+  overflow-x: scroll;
+  align-items: center;
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: 0; /* Firefox */
+  margin: auto;
+  width: 90%;
+}
+
+.gida-result-mobile-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome*/
+}
+
+.gida-result-mobile-container .product-box {
+  min-width: calc(20vw + 5rem);
+  max-width: calc(20vw + 5rem);
+  margin-right: 5vw;
+}
+
+.gida-result-image-container {
+  height: calc(57vw / 2 - 30px);
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .gida-result-mobile-button-container .kadoqu-primary-button.short {
+    width: 138px;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .gida-result-title {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .gida-result-title {
+    padding-top: 3vh;
+    font-size: 2.5rem;
+    margin-bottom: unset;
+  }
+}
+
+.mobile-view-result {
+  margin-top: -80px;
+}

@@ -1,0 +1,79 @@
+.gida-criteria-input-container .gida-search-engine-content {
+  color: white;
+  font-size: 2.2em;
+  margin-top: 0;
+  }
+  
+  .gida-criteria-input-container {
+  font-size: 1.2vw;
+  }
+  
+  .gida-criteria-input-container .gida-search-engine-select {
+  border-color: white;
+  height: 1.4em;
+  margin: 0.3em 0.25em;
+  }
+  
+  .gida-criteria-input-container #gida-search-engine-select-person,
+  .gida-criteria-input-container #gida-search-engine-select-event {
+  width: 8.7em;
+  }
+  
+  .gida-criteria-input-container select[id|="gida-search-engine-select-trait"] {
+  width: 6.6em;
+  }
+  
+  .gida-criteria-input-container .gida-search-engine-button-container {
+  margin-top: 6em;
+  }
+  
+  .gida-criteria-input-container .gida-search-engine-last-line {
+  margin-top: 1.6em;
+  }
+  
+  .gida-criteria-input-container #gida-search-engine-error-message {
+  font-size: 1.1em;
+  }
+  
+  .gida-criteria-input-container img {
+  margin-top: 20vh;
+  width: 65%;
+  }
+  
+  @media only screen and (min-width: 576px) {
+  .gida-criteria-input-container {
+  font-size: 0.59rem;
+  }
+  }
+  
+  @media only screen and (min-width: 768px) {
+  .gida-criteria-input-container {
+  font-size: 0.8rem;
+  }
+  }
+  
+  @media only screen and (min-width: 992px) {
+  .gida-criteria-input-container {
+  padding-top: 25vh;
+  }
+  
+  .gida-criteria-input-container .gida-search-engine-select {
+  height: 1.4em;
+  margin: 0.6em 0.5em;
+  }
+  
+  .gida-criteria-input-container #gida-search-engine-select-person,
+  .gida-criteria-input-container #gida-search-engine-select-event {
+  width: 11em;
+  }
+  
+  .gida-criteria-input-container select[id|="gida-search-engine-select-trait"] {
+  width: 8em;
+  }
+  }
+  
+  @media only screen and (min-width: 1200px) {
+  .gida-criteria-input-container {
+  font-size: 0.8rem;
+  }
+  }

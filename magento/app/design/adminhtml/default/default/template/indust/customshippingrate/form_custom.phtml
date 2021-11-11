@@ -1,0 +1,88 @@
+<?php
+/**
+ * Admin Custom Shipping Rate
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to jeffk@industrialtechware.com so we can send you a copy immediately.
+ *
+ * @category   Indust
+ * @package    Indust_CustomShippingRate
+ * @author     Jeff Kieke <jeffk@industrialtechware.com>
+ * @copyright  Copyright (c) 2010, Jeff Kieke
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<?php if (Mage::helper('customshippingrate')->isEnabled()): ?>
+<div>
+    <dl>
+        <dt><br/><hr/><br/></dt>
+        <dd id="custom-shipping-area">
+            <p><strong><?php echo $this->__('Custom Shipping Rate:'); ?></strong>&nbsp;&nbsp;<input id="custom-shipping-rate" type="text" style="width: 100px;" value="<?php if ($this->getCustomShippingPrice()): echo sprintf("%.2f", $this->getCustomShippingPrice()); endif; ?>" /></p>
+            <p><strong><?php echo $this->__('Title:'); ?></strong>&nbsp;&nbsp;<input id="custom-shipping-title" type="text" style="width: 200px;" value="<?php echo $this->getCustomTitle() ?>" />&nbsp;&nbsp;<button id="custom-shipping-button" type="button" class="scalable " onclick="order.setCustomShippingValues(document.getElementById('custom-shipping-rate').value,document.getElementById('custom-shipping-title').value,'customshippingrate');"><span><?php echo $this->__('Save'); ?></span></button></p>
+            <input id="custom-shipping-code" type="hidden" value="customshippingrate" />
+            <ul class="messages">
+                <li class="notice-msg"><?php echo $this->__('Note: This will override any shipping method selected above.'); ?></li>
+            </ul>
+            <script type="text/javascript">
+                //<![CDATA[
+                AdminOrder.addMethods({
+                    setCustomShippingValues : function(amount, description, method){
+                        var data = {};
+                        data['order[shipping_amount]'] = amount;
+                        data['order[base_shipping_amount]'] = amount;
+                        data['order[shipping_description]'] = description;
+                        data['order[shipping_method]'] = method;
+                        this.loadArea(['shipping_method', 'totals', 'billing_method'], true, data);
+                    },
+
+                    customshipFieldsBind : function(container){
+                        if($(container)){
+                            var fields = $(container).select('input');
+                            for(var i=0; i<fields.length; i++){
+                                fields[i].observe('change', this.customshipFieldChange.bind(this))
+                            }
+                        }
+                    },
+
+                    customshipFieldChange : function(){
+                        if (document.getElementById('custom-shipping-rate').value && document.getElementById('custom-shipping-title').value) {
+                            var data = {};
+                            data['order[shipping_amount]'] = document.getElementById('custom-shipping-rate').value;
+                            data['order[base_shipping_amount]'] = document.getElementById('custom-shipping-rate').value;
+                            data['order[shipping_description]'] = document.getElementById('custom-shipping-title').value;
+                            data['order[shipping_method]'] = document.getElementById('custom-shipping-code').value;
+                            this.loadArea(false, false, data);
+                        }
+                    },
+
+                    submit : function()
+                    {
+                        if (this.orderItemChanged) {
+                            if (confirm('You have item changes')) {
+                                if (editForm.submit()) {
+                                    disableElements('save');
+                                }
+                            } else {
+                                this.itemsUpdate();
+                            }
+                        } else {
+                            if (editForm.submit()) {
+                                disableElements('save');
+                            }
+                        }
+                    }
+                });
+                order.customshipFieldsBind($('custom-shipping-area'));
+                //]]>
+            </script>
+        </dd>
+    </dl>
+</div>
+<?php endif; ?>

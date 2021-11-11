@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magegiant
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the magegiant.com license that is
+ * available through the world-wide-web at this URL:
+ * http://magegiant.com/license-agreement/
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magegiant
+ * @package     Magegiant_TwLogin
+ * @copyright   Copyright (c) 2014 Magegiant (http://magegiant.com/)
+ * @license     http://magegiant.com/license-agreement/
+ */
+-->
+<config>
+    <modules>
+        <Magegiant_TwLogin>
+            <version>0.1.0</version>
+        </Magegiant_TwLogin>
+    </modules>
+    <frontend>
+        <routers>
+            <twlogin>
+                <use>standard</use>
+                <args>
+                    <module>Magegiant_TwLogin</module>
+                    <frontName>twlogin</frontName>
+                </args>
+            </twlogin>
+        </routers>
+        <layout>
+            <updates>
+                <twlogin>
+                    <file>magegiant/twlogin.xml</file>
+                </twlogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magegiant_TwLogin>
+                    <files>
+                        <default>Magegiant_TwLogin.csv</default>
+                    </files>
+                </Magegiant_TwLogin>
+            </modules>
+        </translate>
+        <events>
+            <social_button_create_before>
+                <observers>
+                    <twlogin_observers>
+                        <class>twlogin/frontend_observer</class>
+                        <method>addTwButton</method>
+                    </twlogin_observers>
+                </observers>
+            </social_button_create_before>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <twloginadmin>
+                <use>admin</use>
+                <args>
+                    <module>Magegiant_TwLogin</module>
+                    <frontName>twloginadmin</frontName>
+                </args>
+            </twloginadmin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <twlogin>
+                    <file>magegiant/twlogin.xml</file>
+                </twlogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magegiant_TwLogin>
+                    <files>
+                        <default>Magegiant_TwLogin.csv</default>
+                    </files>
+                </Magegiant_TwLogin>
+            </modules>
+        </translate>
+    </adminhtml>
+    <global>
+        <models>
+            <twlogin>
+                <class>Magegiant_TwLogin_Model</class>
+                <resourceModel>twlogin_mysql4</resourceModel>
+            </twlogin>
+            <twlogin_mysql4>
+                <class>Magegiant_TwLogin_Model_Mysql4</class>
+                <entities>
+                    <customer>
+                        <table>twlogin_customer</table>
+                    </customer>
+                </entities>
+            </twlogin_mysql4>
+        </models>
+        <resources>
+            <twlogin_setup>
+                <setup>
+                    <module>Magegiant_TwLogin</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </twlogin_setup>
+            <twlogin_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </twlogin_write>
+            <twlogin_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </twlogin_read>
+        </resources>
+        <blocks>
+            <twlogin>
+                <class>Magegiant_TwLogin_Block</class>
+            </twlogin>
+        </blocks>
+        <helpers>
+            <twlogin>
+                <class>Magegiant_TwLogin_Helper</class>
+            </twlogin>
+        </helpers>
+    </global>
+    <default>
+        <sociallogin>
+            <tw>
+                <enable>0</enable>
+                <tw_image>default/tw.png</tw_image>
+                <sort_order>3</sort_order>
+                <tw_image_label>Twitter</tw_image_label>
+            </tw>
+        </sociallogin>
+    </default>
+
+</config>

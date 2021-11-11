@@ -1,0 +1,374 @@
+.checkout-container {
+  padding: 2.5% 5%;
+  font-weight: 300;
+  position: relative;
+}
+.checkout-bold-text {
+  font-weight: bolder;
+}
+@media only screen and (max-width: 992px) {
+  .checkout-title.kadoqu-page-title {
+    margin: 0 0 1rem 0;
+    font-size: 2.5em;
+    text-decoration: none;
+  }
+}
+
+/*------------------ Success status -------------------*/
+.checkout-success-status {
+  font-size: 1.5rem;
+  font-weight: 500;
+  height: 4rem;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.checkout-success-status i {
+  font-size: 2rem;
+  padding: 0 0.5em 0 1.8em;
+}
+.checkout-success-status.succeed {
+  background-color: var(--green-3);
+}
+.checkout-success-status.succeed i {
+  color: var(--darkGreen);
+}
+.checkout-success-status.failed {
+  background-color: var(--cream-1);
+}
+.checkout-success-status.failed i {
+  color: var(--red-2);
+}
+
+/*------------------ Success status modal -------------------*/
+@media (min-width: 992px) {
+  .modal-backdrop {
+    display: none;
+  }
+  body.modal-open {
+    overflow: unset !important;
+  }
+}
+
+.modal-backdrop.show {
+  opacity: 0.25;
+}
+.checkout-success-status-modal .modal-content {
+  border: none;
+  border-radius: 0;
+  padding: 0.5em 0;
+}
+.checkout-success-status-modal small {
+  font-weight: 100;
+}
+.checkout-success-status-modal i {
+  font-size: 4rem;
+}
+.checkout-success-status-modal {
+  font-size: 1.5rem;
+}
+.checkout-success-status-modal.succeed i {
+  color: var(--green-2);
+}
+.checkout-success-status-modal.failed i {
+  color: var(--red-2);
+}
+
+/*------------------ Left Section -------------------*/
+
+.checkout-left-section hr {
+  margin: 30px 0;
+  border: 2px solid transparent;
+  background-image: linear-gradient(to right, #ababab 62%, transparent 39%);
+  background-position: left top;
+  background-repeat: repeat-x;
+  background-size: 30px 3px;
+}
+@media only screen and (max-width: 992px) {
+  .checkout-left-section hr {
+    margin: 15px 0;
+    visibility: hidden;
+  }
+}
+
+/*------------------ Shipping detail, Shipping methods, Payment methods -------------------*/
+
+.shipping-detail-icon,
+.shipping-methods-icon,
+.payment-methods-icon {
+  text-align: right;
+}
+.shipping-detail-icon i,
+.shipping-methods-icon i,
+.payment-methods-icon i {
+  font-size: 2em;
+}
+.shipping-detail-title.kadoqu-page-title,
+.shipping-methods-title.kadoqu-page-title,
+.payment-methods-title.kadoqu-page-title {
+  font-size: 1.5em;
+}
+.shipping-detail {
+  font-size: 0.9em;
+}
+.shipping-detail-subtitle {
+  font-size: 1.1em;
+  margin-bottom: 0.2em;
+}
+.shipping-methods label {
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}
+.payment-methods label {
+  font-size: 1.1em;
+}
+.payment-methods-choice {
+  padding: 0.75rem 0.75rem 0.75rem 1.75rem;
+  background-color: white;
+}
+.payment-methods img {
+  height: 1em;
+}
+.shipping-detail-shipping-address-off {
+  opacity: 0.3;
+}
+.shipping-detail-shipping-address-other {
+  font-size: 0.9em;
+}
+.shipping-detail-checkbox {
+  width: 2.5em;
+  height: 2.5em;
+  margin-bottom: 0.25rem;
+  border-radius: 50%;
+  margin-right: 5px;
+  background-color: #3c3c3c;
+  position: relative;
+}
+.shipping-detail-checkbox.checked i {
+  font-size: 2.5em;
+}
+.shipping-detail-checkbox.checked {
+  background-color: #086658;
+}
+.shipping-detail-checkbox.checked i {
+  color: white;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  left: 1px;
+}
+#checkout-courier-selection {
+  font-size: 1em;
+  margin-left: 4em;
+  border: none;
+}
+
+@media only screen and (max-width: 992px) {
+  .shipping-methods .kadoqu-radio-button [type="radio"]:checked + label:before,
+  .shipping-methods
+    .kadoqu-radio-button
+    [type="radio"]:not(:checked)
+    + label:before,
+  .payment-methods .kadoqu-radio-button [type="radio"]:checked + label:before,
+  .payment-methods
+    .kadoqu-radio-button
+    [type="radio"]:not(:checked)
+    + label:before {
+    width: 16px;
+    height: 16px;
+  }
+  .shipping-methods .kadoqu-radio-button [type="radio"]:checked + label:after,
+  .shipping-methods
+    .kadoqu-radio-button
+    [type="radio"]:not(:checked)
+    + label:after,
+  .payment-methods .kadoqu-radio-button [type="radio"]:checked + label:after,
+  .payment-methods
+    .kadoqu-radio-button
+    [type="radio"]:not(:checked)
+    + label:after {
+    width: 10px;
+    height: 10px;
+  }
+  .shipping-detail .address-card-address-section {
+    padding-top: 0.5em;
+    padding-bottom: 0;
+  }
+  #checkout-courier-selection {
+    margin-left: 2em;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .shipping-detail-checkbox {
+    height: 13px;
+    width: 13px;
+  }
+  .shipping-detail-checkbox.checked i {
+    font-size: 1em;
+  }
+  .payment-methods-choice {
+    padding: 1rem 1rem 1rem 2rem;
+  }
+}
+
+/*------------------ Add address button -------------------*/
+
+.checkout-add-address-button {
+  background-color: #f1f1f1;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  height: 12em;
+  font-weight: 100;
+  color: var(--grey-2);
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.checkout-add-address-button .rounded-circle {
+  border: 2px dashed var(--grey-2);
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28pt;
+}
+.checkout-add-address-button span {
+  line-height: 60px;
+}
+@media only screen and (max-width: 992px) {
+  .checkout-add-address-button {
+    height: 7em !important;
+  }
+}
+
+/*------------------ Modal -------------------*/
+
+.checkout-modal .modal-content {
+  border: none;
+  border-radius: 0;
+  background-color: whitesmoke;
+}
+.checkout-modal .modal-header {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  border: none;
+}
+.checkout-modal .modal-title {
+  font-weight: 700;
+  font-size: 1.75em;
+}
+.checkout-modal .modal-body {
+  padding: 1rem 5%;
+  max-height: 67vh;
+  overflow-y: scroll;
+  font-weight: 100;
+}
+.checkout-modal .modal-body::-webkit-scrollbar {
+  display: none;
+}
+.checkout-modal .address-card {
+  margin-bottom: 1rem;
+}
+.checkout-modal-add-address .modal-body {
+  padding: 1rem 10% 3rem;
+  max-height: none;
+}
+.checkout-address-card-chosen {
+  border-radius: 0;
+  box-shadow: 0 0 0 4px var(--darkGreen);
+}
+.checkout-modal .modal-footer {
+  border-radius: 0;
+  border: none;
+  padding: 3% 0 5% 0;
+}
+.checkout-modal .address-form-buttons {
+  justify-content: center;
+}
+.checkout-modal-error {
+  display: block;
+  color: red;
+  margin-bottom: 0.5em;
+}
+@media only screen and (min-width: 992px) {
+  .checkout-modal .modal-dialog {
+    max-width: 67%;
+  }
+  .checkout-modal .address-card {
+    min-height: 12em;
+  }
+}
+
+/*------------------ Right section -------------------*/
+@media only screen and (max-width: 992px) {
+  .checkout-right-section {
+    padding: 0;
+  }
+}
+
+/*------------------ Order detail -------------------*/
+
+.checkout-order-detail-container {
+  background-color: white;
+}
+.checkout-order-detail-container hr {
+  width: 100%;
+  border: black solid 1px;
+}
+.checkout-order-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 10px;
+}
+.checkout-order-discount-price {
+  color: var(--red);
+}
+.checkout-info-container,
+.checkout-info-hr {
+  margin-top: 20px;
+}
+.checkout-button {
+  background-color: var(--grey-1) !important;
+  width: 70%;
+}
+.checkout-order-detail-item-note {
+  font-size: 0.7em;
+}
+@media only screen and (min-width: 992px) {
+  .checkout-order-detail-container {
+    box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/*------------------ Voucher -------------------*/
+
+.checkout-voucher .kotakvoucher {
+  height: auto;
+}
+.checkout-voucher .alert-danger + .kotakvoucher,
+.checkout-voucher .alert-success + .kotakvoucher {
+  padding-top: 2.5rem;
+}
+.checkout-voucher-message {
+  position: absolute;
+  width: 100%;
+  font-size: 0.9em;
+  font-weight: 500;
+  padding: 0.25rem 1.5rem 0 1.5rem;
+  border: 0;
+  border-radius: 0;
+  top: 0;
+}
+.checkout-voucher-message.alert-danger {
+  color: var(--red-2);
+  background-color: var(--cream-1);
+}
+.checkout-voucher-message.alert-success {
+  background-color: var(--green-3);
+}

@@ -1,0 +1,84 @@
+.address-card {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 0;
+  transition: 0.1s;
+}
+.address-card:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  box-shadow: 0.6rem 0.6rem 1.8rem rgba(0, 0, 0, 0.3);
+  transition: 0.1s;
+}
+.address-card-address-section {
+  font-size: 0.8em;
+  padding-right: 20%;
+  padding-left: 1em;
+}
+
+.address-card-title {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.address-card-link {
+  padding-left: 1em;
+  padding-bottom: 0.5em;
+  font-size: 0.8em;
+  font-weight: 400;
+  align-self: flex-start;
+  blinkcursor: pointer;
+}
+
+.address-card-button {
+  border: none;
+  color: white;
+  background-color: #6d6d6d;
+  width: 20%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-end;
+  flex-direction: column;
+  padding: 0;
+  font-size: 0.75em;
+  cursor: pointer;
+}
+
+.address-card-button.active,
+.address-card-button:active {
+  background-color: #059487;
+  color: white;
+}
+
+.address-card-content {
+  font-weight: 100;
+  font-size: 0.9em;
+}
+
+.address-card-button {
+  width: 100%;
+  position: relative;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  font-size: 0.9em;
+}
+
+@media only screen and (min-width: 768px) {
+  .address-card-address-section {
+    padding: 15px;
+    font-size: 1em;
+  }
+
+  .address-card-link {
+    padding: 0 10px 0 0;
+    font-size: 0.8em;
+    font-weight: 600;
+    display: flex;
+    align-self: flex-end;
+  }
+}

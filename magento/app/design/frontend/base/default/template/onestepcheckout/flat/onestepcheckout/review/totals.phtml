@@ -1,0 +1,46 @@
+<?php
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Onestepcheckout
+ * @copyright   Copyright (c) 2017 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+?>
+<?php if ($this->getTotals()): ?>
+    <tfoot>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    <?php $_colspan = $this->helper('tax')->displayCartBothPrices() ? 3 : 2; ?>
+    <?php echo $this->renderTotals(null, $_colspan); ?>
+    <?php echo $this->renderTotals('footer', $_colspan); ?>
+    <?php if ($this->needDisplayBaseGrandtotal()): ?>
+        <tr>
+            <td class="a-right" colspan="<?php echo $_colspan; ?>">
+                <small><?php echo $this->helper('sales')->__('Your credit card will be charged for') ?></small>
+            </td>
+            <td class="a-right">
+                <small><?php echo $this->displayBaseGrandtotal() ?></small>
+            </td>
+        </tr>
+    <?php endif ?>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+    </tfoot>
+<?php endif; ?>

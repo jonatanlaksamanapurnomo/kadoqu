@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+        <catalog_product_view>
+                <reference name="content">
+                        <block type="cms/block" name="right_static">
+                                <action method="setBlockId">
+                                        <block_id>right_static</block_id>
+                                </action>
+                        </block>
+                </reference>
+				<!--
+                <reference name="content">
+                        <action method="append">
+                                <block>right_static</block>
+                        </action>
+                </reference>
+				-->
+        </catalog_product_view>
+</layout>
+
+<? xml version = "1.0"?> <layout version = "0.1.0"> <default> <reference name = "right"> <block type = "cms / block" name = "right.static"> <action method = "setBlockId"> <block_id> right_static </ block_id> </ action> </ block> </ reference> </ default> </ layout>

@@ -1,0 +1,131 @@
+<?php
+/**
+ * @var $this Gene_Braintree_Block_Creditcard
+ */
+?>
+<?php
+$code = $this->getMethodCode();
+?>
+
+<div id="payment_form_<?php echo $this->escapeHtml($code); ?>">
+    <?php echo $this->getSavedChildHtml(); ?>
+    <div id="credit-card-form"
+        <?php if ($this->hasSavedDetails() && $this->getMethod()->isVaultEnabled()) { ?>
+            style="display: none;"
+        <?php } ?>>
+        <?php if ($this->getHostedDescriptor()): ?>
+            <div class="iwd_opc_universal_wrapper">
+                <?php echo $this->escapeHtml($this->getHostedDescriptor()); ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($this->getAllowedCards()) { ?>
+            <div class="iwd_opc_cc_types" style="display: none;">
+                <?php $i = 0;
+                foreach ($this->getAllowedCards() as $card) {
+                    if ($i == 3) {
+                        break;
+                    }
+                    ?>
+                    <div class="iwd_opc_cc_wrapper"
+                         title="<?php echo $this->escapeHtml($card['label']); ?>"
+                         data-cc-type="<?php echo $this->escapeHtml($card['value']); ?>"></div>
+                    <?php $i++;
+                } ?>
+                <?php if (count($this->getAllowedCards()) > 3) { ?>
+                    <div class="iwd_opc_cc_wrapper iwd_opc_more_cc_types">
+                    <span data-type="cc_type" data-icon="&#xf055" class="iwd_opc_payment_tooltip">
+                        <span class="iwd_opc_tooltip_content_fixed">
+                            <?php foreach ($this->getAllowedCards() as $card) { ?>
+                                <div class="iwd_opc_cc_wrapper"
+                                     title="<?php echo $this->escapeHtml($card['label']); ?>"
+                                     data-cc-type="<?php echo $this->escapeHtml($card['value']); ?>"></div>
+                            <?php } ?>
+                        </span>
+                    </span>
+                    </div>
+                <?php } ?>
+            </div>
+        <?php } ?>
+        <div class="iwd_opc_universal_wrapper iwd_opc_cc_wrapper"
+             data-https="<?php echo Mage::app()->getStore()->isCurrentlySecure() ? 1 : 0; ?>">
+            <div id="card-number" class="braintree-input-field braintree-card-input-field"></div>
+            <?php if (Mage::app()->getStore()->isCurrentlySecure()) { ?>
+                <span data-type="cc_on_https" data-icon="&#xf023" class="iwd_opc_payment_tooltip"
+                      data-content="<?php echo $this->escapeHtml(
+                          $this->__('Rest easy. Your credit card information is safely secured.')
+                      ); ?>">
+                </span>
+            <?php } ?>
+        </div>
+        <div class="iwd_opc_short_fields">
+            <div class="iwd_opc_universal_wrapper">
+                <div id="expiration-month" class="braintree-input-field braintree-expiration"></div>
+            </div>
+            <div class="iwd_opc_universal_wrapper">
+                <div id="expiration-year" class="braintree-input-field braintree-expiration"></div>
+            </div>
+        </div>
+        <?php if ($this->hasVerification()) { ?>
+            <div class="iwd_opc_universal_wrapper">
+                <div id="cvv" class="braintree-input-field braintree-cvv"></div>
+                <span data-type="cvv" data-icon="&#xf059" class="iwd_opc_payment_tooltip"
+                      data-content="<?php echo $this->escapeHtml(
+                          $this->__('A 3 or 4-digit security code on the back or front of your card.')
+                      ); ?>">
+            </span>
+
+            </div>
+        <?php } ?>
+
+        <?php /* This field is automatically shown by JavaScript based on the merchants AVS settings */ ?>
+        <div class="iwd_opc_universal_wrapper braintree-avs-postal-code" style="display: none;">
+            <div id="postal-code" class="braintree-input-field braintree-postal-code"></div>
+        </div>
+        <?php if ($this->canSaveCard() || $isQuoteRecurrent):
+            $isQuoteRecurrent = $this->helper('iwd_opc')->isRecurringPaymentsEnabled()
+                && $this->helper('iwd_recurringpayments/quote')
+                    ->isSubscriptionItemsInQuote(Mage::getSingleton('checkout/session')->getQuote());
+            ?>
+            <div class="iwd_opc_universal_wrapper"
+                <?php if ($isQuoteRecurrent) { ?>
+                    style="display: none;"
+                <?php } ?>
+                 id="<?php echo $this->escapeHtml($code); ?>_store_in_vault_div">
+                <label title="<?php echo $this->escapeHtml(
+                    $this->__('Save this account for future use')
+                ); ?>"
+                       class="iwd_opc_checkbox_label"
+                       for="<?php echo $this->escapeHtml($code); ?>_store_in_vault">
+                    <input type="checkbox"
+                           id="<?php echo $this->escapeHtml($code); ?>_store_in_vault"
+                           value="1"
+                        <?php if ($isQuoteRecurrent) { ?>
+                            checked="checked"
+                        <?php } ?>
+                           name="payment[save_card]"
+                           class="iwd_opc_checkbox iwd_opc_field"/>
+                    <span class="iwd_opc_checkbox_label_value">
+                <?php echo $this->escapeHtml(
+                    $this->__('Save this account for future use')
+                ); ?>
+            </span>
+                </label>
+            </div>
+        <?php endif; ?>
+        <?php echo $this->getChildHtml() ?>
+    </div>
+
+    <div id="braintree-hosted-submit">
+        <!-- Fields for the payment method -->
+        <input type="hidden"
+               name="payment[payment_method_nonce]"
+               value=""
+               id="creditcard-payment-nonce"
+               class="validate-fire-hosted"/>
+    </div>
+</div>
+<script type="text/javascript">
+    if (typeof vzero !== 'undefined') {
+        vzero.creditCardLoaded();
+    }
+</script>

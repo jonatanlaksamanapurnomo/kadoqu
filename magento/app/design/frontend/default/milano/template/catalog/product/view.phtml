@@ -1,0 +1,220 @@
+<?php 
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+$_config = Mage::getStoreConfig('milanoconfig/productpage');
+$_share_config = Mage::getStoreConfig('milanoconfig/share');
+$_brand_enabled = $_config['brand'] == 1;
+$_use_share = $_share_config['use_share'] == 1;
+$_share_code = $_share_config['share_code'];
+$_shortDescription = $_product->getShortDescription();
+$_listconfig = Mage::getStoreConfig('milanoconfig/product_list');
+$_addToWishlist = $_listconfig['addto_wishlist'] == 1;
+$_addToCompare = $_listconfig['addto_compare'] == 1;
+$_ajaxAddToCart =  $_listconfig['ajax_addtocart'] == 1;
+$_ajaxWishlist =  $_listconfig['ajax_wishlist'] == 1;
+$_countdown_timer = $_config['countdown_timer'] == 1;
+$_show_sku = $_config['show_sku'] == 1;
+$_swatch = Mage::getModel('imageswatches/swatch');
+$_richSnippets = Mage::getStoreConfig('milanoconfig/richsnippets');
+$_richSnippetsEnabled = $_richSnippets['enabled'] == 1;
+$_prQRCodeEnabled = Mage::getStoreConfig('milanoconfig/qrcode/enabled_prpage') == 1;
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>    
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view"<?php if($_richSnippetsEnabled): ?> itemscope itemtype="http://schema.org/Product"<?php endif; ?>>
+	
+    <div class="product-essential">
+    
+        <div class="product-img-box">
+        	<?php echo $this->getChildHtml('info_tabs') ?>
+        </div>
+        
+        <div class="product-shop">
+                <div class="product-name clear">
+                	<?php include('view/labels.phtml') ?>
+                    <h1<?php if($_richSnippetsEnabled): ?> itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                    <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                    <?php if($_richSnippetsEnabled): $this->addReviewSummaryTemplate('meta', 'review/helper/summary_meta.phtml'); echo $this->getReviewsSummaryHtml($_product, 'meta', true); endif; ?>
+                </div>
+                
+				<?php if($_brand_enabled):
+					
+					$_brand_attr = $_config['brand_attr'];
+					if ($_product->getData($_brand_attr)):
+					
+							$brandImageExt = trim($_config['brand_image_extension']);
+							$brandPageBasePath = trim($_config['brand_page_base_path']);
+							$brandLinkSearch = $_config['brand_link_search_enabled'] == 1;
+							$attr = $_product->getResource()->getAttribute($_brand_attr);
+							$brandValue = trim($attr->getFrontend()->getValue($_product));
+							
+							if(!empty($_swatch) && Mage::helper('imageswatches')->isEnabled()) {
+								$swatch_option = $_swatch->getSwatchByOption($_product->getData($_brand_attr));
+								$brandImageUrl = $swatch_option->getThumbnail(160, 36);
+							}
+							
+							$brandLabel = $attr->getStoreLabel();
+							if(empty($brandImageUrl)) {
+								$brandValueCode = str_replace(" ", "_", strtolower($brandValue));
+								$brandImageUrl = Mage::registry('themeMediaUrl').'brand-logos/' . $brandValueCode . '.' . $brandImageExt;
+							}
+
+							if ($brandLinkSearch)
+								$brandPageUrl = Mage::getUrl() . 'catalogsearch/result/?q=' . $brandValue;
+							elseif ($brandPageBasePath != '')
+							{
+								$basePath = ($brandPageBasePath == '/') ? '' : $brandPageBasePath . '/';
+								$brandPageUrl = Mage::getUrl() . $basePath . str_replace(" ", "-", strtolower($brandValue));
+							}
+							else
+								$brandPageUrl = '';
+
+							?>
+                            <div class="brand-logo clear">
+                            	<?php if ($brandPageUrl != ''): ?>
+                                	<a href="<?php echo $brandPageUrl;?>" title="<?php echo str_replace("%s", $brandValue, $this->__('Click to see more products from %s')); ?>"><img src="<?php echo $brandImageUrl;?>" alt="<?php echo $brandValue; ?>" <?php if($_richSnippetsEnabled): ?> itemprop="logo"<?php endif; ?> /></a>
+                                <?php else: ?>
+                                	<img src="<?php echo $brandImageUrl;?>" title="<?php echo $brandLabel .': '. $brandValue; ?>" alt="<?php echo $brandValue; ?>" <?php if($_richSnippetsEnabled): ?> itemprop="logo"<?php endif; ?> />
+                                <?php endif; ?>
+                            </div>
+                            <?php if($_richSnippetsEnabled): ?>
+                        	<meta itemprop="brand" content="<?php echo $brandValue; ?>" />
+                        	<?php endif; ?>
+                	<?php endif; ?>
+                <?php endif; ?>
+                <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                <div class="no-display">
+                    <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                    <input type="hidden" name="related_product" id="related-products-field" value="" />
+                </div>
+                
+                <div class="addtocont clear"<?php if($_richSnippetsEnabled): ?> itemprop="offers" itemscope itemtype="http://schema.org/Offer"<?php endif; ?>>
+                    <?php if ($_prQRCodeEnabled): ?>
+                    <a id="pr-qrcode" class="right" href="http://chart.apis.google.com/chart?chs=250x250&cht=qr&chld=L|4&choe=UTF-8&chl=<?php echo urlencode(Mage::helper('core/url')->getCurrentUrl()); ?>"><img src="<?php echo $this->getSkinUrl('images/qrcode.png'); ?>" /></a>
+                    <script type="text/javascript" charset="utf-8">jQuery("a#pr-qrcode").prettyPhoto();</script>
+                    <?php endif; ?>
+                	<?php echo $this->getChildHtml('product_type_data') ?>
+                    <?php if($_show_sku): ?>
+                    	<span class="product-code"><?php echo $this->__('Product code:'); ?> <strong <?php if($_richSnippetsEnabled): ?> itemprop="sku"<?php endif; ?>><?php echo $_product->getSku(); ?></strong></span>
+                    <?php endif; ?>
+                	<?php if($_product->getTypeId() != 'bundle'): ?>
+                    	<?php if($_richSnippetsEnabled): ?>
+                        	<meta itemprop="price" content="<?php echo Mage::helper('core')->currency($_product->getFinalPrice(), true, false); ?>" />
+                        	<meta itemprop="priceCurrency" content="<?php echo Mage::app()->getStore()->getBaseCurrencyCode(); ?>" />
+                            <?php if ($_product->isAvailable()): ?>
+                        	<link itemprop="availability" href="http://schema.org/InStock" />
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    	<?php echo $this->getPriceHtml($_product) ?>
+                        <?php if ($_countdown_timer && number_format($_product->getFinalPrice(), 2) != number_format($_product->getPrice(), 2) && $_product->getSpecialToDate()): ?>
+                        	<div class="countdown-timer">
+                            	<h5><?php echo $_config['countdown_timer_title']; ?></h5>
+                            	<span id="countdown-timer-remaining"></span>
+                            </div>
+                            <script type="text/javascript">
+                			//<![CDATA[
+								jQuery('#countdown-timer-remaining').tinyTimer({ to: new Date(<?php echo strtotime($_product->getSpecialToDate()) * 1000; ?>).toUTCString(), format: '<?php echo $_config['countdown_timer_format']; ?>' });							
+							//]]>
+                			</script>
+						<?php endif; ?>
+                	<?php endif; ?>
+                </div>
+                
+				<?php if($_tierPriceHtml = $this->getTierPriceHtml()): ?>
+                	<div class="clear"><?php echo $_tierPriceHtml; ?></div>
+                <?php endif; ?>
+                
+				<?php if($_extraHint = $this->getChildHtml('extrahint')): ?>
+                	<div class="clear"><?php echo $_extraHint ?></div>
+                <?php endif; ?>
+				
+				<?php if ($_shortDescription):?>
+                    <div class="short-description clear">
+                        <div class="std"<?php if($_richSnippetsEnabled): ?> itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_shortDescription), 'short_description') ?></div>
+                    </div>
+                <?php endif;?>
+                
+                <?php if (!empty($_config['size_chart_attribute_identifier']) && $_product->getData($_config['size_chart_attribute_identifier'])):
+                	$size_chart_attr = $_product->getResource()->getAttribute($_config['size_chart_attribute_identifier']);
+				?>
+                	<a href="#size_chart" id="size_chart_link"><?php echo $this->__('size chart') ?></a>
+                    <div id="size_chart" style="display: none;">
+                    	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($size_chart_attr->getFrontend()->getValue($_product))->toHtml() ?>
+                    </div>
+                    <script type="text/javascript">
+						//<![CDATA[
+							jQuery(function($){ $('#size_chart_link').prettyPhoto({default_width: 780,default_height: 300,show_title: false, social_tools: false}); });
+						//]]>
+                	</script>
+                <?php endif; ?>
+                
+                <?php if($_alertUrls = $this->getChildHtml('alert_urls')): ?>
+                	<div class="product-alerts clear"><?php echo $_alertUrls; ?></div>
+                <?php endif; ?>
+                
+                <?php if($_promoMessage = $this->getChildHtml('product_promo_message')): ?>
+                	<div class="clear"><?php echo $this->getChildHtml('product_promo_message') ?></div>
+                <?php endif; ?>
+                                                
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <div class="clear" id="container1"><?php echo $this->getChildChildHtml('container1', '', true, true) ?><div class="clear"></div></div>
+                <?php endif;?>
+                
+                <?php if ($_productDataGrouped = $this->getChildHtml('product_type_data_grouped')): ?>
+					<div class="clear"><?php echo $_productDataGrouped; ?></div>
+                <?php endif; ?>
+                
+				<?php if (!$this->hasOptions()):?>
+                    <div class="add-to-box clear">
+                        <?php if($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if( $this->helper('wishlist')->isAllow() || $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+                    </div>
+                <?php endif; ?>
+                
+                <?php if($_infoAccordion = $this->getChildHtml('info_accordion')): ?>
+                	<div class="clear"><?php echo $_infoAccordion ?></div>
+                <?php endif; ?>
+                
+				<?php echo $this->getChildHtml('other');?>
+				
+				<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                   	<div class="clear" id="container2"><?php echo $this->getChildChildHtml('container2', '', true, true) ?></div>
+                <?php endif;?>
+                
+                </form>
+				<script type="text/javascript">
+                //<![CDATA[
+                    var productAddToCartForm = new VarienForm('product_addtocart_form');
+                    var loaderBckImg = '<?php echo $this->getSkinUrl('images/loading.gif')?>';
+                    var successMsg = '<?php echo $this->__('was successfully added to your shopping cart.') ?>';
+                    var continueMsg = '<?php echo $this->__('Lanjutkan Belanja') ?>';
+                    var cartUrl = '<?php echo $this->getUrl('checkout/cart')?>';
+                    var cartMsg = '<?php echo $this->__('Lihat Keranjang & Proses Pesanan') ?>';
+                    var errorMsg = '<?php echo $this->__('Error') ?>';
+					<?php if ($_ajaxWishlist && $_addToWishlist && $this->helper('wishlist')->isAllow()) : ?>jQuery('.link-wishlist').attachAjaxWhishlist();<?php endif; ?>
+					<?php if($_ajaxWishlist && $_addToCompare): ?>jQuery('.link-compare').attachAjaxCompare();<?php endif; ?>
+					jQuery('.rating-links > a').click(function(e){ e.preventDefault(); jQuery('#product_tabs_product_review > a').click(); });
+                //]]>
+                </script>
+                
+				<?php if($_use_share && $_share_code): ?>
+                	<div class="clear"><?php echo $_share_code; ?></div>
+                <?php endif; ?>
+        </div>
+    
+    </div>
+    
+  	<div class="product-collateral">
+		<?php // echo $this->getChildHtml('info_tabs') ?>
+        <?php echo $this->getChildHtml('product_additional_data') ?>
+    </div>
+        <?php echo $this->getChildHtml('related_products') ?>
+        <?php echo $this->getChildHtml('upsell_products') ?>
+</div>

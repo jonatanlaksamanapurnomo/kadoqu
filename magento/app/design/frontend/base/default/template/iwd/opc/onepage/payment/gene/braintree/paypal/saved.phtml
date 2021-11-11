@@ -1,0 +1,55 @@
+<?php
+/**
+ * @var $this IWD_Opc_Block_Onepage_Payment_GeneBraintree_Paypal_Saved
+ */
+?>
+<?php if ($this->hasSavedDetails() && $this->getMethod()->isVaultEnabled()) { ?>
+    <div class="iwd_opc_universal_wrapper">
+        <div class="iwd_opc_payment_label">
+            <?php echo $this->escapeHtml($this->__('Linked Accounts')); ?>
+        </div>
+        <div class="iwd_opc_payment_text">
+            <?php echo $this->escapeHtml(
+                $this->__('The following PayPal accounts are currently linked with your account.')
+            ); ?>
+        </div>
+    </div>
+    <div class="iwd_opc_universal_wrapper" id="paypal-saved-accounts">
+        <?php
+        $count = 0;
+        foreach ($this->getSavedDetails() as $savedDetail) {
+            ?>
+            <div class="iwd_opc_universal_wrapper">
+                <label class="iwd_opc_radio_label"
+                       title="<?php echo $savedDetail->email; ?>"
+                       for="<?php echo $savedDetail->token; ?>">
+                    <input type="radio"
+                           class="iwd_opc_radio iwd_opc_field"
+                           name="payment[paypal_payment_method_token]"
+                           id="<?php echo $savedDetail->token; ?>"
+                           value="<?php echo $savedDetail->token; ?>"
+                           <?php if ($count == 0){ ?>checked="checked" <?php } ?>/>
+                    <span class="iwd_opc_radio_label_value">
+                        <img src="<?php echo $this->getSkinUrl('images/gene/braintree/PP.png') ?>"/>
+                        <?php echo $savedDetail->email; ?>
+                    </span>
+                </label>
+            </div>
+            <?php ++$count;
+        } ?>
+        <div class="iwd_opc_universal_wrapper">
+            <label class="iwd_opc_radio_label"
+                   title="<?php echo $this->__('New PayPal Account'); ?>"
+                   for="other-paypal">
+                <input type="radio"
+                       class="iwd_opc_radio iwd_opc_field"
+                       name="payment[paypal_payment_method_token]"
+                       id="other-paypal"
+                       value="other"/>
+                <span class="iwd_opc_radio_label_value">
+                    <?php echo $this->__('New PayPal Account'); ?>
+                </span>
+            </label>
+        </div>
+    </div>
+<?php } ?>

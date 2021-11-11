@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magegiant
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the magegiant.com license that is
+ * available through the world-wide-web at this URL:
+ * http://magegiant.com/license-agreement/
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magegiant
+ * @package     Magegiant_WpLogin
+ * @copyright   Copyright (c) 2014 Magegiant (http://magegiant.com/)
+ * @license     http://magegiant.com/license-agreement/
+ */
+-->
+<config>
+    <modules>
+        <Magegiant_WpLogin>
+            <version>0.1.0</version>
+        </Magegiant_WpLogin>
+    </modules>
+    <frontend>
+        <routers>
+            <wplogin>
+                <use>standard</use>
+                <args>
+                    <module>Magegiant_WpLogin</module>
+                    <frontName>wplogin</frontName>
+                </args>
+            </wplogin>
+        </routers>
+        <layout>
+            <updates>
+                <wplogin>
+                    <file>magegiant/wplogin.xml</file>
+                </wplogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magegiant_WpLogin>
+                    <files>
+                        <default>Magegiant_WpLogin.csv</default>
+                    </files>
+                </Magegiant_WpLogin>
+            </modules>
+        </translate>
+        <events>
+            <social_button_create_before>
+                <observers>
+                    <wplogin_observers>
+                        <class>wplogin/frontend_observer</class>
+                        <method>addWpButton</method>
+                    </wplogin_observers>
+                </observers>
+            </social_button_create_before>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <wploginadmin>
+                <use>admin</use>
+                <args>
+                    <module>Magegiant_WpLogin</module>
+                    <frontName>wploginadmin</frontName>
+                </args>
+            </wploginadmin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <wplogin>
+                    <file>magegiant/wplogin.xml</file>
+                </wplogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Magegiant_WpLogin>
+                    <files>
+                        <default>Magegiant_WpLogin.csv</default>
+                    </files>
+                </Magegiant_WpLogin>
+            </modules>
+        </translate>
+    </adminhtml>
+    <global>
+        <models>
+            <wplogin>
+                <class>Magegiant_WpLogin_Model</class>
+                <resourceModel>wplogin_mysql4</resourceModel>
+            </wplogin>
+            <!--<wplogin_mysql4>-->
+            <!--<class>Magegiant_WpLogin_Model_Mysql4</class>-->
+            <!--<entities>-->
+            <!--<wplogin>-->
+            <!--<table>wplogin</table>-->
+            <!--</wplogin>-->
+            <!--</entities>-->
+            <!--</wplogin_mysql4>-->
+        </models>
+        <resources>
+            <wplogin_setup>
+                <setup>
+                    <module>Magegiant_WpLogin</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </wplogin_setup>
+            <wplogin_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </wplogin_write>
+            <wplogin_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </wplogin_read>
+        </resources>
+        <blocks>
+            <wplogin>
+                <class>Magegiant_WpLogin_Block</class>
+            </wplogin>
+        </blocks>
+        <helpers>
+            <wplogin>
+                <class>Magegiant_WpLogin_Helper</class>
+            </wplogin>
+        </helpers>
+        <!-- <events>
+            <controller_action_predispatch>
+                <observers>
+                    <wplogin_observers>
+                        <class>wplogin/observer</class>
+                        <method>controllerActionPredispatch</method>
+                    </wplogin_observers>
+                </observers>
+            </controller_action_predispatch>
+        </events> -->
+    </global>
+
+    <default>
+        <sociallogin>
+            <wp>
+                <enable>0</enable>
+                <sort_order>5</sort_order>
+                <wp_image>default/wordpress.png</wp_image>
+                <wp_image_label>WordPress</wp_image_label>
+            </wp>
+        </sociallogin>
+    </default>
+
+</config>

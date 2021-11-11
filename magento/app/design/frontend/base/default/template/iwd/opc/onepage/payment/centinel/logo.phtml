@@ -1,0 +1,18 @@
+<?php
+/**
+ * @var $this IWD_Opc_Block_Onepage_Payment_Centinel_Logo
+ */
+?>
+<div class="iwd_opc_universal_wrapper" id="<?php echo $this->getCode() ?>_centinel_logo">
+    <div class="iwd_opc_payment_label"><?php echo $this->__('To ensure the security of your transactions') ?></div>
+    <div class="iwd_opc_payment_text">
+        <a style="display: inline-block" href="#" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Verified by Visa')) ?> "
+           onclick="popWin('<?php echo $this->helper('centinel')->getVisaLearnMorePageUrl() ?>', 'verifiedByVisa', 'width=815,height=600,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;"><img
+                    src="<?php echo $this->getSkinUrl('images/centinel/vbv_ltbg_71x57.png'); ?>"
+                    alt="<?php echo Mage::helper('core')->quoteEscape($this->__('Verified by Visa')) ?>"/></a>
+        <a style="display: inline-block" href="#" title="<?php echo Mage::helper('core')->quoteEscape($this->__('MasterCard SecureCode')); ?>"
+           onclick="popWin('<?php echo $this->helper('centinel')->getMastercardLearnMorePageUrl() ?>', 'secureCode', 'width=600,height=403,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;"><img
+                    src="<?php echo $this->getSkinUrl('images/centinel/sc_learn_62x34.png'); ?>"
+                    alt="<?php echo Mage::helper('core')->quoteEscape($this->__('MasterCard SecureCode')) ?>"/></a>
+    </div>
+</div>

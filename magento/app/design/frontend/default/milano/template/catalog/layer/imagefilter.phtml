@@ -1,0 +1,51 @@
+<?php
+/**
+ * ShopShark Image Swatches Extension
+ * @version   1.0 09.05.2014
+ * @author    ShopShark http://www.shopshark.net <info@shopshark.net>
+ * @copyright Copyright (C) 2010 - 2014 ShopShark
+ */
+?><?php
+/**
+ * Template for filter items block
+ *
+ * @see Mage_Catalog_Block_Layer_Filter
+ */
+?>
+
+<ol>
+<?php foreach ($this->getItems() as $_item): ?>
+    <li>
+        <?php
+        $swatch = Mage::getModel('imageswatches/swatch')->getSwatchByOption($_item->getValue());
+        ?>
+        <?php if ($_item->getCount() > 0): ?>
+            <?php if(!$swatch->getId() || !$swatch->getData('image')):?>
+            <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>">
+                <?php echo $_item->getLabel() ?>
+            </a>
+            <?php else:?>
+            <a href="<?php echo $this->urlEscape($_item->getUrl()) ?>">
+                <img class="swatch-option-image" src="<?php echo $swatch->getLayeredImage()?>" height="16" width="16" alt="<?php echo $_item->getLabel() ?>" title="<?php echo $_item->getLabel() ?>"/>
+                <?php echo $_item->getLabel() ?>
+            </a>
+            <?php endif;?>
+        <?php else:
+        if(!$swatch->getId() || !$swatch->getData('image')){
+            echo $_item->getLabel();
+        } else {
+            echo '<img src="' . $swatch->getLayeredImage() . '" height="16" width="16" alt="' . $_item->getLabel() . '" title="' . $_item->getLabel() . '" />';
+        }
+        ?>
+
+        <?php endif; ?>
+
+        <?php
+        if(!method_exists($this,'shouldDisplayProductCount')):?>
+            (<?php echo $_item->getCount() ?>)
+            <?php elseif ($this->shouldDisplayProductCount()):?>
+        (<?php echo $_item->getCount() ?>)
+        <?php endif; ?>
+    </li>
+<?php endforeach ?>
+</ol>

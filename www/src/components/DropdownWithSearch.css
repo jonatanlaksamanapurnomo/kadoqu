@@ -1,0 +1,12 @@
+
+.color-input {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 3px solid #ddd;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  margin: 0 5px 5px 0;
+}

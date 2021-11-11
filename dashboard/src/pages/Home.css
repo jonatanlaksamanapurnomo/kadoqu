@@ -1,0 +1,167 @@
+.home-menu-container {
+  position: absolute;
+  top: 0;
+  right: calc(-30px + 1rem);
+}
+
+.home-menu {
+  font-size: 2rem;
+  text-align: center;
+  color: gray;
+  cursor: pointer;
+}
+
+.home-menu.active {
+  color: var(--primary);
+}
+
+.home-notif-badge {
+  position: absolute;
+  right: -5%;
+  bottom: 10%;
+  font-size: 7pt;
+}
+
+.invoice-print {
+  background-color: white;
+  color: #00998d !important;
+  width: 55rem;
+}
+
+.logo-kadoqu-invoice {
+  width: 250px;
+  padding: 30px;
+  margin-top: 40px;
+  color: #00998d !important;
+
+}
+
+.invoice-text {
+  padding-top: 50px;
+  padding-right: 300px;
+  color: #00998d !important;
+
+  text-align: right;
+  font-size: 1.3vw;
+
+}
+.invoice-text-Admin {
+  padding-top: 50px;
+  padding-right: 700px;
+  color: #00998d !important;
+
+  text-align: right;
+  font-size: 1.3vw;
+
+}
+.invoice-text-detail-Admin {
+  text-align: right;
+  color: #00998d !important;
+  padding-right: 700px;
+
+  font-size: 1vw;
+}
+
+.invoice-text-detail {
+  text-align: right;
+  color: #00998d !important;
+  padding-right: 300px;
+
+  font-size: 1vw;
+}
+
+.invoice-address {
+  color: #00998d !important;
+  font-size: 0.7vw;
+  padding-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.invoice-address-admin {
+  color: #00998d !important;
+  font-size: 0.7vw;
+  padding-left: 50px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+
+.payment-method-invoice {
+  font-size: 0.7vw;
+  margin-top: 20px;
+margin-left: -60px;
+padding-bottom: 30px;
+}
+
+.invoice-table {
+  color: #00998d !important;
+  margin-left: 50px !important;
+  padding-right: 320px;
+}
+.invoice-table-admin {
+  color: #00998d !important;
+  margin-left: 50px !important;
+  padding-right: 450px;
+}
+
+
+.invoice-products {
+  color: #00998d !important;
+  padding-top: 60px;
+  padding-left: 25px;
+  margin-left: 150px;
+  align-items: center;
+  align-self: center;
+}
+
+.Total-detail-invoice {
+  color: #00998d !important;
+
+  text-align: right;
+}
+
+.invoice-price-admin {
+  color: #00998d !important;
+
+  text-align: left;
+  padding-top: 0px;
+  padding-left: 300px;
+}
+.invoice-price {
+  color: #00998d !important;
+
+  text-align: left;
+  padding-top: 20px;
+  padding-left: 300px;
+}
+.promo-invoice{
+  color: red;
+}
+.invoiceline {
+  border-top: 2px dotted #00998d;}
+  .invoice-admin{
+    padding-left: 10px;
+  }
+  .invoice-print-admin {
+    background-color: white;
+    color: #00998d !important;
+  }
+  .Invoice-button{
+    padding-right: 15px;
+    font-size: 16px;
+  }
+
+  .merchant-tournament-banner{
+    width: 100% !important;
+    height: 35vh !important;
+    padding-top: 2% !important;
+    padding-bottom: 2% !important;
+
+  }
+
+  @media (max-width: 992px) {
+  .mob-container{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}

@@ -1,0 +1,29 @@
+<?php
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Onestepcheckout
+ * @copyright   Copyright (c) 2017 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+$payment_method_html = $this->getChildHtml('onestepcheckout_payment_method');
+$review_total_html = $this->getChildHtml('onestepcheckout_review');
+
+$result = array('payment' => $payment_method_html,
+    'review' => $review_total_html);
+
+echo Zend_Json::encode($result);
+?>

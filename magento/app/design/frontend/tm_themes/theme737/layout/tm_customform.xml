@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+	<default>
+		<reference name="footer">
+			<block type="core/template" name="tm_customform"  as="tm_customform" template="tm/customform/customform.phtml"/>
+		</reference>
+        <reference name="left">
+            <block type="core/template" name="tm_customform"  as="tm_customform" template="tm/customform/customform_column.phtml"/>
+        </reference>
+	</default>
+</layout>

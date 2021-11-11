@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<!--
+  ~ Magestore
+  ~
+  ~ NOTICE OF LICENSE
+  ~
+  ~ This source file is subject to the Magestore.com license that is
+  ~ available through the world-wide-web at this URL:
+  ~ http://www.magestore.com/license-agreement.html
+  ~
+  ~ DISCLAIMER
+  ~
+  ~ Do not edit or add to this file if you wish to upgrade this extension to newer
+  ~ version in the future.
+  ~
+  ~ @category    Magestore
+  ~ @package     Magestore_Onestepcheckout
+  ~ @copyright   Copyright (c) 2017 Magestore (http://www.magestore.com/)
+  ~ @license     http://www.magestore.com/license-agreement.html
+  -->
+
+<layout version="0.1.0">
+	<!-- flat handle -->
+    <onestepcheckout_payment_review_flat_20columns>
+        <block type="checkout/onepage_payment_methods" name="onestepcheckout_payment_method" as="onestepcheckout_payment_method" template="onestepcheckout/flat/onestepcheckout/payment_method.phtml">
+            <action method="setMethodFormTemplate">
+                <method>purchaseorder</method>
+                <template>payment/form/purchaseorder.phtml</template>
+            </action>
+        </block>
+        <block type="checkout/onepage_review_info" name="review_info" as="info" template="onestepcheckout/flat/onestepcheckout/review/info.phtml">
+            <action method="addItemRender">
+                <type>default</type>
+                <block>checkout/cart_item_renderer</block>
+                <template>onestepcheckout/flat/onestepcheckout/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>grouped</type>
+                <block>checkout/cart_item_renderer_grouped</block>
+                <template>onestepcheckout/flat/onestepcheckout/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>configurable</type>
+                <block>checkout/cart_item_renderer_configurable</block>
+                <template>onestepcheckout/flat/onestepcheckout/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>bundle</type>
+                <block>bundle/checkout_cart_item_renderer</block>
+                <template>onestepcheckout/flat/onestepcheckout/review/item.phtml</template>
+            </action>
+            <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="onestepcheckout/flat/onestepcheckout/review/totals.phtml"/>
+        </block>
+    </onestepcheckout_payment_review_flat_20columns>
+    
+    <onestepcheckout_shipping_payment_review_flat_20columns>
+        <block type="checkout/onepage_shipping_method_available" name="onestepcheckout_shipping_method" as="onestepcheckout_shipping_method" template="onestepcheckout/flat/onestepcheckout/shipping_method.phtml" />
+        <update handle="onestepcheckout_payment_review_flat_20columns"/>
+    </onestepcheckout_shipping_payment_review_flat_20columns>
+    
+    <onestepcheckout_payment_review_flat_25columns>
+        <update handle="onestepcheckout_payment_review_flat_20columns"/>
+    </onestepcheckout_payment_review_flat_25columns>
+    
+    <onestepcheckout_shipping_payment_review_flat_25columns>
+        <update handle="onestepcheckout_shipping_payment_review_flat_20columns"/>
+    </onestepcheckout_shipping_payment_review_flat_25columns>
+	<!-- flat handle -->
+	
+	<!-- flat new handle -->
+    <onestepcheckout_payment_review_flat_30columns>
+        <block type="checkout/onepage_payment_methods" name="onestepcheckout_payment_method" as="onestepcheckout_payment_method" template="onestepcheckout/flatnew/onestepcheckout/payment_method.phtml">
+            <action method="setMethodFormTemplate">
+                <method>purchaseorder</method>
+                <template>payment/form/purchaseorder.phtml</template>
+            </action>
+        </block>
+        <block type="checkout/onepage_review_info" name="review_info" as="info" template="onestepcheckout/flatnew/onestepcheckout/review/info.phtml">
+            <action method="addItemRender">
+                <type>default</type>
+                <block>checkout/cart_item_renderer</block>
+                <template>onestepcheckout/flatnew/onestepcheckout/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>grouped</type>
+                <block>checkout/cart_item_renderer_grouped</block>
+                <template>onestepcheckout/flatnew/onestepcheckout/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>configurable</type>
+                <block>checkout/cart_item_renderer_configurable</block>
+                <template>onestepcheckout/flatnew/onestepcheckout/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>bundle</type>
+                <block>bundle/checkout_cart_item_renderer</block>
+                <template>onestepcheckout/flatnew/onestepcheckout/review/item.phtml</template>
+            </action>
+            <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="onestepcheckout/flatnew/onestepcheckout/review/totals.phtml"/>
+        </block>
+    </onestepcheckout_payment_review_flat_30columns>
+    
+    <onestepcheckout_shipping_payment_review_flat_30columns>
+        <block type="checkout/onepage_shipping_method_available" name="onestepcheckout_shipping_method" as="onestepcheckout_shipping_method" template="onestepcheckout/flatnew/onestepcheckout/shipping_method.phtml" />
+        <update handle="onestepcheckout_payment_review_flat_30columns"/>
+    </onestepcheckout_shipping_payment_review_flat_30columns>
+	<!-- flat new handle -->
+	<!-- material handle -->
+    <onestepcheckout_payment_review_material_20columns>
+        <block type="checkout/onepage_payment_methods" name="onestepcheckout_payment_method" as="onestepcheckout_payment_method" template="onestepcheckout/material/onestepcheckout/payment_method.phtml">
+            <action method="setMethodFormTemplate">
+                <method>purchaseorder</method>
+                <template>payment/form/purchaseorder.phtml</template>
+            </action>
+        </block>
+        <block type="checkout/onepage_review_info" name="review_info" as="info" template="onestepcheckout/material/onestepcheckout/review/info.phtml">
+            <action method="addItemRender">
+                <type>default</type>
+                <block>checkout/cart_item_renderer</block>
+                <template>onestepcheckout/material/onestepcheckout/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>grouped</type>
+                <block>checkout/cart_item_renderer_grouped</block>
+                <template>onestepcheckout/material/onestepcheckout/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>configurable</type>
+                <block>checkout/cart_item_renderer_configurable</block>
+                <template>onestepcheckout/material/onestepcheckout/review/item.phtml</template>
+            </action>
+            <action method="addItemRender">
+                <type>bundle</type>
+                <block>bundle/checkout_cart_item_renderer</block>
+                <template>onestepcheckout/material/onestepcheckout/review/item.phtml</template>
+            </action>
+            <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="onestepcheckout/material/onestepcheckout/review/totals.phtml"/>
+        </block>
+    </onestepcheckout_payment_review_material_20columns>
+    
+    <onestepcheckout_shipping_payment_review_material_20columns>
+        <block type="checkout/onepage_shipping_method_available" name="onestepcheckout_shipping_method" as="onestepcheckout_shipping_method" template="onestepcheckout/material/onestepcheckout/shipping_method.phtml" />
+        <update handle="onestepcheckout_payment_review_material_20columns"/>
+    </onestepcheckout_shipping_payment_review_material_20columns>
+    
+    <onestepcheckout_payment_review_material_25columns>
+        <update handle="onestepcheckout_payment_review_material_20columns"/>
+    </onestepcheckout_payment_review_material_25columns>
+    
+    <onestepcheckout_shipping_payment_review_material_25columns>
+        <update handle="onestepcheckout_shipping_payment_review_material_20columns"/>
+    </onestepcheckout_shipping_payment_review_material_25columns>
+	
+    <onestepcheckout_payment_review_material_30columns>
+        <update handle="onestepcheckout_payment_review_material_20columns"/>
+    </onestepcheckout_payment_review_material_30columns>
+    
+    <onestepcheckout_shipping_payment_review_material_30columns>
+        <update handle="onestepcheckout_shipping_payment_review_material_20columns"/>
+    </onestepcheckout_shipping_payment_review_material_30columns>	
+	<!-- material handle -->
+</layout>

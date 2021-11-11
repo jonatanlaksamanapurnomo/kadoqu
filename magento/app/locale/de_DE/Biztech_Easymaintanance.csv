@@ -1,0 +1,42 @@
+Site Maintenance,Site Maintenance
+Allow Frontend for Admin,Erlauben Frontend für Admin
+Allowed IPs,erlaubte IPs
+Log file,Log-Datei
+Maintenance Page HTML,Wartung Page HTML
+Timer?,Timer?
+Timer text,Timer Text
+Date,Datum
+Hour,Stunde
+Minute,Minute
+Alert Minutes,Alert-Protokoll
+Recipient Email,Empfänger E-Mail
+Email Template,E-Mail Vorlage
+Enable,ermöglichen
+Recipient Email,Empfänger E-Mail
+enable or disable Site Maintenance,aktivieren oder deaktivieren Site Maintenance
+Frontend is allow for logged admin user,Frontend ist damit für eingeloggte Benutzer admin
+IPs that can access Site,"IPs, die Website zugreifen können"
+Create log file to know who access while site is under maintenance mode.,"Erstellen Sie Protokolldateien, wer Zugang kennen, während Seite befindet sich im Wartungsmodus."
+Show this HTML content when site is under maintanance,"Dieses HTML-Inhalte, wenn Website ist unter maintanance"
+enable or disable Timer,aktivieren oder deaktivieren Timer
+Add text for timer,Fügen Sie Text für Timer
+Add Date for set timer,Aufgenommen für Timer einstellen
+Add Hour in 24-hour format when you want to finish timer,"In Stunde im 24-Stunden-Format, wenn Sie Timer beenden möchten"
+Add Minute when you want to finish timer,"In Minute, wenn Sie Timer beenden möchten"
+Add Minute to notify when timer comes to end,"In Minute zu benachrichtigen, wenn der Timer kommt bis zum Ende"
+Maintenance Configuration,Wartung Configuration
+Timer Configuration,Timer-Konfiguration
+Contact Us Configuration,Kontakt Konfiguration
+Yes,Ja
+No,Keine
+Days,Tage
+Hours,Stunden
+Minutes,Minuten
+Seconds,Sekunden
+Notify Me,Benachrichtige Mich
+Your Full Name,Ihr Vollst�ndiger Name
+Your E-mail,Deine E-Mail
+Submit,einreichen
+Contact Us,Kontaktieren Sie Uns
+Where did you hear about us,Wo haben Sie von uns geh�rt
+Details,Details

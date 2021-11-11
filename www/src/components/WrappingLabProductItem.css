@@ -1,0 +1,133 @@
+.wrapping-lab-product-item {
+  display: inline-block;
+  width: 30vw;
+  margin: 0 2vw;
+  font-size: 3vw;
+  position: relative;
+  transform: translate(0, 0);
+}
+
+.wrapping-lab-product-item-image-container {
+  padding: 100% 0 0;
+  width: 100%;
+  position: relative;
+}
+
+.wrapping-lab-product-item-image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapping-lab-product-item-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.wrapping-lab-product-item-name {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 0.3em;
+  font-size: 1.13em;
+  text-align: center;
+  font-weight: 300;
+}
+
+.wrapping-lab-product-item i {
+  font-size: 1em;
+  position: absolute;
+  left: 50%;
+  color: var(--darkGreen);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.wrapping-lab-product-item i:hover {
+  opacity: 0.8;
+}
+
+.wrapping-lab-product-item i:active {
+  opacity: 1;
+}
+
+.wrapping-lab-product-item i.fa-chevron-down {
+  bottom: -6.5vw;
+}
+
+.wrapping-lab-product-item i.fa-chevron-up {
+  top: -3.5vw;
+}
+
+.wrapping-lab-product-item-size {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: smaller;
+  text-align: center;
+}
+
+.wrapping-lab-product-item-dragged .wrapping-lab-product-item-qty {
+  display: none;
+}
+
+.wrapping-lab-product-item-qty {
+  position: absolute;
+  font-size: 1em;
+  top: 4%;
+  right: 4%;
+  text-shadow: 0 0 2px white, 0 0 5px white, 0 0 8px white;
+}
+
+.wrapping-lab-product-item-detail {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.7em;
+  text-align: center;
+  font-weight: 300;
+}
+
+@media (min-width: 576px) {
+  .wrapping-lab-product-item {
+    width: 10rem;
+    margin: 0 1rem;
+    font-size: 0.8rem;
+  }
+
+  .wrapping-lab-product-item i.fa-chevron-down {
+    bottom: -2.5vw;
+  }
+
+  .wrapping-lab-product-item i.fa-chevron-up {
+    top: -2.5vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .wrapping-lab-product-item {
+    width: 12.5rem;
+    margin: 0 1rem;
+    font-size: 1rem;
+  }
+
+  .wrapping-lab-product-item-name {
+    padding-top: 0.8em;
+  }
+}
+
+.wrapping-lab-product-item-disabled {
+  opacity: 0.5;
+}

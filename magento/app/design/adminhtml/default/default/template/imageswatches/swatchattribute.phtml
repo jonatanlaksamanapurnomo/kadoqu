@@ -1,0 +1,76 @@
+<?php
+/**
+ * ShopShark Image Swatches Extension
+ * @version   1.0 09.05.2014
+ * @author    ShopShark http://www.shopshark.net <info@shopshark.net>
+ * @copyright Copyright (C) 2010 - 2014 ShopShark
+ */
+echo '<td class="value" style="width: 100%;">';
+
+$optionList = $this->getAttribute()->getSource()->getAllOptions(false);
+?>
+<div class="grid">
+<table class="data border" cellspacing="0" id="swatches_table_grid" width="100%">
+    <thead>
+    	<tr class="headings">
+            <th width="100">
+                <span class="nobr"><?php echo $this->__('Label Name');?></span>
+            </th>
+            <th>
+                <span class="nobr"><?php echo $this->__('Custom HTML');?></span>
+            </th>
+            <th>
+                <span class="nobr"><?php echo $this->__('Image Preview');?></span>
+            </th>
+            <th width="70">
+                <span class="nobr"><?php echo $this->__('Remove');?></span>
+            </th>
+            <th width="200" class="last">
+                <span class="nobr"><?php echo $this->__('Image Upload');?></span>
+            </th>
+    	</tr>
+    </thead>
+    <tbody>
+        <?php if (count($optionList) == 0): ?>
+        <tr><th colspan="5"><?php echo $this->__('No options for this attribute');?></th></tr>
+        <?php else: ?>
+            <?php $sizes = ShopShark_Imageswatches_Helper_Data::getThumbnailSize(); ?>
+            <?php foreach ($optionList as $option) :
+                $swatchModel = $this->getSwatchByOptionId($option['value']);
+                ?>
+                <tr>
+                    <td class="a-center">
+                        <strong><?php echo $option['label']; ?></strong>
+                    </td>
+                    <td class="a-center">
+                        <input type="text" id="is-html-<?php echo $option['value'] ?>" name="is[swatch][<?php echo $option['value'] ?>][html]" value="<?php echo htmlentities($swatchModel->getCustomHTML()); ?>" maxlength="250" size="20">
+                    </td>
+                    <td class="a-center">
+                        <div>
+                            <div id="is-image-preview-<?php echo $option['value'] ?>" >
+                                <?php $thumbnail = $swatchModel->getThumbnail(); ?>
+                                <?php if ($thumbnail):?>
+                                    <img height="<?php echo $sizes['height'] ?>" width="<?php echo $sizes['width'] ?>" src="<?php echo $thumbnail?>" />
+                                <?php else:?>
+                                    <div style="text-align:center; border:1px solid grey; height:<?php echo $sizes['height'] ?>px; width:<?php echo $sizes['width'] ?>px; display: inline-block;line-height:120%;"><?php echo $this->__('No Image');?></div>
+                                <?php endif;?>
+                            </div>
+                            <input type="hidden" name="is[swatch][<?php echo $option['value'] ?>][option]" value="<?php echo $option['value']; ?>" />
+                            <input type="hidden" name="is[swatch][<?php echo $option['value'] ?>][file]" value="<?php echo $swatchModel->getImage(); ?>" />
+                        </div>
+                    </td>
+                    <td class="a-center">
+                    	<input type="checkbox" id="is-delete-<?php echo $option['value'] ?>" <?php if(!$thumbnail): ?>disabled<?php endif?> name="is[swatch][<?php echo $option['value'] ?>][delete_image]" value="<?php echo $option['value'] ?>">
+					</td>
+                    <td class="last">
+                        <input type="file" name="swfile[<?php echo $option['value'] ?>]">
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </tbody>
+</table>
+
+</div>
+
+</td>

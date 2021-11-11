@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <DigitalPianism_ProductExport>
+            <version>1.3.1</version>
+        </DigitalPianism_ProductExport>
+    </modules>
+    <global>
+        <models>
+            <productexport>
+                <class>DigitalPianism_ProductExport_Model</class>
+            </productexport>
+        </models>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <DigitalPianism_ProductExport before="Mage_Adminhtml">DigitalPianism_ProductExport_Adminhtml</DigitalPianism_ProductExport>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <events>
+            <!-- event triggered after the original massaction items are added -->
+            <adminhtml_catalog_product_grid_prepare_massaction>
+                <observers>
+                    <digitalpianism_productexport_add>
+                        <type>singleton</type>
+                        <class>productexport/observer</class>
+                        <method>addMassExport</method>
+                    </digitalpianism_productexport_add>
+                </observers>
+            </adminhtml_catalog_product_grid_prepare_massaction>
+        </events>
+    </adminhtml>
+    <phpunit>
+        <suite>
+            <modules>
+                <DigitalPianism_ProductExport/>
+            </modules>
+        </suite>
+    </phpunit>
+</config>

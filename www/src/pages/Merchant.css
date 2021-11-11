@@ -1,0 +1,35 @@
+.Merchant-Badge{
+    width: 10%;
+    margin-left: 70%;
+    margin-top: -5%;
+}
+.Produk-Popular{
+    font-size: 1.5vw;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+.Produk-Popular-mob{
+    font-size: 3.5vw;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.produk-line {
+    border: none;
+    height: 3px;
+    margin-top: -2.2%;
+    margin-left: 14%;
+    color: #333; /* old IE */
+    background-color: #333; /* Modern Browsers */
+width: 67vw;
+}
+.merchant-product{
+padding-left: 10%;
+padding-right: 10%;
+padding-bottom: 10%;
+}
+.result-merchant{
+    padding-bottom: 10%;
+}

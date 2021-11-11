@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--
+  ~ Magestore
+  ~
+  ~ NOTICE OF LICENSE
+  ~
+  ~ This source file is subject to the Magestore.com license that is
+  ~ available through the world-wide-web at this URL:
+  ~ http://www.magestore.com/license-agreement.html
+  ~
+  ~ DISCLAIMER
+  ~
+  ~ Do not edit or add to this file if you wish to upgrade this extension to newer
+  ~ version in the future.
+  ~
+  ~ @category    Magestore
+  ~ @package     Magestore_Onestepcheckout
+  ~ @copyright   Copyright (c) 2017 Magestore (http://www.magestore.com/)
+  ~ @license     http://www.magestore.com/license-agreement.html
+  -->
+
+<config>
+    <menu>
+        <onestepcheckout module="onestepcheckout" translate="title">
+            <title>One Step Checkout</title>
+            <sort_order>71</sort_order>
+            <children>
+                <settings module="onestepcheckout" translate="title">
+                    <title>Settings</title>
+                    <sort_order>1000</sort_order>
+                    <action>adminhtml/system_config/edit/section/onestepcheckout</action>
+                </settings>
+                <simicart module="onestepcheckout" translate="title">
+                    <title>Use in mobile app</title>
+                    <sort_order>2000</sort_order>
+                    <action>adminhtml/simi</action>
+                </simicart>
+            </children>
+        </onestepcheckout>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <onestepcheckout translate="title">
+                                        <title>Magestore</title>
+                                        <sort_order>50</sort_order>
+                                    </onestepcheckout>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <onestepcheckout module="onestepcheckout" translate="title">
+                        <title>Onestepcheckout</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <settings module="onestepcheckout" translate="title">
+                                <title>Settings</title>
+                                <sort_order>1000</sort_order>
+                            </settings>
+                        </children>
+                    </onestepcheckout>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <translate>
+        <modules>
+            <Magestore_Onestepcheckout>
+                <files>
+                    <default>Magestore_Onestepcheckout.csv</default>
+                </files>
+            </Magestore_Onestepcheckout>
+        </modules>
+    </translate>
+</config>

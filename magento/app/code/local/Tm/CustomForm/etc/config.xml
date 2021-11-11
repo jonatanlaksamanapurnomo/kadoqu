@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Tm_CustomForm>
+			<version>0.1.0</version>		
+		</Tm_CustomForm>
+	</modules>
+	<frontend>
+		<layout>
+			<updates>
+				<customform>
+					<file>tm_customform.xml</file>
+				</customform>
+			</updates>
+		</layout>
+	</frontend>	
+	<global>	
+		<models>
+			<customform>
+				<class>Tm_CustomForm_Model</class>
+			</customform>
+		</models>
+		<helpers>
+			<customform>
+				<class>Tm_CustomForm_Helper</class>
+			</customform>
+		</helpers>
+	</global>
+	<adminhtml>
+		<acl>
+			<resources>
+				<all>
+	                <title>Allow everything</title>
+	            </all>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<customform translate="title" module="customform">
+											<title>Contact Custom Form Section</title>
+										</customform>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+</config>

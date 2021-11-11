@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<config>
+  	<sections>
+    	<payment>
+      		<groups>
+				<myshortcart translate="label comment" module="paygate">
+					  <label>myShortCart</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>4</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+					  <fields>
+							<active translate="label">
+								  <label>Enabled</label>
+								  <frontend_type>select</frontend_type>
+								  <source_model>adminhtml/system_config_source_yesno</source_model>
+								  <sort_order>10</sort_order>
+								  <show_in_default>1</show_in_default>
+								  <show_in_website>1</show_in_website>
+								  <show_in_store>1</show_in_store>
+							</active>
+							<title translate="label">
+								  <label>Title</label>
+								  <frontend_type>text</frontend_type>
+								  <sort_order>20</sort_order>
+								  <show_in_default>1</show_in_default>
+								  <show_in_website>1</show_in_website>
+								  <show_in_store>1</show_in_store>
+							</title>
+							<storeid translate="label">
+								  <label>Store ID</label>
+								  <frontend_type>text</frontend_type>
+								  <sort_order>30</sort_order>
+								  <show_in_default>1</show_in_default>
+								  <show_in_website>1</show_in_website>
+								  <show_in_store>1</show_in_store>
+								  <comment>Masukkan Store ID Anda</comment>
+							</storeid>
+                                                        <sharekey translate="label">
+								  <label>Shered Key</label>
+								  <frontend_type>text</frontend_type>
+								  <sort_order>30</sort_order>
+								  <show_in_default>1</show_in_default>
+								  <show_in_website>1</show_in_website>
+								  <show_in_store>1</show_in_store>
+								  <comment>Masukkan Share Key</comment>
+							</sharekey>
+                                                        <prefixkey translate="label">
+								  <label>Prefix</label>
+								  <frontend_type>text</frontend_type>
+								  <sort_order>10</sort_order>
+								  <show_in_default>1</show_in_default>
+								  <show_in_website>1</show_in_website>
+								  <show_in_store>1</show_in_store>
+								  <comment>Masukkan Prefix</comment>
+							</prefixkey>
+							<order_status translate="label">
+								  <label>New Order Status</label>
+								  <frontend_type>select</frontend_type>
+								  <source_model>adminhtml/system_config_source_order_status</source_model>
+								  <sort_order>50</sort_order>
+								  <show_in_default>1</show_in_default>
+								  <show_in_website>1</show_in_website>
+								  <show_in_store>0</show_in_store>
+							</order_status>
+							<allowspecific translate="label">
+								  <label>Payment Applicable From</label>
+								  <frontend_type>select</frontend_type>
+								  <sort_order>61</sort_order>
+								  <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+								  <show_in_default>1</show_in_default>
+								  <show_in_website>1</show_in_website>
+								  <show_in_store>0</show_in_store>
+							</allowspecific>
+							<specificcountry translate="label">
+								  <label>Countries Payment Applicable From</label>
+								  <frontend_type>multiselect</frontend_type>
+								  <sort_order>70</sort_order>
+								  <source_model>adminhtml/system_config_source_country</source_model>
+								  <show_in_default>1</show_in_default>
+								  <show_in_website>1</show_in_website>
+								  <show_in_store>0</show_in_store>
+								  <depends>
+										<allowspecific>1</allowspecific>
+								  </depends>
+							</specificcountry>
+							<sort_order translate="label">
+								  <label>Sort Order</label>
+								  <frontend_type>text</frontend_type>
+								  <sort_order>100</sort_order>
+								  <show_in_default>1</show_in_default>
+								  <show_in_website>1</show_in_website>
+								  <show_in_store>0</show_in_store>
+							</sort_order>
+							<enabled translate="label">
+								<label>Enable Form Konfirmasi Pembayaran myShortCart</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>
+								<backend_model>myshortcart/system_config_backend_links</backend_model>
+								<sort_order>110</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</enabled>
+							<recipient_email translate="label">
+								<label>Email Penerima</label>
+								<frontend_type>text</frontend_type>
+								<validate>validate-email</validate>
+								<sort_order>120</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+								<comment>Email konfirmasi pembayaran dikirim ke email ini</comment>
+							</recipient_email>
+							<sender_email translate="label">
+								<label>Email Pengirim</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>130</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+								<comment>Boleh sama dengan "Email Penerima"</comment>
+							</sender_email>
+							<email_template translate="label">
+								<label>Email Template</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_email_template</source_model>
+								<sort_order>140</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</email_template>
+					  </fields>
+				</myshortcart>
+		  	</groups>
+		</payment>
+  	</sections>
+</config>

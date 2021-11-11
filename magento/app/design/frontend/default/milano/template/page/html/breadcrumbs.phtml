@@ -1,0 +1,25 @@
+<?php if($crumbs && is_array($crumbs)):
+$_richSnippets = Mage::getStoreConfig('milanoconfig/richsnippets/enabled') == 1;
+?>
+<div class="breadcrumbs"<?php if($_richSnippets): ?> xmlns:v="http://rdf.data-vocabulary.org/#"<?php endif; ?>>
+    <ul>
+        <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+            <li class="<?php echo $_crumbName ?>"<?php if($_richSnippets): ?> typeof="v:Breadcrumb"<?php endif; ?>>
+            <?php if($_crumbInfo['link']): ?>
+                <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->htmlEscape($_crumbInfo['title']) ?>"<?php if($_richSnippets): ?> rel="v:url" property="v:title"<?php endif; ?>><?php echo $this->htmlEscape($_crumbInfo['label']) ?></a>
+            <?php elseif($_crumbInfo['last']): ?>
+                <strong<?php if($_richSnippets): ?> property="v:title"<?php endif; ?>><?php echo $this->htmlEscape($_crumbInfo['label']) ?></strong>
+            <?php else: ?>
+                <?php echo $this->htmlEscape($_crumbInfo['label']) ?>
+            <?php endif; ?>
+            <?php if(!$_crumbInfo['last']): ?>
+                &nbsp;<span>&raquo;</span>&nbsp;
+            <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+        	<li class="back">
+            	<a href="javascript: history.go(-1)"><?php echo $this->__('Return to Previous Page') ?></a>
+            </li>
+    </ul>
+</div>
+<?php endif; ?>

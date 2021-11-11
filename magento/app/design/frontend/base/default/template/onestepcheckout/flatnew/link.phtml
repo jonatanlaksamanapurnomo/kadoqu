@@ -1,0 +1,34 @@
+<?php
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Onestepcheckout
+ * @copyright   Copyright (c) 2017 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+?>
+<?php $_helper = Mage::helper('onestepcheckout'); ?>
+<?php if ($_helper->enabledOnestepcheckout()): ?>
+    <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>" class="button btn-checkout"
+            onclick="window.location='<?php echo $_helper->getCheckoutUrl(); ?>';">
+        <span><span><?php echo $this->__('Proceed to Checkout') ?></span></span></button>
+<?php else: ?>
+    <?php if ($this->isPossibleOnepageCheckout()): ?>
+        <button type="button" title="<?php echo $this->__('Proceed to Checkout') ?>"
+                class="button btn-checkout<?php if ($this->isDisabled()): ?> no-checkout<?php endif; ?>"<?php if ($this->isDisabled()): ?> disabled="disabled"<?php endif; ?>
+                onclick="window.location='<?php echo $this->getCheckoutUrl() ?>';">
+            <span><span><?php echo $this->__('Proceed to Checkout') ?></span></span></button>
+    <?php endif ?>
+<?php endif; ?>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+
+/**
+ * You should this in case you want to display bestsellers for each categories
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+-->
+<layout version="0.1.0">
+    <default>
+		<reference name="head">
+			<action method="addJs"><script>mw_js/jquery.js</script></action>
+			<action method="addJs"><script>mw_js/jquery_noconflict.js</script></action>						
+			<action method="addItem"><type>skin_js</type><name>js/hm/jquery.jcarousel.pack.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/hm/script.js</name></action>			
+			<action method="addCss"><stylesheet>css/hm/jquery.jcarousel.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/hm/skin.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/hm/boxcaption.css</stylesheet></action>
+		</reference>
+		
+        <reference name="content">
+         <!--   <block type="bestseller/bestseller" name="bestseller" template="hm/bestseller.phtml" />-->
+        </reference>
+    </default>
+	<catalog_category_default>
+        <reference name="content">
+			<!--<block type="bestseller/bestseller" name="bestseller" before="category.products" template="hm/bestseller.phtml" />-->
+         </reference>
+	</catalog_category_default>
+	<catalog_category_layered>
+        <reference name="content">
+			<!--<block type="bestseller/bestseller" name="bestseller" before="category.products" template="hm/bestseller.phtml" />-->
+         </reference>
+	</catalog_category_layered>
+</layout>

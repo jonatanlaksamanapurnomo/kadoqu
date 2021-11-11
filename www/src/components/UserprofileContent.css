@@ -1,0 +1,283 @@
+.full-height {
+  height: 36.4rem;
+}
+.full-width {
+  width: 80rem;
+}
+.bg-color {
+  background-color: #f1f1f1;
+}
+.underline {
+  color: black;
+  border-bottom: 5px solid black;
+  width: 11.9rem;
+}
+.form-field {
+  border: none;
+  border-radius: 0;
+}
+.date-of-birth-container div input {
+  margin: 0 0.5rem;
+}
+.form-field::placeholder {
+  font-size: initial;
+}
+
+.underline-alamat {
+  color: black;
+  border-bottom: 5px solid black;
+  width: 9.9rem;
+}
+
+.underline-belanjaan {
+  color: black;
+  border-bottom: 5px solid black;
+  width: 19.1rem;
+}
+
+.underline-history {
+  color: black;
+  border-bottom: 5px solid black;
+  width: 21rem;
+}
+
+.underline-favorite {
+  color: black;
+  border-bottom: 5px solid black;
+  width: 16rem;
+}
+.user-profile-data-diri-input {
+  width: 33rem;
+}
+
+.dd-mm-width {
+  width: 3rem;
+}
+
+.yy-width {
+  width: 5rem;
+}
+
+.ml-dof {
+  margin-left: -1.3rem;
+}
+
+.modal {
+  border: none;
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal-header-userprofile {
+  border: none;
+  padding-left: 0;
+  padding-top: 2rem;
+}
+.modal-title {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+.modal-bg {
+  background-color: var(--grey-3);
+  padding-left: 5rem;
+  padding-right: 6rem;
+  padding-bottom: 2rem;
+}
+.modal-size {
+  width: 50rem;
+  height: 30rem;
+}
+.password-error {
+  background-color: #ffde9b;
+  color: #fd3232;
+  font-size: 18px;
+}
+.modal-input-width {
+  width: 30rem;
+}
+.modal-input-width2 {
+  width: 20rem;
+}
+
+.modal-btn-color {
+  background-color: var(--grey-4);
+  border-color: var(--grey-4);
+}
+.modal-btn-color:hover {
+  background-color: var(--grey-4);
+}
+.modal-btn-size {
+  width: 10rem;
+  height: 2rem;
+}
+
+.primary-button-green {
+  background-color: var(--green-1) !important;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14.3pt;
+  font-weight: 500;
+  height: 42px;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 0 1rem;
+}
+
+.black {
+  color: black;
+}
+
+.jumbo-size {
+  height: 100%;
+}
+.margin-top-form {
+  margin-top: 1.6rem !important;
+}
+
+@font-face {
+  font-family: light;
+  src: url("../assets/fonts/GOTHAM-LIGHT.woff");
+}
+
+.font-light {
+  font-family: light;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.margin-left-date {
+  margin-left: 6.4rem !important;
+}
+
+.margin-left {
+  margin-left: -8vw !important;
+}
+
+.margin-right-address {
+  margin-right: -0.1rem !important;
+  margin-left: -1rem !important;
+}
+
+.green {
+  color: var(--darkGreen);
+  cursor: pointer;
+}
+
+.user-profile-mobile-back {
+  font-size: 1.3rem;
+}
+
+@media (max-width: 991px) {
+  .margin-left {
+    margin-left: 0rem !important;
+  }
+  .nav-link-user-profile {
+    display: inline-block;
+  }
+  .margin-bottom-favorite-mobile {
+    margin-bottom: 13vh;
+    width: 100%;
+  }
+  .lupa-password-div {
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+  }
+  .margin-top-button {
+    margin-top: 10rem;
+  }
+  .modal-btn-size {
+    width: 10rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+  .primary-button {
+    font-size: 1rem;
+  }
+  .back-mobile {
+    background: #d1eff7;
+  }
+  .mobile-title-vertical-center {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .h1-desktop {
+    display: none;
+  }
+  .user-profile-data-diri-input {
+    width: 70vw;
+    border: 1px solid var(--darkGreen);
+  }
+  .margin-top-form-mobile {
+    margin-top: 1.5rem !important;
+  }
+  .font-light {
+    font-family: light;
+    font-size: 0.95rem;
+  }
+  .mobile-title-page {
+    font-size: 1.22rem;
+  }
+  .padding-left-mob {
+    padding-left: 10vw;
+  }
+  .margin-bottom-mobile {
+    margin-bottom: 2rem !important;
+  }
+  .small-link {
+    color: var(--darkGreen);
+  }
+  .small-link :hover {
+    cursor: pointer;
+  }
+  .yy-width {
+    border: 1px solid var(--darkGreen);
+  }
+  .dd-mm-width {
+    border: 1px solid var(--darkGreen);
+  }
+}
+.userprofile-scrollable {
+  overflow-y: scroll;
+  height: 450px !important;
+}
+
+@media (max-width: 320px) {
+  .modal-btn-size {
+    width: 9rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
+  .primary-button {
+    font-size: 0.9rem;
+  }
+  .user-profile-data-diri-input {
+    width: 74vw;
+    border: 1px solid var(--darkGreen);
+  }
+}
+.history-div {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  width: 90%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 82%;
+left: 70%;
+  color: var(--darkGreen);
+}
+
+.success-update {
+  width: 100%;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-left: 5vh;
+  background-color: var(--green-2);
+}

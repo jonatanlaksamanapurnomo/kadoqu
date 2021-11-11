@@ -1,0 +1,91 @@
+<?php
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Onestepcheckout
+ * @copyright   Copyright (c) 2017 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+if (!$this->getQuote()->isVirtual()): ?>
+    <div class="giftmessage">
+        <?php if ($this->helper('giftmessage/message')) echo $this->helper('giftmessage/message')->getInline('onepage_checkout', $this->getQuote(), false) ?>
+        <?php if ($this->getLayout()->createBlock('enterprise_giftwrapping/checkout_options')) echo $this->getLayout()->createBlock('enterprise_giftwrapping/checkout_options')->setTemplate('giftwrapping/checkout/options.phtml')->tohtml(); ?>
+        <script type="text/javascript">
+            //<![CDATA[
+            if ($('allow_gift_options')) {
+                Event.observe('allow_gift_options', 'change', function () {
+                    var isGiftWrap = $('allow_gift_options').checked ? true : false;
+                    if (!isGiftWrap)
+                        save_shipping_method(shipping_method_url, update_shipping_payment, update_shipping_review);
+                });
+            }
+
+            if ($('allow_gift_options_for_order')) {
+                Event.observe('allow_gift_options_for_order', 'change', function () {
+                    var isGiftWrap = $('allow_gift_options_for_order').checked ? true : false;
+                    if (!isGiftWrap)
+                        save_shipping_method(shipping_method_url, update_shipping_payment, update_shipping_review);
+                });
+            }
+
+            if ($('allow_gift_options_for_items')) {
+                Event.observe('allow_gift_options_for_items', 'change', function () {
+                    var isGiftWrap = $('allow_gift_options_for_items').checked ? true : false;
+                    if (!isGiftWrap)
+                        save_shipping_method(shipping_method_url, update_shipping_payment, update_shipping_review);
+                });
+            }
+
+            $$('select[name^=giftwrapping]', 'input[name^=giftwrapping]').each(function (item) {
+                Event.observe(item, 'change', function () {
+                    save_shipping_method(shipping_method_url, update_shipping_payment, update_shipping_review);
+                });
+            });
+
+            //]]>
+        </script>
+    </div>
+    <style type="text/css">
+        .one-step-checkout .giftmessage .checkbox {
+            float: left;
+            margin: 5px !important;
+            clear: both;
+        }
+
+        .one-step-checkout #gift-message-whole-message, .one-step-checkout .input-text.giftmessage-area {
+            height: auto !important;
+            border: 0 none;
+            border-bottom: 1px solid silver;
+        }
+
+        .one-step-checkout .gift-messages-form, .one-step-checkout .gift-messages-form h4, .one-step-checkout .gift-messages-form p {
+            clear: both;
+        }
+
+        .one-step-checkout .gift-messages-form .form-list, .one-step-checkout .gift-messages-form .item .details {
+            padding-left: 0px !important;
+            margin-left: 0px !important
+        }
+
+        .one-step-checkout .gift-messages-form .wide {
+            display: flex;
+        }
+
+        .gift-message-form .inner-box > div.extra-options-container p {
+            clear: both;
+        }
+    </style>
+<?php endif; ?>

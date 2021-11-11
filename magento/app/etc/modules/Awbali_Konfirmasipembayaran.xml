@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <modules>
+        <Awbali_Konfirmasipembayaran>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Awbali_Konfirmasipembayaran>
+    </modules>
+</config>

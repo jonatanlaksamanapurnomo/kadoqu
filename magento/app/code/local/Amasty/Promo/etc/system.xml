@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2017 Amasty (https://www.amasty.com)
+ * @package Amasty_Promo
+ */
+-->
+<config>
+    <sections>
+        <ampromo translate="label" module="ampromo">
+            <label>Promo Items</label>
+            <tab>amasty</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>161809</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <message translate="label">
+                            <label>Message For The Promo Item In The Cart</label>
+                            <comment>Can be configured for each rule individually on the `Labels` tab</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </message>                   
+                        <prefix translate="label">
+                            <label>Prefix For The Promo Item Name In The Order</label>
+                            <comment>Can be configured for each rule individually on the `Labels` tab</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </prefix> 
+
+                        <auto_add translate="label">
+                            <label>Add Simple Products Automatically, Without Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_add>
+                        <auto_add_downloadable translate="label">
+                            <label>Add Downloadable Products Automatically, Without Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_add_downloadable>
+                        <free_shipping>
+                            <label>Free Shipping For Promo Items</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </free_shipping>
+						<calculate_tax>
+                            <label>Calculate Tax For Promo Items</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </calculate_tax>
+                        <apply_to_admin_orders>
+                            <label>Apply to Admin orders</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </apply_to_admin_orders>
+						<tax_in_subtotal>
+                            <label>Add tax to row subtotal</label>
+							<comment><![CDATA[<b>Please note!</b> This setting will work only for $X value calculation in "Auto add promo items for every $X spent" action.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </tax_in_subtotal>
+						<default_currency>
+                            <label>Use default currency for calculate row subtotal</label>
+							<comment><![CDATA[<b>Please note!</b> This setting will work only for $X value calculation in "Auto add promo items for every $X spent" action.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </default_currency>						
+                    </fields>
+                </general>
+                <popup>
+                    <label>Popup</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <add_message translate="label">
+                            <label>Select Promo Block</label>
+                            <comment><![CDATA[<b>Note:</b> Block should consist link, because customer can clicks here to open the popup block with available promo items]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+							<validate>required-entry</validate>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </add_message>
+                        <auto_open_popup translate="label">
+                            <label>Open Popup Automatically</label>
+                            <comment>Always open free gift popup on cart page if any free gift is available</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_open_popup>
+                        <popup_on_checkout translate="label">
+                            <label>Show Popup on Checkout Page</label>
+                            <comment>Useful for when customers go directly to the checkout process, skipping the cart page</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </popup_on_checkout>
+                    </fields>
+                </popup>
+                <messages translate="label">
+                    <label>Notifications</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <display_notification>
+                            <label>Reminder about Available Promos</label>
+                            <comment>Display notification if customer did not add any gifts to the cart while having some available</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display_notification>
+                        <notification_text>
+                            <label>Notification Message</label>
+                            <comment>{url checkout/cart} placeholder will be replaced with actual cart url</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <depends>
+                                <display_notification>1</display_notification>
+                            </depends>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </notification_text>
+                        <success translate="label">
+                            <label>Display Success Messages</label>
+                            <comment>Show message like `Free gift %s was added to your shopping cart`. Can be modified in the app\locale\en_US\Amasty_Promo.csv</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </success>
+                        <errors translate="label">
+                            <label>Display Error Messages</label>
+                            <comment>When there are no enough promo items in stock, or they are disabled.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </errors>
+                        <show_stock_warning translate="label">
+                            <label>Show Stock Warning In Admin Panel</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_stock_warning>
+                    </fields>
+                </messages>
+                <limitations>
+                    <label>Limitations</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <skip_special_price translate="label">
+                            <label>Do not Offer Promos for Products with Special Price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </skip_special_price>
+                        <skip_special_price_configurable translate="label">
+                            <label>Do not Offer Promos for Configurable Products with when Child has Special Price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </skip_special_price_configurable>
+                    </fields>
+                </limitations>
+                <banners  translate="label">
+                    <label>Product Page Banners</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <mode translate="label">
+                            <label>Validate condition based on</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ampromo/source_banner_mode</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mode>
+                        <enabled_top translate="label">
+                            <label>Enable Top Banners</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled_top>
+                        <enabled_above_cart translate="label">
+                            <label>Enable After Product Description Banner</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled_above_cart>
+                        <single translate="label">
+                            <label>Show One Banner Only</label>
+                            <comment>Please select `No` to show all banners from matched rules.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </single>
+                    </fields>
+                </banners>
+                <gift_images>
+                    <label>Gift Images</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <gift_image_width>
+                            <label>Gift Image Width (px)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </gift_image_width>
+                        <gift_image_height>
+                            <label>Gift Image Height (px)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </gift_image_height>
+                    <attribute_header>
+                            <label>Product Attribute for Header</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ampromo/source_attributes</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </attribute_header>
+                        <attribute_description>
+                            <label>Product Attribute for Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>ampromo/source_attributes</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </attribute_description>
+                    </fields>
+                </gift_images>
+            </groups>
+        </ampromo>
+    </sections>
+</config>

@@ -1,0 +1,44 @@
+<?php if ($posts = $this->getRecent()): ?>
+    <div class="blog-bg" data-source-url="skin url='images/blog-bg.jpg">
+        <div class="widget-latest">
+            <div class="page-title category-title center">
+                <h3><?php echo Mage::helper('blog')->__('Latest Posts');  ?></h3>
+            </div>
+            <ul class="grid-clol-6">
+                <?php $i = 0; ?>
+                <?php foreach ($posts as $post): ?>
+                    <?php if ($i<3): ?>
+                        <li class="col-item3">
+                            <div class="widget-latest-title"><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></div>
+                            <div class="postContent"><?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($post->getShortContent()); ?></div>
+                            <div class="widget-latest-details">
+                                <?php // $post->setCreatedTime($this->formatDate($post->getCreatedTime(), "long", false)); ?>
+                                <?php //echo $post->getCreatedTime(); ?>
+                                <?php $_ct= new Zend_Date($post->getCreatedTime()); ?>
+                                <span class="widget-latest-data"><i class="fa fa-clock-o"></i> <?php echo $_ct->toString(); ?></span>
+                                <a class="widget-latest-comment" href="<?php echo $post->getAddress(); ?>#commentBox" >
+                                     <i class="fa fa-comment-o"></i>
+                                    <?php if ($post->getCommentCount() > 0): ?>
+                                        <?php echo $post->getCommentCount(); ?> <?php echo Mage::helper('blog')->__('Comments'); ?>
+                                    <?php endif; ?>
+                                     <?php if ($post->getCommentCount() < 1): ?> 
+                                        <?php echo "0"; ?> <?php echo Mage::helper('blog')->__('Comments'); ?>
+                                    <?php endif; ?>
+                                </a>
+                                <span class="postDetails-user">
+                                    <i class="fa fa-user"></i>
+                                    <?php echo $post->getUser(); ?>
+                                </span>
+                            </div>
+                            <a href="<?php echo $post->getAddress(); ?>"class="aw-blog-read-more all-blog"><?php echo Mage::helper('blog')->__('Read more');  ?></a>
+                        </li>
+                    <?php endif; ?>
+                    <?php $i++; ?>
+                <?php endforeach; ?>
+            </ul>
+           <!-- <a href="<?php // echo $this->getBlogUrl() ?>"class="aw-blog-read-more all-blog"><?php // echo Mage::helper('blog')->__('View all posts');  ?></a> -->
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php // $tt = count($this->getRecent()); print_r($tt) ; ?>

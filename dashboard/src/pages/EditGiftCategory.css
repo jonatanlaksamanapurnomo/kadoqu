@@ -1,0 +1,47 @@
+.edit-subcategory-card {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid;
+  border-color: aliceblue;
+  border-radius: 0.5px;
+  margin-bottom: 0.8rem;
+  padding: 0.4rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: aliceblue;
+}
+
+.edit-subcategory-card:hover,
+.edit-subcategory-card.active:hover {
+  background-color: rgb(191, 212, 231);
+  border-color: rgb(191, 212, 231);
+}
+
+.edit-subcategory-card.active {
+  background-color: rgb(211, 233, 253);
+  border-color: #aad6ff;
+}
+
+.edit-subcategory-card.add {
+  background-color: #f1f1f1;
+  border-color: #f1f1f1;
+  font-size: larger;
+  padding: 0.275rem;
+}
+
+.edit-subcategory-card.add:hover {
+  background-color: rgb(211, 211, 211);
+  border-color: rgb(211, 211, 211);
+}
+
+.edit-subcategory-card i {
+  color: gray;
+}
+
+.action-buttons button {
+  width: 100%;
+}
+
+.action-buttons button:not(:first-child),
+.action-buttons div {
+  margin-top: 0.25rem !important;
+}

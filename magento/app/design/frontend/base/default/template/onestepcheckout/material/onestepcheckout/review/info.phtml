@@ -1,0 +1,83 @@
+<?php
+/**
+ * Magestore
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Magestore
+ * @package     Magestore_Onestepcheckout
+ * @copyright   Copyright (c) 2017 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+?>
+<?php echo $this->getChildHtml('items_before'); ?>
+<div id="checkout-review-table-wrapper">
+    <h3 style="float:left" id="review_step_header">
+        <?php echo $this->__('Order Review'); ?>
+    </h3>
+    <table class="data-table" id="checkout-review-table">
+        <?php /*onestepcheckout_admin*/
+        if ($this->getRequest()->getControllerName() != 'admin'): ?>
+            <?php if ($this->helper('tax')->displayCartBothPrices()): $colspan = $rowspan = 2;
+            else: $colspan = $rowspan = 1; endif; ?>
+            <col/>
+            <col width="1"/>
+            <col width="1"/>
+            <col width="1"/>
+            <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1"/>
+                <col width="1"/>
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                <thead>
+                <tr>
+                    <th style="width:70%" rowspan="<?php echo $rowspan ?>"
+                        class="a-left"><?php echo $this->__('Product') ?></th>
+                    <th style="width:16%;padding:10px 20px" rowspan="<?php echo $rowspan ?>"
+                        class="a-right"><?php echo $this->__('Qty') ?></th>
+                    <th style="width:30%" colspan="<?php echo $colspan ?>"
+                        class="a-center"><?php echo $this->__('Subtotal') ?></th>
+                </tr>
+                <tr>
+                    <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                    <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                </tr>
+                </thead>
+            <?php else: ?>
+                <tr>
+                    <th style="width:70%" rowspan="<?php echo $rowspan ?>"
+                        class="a-left"><?php echo $this->__('Product') ?></th>
+                    <th style="width:16%; padding:10px 20px" rowspan="<?php echo $rowspan ?>"
+                        class="a-right"><?php echo $this->__('Qty') ?></th>
+                    <th style="width:30%" colspan="<?php echo $colspan ?>"
+                        class="a-right"><?php echo $this->__('Subtotal') ?></th>
+                </tr>
+            <?php endif; ?>
+        <?php endif ?>
+        <?php echo $this->getChildHtml('totals'); ?>
+        <?php /*onestepcheckout_admin*/
+        if ($this->getRequest()->getControllerName() != 'admin'): ?>
+            <tbody>
+            <?php foreach ($this->getItems() as $_item): ?>
+                <?php echo $this->getItemHtml($_item) ?>
+            <?php endforeach ?>
+            </tbody>
+        <?php endif ?>
+    </table>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    decorateTable('checkout-review-table');
+    truncateOptions();
+    //]]>
+</script>

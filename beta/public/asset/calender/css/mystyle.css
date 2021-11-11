@@ -1,0 +1,93 @@
+
+/**
+ * Start Style Calendar.html
+ */
+
+/**
+ * Custom Style for FullCalender at Calendar.html
+ */
+
+#calendar{
+	border: 5px solid #008E82;
+	border-radius: 5px;
+	margin-bottom: 20px !important;
+}
+
+#calendar .fc-toolbar.fc-header-toolbar {
+	padding: 30px 20px;
+    margin-bottom: 20px;
+    background-color: #8CCEC5;
+}
+
+#calendar .fc-left h2, #calendar .fc-center h2, #calendar .fc-right h2 {
+	margin-top: 5px;
+	font-size: 35px;
+	color: white;
+}
+@media (max-width: 768px) {
+	#calendar .fc-left h2, #calendar .fc-center h2, #calendar .fc-right h2 {
+		margin-top: 10px;
+		font-size: 20px;
+	}
+}
+
+.fc button {
+	padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    color: white;
+    font-size: 20px;
+}
+.fc button:hover {
+    color: #8CCEC5;
+}
+
+.fc-widget-header{
+    background-color: white;
+    padding: 10px 0;
+}
+
+.fc-widget-content{
+	border : 3px solid #8CCEC5;
+	border-radius: 3px;
+}
+
+.checkbox input#drop-remove {
+    -webkit-appearance: checkbox;
+}
+
+.fc-widget-header:first-of-type{
+    border-left: 0;
+    border-top: 0;
+}
+.closeon, .closen-extend {
+	color:black;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0 2px;
+	text-align:right;
+	width: 100%;
+	cursor: pointer;
+	color: #fff;
+	z-index: 1000;
+	opacity: 0;
+}
+
+.closeon {
+	font-size: 12px;
+}
+
+.closen-extend{
+	font-size: 20px;
+}
+
+.closen-extend:hover, .closeon:hover{
+	opacity: 1;
+}
+
+
+/**
+ * End Style Calendar.html
+ 

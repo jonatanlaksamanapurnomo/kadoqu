@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <DRMage_Gojek>
+      <version>0.0.1</version>
+		</DRMage_Gojek>
+	</modules>
+  <global>
+    <helpers>
+      <gojek>
+        <class>DRMage_Gojek_Helper</class>
+			</gojek>
+		</helpers>
+		<models>
+			<gojek>
+				<class>DRMage_Gojek_Model</class>
+				<resourceModel>gojek_mysql4</resourceModel>
+			</gojek>
+		</models>
+	</global>
+	<adminhtml>	
+		<layout>
+			<updates>
+				<gojek>
+					<file>drmage_gojek.xml</file>
+				</gojek>
+			</updates>
+		</layout>
+	</adminhtml>	
+	<default>
+		<carriers>
+			<gojek>
+				<active>1</active>
+				<model>gojek/carrier_gojek</model>
+				<name>Gojek</name>
+				<title>Gojek</title>
+				<description>Sent by Gojek</description>
+				<sort_order>0</sort_order>
+			</gojek>
+		</carriers>
+	</default>
+</config> 

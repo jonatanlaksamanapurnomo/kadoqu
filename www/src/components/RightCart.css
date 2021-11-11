@@ -1,0 +1,75 @@
+.right-cart-container {
+  position: absolute;
+  top: 0%;
+  background-color: white;
+  width: 700px;
+  height: 100%;
+  margin-left: 56%;
+  min-height: 1300px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  z-index: 4;
+}
+.judul-right-cart {
+  color: black;
+  margin-top: -50px;
+  margin-left: 32%;
+}
+#logo-right-cart {
+  margin-top: 5%;
+  margin-left: 15%;
+}
+.kotakwrap-right {
+  margin-left: 0%;
+}
+.ItemBuyTop-right {
+  background-color: #ebff7a;
+  height: 100px;
+  width: 700px;
+  margin-left: 0px;
+  margin-top: 3%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.logoclose-right {
+  margin-left: 460px;
+  margin-top: -115px;
+  font-weight: 500;
+  font-size: 20px;
+  color: grey;
+}
+.logodown-right {
+  margin-left: 420px;
+  margin-top: -70px;
+  font-weight: 500;
+  font-size: 20px;
+  color: grey;
+}
+.HargaWrapping-right {
+  color: var(--darkGreen);
+  margin-left: 280px;
+  margin-top: -30px;
+  font-weight: 500;
+  font-size: 20px;
+}
+.ItemBuy-right {
+  background-color: white;
+  height: 100%;
+  width: 700px;
+  margin-left: 0px;
+  margin-top: 0px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.right-cart-tambahkurang {
+  width: 20px;
+}
+.glda-btn-right {
+  background-color: var(--darkGreen);
+  color: white;
+  width: 25rem;
+  border-color: var(--darkGreen);
+  height: 3rem;
+  font-size: 1.5rem;
+  margin-left: 5%;
+  margin-top: 5%;
+}

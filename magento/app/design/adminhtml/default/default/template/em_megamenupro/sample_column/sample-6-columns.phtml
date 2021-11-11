@@ -1,0 +1,550 @@
+<div class="menu-item menu-item-link sample-6-column group">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Link: <span class="title">Sample 6 Column</span></div>
+	<div class="menu-item-content">
+		<input type="hidden" value="link" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td class="label"><label>Label</label></td>
+					<td class="value"><input type="input" value="Sample 6 Column" size="20" class="input-text" name="label"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Sub Label</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="sublabel"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Icon URL</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text input_emicon" name="icon_url">
+						<button onclick="iconshow(this)" type="button" class="emicon_button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text"><span>Image</span></span></button>
+					</td>
+				</tr>
+				<tr>
+					<td class="label"><label>URL</label></td>
+					<td class="value"><input type="input" value="{{store direct_url=''}}furniture.html" size="20" class="input-text input_emvariable" name="url">
+						<button onclick="variableshow(this)" type="button" class="emvariable_button ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text"><span>Variable</span></span></button>
+					</td>
+				</tr>
+				<tr>
+					<td class="label"><label>Target</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="target"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-hbox menu-item-depth-1 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Columns Layout</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="hbox" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td class="label"><label>Width</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="width"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Height</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="height"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Spacing</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="spacing"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="col-menu menu_col24 grid_24" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+		
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-vbox menu-item-depth-2 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Rows Layout</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="vbox" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td class="label"><label>Width</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="width"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Height</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="height"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Spacing</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="spacing"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="col-sm-4 grid_4 alpha" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-text menu-item-depth-3 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Text</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="text" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td colspan="2" class="value">
+						<textarea rows="5" cols="30" name="text" id="em_megamenu_text_141697936629786">{{widget type="megamenupro/catalognavigation" category_id="category/15" direction="vertical"}}</textarea>
+						<button class="scalable btn-wysiwyg ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button" title="WYSIWYG Editor" role="button" aria-disabled="false"><span class="ui-button-text">WYSIWYG Editor</span></button>
+					</td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-vbox menu-item-depth-2 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Rows Layout</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="vbox" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td class="label"><label>Width</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="width"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Height</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="height"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Spacing</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="spacing"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="col-sm-4 grid_4" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-text menu-item-depth-3 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Text</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="text" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td colspan="2" class="value">
+						<textarea rows="5" cols="30" name="text" id="em_megamenu_text_1416979366320327">{{widget type="megamenupro/catalognavigation" category_id="category/15" direction="vertical"}}</textarea>
+						<button class="scalable btn-wysiwyg ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button" title="WYSIWYG Editor" role="button" aria-disabled="false"><span class="ui-button-text">WYSIWYG Editor</span></button>
+					</td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-vbox menu-item-depth-2 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Rows Layout</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="vbox" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td class="label"><label>Width</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="width"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Height</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="height"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Spacing</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="spacing"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="col-sm-4 grid_4" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-text menu-item-depth-3 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Text</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="text" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td colspan="2" class="value">
+						<textarea rows="5" cols="30" name="text" id="em_megamenu_text_141697936634340">{{widget type="megamenupro/catalognavigation" category_id="category/15" direction="vertical"}}</textarea>
+						<button class="scalable btn-wysiwyg ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button" title="WYSIWYG Editor" role="button" aria-disabled="false"><span class="ui-button-text">WYSIWYG Editor</span></button>
+					</td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-vbox menu-item-depth-2 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Rows Layout</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="vbox" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td class="label"><label>Width</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="width"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Height</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="height"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Spacing</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="spacing"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="col-sm-4 grid_4" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-text menu-item-depth-3 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Text</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="text" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td colspan="2" class="value">
+						<textarea rows="5" cols="30" name="text" id="em_megamenu_text_1416979366365677">{{widget type="megamenupro/catalognavigation" category_id="category/15" direction="vertical"}}</textarea>
+						<button class="scalable btn-wysiwyg ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button" title="WYSIWYG Editor" role="button" aria-disabled="false"><span class="ui-button-text">WYSIWYG Editor</span></button>
+					</td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-vbox menu-item-depth-2 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Rows Layout</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="vbox" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td class="label"><label>Width</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="width"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Height</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="height"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Spacing</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="spacing"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="col-sm-4 grid_4" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-text menu-item-depth-3 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Text</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="text" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td colspan="2" class="value">
+						<textarea rows="5" cols="30" name="text" id="em_megamenu_text_1416979366388927">{{widget type="megamenupro/catalognavigation" category_id="category/15" direction="vertical"}}</textarea>
+						<button class="scalable btn-wysiwyg ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button" title="WYSIWYG Editor" role="button" aria-disabled="false"><span class="ui-button-text">WYSIWYG Editor</span></button>
+					</td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-vbox menu-item-depth-2 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Rows Layout</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="vbox" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td class="label"><label>Width</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="width"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Height</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="height"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Spacing</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="spacing"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="col-sm-4 grid_4 omega" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>
+
+<div class="menu-item menu-item-text menu-item-depth-3 menu-item-child">
+	<div class="menu-item-header ui-widget-header ui-corner-all">Text</div>
+	<div class="menu-item-content">
+		<input type="hidden" value="text" name="type">
+		<table class="form-list">
+			<tbody>
+				<tr>
+					<td colspan="2" class="value">
+						<textarea rows="5" cols="30" name="text" id="em_megamenu_text_1416979366410549">{{widget type="megamenupro/catalognavigation" category_id="category/15" direction="vertical"}}</textarea>
+						<button class="scalable btn-wysiwyg ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button" title="WYSIWYG Editor" role="button" aria-disabled="false"><span class="ui-button-text">WYSIWYG Editor</span></button>
+					</td>
+				</tr>
+				<tr>
+					<td class="label"><label>CSS Class</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="css_class"></td>
+				</tr>
+				<tr>
+					<td class="label"><label>Container CSS</label></td>
+					<td class="value"><input type="input" value="" size="20" class="input-text" name="container_css"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2">
+						<!--button name="revert">Revert</button-->
+						<button style="display:none" name="apply" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Apply</span></button>
+						<button name="delete" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Delete</span></button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	
+</div>

@@ -1,0 +1,21 @@
+.footer-text {
+  width: 100%;
+  text-align: center;
+  font-size: small;
+}
+
+.footer-container {
+  background: #cccccc;
+  margin-top: 100px;
+  padding-top: 20px;
+  min-height: 100px;
+  width: 100%;
+}
+.level-badge{
+margin-left: 22%;
+width: 12% !important;
+margin-top: -5%;
+}
+.Merchant-level-text{
+  margin-top: 6%;
+}

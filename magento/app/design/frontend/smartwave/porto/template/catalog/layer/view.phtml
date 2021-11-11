@@ -1,0 +1,61 @@
+<div class="mobile-layer-overlay close-mobile-layer"></div> 
+<div class="block-main-layer">  
+    <div class="layer-filter-icon visible-sm visible-xs"><a href="javascript:void(0)"><i class="icon-sliders"></i></a></div>
+    <h3 class="title-filter visible-sm visible-xs"><?php echo $this->__('Filter Your Selection');?><span class="close-layer"><i class="icon-cancel"></i></span></h3>
+    <?php echo $this->getChildHtml('catalog.category') ?>
+    <?php if($this->canShowBlock()): ?>
+    <div class="block block-layered-nav">
+        <div class="block-content">
+            <?php echo $this->getStateHtml() ?>
+            <?php if ($this->getLayer()->getState()->getFilters()): ?>
+                <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
+            <?php endif; ?>
+            <?php if($this->canShowOptions()): ?>
+                <dl id="narrow-by-list">
+                    <?php $_filters = $this->getFilters() ?>
+                    <?php foreach ($_filters as $_filter): ?>
+                    <?php if($_filter->getItemsCount()): ?>
+                        <dt><?php echo $this->__($_filter->getName()) ?></dt>
+                        <dd><?php echo $_filter->getHtml() ?></dd>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                </dl>
+                <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+                <script type="text/javascript">
+                    jQuery(function($){
+                        $(".block-layered-nav dt").click(function(){
+                            if($(this).next("dd").css("display") == "none"){
+                                $(this).next("dd").slideDown(200);
+                                $(this).removeClass("closed");
+                            } else {
+                                $(this).next("dd").slideUp(200);
+                                $(this).addClass("closed");
+                            }
+                        });
+                    });
+                </script>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+</div>
+<script type="text/javascript">
+    jQuery(function($){   
+        $('.layer-filter-icon, .close-mobile-layer, .close-layer').click(function(event) { 
+            if(!$('body').hasClass('mobile-layer-shown')) {
+                $('body').addClass('mobile-layer-shown', function() { 
+                    setTimeout(function(){
+                        $(document).one("click",function(e) {
+                            var target = e.target;
+                            if (!$(target).is('.block-main-layer .block') && !$(target).parents().is('.block-main-layer .block')) {
+                                        $('body').removeClass('mobile-layer-shown');
+                            }
+                        });  
+                    }, 111);
+                });
+            } else{
+                $('body').removeClass('mobile-layer-shown');
+            }
+        }); 
+    });
+</script>

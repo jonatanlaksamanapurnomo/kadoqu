@@ -1,0 +1,14 @@
+.info-kadoqu-container {
+  text-align: justify;
+  width: 90%;
+  margin: 10% auto;
+}
+
+.info-kadoqu-title {
+  font-size: 150%;
+  font-weight: 700;
+}
+
+.info-kadoqu-container p {
+  font-weight: 100;
+}

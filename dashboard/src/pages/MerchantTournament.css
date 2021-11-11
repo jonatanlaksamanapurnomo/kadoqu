@@ -1,0 +1,148 @@
+.progress-bar{
+    height: 2vw !important;
+    color: white;
+    font-size: 1vw;
+    background-color: white;
+    
+}
+.progress-bar-mob{
+    height: 2vw !important;
+    color: white;
+    font-size: 1vw;
+    background-color: white;
+    margin-bottom: 2vw;
+    
+}
+.prize-name{
+    font-size: 1.1vw;
+}
+.prize-name-mob{
+    font-size: 1.5vw;
+}
+.prize-name-next{
+    font-size: 1vw;
+}
+.prize-name-next-mob{
+    font-size: 1.5vw;
+}
+.liga-logo{
+    width: 6vw;
+    margin-left: 20%;
+    padding-top: 0.5vw;
+    
+}
+.liga-logo-mob{
+    width: 8vw;
+    margin-left: 20%;
+    padding-top: 60%;
+    
+}
+.progess-section{
+      background-color: #385773;
+
+    height: 100%;
+    margin-left: 2% !important;
+    margin-top: 2% !important;
+    margin-right: 2% !important;
+}
+
+.liga2{
+    background-color: #36a6bf;
+
+}
+.liga3{
+    background-color: #69bf6f;
+
+}
+.liga4{
+    background-color: #d99c2b;
+
+}
+.liga5{
+    background-color: #bf3636;
+
+}
+.table-section{
+    margin-left: 2% !important;
+    margin-right: 2% !important;
+    margin-top: 2% !important;
+}
+.tabel-section-mob{
+    margin-right: 2% !important;
+    margin-top: 5% !important;
+}
+.progess-bar-section{
+  padding-top: 0.8vw ;
+  margin-right: 2%;
+  padding-left: 7%;
+    
+}
+.progess-bar-section-mob{
+    padding-top: 0.8vw ;
+    margin-right: 2%;
+    padding-left: %;
+      
+  }
+.progress-info{
+    color: white;
+    padding-left: 0% !important;
+    font-size: 0.9vw;
+
+}
+.progress-info-mob{
+    color: white;
+    padding-left: 0% !important;
+    font-size: 1.7vw;
+
+}
+.progess-prize-section{
+    background-color: #6e9dba;
+
+
+}
+.liga2-bar{
+    background-color:#75cfd8 ;
+
+}
+.liga3-bar{
+    background-color:#a9e0aa;
+
+}
+.liga4-bar{
+    background-color: #e5b465;
+
+}
+.liga5-bar{
+    background-color:#dd6868;
+
+}
+.prize-section{
+    margin-left: 1vw;
+    margin-top: 0.5vw;
+   
+}
+.tabel-tournament{
+font-size: 5vw;
+}
+.prize-section-mob{
+    margin-left: 0vw;
+    margin-top: 0.5vw;
+   
+}
+.sales-total-section{
+    font-size: 8vh ;
+    font-weight: 700;
+    color: #297175;
+}
+.sales-total-section-mob{
+    font-size: 2vh;
+    font-weight: 700;
+    color: #297175;
+}
+.tabel-tournament-mob{
+    font-size: 1vh !important;
+}
+.col-mob{
+    padding: 0% !important;
+    margin: 0% !important;
+}

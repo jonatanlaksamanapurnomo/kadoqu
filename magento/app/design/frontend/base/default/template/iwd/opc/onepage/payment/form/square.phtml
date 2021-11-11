@@ -1,0 +1,103 @@
+<?php $code = $this->getMethodCode() ?>
+
+<div class="iwd_opc_universal_wrapper iwd_opc_cc_wrapper"
+     data-https="<?php echo Mage::app()->getStore()->isCurrentlySecure() ? 1 : 0; ?>">
+    <input type="text"
+           id="<?php echo $this->escapeHtml($code); ?>_cc_number"
+           value=""
+           class="required-entry iwd_opc_field iwd_opc_input"
+           name="payment[cc_number]"/>
+    <?php if (Mage::app()->getStore()->isCurrentlySecure()) { ?>
+        <span data-type="cc_on_https" data-icon="&#xf023" class="iwd_opc_payment_tooltip"
+              data-content="<?php echo $this->escapeHtml(
+                  $this->__('Rest easy. Your credit card information is safely secured.')
+              ); ?>">
+        </span>
+    <?php } ?>
+    <?php if ($this->getCcAvailableTypes()) { ?>
+        <div class="iwd_opc_cc_types" style="display: none;">
+            <?php $i = 0;
+            foreach ($this->getCcAvailableTypes() as $typeCode => $typeName) {
+                if ($i == 3) {
+                    break;
+                }
+                ?>
+                <div class="iwd_opc_cc_wrapper"
+                     title="<?php echo $this->escapeHtml($typeName); ?>"
+                     data-cc-type="<?php echo $this->escapeHtml($typeCode); ?>"></div>
+                <?php $i++;
+            } ?>
+            <?php if (count($this->getCcAvailableTypes()) > 3) { ?>
+                <div class="iwd_opc_cc_wrapper iwd_opc_more_cc_types">
+                    <span data-type="cc_type" data-icon="&#xf055" class="iwd_opc_payment_tooltip">
+                        <span class="iwd_opc_tooltip_content_fixed">
+                            <?php foreach ($this->getCcAvailableTypes() as $typeCode => $typeName) { ?>
+                                <div class="iwd_opc_cc_wrapper"
+                                     title="<?php echo $this->escapeHtml($typeName); ?>"
+                                     data-cc-type="<?php echo $this->escapeHtml($typeCode); ?>"></div>
+                            <?php } ?>
+                        </span>
+                    </span>
+                </div>
+            <?php } ?>
+        </div>
+    <?php } ?>
+</div>
+<input type="hidden"
+       id="<?php echo $this->escapeHtml($code); ?>_cc_type"
+       value=""
+       name="payment[cc_type]"/>
+<input type="hidden"
+       id="<?php echo $this->escapeHtml($code); ?>_expiration"
+       value=""
+       name="payment[cc_exp_month]"/>
+<input type="hidden"
+       id="<?php echo $this->escapeHtml($code); ?>_expiration_yr"
+       value=""
+       name="payment[cc_exp_year]"/>
+<input type="hidden"
+       id="<?php echo $this->escapeHtml($code); ?>_token"
+       value=""
+       name="payment[square_token]"/>
+<div class="iwd_opc_universal_wrapper">
+    <input type="text"
+           title="<?php echo $this->escapeHtml($this->__('Expiration Date')); ?>"
+           placeholder="<?php echo $this->escapeHtml($this->__('Expiration Date')); ?>"
+           class="required-entry iwd_opc_field iwd_opc_input"
+           id="<?php echo $this->escapeHtml($code); ?>_cc_date"
+           name="payment[cc_date]"
+           value="<?php echo $this->escapeHtml($this->getInfoData('cc_date')) ?>"/>
+</div>
+
+<div class="iwd_opc_universal_wrapper">
+    <input type="text"
+           title="<?php echo $this->escapeHtml($this->__('Postal Code')); ?>"
+           placeholder="<?php echo $this->escapeHtml($this->__('Postal Code')); ?>"
+           class="required-entry iwd_opc_field iwd_opc_input"
+           id="<?php echo $this->escapeHtml($code); ?>_postal_code"
+           name="payment[cc_postal_code]"
+           value="<?php echo $this->escapeHtml($this->getInfoData('cc_postal_code')) ?>"/>
+</div>
+
+<?php echo $this->getChildHtml(); ?>
+<?php if ($this->hasVerification()) { ?>
+    <div class="iwd_opc_universal_wrapper">
+        <input type="text"
+               title="<?php echo $this->escapeHtml($this->__('CVV')); ?>"
+               placeholder="<?php echo $this->escapeHtml($this->__('CVV')); ?>"
+               class="iwd_opc_field iwd_opc_input required-entry validate-iwd-opc-cvv"
+               id="<?php echo $this->escapeHtml($code); ?>_cc_cid"
+               maxlength="4"
+               name="payment[cc_cid]"
+               value=""/>
+        <span data-type="cvv" data-icon="&#xf059" class="iwd_opc_payment_tooltip"
+              data-content="<?php echo $this->escapeHtml(
+                  $this->__('A 3 or 4-digit security code on the back or front of your card.')
+              ); ?>">
+            </span>
+    </div>
+    <div class="iwd_opc_clear"></div>
+<?php } ?>
+<script type="text/javascript">
+
+</script>

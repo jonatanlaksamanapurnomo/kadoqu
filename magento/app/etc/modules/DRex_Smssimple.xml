@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <DRex_Smssimple>
+			<active>true</active>
+      <codePool>local</codePool> 
+			<version>0.0.1</version>
+		</DRex_Smssimple>
+  </modules>
+</config>

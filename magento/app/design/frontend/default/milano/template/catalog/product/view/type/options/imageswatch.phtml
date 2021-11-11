@@ -1,0 +1,115 @@
+<?php
+/**
+ * ShopShark Image Swatches Extension
+ * @version   1.0 09.05.2014
+ * @author    ShopShark http://www.shopshark.net <info@shopshark.net>
+ * @copyright Copyright (C) 2010 - 2014 ShopShark
+ */
+$_product = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+$swatchHelper = Mage::helper('imageswatches');
+?>
+
+<?php if ($_product->isSaleable() && count($_attributes)): ?>
+    <dl>
+        <?php foreach ($_attributes as $_attribute): ?>
+            <?php
+            $option = null;
+            if (Mage::registry('is_last_option')) {
+                $option = Mage::registry('is_last_option');
+                Mage::unregister('is_last_option');
+            }
+            Mage::register('is_last_option', $_attribute->getLabel());
+            $attribute = $_attribute->getProductAttribute();
+            $swatchEnabled = $swatchHelper->isSwatchEnabled($attribute);
+            ?>
+            <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?><span class="required"></span></label></dt>
+            <dd<?php if ($_attribute->decoratedIsLast) { ?> class="last"<?php } ?>>
+
+                <?php if ($swatchEnabled): ?>
+                    <?php $sizes = ShopShark_Imageswatches_Helper_Data::getThumbnailSize(); ?>
+                    <div class="swatch_container" id="swatch-attribute<?php echo $_attribute->getAttributeId() ?>">
+                        <div class="advise_swatch" style="display: none;line-height: <?php echo $sizes['height'] + 10; ?>px"><?php echo $this->__('Please select %s', $option) ?></div>
+                        <?php foreach ($attribute->getSource()->getAllOptions() as $option): ?>
+                            <?php
+                            if (!$option['value']) {
+                                continue;
+                            }
+                            $swatch = Mage::getModel('imageswatches/swatch')->load($option['value'], 'option_id');
+                            ?>
+                            <div class="swatch-option" style="display:none;" id="option-<?php echo $option['value'] ?>">
+                                <?php
+                                $imageId = "attribute" . $attribute->getAttributeId() . "_" . $option['value'];
+                                $customHTML = $swatch->getCustomHTML();
+                                ?>
+                                <?php
+                                if ($customHTML != '') {
+                                    $attribs = 'class="swatch-html" alt="' . $option['label'] . '" title="' . $option['label'] . '" id="' . $imageId . '" ';
+                                    $attribs.= 'onclick="imSwatchOptions.optionSelected(this)" ';
+                                    $attribs.= 'ontouchstart="touched=true" ';
+                                    $attribs.= 'style="text-align: center; min-width: ' . $sizes['width'] . 'px; height: ' . $sizes['height'] . 'px; line-height: ' . $sizes['height'] . 'px;"';
+                                    echo '<div ' . $attribs . '>' . $customHTML . '</div>';
+                                }else{
+                                ?>
+
+                                <?php
+                                $thumbnailSrc = $swatch->getThumbnail();
+                                $fullImageSrc = $swatch->getFullImageUrl();
+                                if (!$thumbnailSrc) {
+                                    $thumbnailSrc = Mage::getDesign()->getSkinUrl('images/catalog/product/placeholder/thumbnail.jpg');
+                                    $fullImageSrc = Mage::getDesign()->getSkinUrl('images/catalog/product/placeholder/image.jpg');
+                                }
+                                ?>
+
+                                <img class="swatch-img" alt="<?php echo $option['label'] ?>" title="<?php echo $option['label'] ?>" id="<?php echo $imageId; ?>" height="<?php echo $sizes['height']; ?>" width="<?php echo $sizes['width']; ?>"
+                                     src="<?php echo $thumbnailSrc; ?>" onclick="imSwatchOptions.optionSelected(this)" <?php if ($swatchHelper->displayPopup($attribute)): ?>onmouseover="imSwatchOptions.mouseHover(this)" onmouseout="imSwatchOptions.mouseOut(this)" <?php endif; ?> ontouchstart="touched = true" />
+                                <span><?php echo $option['label'] ?></span>
+                                <div id="full_image_<?php echo $imageId; ?>" class="is-hidden" style="bottom: <?php echo $sizes['height'] + 10; ?>px;" >
+                                    <img src="<?php echo $fullImageSrc; ?>" />
+                                </div>
+
+                                <?php } ?>
+
+                            </div>
+                        <?php endforeach; ?>
+                        <div class="clear"></div>
+                    </div>
+                <?php endif; ?>
+                <?php if (!$swatchEnabled): ?><div class="input-box"><?php endif; ?>
+                    <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select <?php if ($swatchEnabled): echo 'hidden-select';
+        endif;
+        ?>">
+                        <option><?php echo $this->__('Choose an Option...') ?></option>
+                    </select>
+                    <?php if (!$swatchEnabled): ?></div><?php endif; ?>
+            </dd>
+        <?php endforeach; ?>
+    </dl>
+    <script type="text/javascript">
+        touched = false;
+        var spConfig = new Product.Config(<?php echo $this->getJsonConfig() ?>);
+    <?php if (Mage::helper('imageswatches')->isEnabled()): ?>
+            swatchTimeout = [];
+        <?php $product = Mage::registry('product'); ?>
+            Event.observe(document, "dom:loaded", function () {
+                imageSwatch = new imageSwatchReg(true,<?php echo $product->getId() ?>, '<?php echo Mage::helper('imageswatches')->getControllerUrl() ?>', spConfig);
+                imSwatchOptions = new imageSwatchOptions(spConfig);
+                imSwatchOptions.resetSelection();
+                spConfig.settings.each(function (select) {
+                    if (select.value) {
+                        try {
+                            $(select.id + '_' + select.value).addClassName('selected');
+                        } catch (e) {
+                        }
+                    }
+                });
+                $$('.swatch-option.active > .swatch-img')[0].click();
+            });
+            function resetImageSwatchOptions(select)
+            {
+                imSwatchOptions.lastClick = null;
+                imSwatchOptions.resetSelection(select);
+            }
+    <?php endif; ?>
+    </script>
+<?php endif; ?>

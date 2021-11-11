@@ -1,0 +1,62 @@
+<?php 
+$_helper = $this->helper('catalog/product_compare');
+
+$deleteAllUrl = $_helper->getClearListUrl();
+
+$refererUrl = Mage::registry('referrer_url');
+if (empty($refererUrl)) {
+    $refererUrl = Mage::getBaseUrl();
+}
+$params = $this->getRequest()->getParams();
+if(!empty($params['isAjax'])){
+    $deleteAllUrl = $this->getUrl(
+        'catalog/product_compare/clear',
+        array(
+            Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED => $this->helper('core/url')->getEncodedUrl($refererUrl)
+        )
+    );
+}
+
+$_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
+?>
+<div class="block-compare-header">
+<?php if($_helper->getItemCount() > 0): ?>
+	<span class="button-show">
+       	<a href="<?php echo $_helper->getListUrl(); ?>" target="_blank"><?php echo $this->__('Compare Products') . $this->__(' (%d)', $_helper->getItemCount()); ?></a>
+	</span>
+    <div id="header-items">
+    <?php if($_helper->getItemCount() > 0): ?>
+    	<div class="block-subtitle"><span><?php echo $this->__('Items to compare') ?></span> <div style="clear: both;"></div></div>
+        <ol id="compare-items" class="mini-products-list">
+        <?php foreach($_items as $_index => $_item): 
+            $deleteUrl = $_helper->getRemoveUrl($_item);
+            if(!empty($params['isAjax'])){
+                $deleteUrl = $this->getUrl(
+                    'catalog/product_compare/remove',
+                    array(
+                        'product'=>$_item->getId(),
+                        Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED => $this->helper('core/url')->getEncodedUrl($refererUrl)
+                    )
+                );
+            }
+		?>
+            <li class="item">
+                <input type="hidden" class="compare-item-id" value="<?php echo $_item->getId() ?>" />
+                <a href="<?php echo $this->getProductUrl($_item) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init(Mage::getModel('catalog/product')->load($_item->getId()), 'small_image')->resize(50, 50) ?>" width="50" height="50" /></a>
+                <div class="product-details">
+                	<a href="<?php echo $deleteUrl ?>" title="<?php echo $this->__('Remove This Item') ?>" class="btn-remove" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove this item from the compare products?') ?>');"><?php echo $this->__('Remove This Item') ?></a>
+                	<p class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></a></p>
+                </div>
+            </li>
+        <?php endforeach; ?>
+        </ol>
+        <div class="actions">
+            <a class="clear-all" href="<?php echo $deleteAllUrl ?>" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove all products from your comparison?') ?>');"><?php echo $this->__('Clear All') ?></a>
+            <button type="button" title="<?php echo $this->__('Compare') ?>" class="button btn-compare btn-checkout" onclick="popWin('<?php echo $_helper->getListUrl() ?>','compare','top:0,left:0,width=820,height=600,resizable=yes,scrollbars=yes')"><span><span><?php echo $this->__('Compare') ?></span></span></button>
+        </div>
+    <?php else: ?>
+        <p class="empty"><?php echo $this->__('You have no items to compare.') ?></p>
+    <?php endif; ?>
+    </div>
+<?php endif; ?>   
+</div>
